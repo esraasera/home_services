@@ -1,18 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:home_services_app/home_services/splash/presentation/screens/splash_screen.dart';
+import 'package:home_services_app/app/app.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home:SplashScreen(),
-    );
-  }
-}
