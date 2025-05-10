@@ -1,5 +1,8 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:home_services_app/core/constants/app_constants.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
+import 'package:home_services_app/home_services/auth/presentation/screens/login_screen.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -8,9 +11,14 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.white,
-        body:Center(
-          child: Image.asset('assets/images/logo.png'),
-        ) ,
-    );
+        body: AnimatedSplashScreen(
+          splashIconSize: AppConstants.splashIconSize,
+          splashTransition: SplashTransition.fadeTransition,
+          animationDuration:AppConstants.splashAnimationDuration,
+          splash:Center(
+          child:Image.asset('assets/images/logo.png')
+          ),
+          nextScreen: const LoginScreen(),
+          ));
   }
 }
