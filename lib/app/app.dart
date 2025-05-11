@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
+import 'package:home_services_app/core/theme/app_theme.dart';
 
 class MyApp extends StatefulWidget {
 
@@ -20,7 +21,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       onGenerateRoute: RouteGenerator.getRoute,
       initialRoute: Routes.splashRoute,
-     // theme: getApplicationTheme(),
+      theme: getApplicationTheme(),
     );
   }
 }

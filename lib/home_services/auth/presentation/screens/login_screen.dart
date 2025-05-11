@@ -11,12 +11,17 @@ class LoginScreen extends StatelessWidget{
   Widget build(BuildContext context) {
     final TextEditingController userNameController = TextEditingController();
     final TextEditingController userPasswordController = TextEditingController();
+    final formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: AppColors.white,
-      body: Center(
-          child: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(AppPadding.p20),
+      appBar: AppBar(),
+      body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(AppPadding.p20),
+            child: Container(
+              margin: EdgeInsets.symmetric(vertical: AppMargin.m40),
+              child: Form(
+                key:formKey,
                 child: Column(
                   children: [
                     Text(
@@ -24,7 +29,7 @@ class LoginScreen extends StatelessWidget{
                       style: getBoldStyle(color: AppColors.black),
                     ),
                     SizedBox(
-                      height: AppSize.s14,
+                      height: AppSize.s40,
                     ),
                   TextFormField(
                     keyboardType: TextInputType.emailAddress,
@@ -32,10 +37,15 @@ class LoginScreen extends StatelessWidget{
                     decoration: InputDecoration(
                         hintText: AppStrings.username,
                         labelText: AppStrings.username,
-                        errorText: AppStrings.usernameError,
-                  )),
+                  ),
+                   validator: (value) {
+                  if (value == null || value.isEmpty) {
+                  return AppStrings.usernameError;
+                  }
+                 return null;
+                  },),
                     SizedBox(
-                      height: AppSize.s40,
+                      height: AppSize.s20,
                     ),
                     TextFormField(
                         keyboardType: TextInputType.visiblePassword,
@@ -43,11 +53,17 @@ class LoginScreen extends StatelessWidget{
                         decoration: InputDecoration(
                             hintText: AppStrings.password,
                             labelText: AppStrings.password,
-                            errorText: AppStrings.passwordError,
-                        )),
+                        ),
+                        validator: (value) {
+                       if (value == null || value.isEmpty) {
+                       return AppStrings.usernameError;
+                       }
+                      return null;
+                  },),
                   ]),
-              )
-              )
+              ),
+            ),
+          )
           )
       );
   }
