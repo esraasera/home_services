@@ -9,6 +9,8 @@ class LoginScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController userNameController = TextEditingController();
+    final TextEditingController userPasswordController = TextEditingController();
     return Scaffold(
       backgroundColor: AppColors.white,
       body: Center(
@@ -24,11 +26,25 @@ class LoginScreen extends StatelessWidget{
                     SizedBox(
                       height: AppSize.s14,
                     ),
-                    TextFormField(),
+                  TextFormField(
+                    keyboardType: TextInputType.emailAddress,
+                    controller: userNameController,
+                    decoration: InputDecoration(
+                        hintText: AppStrings.username,
+                        labelText: AppStrings.username,
+                        errorText: AppStrings.usernameError,
+                  )),
                     SizedBox(
-                      height: AppSize.s8
+                      height: AppSize.s40,
                     ),
-                    TextFormField(),
+                    TextFormField(
+                        keyboardType: TextInputType.visiblePassword,
+                        controller: userPasswordController,
+                        decoration: InputDecoration(
+                            hintText: AppStrings.password,
+                            labelText: AppStrings.password,
+                            errorText: AppStrings.passwordError,
+                        )),
                   ]),
               )
               )
