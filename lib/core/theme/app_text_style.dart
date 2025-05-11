@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class FontConstants{
-  static const String fontFamily1 = "DMSans_18pt";
+  static const String fontFamily = "DMSans_18pt";
 }
 
 class FontWeightManager {
