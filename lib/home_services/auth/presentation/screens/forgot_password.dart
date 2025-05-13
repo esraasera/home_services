@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
-class ForgotPassword extends StatelessWidget{
-  const ForgotPassword({super.key});
-
+class RegisterScreen extends StatelessWidget{
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Text("Forgot Password");
+    return Scaffold(
+      body: Column(
+        children: [
+          Text("ForgotPassword Screen"),
+        ],
+      ),
+    );
   }
 
 }
