@@ -47,19 +47,19 @@ class LoginScreen extends StatelessWidget{
                     SizedBox(
                       height: AppSize.s20,
                     ),
-                    TextFormField(
-                        keyboardType: TextInputType.visiblePassword,
-                        controller: userPasswordController,
-                        decoration: InputDecoration(
-                            hintText: AppStrings.password,
-                            labelText: AppStrings.password,
-                        ),
-                        validator: (value) {
-                       if (value == null || value.isEmpty) {
-                       return AppStrings.usernameError;
-                       }
-                      return null;
-                  },),
+                  //   TextFormField(
+                  //       keyboardType: TextInputType.visiblePassword,
+                  //       controller: userPasswordController,
+                  //       decoration: InputDecoration(
+                  //           hintText: AppStrings.password,
+                  //           labelText: AppStrings.password,
+                  //       ),
+                  //       validator: (value) {
+                  //      if (value == null || value.isEmpty) {
+                  //      return AppStrings.usernameError;
+                  //      }
+                  //     return null;
+                  // },),
                   ]),
               ),
             ),
