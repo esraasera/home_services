@@ -5,7 +5,13 @@ class RegisterScreen extends StatelessWidget{
 
   @override
   Widget build(BuildContext context) {
-    return Text("Register");
+    return Scaffold(
+      body: Column(
+        children: [
+          Text("Register Screen"),
+        ],
+      ),
+    );
   }
 
 }
