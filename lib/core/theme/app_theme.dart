@@ -83,7 +83,7 @@ ThemeData getApplicationTheme() {
 
          textSelectionTheme: TextSelectionThemeData(
          cursorColor: AppColors.primary,
-         selectionColor: AppColors.primary.withOpacity(0.3),
+         selectionColor: AppColors.primary.withValues(alpha: 0.3),
          selectionHandleColor: AppColors.primary,
        ),);
 }
