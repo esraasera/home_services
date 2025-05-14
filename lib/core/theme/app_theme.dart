@@ -32,7 +32,7 @@ ThemeData getApplicationTheme() {
         textStyle: getMediumStyle(color: AppColors.white, fontSize: FontSize.s16),
         minimumSize: Size(double.infinity, AppSize.s50),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSize.s8),
+          borderRadius: BorderRadius.circular(AppSize.s10),
         ),
         elevation: AppSize.s4,
       ),
