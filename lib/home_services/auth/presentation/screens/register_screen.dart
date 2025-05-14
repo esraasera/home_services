@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/utils/app_string.dart';
@@ -26,7 +27,7 @@ class RegisterScreen extends StatelessWidget{
                     child: Column(
                         children: [
                           Text(
-                            AppStrings.login,
+                            AppStrings.register,
                             style: getBoldStyle(color: AppColors.black),
                           ),
                           SizedBox(
@@ -41,7 +42,7 @@ class RegisterScreen extends StatelessWidget{
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
-                                return AppStrings.usernameError;
+                                return AppStrings.emailError;
                               }
                               return null;
                             },),
@@ -87,7 +88,7 @@ class RegisterScreen extends StatelessWidget{
                               }
                             },
                             child: Text(
-                              AppStrings.login,
+                              AppStrings.register,
                             ),
                           ),
                           SizedBox(
@@ -97,7 +98,7 @@ class RegisterScreen extends StatelessWidget{
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                AppStrings.isUser,
+                                AppStrings.alreadyUser,
                                 style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s14),
                               ),
                               SizedBox(
@@ -105,22 +106,14 @@ class RegisterScreen extends StatelessWidget{
                               ),
                               GestureDetector(
                                 child: Text(
-                                  AppStrings.register,
+                                  AppStrings.login,
                                   style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s14),
                                 ),
-                                onTap:(){} ,
+                                onTap:(){
+                                  Navigator.of(context).pushReplacementNamed(Routes.loginRoute);
+                                } ,
                               ),
                             ],
-                          ),
-                          SizedBox(
-                            height: AppSize.s14,
-                          ),
-                          GestureDetector(
-                            child: Text(
-                              AppStrings.forgotPassword,
-                              style: getBoldStyle(color: AppColors.primary,fontSize:AppSize.s14),
-                            ),
-                            onTap:(){} ,
                           ),
                         ]),
                   ),

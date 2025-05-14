@@ -89,7 +89,7 @@ class LoginScreen extends StatelessWidget{
                           ),
                           GestureDetector(
                             child: Text(
-                              AppStrings.register,
+                              AppStrings.registerNow,
                               style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s14),
                             ),
                             onTap:(){
@@ -106,7 +106,9 @@ class LoginScreen extends StatelessWidget{
                           AppStrings.forgotPassword,
                           style: getBoldStyle(color: AppColors.primary,fontSize:AppSize.s14),
                         ),
-                        onTap:(){} ,
+                        onTap:(){
+                          Navigator.of(context).pushReplacementNamed(Routes.forgotPasswordRoute);
+                        } ,
                       ),
                     ]),
                 ),
