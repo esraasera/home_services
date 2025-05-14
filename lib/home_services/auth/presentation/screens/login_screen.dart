@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/utils/app_string.dart';
@@ -14,7 +15,6 @@ class LoginScreen extends StatelessWidget{
     final formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: AppColors.white,
-      appBar: AppBar(),
       body: Center(
         child: SingleChildScrollView(
             child: Padding(
@@ -92,7 +92,9 @@ class LoginScreen extends StatelessWidget{
                               AppStrings.register,
                               style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s14),
                             ),
-                            onTap:(){} ,
+                            onTap:(){
+                              Navigator.of(context).pushReplacementNamed(Routes.registerRoute);
+                            } ,
                           ),
                         ],
                       ),

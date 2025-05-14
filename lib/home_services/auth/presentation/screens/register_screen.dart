@@ -15,7 +15,6 @@ class RegisterScreen extends StatelessWidget{
     final formKey = GlobalKey<FormState>();
     return Scaffold(
         backgroundColor: AppColors.white,
-        appBar: AppBar(),
         body: Center(
           child: SingleChildScrollView(
               child: Padding(
@@ -32,6 +31,22 @@ class RegisterScreen extends StatelessWidget{
                           ),
                           SizedBox(
                             height: AppSize.s35,
+                          ),
+                          TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            controller: emailController,
+                            decoration: InputDecoration(
+                              hintText: AppStrings.email,
+                              labelText: AppStrings.email,
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return AppStrings.usernameError;
+                              }
+                              return null;
+                            },),
+                          SizedBox(
+                            height: AppSize.s20,
                           ),
                           TextFormField(
                             keyboardType: TextInputType.emailAddress,

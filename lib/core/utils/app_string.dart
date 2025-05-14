@@ -4,6 +4,7 @@ class AppStrings {
   static const register = "REGISTER NOW";
   static const isUser = "Don't have an account?";
   static const forgotPassword = "Forgot Password?";
+  static const email = "Email";
   static const username = "Username";
   static const password = "Password";
   static const usernameError = "Please enter your userName";
