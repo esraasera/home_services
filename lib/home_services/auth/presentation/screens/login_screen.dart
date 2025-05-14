@@ -5,13 +5,12 @@ import 'package:home_services_app/core/utils/app_string.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 
 class LoginScreen extends StatelessWidget{
-  const LoginScreen({super.key});
-
+   LoginScreen({super.key});
+  final TextEditingController userNameController = TextEditingController();
+  final TextEditingController userPasswordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final TextEditingController userNameController = TextEditingController();
-    final TextEditingController userPasswordController = TextEditingController();
-    final formKey = GlobalKey<FormState>();
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(),
@@ -50,16 +49,61 @@ class LoginScreen extends StatelessWidget{
                     TextFormField(
                         keyboardType: TextInputType.visiblePassword,
                         controller: userPasswordController,
+                        obscureText: true,
                         decoration: InputDecoration(
                             hintText: AppStrings.password,
                             labelText: AppStrings.password,
                         ),
                         validator: (value) {
                        if (value == null || value.isEmpty) {
-                       return AppStrings.usernameError;
+                       return AppStrings.passwordError;
                        }
                       return null;
                   },),
+                    SizedBox(
+                      height: AppSize.s40,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (formKey.currentState!.validate()) {
+                        }
+                      },
+                      child: Text(
+                        AppStrings.login,
+                      ),
+                    ),
+                    SizedBox(
+                      height: AppSize.s28,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          AppStrings.isUser,
+                         style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s14),
+                        ),
+                        SizedBox(
+                          width: AppSize.s1_5,
+                        ),
+                        GestureDetector(
+                          child: Text(
+                            AppStrings.register,
+                            style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s14),
+                          ),
+                          onTap:(){} ,
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: AppSize.s14,
+                    ),
+                    GestureDetector(
+                      child: Text(
+                        AppStrings.forgotPassword,
+                        style: getBoldStyle(color: AppColors.primary,fontSize:AppSize.s14),
+                      ),
+                      onTap:(){} ,
+                    ),
                   ]),
               ),
             ),

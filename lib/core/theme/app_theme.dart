@@ -23,11 +23,21 @@ ThemeData getApplicationTheme() {
         titleTextStyle:
         getRegularStyle(fontSize: FontSize.s16, color: AppColors.white)),
 
-    buttonTheme: ButtonThemeData(
-        shape: const StadiumBorder(),
-        disabledColor: AppColors.grey,
-        buttonColor: AppColors.primary,
-        splashColor: AppColors.primary),
+
+
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        backgroundColor: AppColors.primary,
+        foregroundColor: AppColors.white,
+        textStyle: getMediumStyle(color: AppColors.white, fontSize: FontSize.s16),
+        minimumSize: Size(double.infinity, AppSize.s50),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSize.s8),
+        ),
+        elevation: AppSize.s4,
+      ),
+    ),
+
 
     textTheme: TextTheme(
         displayLarge: getSemiBoldStyle(
@@ -38,7 +48,7 @@ ThemeData getApplicationTheme() {
             color: AppColors.grey, fontSize: FontSize.s14),
         titleMedium: getMediumStyle(
             color: AppColors.primary, fontSize: FontSize.s16),
-        bodyLarge: getRegularStyle(color: AppColors.grey),
+        bodyLarge: getRegularStyle(color: AppColors.black,fontSize: FontSize.s16),
         bodySmall: getRegularStyle(color: AppColors.grey)),
 
     inputDecorationTheme: InputDecorationTheme(
