@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class ChatScreen extends StatelessWidget{
-  const ChatScreen({super.key});
+class LocationScreen extends StatelessWidget{
+  const LocationScreen({super.key});
 
 
   @override
