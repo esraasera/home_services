@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
-class UserDetailsScreen extends StatelessWidget{
-  const UserDetailsScreen({super.key});
+class ChatScreen extends StatelessWidget{
+  const ChatScreen({super.key});
 
 
   @override
   Widget build(BuildContext context) {
-    return Text("Register");
+    return Scaffold(
+      body: Text("User Details Screen"),
+    );
   }
 
 }
