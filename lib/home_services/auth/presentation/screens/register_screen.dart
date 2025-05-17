@@ -31,7 +31,7 @@ class RegisterScreen extends StatelessWidget{
                             style: getBoldStyle(color: AppColors.black),
                           ),
                           SizedBox(
-                            height: AppSize.s35,
+                            height: AppSize.s30,
                           ),
                           TextFormField(
                             keyboardType: TextInputType.emailAddress,
@@ -99,7 +99,7 @@ class RegisterScreen extends StatelessWidget{
                             children: [
                               Text(
                                 AppStrings.alreadyUser,
-                                style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s14),
+                                style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s16),
                               ),
                               SizedBox(
                                 width: AppSize.s1_5,
@@ -107,7 +107,7 @@ class RegisterScreen extends StatelessWidget{
                               GestureDetector(
                                 child: Text(
                                   AppStrings.login,
-                                  style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s14),
+                                  style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s16),
                                 ),
                                 onTap:(){
                                   Navigator.of(context).pushReplacementNamed(Routes.loginRoute);

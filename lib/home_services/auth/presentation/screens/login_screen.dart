@@ -30,7 +30,7 @@ class LoginScreen extends StatelessWidget{
                         style: getBoldStyle(color: AppColors.black),
                       ),
                       SizedBox(
-                        height: AppSize.s35,
+                        height: AppSize.s30,
                       ),
                     TextFormField(
                       keyboardType: TextInputType.emailAddress,
@@ -82,7 +82,7 @@ class LoginScreen extends StatelessWidget{
                         children: [
                           Text(
                             AppStrings.isUser,
-                           style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s14),
+                           style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s16),
                           ),
                           SizedBox(
                             width: AppSize.s1_5,
@@ -90,7 +90,7 @@ class LoginScreen extends StatelessWidget{
                           GestureDetector(
                             child: Text(
                               AppStrings.registerNow,
-                              style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s14),
+                              style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s16),
                             ),
                             onTap:(){
                               Navigator.of(context).pushReplacementNamed(Routes.registerRoute);
@@ -104,7 +104,7 @@ class LoginScreen extends StatelessWidget{
                       GestureDetector(
                         child: Text(
                           AppStrings.forgotPassword,
-                          style: getBoldStyle(color: AppColors.primary,fontSize:AppSize.s14),
+                          style: getBoldStyle(color: AppColors.primary,fontSize:AppSize.s16),
                         ),
                         onTap:(){
                           Navigator.of(context).pushReplacementNamed(Routes.forgotPasswordRoute);

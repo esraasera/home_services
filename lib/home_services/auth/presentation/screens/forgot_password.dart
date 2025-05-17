@@ -29,7 +29,7 @@ class ForgotPassword extends StatelessWidget{
                             style: getBoldStyle(color: AppColors.black),
                           ),
                           SizedBox(
-                            height: AppSize.s35,
+                            height: AppSize.s30,
                           ),
                           TextFormField(
                             keyboardType: TextInputType.visiblePassword,
@@ -64,7 +64,7 @@ class ForgotPassword extends StatelessWidget{
                             children: [
                               Text(
                                 AppStrings.isUser,
-                                style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s14),
+                                style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s16),
                               ),
                               SizedBox(
                                 width: AppSize.s1_5,
@@ -72,7 +72,7 @@ class ForgotPassword extends StatelessWidget{
                               GestureDetector(
                                 child: Text(
                                   AppStrings.create,
-                                  style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s14),
+                                  style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s16),
                                 ),
                                 onTap:(){
                                   Navigator.of(context).pushReplacementNamed(Routes.registerRoute);
