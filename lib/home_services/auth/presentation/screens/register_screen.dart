@@ -28,7 +28,7 @@ class RegisterScreen extends StatelessWidget{
                         children: [
                           Text(
                             AppStrings.register,
-                            style: getBoldStyle(color: AppColors.black),
+                            style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s35),
                           ),
                           SizedBox(
                             height: AppSize.s30,

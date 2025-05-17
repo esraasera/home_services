@@ -6,7 +6,7 @@ class AppStrings {
   static const isUser = "Don't have an account?";
   static const create = "Create";
   static const alreadyUser = "Already have an account?";
-  static const submit = "SUBMIT";
+  static const submit = "Submit";
   static const forgotPassword = "Forgot Password?";
   static const email = "Email";
   static const username = "Username";
