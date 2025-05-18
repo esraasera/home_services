@@ -6,6 +6,6 @@ class RegisterUseCase{
   RegisterUseCase (this.authRepository);
 
   Future <void> call (UserEntity user, String password)async{
-    return await authRepository.register(user, password);
+    return await authRepository.registerUser(user, password);
   }
 }

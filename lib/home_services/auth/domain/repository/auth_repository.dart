@@ -2,5 +2,5 @@ import 'package:home_services_app/home_services/auth/domain/entities/user_entity
 
 abstract class AuthRepository {
 
-  Future<void> register(UserEntity user , String password);
+  Future<void> registerUser(UserEntity user , String password);
 }
