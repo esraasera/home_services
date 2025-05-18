@@ -5,6 +5,10 @@ class UserModel extends UserEntity{
     required super.email,
     required super.name,
    });
-
-
+  Map<String,dynamic> toMap (){
+    return {
+      "email" : email,
+      "name" : name,
+    };
+  }
 }
