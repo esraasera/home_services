@@ -21,7 +21,6 @@ extension AuthErrorTypeExtension on AuthErrorType {
       case AuthErrorType.networkError:
         return FirebaseAuthErrors.networkError;
       case AuthErrorType.unexpectedError:
-      default:
         return FirebaseAuthErrors.unexpected;
     }
   }
