@@ -1,22 +1,30 @@
+import 'package:home_services_app/core/errors/firebase_auth_error_messages.dart';
+
 enum AuthErrorType {
   emailAlreadyInUse,
   weakPassword,
   invalidEmail,
+  networkError,
   unexpectedError,
 }
+
 
 extension AuthErrorTypeExtension on AuthErrorType {
   String get message {
     switch (this) {
       case AuthErrorType.emailAlreadyInUse:
-        return 'This email is already in use.';
+        return FirebaseAuthErrors.emailAlreadyInUse;
       case AuthErrorType.weakPassword:
-        return 'Your password is too weak.';
+        return FirebaseAuthErrors.weakPassword;
       case AuthErrorType.invalidEmail:
-        return 'This email format is invalid.';
+        return FirebaseAuthErrors.invalidEmail;
+      case AuthErrorType.networkError:
+        return FirebaseAuthErrors.networkError;
       case AuthErrorType.unexpectedError:
       default:
-        return 'An unexpected error occurred.';
+        return FirebaseAuthErrors.unexpected;
     }
   }
 }
+
+
