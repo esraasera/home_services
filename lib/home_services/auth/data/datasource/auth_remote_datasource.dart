@@ -19,6 +19,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
     await firebaseAuth.createUserWithEmailAndPassword(email: user.email, password: password);
 
+
   }
 
 } 

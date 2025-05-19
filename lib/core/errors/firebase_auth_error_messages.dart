@@ -1,20 +1,7 @@
-import 'package:home_services_app/core/utils/app_string.dart';
-
-class FirebaseAuthErrorMessages {
-  static String getMessage(String errorCode) {
-    switch (errorCode) {
-      case 'weak-password':
-        return AppStrings.weakPassword;
-      case 'email-already-in-use':
-        return AppStrings.emailAlreadyInUse;
-      case 'user-not-found':
-        return AppStrings.userNotFound;
-      case 'wrong-password':
-        return AppStrings.wrongPassword;
-      case 'network-request-failed':
-        return AppStrings.networkError;
-      default:
-        return AppStrings.unknownError;
-    }
-  }
+class FirebaseAuthErrors {
+  static const String emailAlreadyInUse = 'The email address is already in use by another account.';
+  static const String weakPassword = 'The password provided is too weak.';
+  static const String invalidEmail = 'The email address is badly formatted.';
+  static const String networkError = 'A network error (such as timeout, interrupted connection or unreachable host) has occurred.';
+  static const String unexpected = 'An unexpected error occurred.';
 }
