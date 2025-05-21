@@ -19,20 +19,20 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<void> registerUser(UserModel user, String password) async {
     try {
-      final userCredential = await firebaseAuth.createUserWithEmailAndPassword(
+      final newUser = await firebaseAuth.createUserWithEmailAndPassword(
         email: user.email,
         password: password,
       );
-      await firestore.collection('users').doc(userCredential.user!.uid).set(user.toMap());
+      await firestore.collection('users').doc(newUser.user!.uid).set(user.toMap());
     } on FirebaseAuthException catch (e) {
-      final errorType = _mapFirebaseErrorToAuthErrorType(e.code);
+      final errorType = firebaseAuthErrorType(e.code);
       throw Exception(errorType.message);
     } catch (error) {
       throw Exception(AuthErrorType.unexpectedError.message);
     }
   }
 
-  AuthErrorType _mapFirebaseErrorToAuthErrorType(String errorCode) {
+  AuthErrorType firebaseAuthErrorType(String errorCode) {
     switch (errorCode) {
       case 'email-already-in-use':
         return AuthErrorType.emailAlreadyInUse;
