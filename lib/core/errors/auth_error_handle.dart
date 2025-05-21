@@ -1,3 +1,5 @@
+import 'package:home_services_app/core/errors/firebase_auth_error.dart';
+
 enum AuthErrorType {
   emailAlreadyInUse,
   weakPassword,
@@ -37,10 +39,9 @@ extension AuthErrorTypeExtension on AuthErrorType {
     return FirebaseAuthErrors.unknownError;
     case AuthErrorType.unexpectedError:
     default:
-    return AppStrings.unexpectedError;  // نص عام للمشاكل غير المتوقعة
+    return AppStrings.unexpectedError;
   }
 }
-  }
-}
+
 
 
