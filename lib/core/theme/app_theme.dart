@@ -45,7 +45,6 @@ ThemeData getApplicationTheme() {
         fontSize: 16,
       ),
       behavior: SnackBarBehavior.fixed,
-      shape:OutlineInputBorder(),
     ),
 
 
