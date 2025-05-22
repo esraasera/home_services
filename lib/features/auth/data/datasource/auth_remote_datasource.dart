@@ -23,7 +23,17 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         email: user.email,
         password: password,
       );
-      await firestore.collection('users').doc(newUser.user!.uid).set(user.toMap());
+
+      if (newUser.user != null) {
+        await firestore
+            .collection('users')
+            .doc(newUser.user!.uid)
+            .set(user.toMap());
+        print('User registered: ${newUser.user!.uid}');
+      } else {
+        throw Exception('Failed to create user: user object is null');
+      }
+
     } on FirebaseAuthException catch (e) {
       final errorType = firebaseAuthErrorType(e.code);
       print("Registration error: $e");
@@ -59,5 +69,4 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         return AuthErrorType.unexpectedError;
     }
   }
-
 }

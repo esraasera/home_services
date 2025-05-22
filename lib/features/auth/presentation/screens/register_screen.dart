@@ -22,7 +22,6 @@ class RegisterScreen extends StatelessWidget{
     final TextEditingController nameController = TextEditingController();
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
-    final user = UserEntity(email: emailController.text, name: nameController.text);
     final formKey = GlobalKey<FormState>();
     return BlocProvider(
       create: (BuildContext context) =>RegisterCubit(
@@ -36,7 +35,16 @@ class RegisterScreen extends StatelessWidget{
           )
           ),
       child: BlocConsumer<RegisterCubit,RegisterStates>(
-      listener:(BuildContext context,RegisterStates state ){},
+      listener:(BuildContext context,RegisterStates state ){
+        if (state is RegisterFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.message)),
+          );
+        }
+        if (state is RegisterSuccess) {
+         // Navigator.pushReplacementNamed(context, Routes.homeRoute);
+        }
+      },
       builder:(BuildContext context , RegisterStates state){
         var cubit = RegisterCubit.get(context);
         return Scaffold(
@@ -110,6 +118,10 @@ class RegisterScreen extends StatelessWidget{
       ElevatedButton(
       onPressed: () {
       if (formKey.currentState!.validate()) {
+        final user = UserEntity(
+          email: emailController.text.trim(),
+          name: nameController.text.trim(),
+        );
         cubit.registerUseCase(user,passwordController.text);
       }
       },
