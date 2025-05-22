@@ -38,6 +38,18 @@ ThemeData getApplicationTheme() {
       ),
     ),
 
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: AppColors.error,
+      contentTextStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 16,
+      ),
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(8),
+      ),
+    ),
+
 
     textTheme: TextTheme(
         displayLarge: getSemiBoldStyle(

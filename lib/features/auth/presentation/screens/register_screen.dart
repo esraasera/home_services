@@ -14,14 +14,13 @@ import 'package:home_services_app/features/auth/presentation/controller/register
 import 'package:home_services_app/features/auth/presentation/controller/register_states.dart';
 
 class RegisterScreen extends StatelessWidget{
-  const RegisterScreen({super.key});
-
+  RegisterScreen({super.key});
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final TextEditingController nameController = TextEditingController();
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
-    final formKey = GlobalKey<FormState>();
     return BlocProvider(
       create: (BuildContext context) =>RegisterCubit(
           RegisterUseCase(
@@ -65,6 +64,22 @@ class RegisterScreen extends StatelessWidget{
         SizedBox(
         height: AppSize.s30,
         ),
+          TextFormField(
+            keyboardType: TextInputType.emailAddress,
+            controller: nameController,
+            decoration: InputDecoration(
+              hintText: AppStrings.username,
+              labelText: AppStrings.username,
+            ),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return AppStrings.usernameError;
+              }
+              return null;
+            },),
+          SizedBox(
+            height: AppSize.s20,
+          ),
       TextFormField(
       keyboardType: TextInputType.emailAddress,
       controller: emailController,
@@ -75,22 +90,6 @@ class RegisterScreen extends StatelessWidget{
       validator: (value) {
       if (value == null || value.isEmpty) {
       return AppStrings.emailError;
-      }
-      return null;
-      },),
-      SizedBox(
-      height: AppSize.s20,
-      ),
-      TextFormField(
-      keyboardType: TextInputType.emailAddress,
-      controller: nameController,
-      decoration: InputDecoration(
-      hintText: AppStrings.username,
-      labelText: AppStrings.username,
-      ),
-      validator: (value) {
-      if (value == null || value.isEmpty) {
-      return AppStrings.usernameError;
       }
       return null;
       },),
