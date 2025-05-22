@@ -1,4 +1,4 @@
-import 'package:home_services_app/home_services/auth/domain/entities/user_entity.dart';
+import 'package:home_services_app/features/auth/domain/entities/user_entity.dart';
 
 class UserModel extends UserEntity{
   UserModel({

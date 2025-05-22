@@ -1,7 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_services_app/home_services/auth/domain/entities/user_entity.dart';
-import 'package:home_services_app/home_services/auth/domain/usecases/register_useCase.dart';
-import 'package:home_services_app/home_services/auth/presentation/controller/register_states.dart';
+import 'package:home_services_app/features/auth/domain/entities/user_entity.dart';
+import 'package:home_services_app/features/auth/domain/usecases/register_useCase.dart';
+import 'package:home_services_app/features/auth/presentation/controller/register_states.dart';
+
 
 class RegisterCubit extends Cubit <RegisterStates>{
   RegisterCubit(this.registerUseCase) : super(RegisterInitial());

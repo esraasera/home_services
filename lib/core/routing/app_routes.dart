@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:home_services_app/core/utils/app_string.dart';
-import 'package:home_services_app/home_services/auth/presentation/screens/forgot_password.dart';
-import 'package:home_services_app/home_services/auth/presentation/screens/login_screen.dart';
-import 'package:home_services_app/home_services/auth/presentation/screens/register_screen.dart';
-import 'package:home_services_app/home_services/chat/presentation/screens/chat_screen.dart';
-import 'package:home_services_app/home_services/location/presentation/screens/location_screen.dart';
-import 'package:home_services_app/home_services/rating/presentation/screens/rating_screen.dart';
-import 'package:home_services_app/home_services/services/presentation/screens/services_screen.dart';
-import 'package:home_services_app/home_services/splash/presentation/screens/splash_screen.dart';
-import 'package:home_services_app/home_services/user_details/presentation/screens/user_details_screen.dart';
+import 'package:home_services_app/features/auth/presentation/screens/forgot_password.dart';
+import 'package:home_services_app/features/auth/presentation/screens/login_screen.dart';
+import 'package:home_services_app/features/auth/presentation/screens/register_screen.dart';
+import 'package:home_services_app/features/chat/presentation/screens/chat_screen.dart';
+import 'package:home_services_app/features/location/presentation/screens/location_screen.dart';
+import 'package:home_services_app/features/rating/presentation/screens/rating_screen.dart';
+import 'package:home_services_app/features/services/presentation/screens/services_screen.dart';
+import 'package:home_services_app/features/splash/presentation/screens/splash_screen.dart';
+import 'package:home_services_app/features/user_details/presentation/screens/user_details_screen.dart';
 
 class Routes{
   static const String splashRoute = "/";

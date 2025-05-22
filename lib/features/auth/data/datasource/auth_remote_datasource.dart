@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:home_services_app/core/errors/auth_error_handle.dart';
-import 'package:home_services_app/home_services/auth/data/models/user_model.dart';
+import 'package:home_services_app/features/auth/data/models/user_model.dart';
 
 abstract class AuthRemoteDataSource {
   Future<void> registerUser(UserModel user , String password);
