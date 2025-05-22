@@ -44,10 +44,8 @@ ThemeData getApplicationTheme() {
         color: Colors.white,
         fontSize: 16,
       ),
-      behavior: SnackBarBehavior.floating,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-      ),
+      behavior: SnackBarBehavior.fixed,
+      shape:OutlineInputBorder(),
     ),
 
 
