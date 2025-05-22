@@ -26,6 +26,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       await firestore.collection('users').doc(newUser.user!.uid).set(user.toMap());
     } on FirebaseAuthException catch (e) {
       final errorType = firebaseAuthErrorType(e.code);
+      print("Registration error: $e");
       throw Exception(errorType.message);
     } catch (error) {
       throw Exception(AuthErrorType.unexpectedError.message);

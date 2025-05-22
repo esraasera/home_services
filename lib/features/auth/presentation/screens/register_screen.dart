@@ -22,7 +22,6 @@ class RegisterScreen extends StatelessWidget{
     final TextEditingController nameController = TextEditingController();
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
-    var cubit = RegisterCubit.get(context);
     final user = UserEntity(email: emailController.text, name: nameController.text);
     final formKey = GlobalKey<FormState>();
     return BlocProvider(
@@ -39,6 +38,7 @@ class RegisterScreen extends StatelessWidget{
       child: BlocConsumer<RegisterCubit,RegisterStates>(
       listener:(BuildContext context,RegisterStates state ){},
       builder:(BuildContext context , RegisterStates state){
+        var cubit = RegisterCubit.get(context);
         return Scaffold(
         backgroundColor: AppColors.white,
         body: Center(
