@@ -23,7 +23,9 @@ ThemeData getApplicationTheme() {
         titleTextStyle:
         getRegularStyle(fontSize: FontSize.s16, color: AppColors.white)),
 
-
+    progressIndicatorTheme: ProgressIndicatorThemeData(
+      color: AppColors.primary,
+    ),
 
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
