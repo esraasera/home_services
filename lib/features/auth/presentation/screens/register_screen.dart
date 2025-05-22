@@ -9,7 +9,6 @@ import 'package:home_services_app/core/utils/app_string.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/auth/data/datasource/auth_remote_datasource.dart';
 import 'package:home_services_app/features/auth/data/repository/auth_repository.dart';
-import 'package:home_services_app/features/auth/domain/entities/user_entity.dart';
 import 'package:home_services_app/features/auth/domain/usecases/register_useCase.dart';
 import 'package:home_services_app/features/auth/presentation/controller/register_cubit.dart';
 import 'package:home_services_app/features/auth/presentation/controller/register_states.dart';
@@ -34,9 +33,9 @@ class RegisterScreen extends StatelessWidget{
               )
           )
           ),
-      child: BlocConsumer<RegisterCubit,RegisterStates>(
-      listener:(BuildContext context,RegisterStates state ){
-        if (state is RegisterFailure) {
+      child:BlocConsumer<RegisterCubit,RegisterStates>(
+      listener:(context,state ){
+        if(state is RegisterFailure){
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(state.message)),
           );
@@ -115,14 +114,12 @@ class RegisterScreen extends StatelessWidget{
       SizedBox(
       height: AppSize.s40,
       ),
-      ElevatedButton(
+       state is RegisterLoading
+       ? CircularProgressIndicator()
+       : ElevatedButton(
       onPressed: () {
       if (formKey.currentState!.validate()) {
-        final user = UserEntity(
-          email: emailController.text.trim(),
-          name: nameController.text.trim(),
-        );
-        cubit.registerUseCase(user,passwordController.text);
+        cubit.registerUser(emailController.text,nameController.text,passwordController.text);
       }
       },
       child: Text(
