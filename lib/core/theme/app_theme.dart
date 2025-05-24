@@ -13,7 +13,7 @@ ThemeData getApplicationTheme() {
     cardTheme: CardTheme(
         color: AppColors.white,
         shadowColor: AppColors.grey,
-        elevation: AppSize.s14),
+        elevation: AppSize.s28),
 
     appBarTheme: AppBarTheme(
         centerTitle: true,
