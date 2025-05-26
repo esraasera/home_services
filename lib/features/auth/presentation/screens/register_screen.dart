@@ -94,7 +94,7 @@ class RegisterScreen extends StatelessWidget{
       return null;
       },),
       SizedBox(
-      height: AppSize.s1,
+      height: AppSize.s20,
       ),
       TextFormField(
       keyboardType: TextInputType.visiblePassword,
