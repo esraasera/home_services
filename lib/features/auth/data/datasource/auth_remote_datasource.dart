@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:home_services_app/core/errors/app_exception.dart';
 import 'package:home_services_app/core/errors/auth_error_handle.dart';
 import 'package:home_services_app/features/auth/data/models/user_model.dart';
 
@@ -26,9 +27,9 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       await firestore.collection('users').doc(newUser.user!.uid).set(user.toMap());
     } on FirebaseAuthException catch (e) {
       final errorType = firebaseAuthErrorType(e.code);
-      throw Exception(errorType.message);
+      throw AppException(errorType.message);
     } catch (error) {
-      throw Exception(AuthErrorType.unexpectedError.message);
+      throw AppException(AuthErrorType.unexpectedError.message);
     }
   }
 
