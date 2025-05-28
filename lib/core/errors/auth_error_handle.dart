@@ -42,3 +42,30 @@ extension AuthErrorTypeExtension on AuthErrorType {
     }
   }
 }
+
+AuthErrorType firebaseAuthErrorType(String errorCode) {
+  switch (errorCode) {
+    case 'email-already-in-use':
+      return AuthErrorType.emailAlreadyInUse;
+    case 'weak-password':
+      return AuthErrorType.weakPassword;
+    case 'invalid-email':
+      return AuthErrorType.invalidEmail;
+    case 'network-request-failed':
+      return AuthErrorType.networkError;
+    case 'user-disabled':
+      return AuthErrorType.userDisabled;
+    case 'user-not-found':
+      return AuthErrorType.userNotFound;
+    case 'wrong-password':
+      return AuthErrorType.wrongPassword;
+    case 'too-many-requests':
+      return AuthErrorType.tooManyRequests;
+    case 'operation-not-allowed':
+      return AuthErrorType.operationNotAllowed;
+    case 'unknown':
+      return AuthErrorType.unknownError;
+    default:
+      return AuthErrorType.unexpectedError;
+  }
+}

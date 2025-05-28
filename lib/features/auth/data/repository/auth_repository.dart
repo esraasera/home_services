@@ -14,4 +14,10 @@ class AuthRepositoryImpl implements AuthRepository{
     await remoteDataSource .registerUser(model, password);
   }
 
+  @override
+  Future<UserEntity> loginUser(String email, String password) {
+    // TODO: implement loginUser
+    throw UnimplementedError();
+  }
+
 }
