@@ -26,7 +26,7 @@ class RegisterScreen extends StatelessWidget{
           RegisterUseCase(
               AuthRepositoryImpl(
               AuthRemoteDataSourceImpl(
-              firebaseAuth: FirebaseAuth.instance,
+                firebaseAuth: FirebaseAuth.instance,
                 firestore: FirebaseFirestore.instance,
               )
               )
