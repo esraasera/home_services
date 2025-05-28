@@ -10,7 +10,7 @@ class AuthRepositoryImpl implements AuthRepository{
 
   @override
   Future<void> registerUser(UserEntity user, String password) async {
-    final model = UserModel(name: user.name, email: user.email);
+    final model = UserModel(uid:'',name: user.name, email: user.email);
     await remoteDataSource .registerUser(model, password);
   }
 
