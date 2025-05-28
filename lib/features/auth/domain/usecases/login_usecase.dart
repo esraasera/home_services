@@ -5,7 +5,7 @@ class LoginUseCase {
   AuthRepository authRepository ;
   LoginUseCase(this.authRepository);
 
-  Future<UserEntity> call (String email , String password){
+  Future<UserEntity>call (String email , String password){
    return authRepository.loginUser(email, password);
   }
 }
