@@ -10,8 +10,8 @@ import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/auth/data/datasource/auth_remote_datasource.dart';
 import 'package:home_services_app/features/auth/data/repository/auth_repository.dart';
 import 'package:home_services_app/features/auth/domain/usecases/register_usecase.dart';
-import 'package:home_services_app/features/auth/presentation/controller/register_cubit.dart';
-import 'package:home_services_app/features/auth/presentation/controller/register_states.dart';
+import 'package:home_services_app/features/auth/presentation/controller/cubit/register_cubit.dart';
+import 'package:home_services_app/features/auth/presentation/controller/states/register_states.dart';
 
 class RegisterScreen extends StatelessWidget{
   RegisterScreen({super.key});
