@@ -95,7 +95,7 @@ class LoginScreen extends StatelessWidget{
                           ElevatedButton(
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
-                                cubit.loginUseCase(emailController.text,passwordController.text);
+                                cubit.loginUser(emailController.text,passwordController.text);
       }
                               },
                             child: Text(
