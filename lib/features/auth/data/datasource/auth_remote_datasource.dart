@@ -52,6 +52,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
      final errorType = firebaseAuthErrorType(e.code);
      throw AppException(errorType.message);
    } catch (e) {
+     print('Unexpected Error Type: ${e.runtimeType}');
+     print('Error details: $e');
      throw AppException(AuthErrorType.unexpectedError.message);
    }
   }
