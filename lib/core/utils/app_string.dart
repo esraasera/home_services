@@ -11,6 +11,7 @@ class AppStrings {
   static const email = "Email";
   static const username = "Username";
   static const password = "Password";
+  static const done = "Done";
 
 
   // Validation messages

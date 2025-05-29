@@ -17,17 +17,17 @@ class LoginScreen extends StatelessWidget{
   const LoginScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
     final formKey = GlobalKey<FormState>();
     return BlocProvider(
-        create: (BuildContext context) => LoginCubit(LoginUseCase(
+        create: (context) => LoginCubit(LoginUseCase(
           AuthRepositoryImpl(AuthRemoteDataSourceImpl(
             firebaseAuth: FirebaseAuth.instance,
             firestore: FirebaseFirestore.instance,))
         )),
-    child:BlocConsumer<LoginCubit,LoginStates>(
+    child:BlocConsumer<LoginCubit,LoginState>(
         listener:(context,state ){
       if(state is LoginFailure){
         ScaffoldMessenger.of(context).showSnackBar(
@@ -38,7 +38,7 @@ class LoginScreen extends StatelessWidget{
         // Navigator.pushReplacementNamed(context, Routes.homeRoute);
       }
     },
-    builder:(BuildContext context , LoginStates state){
+    builder:(context, state){
     var cubit = LoginCubit.get(context);
     return  Scaffold(
           backgroundColor: AppColors.white,
@@ -92,7 +92,9 @@ class LoginScreen extends StatelessWidget{
                           SizedBox(
                             height: AppSize.s40,
                           ),
-                          ElevatedButton(
+                          state is LoginLoading
+                              ? CircularProgressIndicator()
+                              :  ElevatedButton(
                             onPressed: () {
                               if (formKey.currentState!.validate()) {
                                 cubit.loginUser(emailController.text,passwordController.text);

@@ -5,12 +5,12 @@ enum AuthErrorType {
   weakPassword,
   invalidEmail,
   networkError,
+  invalidCredential,
   userDisabled,
   userNotFound,
   wrongPassword,
   tooManyRequests,
   operationNotAllowed,
-  invalidCredential,
   unknownError,
   unexpectedError,
 }
@@ -27,7 +27,7 @@ extension AuthErrorTypeExtension on AuthErrorType {
       case AuthErrorType.networkError:
         return FirebaseAuthErrors.networkError;
       case AuthErrorType.invalidCredential:
-        return FirebaseAuthErrors.wrongPassword;
+        return FirebaseAuthErrors.invalidCredential;
       case AuthErrorType.userDisabled:
         return FirebaseAuthErrors.userDisabled;
       case AuthErrorType.userNotFound:
@@ -56,6 +56,8 @@ AuthErrorType firebaseAuthErrorType(String errorCode) {
       return AuthErrorType.invalidEmail;
     case 'network-request-failed':
       return AuthErrorType.networkError;
+    case 'invalid-credential':
+      return AuthErrorType.invalidCredential;
     case 'user-disabled':
       return AuthErrorType.userDisabled;
     case 'user-not-found':

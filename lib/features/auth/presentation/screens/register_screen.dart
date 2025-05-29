@@ -20,9 +20,9 @@ class RegisterScreen extends StatelessWidget{
   final TextEditingController passwordController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   @override
-  Widget build(BuildContext context) {
+  Widget build(context) {
     return BlocProvider(
-      create: (BuildContext context) =>RegisterCubit(
+      create: (context) =>RegisterCubit(
           RegisterUseCase(
               AuthRepositoryImpl(
               AuthRemoteDataSourceImpl(
@@ -32,7 +32,7 @@ class RegisterScreen extends StatelessWidget{
               )
           )
           ),
-      child:BlocConsumer<RegisterCubit,RegisterStates>(
+      child:BlocConsumer<RegisterCubit,RegisterState>(
       listener:(context,state ){
         if(state is RegisterFailure){
           ScaffoldMessenger.of(context).showSnackBar(
@@ -43,7 +43,7 @@ class RegisterScreen extends StatelessWidget{
          // Navigator.pushReplacementNamed(context, Routes.homeRoute);
         }
       },
-      builder:(BuildContext context , RegisterStates state){
+      builder:(BuildContext context , RegisterState state){
         var cubit = RegisterCubit.get(context);
         return Scaffold(
         backgroundColor: AppColors.white,

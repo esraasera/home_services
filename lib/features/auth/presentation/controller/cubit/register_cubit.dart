@@ -5,7 +5,7 @@ import 'package:home_services_app/features/auth/domain/usecases/register_usecase
 import 'package:home_services_app/features/auth/presentation/controller/states/register_states.dart';
 
 
-class RegisterCubit extends Cubit <RegisterStates>{
+class RegisterCubit extends Cubit <RegisterState>{
   RegisterCubit(this.registerUseCase) : super(RegisterInitial());
 
   static RegisterCubit get(context) => BlocProvider.of(context);

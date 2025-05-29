@@ -1,9 +1,9 @@
-abstract class RegisterStates {}
+abstract class RegisterState {}
 
-class RegisterInitial extends RegisterStates {}
-class RegisterLoading extends RegisterStates {}
-class RegisterSuccess extends RegisterStates {}
-class RegisterFailure extends RegisterStates {
+class RegisterInitial extends RegisterState {}
+class RegisterLoading extends RegisterState {}
+class RegisterSuccess extends RegisterState {}
+class RegisterFailure extends RegisterState {
   final String message;
   RegisterFailure(this.message);
 }

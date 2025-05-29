@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
 import 'package:home_services_app/core/errors/app_exception.dart';
 import 'package:home_services_app/core/errors/auth_error_handle.dart';
 import 'package:home_services_app/features/auth/data/models/user_model.dart';
@@ -8,6 +7,7 @@ import 'package:home_services_app/features/auth/data/models/user_model.dart';
 abstract class AuthRemoteDataSource {
   Future<void> registerUser(UserModel user , String password);
   Future<UserModel> loginUser(String email , String password);
+  Future<void>resetPassword(String email);
 }
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
@@ -31,7 +31,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       final errorType = firebaseAuthErrorType(e.code);
       throw AppException(errorType.message);
     } catch (e) {
-      debugPrint('Register Error: $e');
       throw AppException(AuthErrorType.unexpectedError.message);
     }
   }
@@ -52,6 +51,18 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
      final errorType = firebaseAuthErrorType(e.code);
      throw AppException(errorType.message);
    } catch (e) {
+     throw AppException(AuthErrorType.unexpectedError.message);
+   }
+  }
+
+  @override
+  Future<void> resetPassword(String email)async{
+   try{
+     await firebaseAuth.sendPasswordResetEmail(email: email);
+   }on FirebaseAuthException catch (e){
+     final errorType =firebaseAuthErrorType(e.code);
+     throw AppException(errorType.message);
+   }catch(e){
      throw AppException(AuthErrorType.unexpectedError.message);
    }
   }

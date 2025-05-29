@@ -4,7 +4,7 @@ import 'package:home_services_app/features/auth/domain/usecases/login_usecase.da
 import 'package:home_services_app/features/auth/presentation/controller/states/login_states.dart';
 
 
-class LoginCubit extends Cubit <LoginStates>{
+class LoginCubit extends Cubit <LoginState>{
   LoginCubit(this.loginUseCase) : super(LoginInitial());
 
   static LoginCubit get(context) => BlocProvider.of(context);
