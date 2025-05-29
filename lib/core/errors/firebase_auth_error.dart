@@ -7,6 +7,7 @@ class FirebaseAuthErrors {
   static const String userNotFound = 'No user found for this email.';
   static const String wrongPassword = 'Incorrect password.';
   static const String tooManyRequests = 'Too many requests. Try again later.';
+  static const String invalidCredential = 'Invalid credentials. Please check your email and password.';
   static const String operationNotAllowed = 'Operation not allowed.';
   static const String unknownError = 'An unknown error occurred.';
   static const String unexpectedError = 'An unknown error occurred.';
