@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:home_services_app/core/errors/app_exception.dart';
 import 'package:home_services_app/core/errors/auth_error_handle.dart';
 import 'package:home_services_app/features/auth/data/models/user_model.dart';
@@ -29,7 +30,8 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     } on FirebaseAuthException catch (e) {
       final errorType = firebaseAuthErrorType(e.code);
       throw AppException(errorType.message);
-    } catch (error) {
+    } catch (e) {
+      debugPrint('Register Error: $e');
       throw AppException(AuthErrorType.unexpectedError.message);
     }
   }
@@ -50,6 +52,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
      final errorType = firebaseAuthErrorType(e.code);
      throw AppException(errorType.message);
    } catch (e) {
+     debugPrint("Login Error: $e");
      throw AppException(AuthErrorType.unexpectedError.message);
    }
   }
