@@ -44,8 +44,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
          password: password,
      );
      final doc = await firestore.collection('users').doc(user.user!.uid).get();
-     final data = doc.data();
-     if (!doc.exists || data == null || data.isEmpty){
+     if (!doc.exists){
        throw AppException(AuthErrorType.userNotFound.message);
      }
      return UserModel.fromMap(doc.data()!);
