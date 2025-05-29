@@ -16,8 +16,5 @@ final ForgotPasswordUseCase forgotPasswordUseCase;
    }catch (e) {
      emit(ForgotPasswordFailure(e is AppException ? e.message : e.toString()));
    }
-
  }
-
-
 }
