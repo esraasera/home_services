@@ -26,7 +26,9 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
         email: user.email,
         password: password,
       );
-      await firestore.collection('users').doc(newUser.user!.uid).set(user.toMap());
+      final userMap = user.toMap();
+      userMap['uid'] = newUser.user!.uid;
+      await firestore.collection('users').doc(newUser.user!.uid).set(userMap);
     } on FirebaseAuthException catch (e) {
       final errorType = firebaseAuthErrorType(e.code);
       throw AppException(errorType.message);
