@@ -40,7 +40,7 @@ class RegisterScreen extends StatelessWidget{
           );
         }
         if (state is RegisterSuccess) {
-         // Navigator.pushReplacementNamed(context, Routes.homeRoute);
+          Navigator.pushReplacementNamed(context, Routes.stepperRoute);
         }
       },
       builder:(BuildContext context , RegisterState state){

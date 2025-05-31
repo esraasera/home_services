@@ -44,7 +44,7 @@ class ForgotPassword extends StatelessWidget{
                 behavior: SnackBarBehavior.fixed,
               ),
             );
-            // Navigator.pushReplacementNamed(context, Routes.homeRoute);
+             Navigator.pushReplacementNamed(context, Routes.loginRoute);
           }
         },
         builder: (context,state) {
