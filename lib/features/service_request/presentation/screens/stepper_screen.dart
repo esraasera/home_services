@@ -14,31 +14,34 @@ class StepperScreen extends StatelessWidget{
         builder: (context,state) {
           var cubit = StepperCubit.get(context);
           return Scaffold(
-            appBar: AppBar(),
-            body:Stepper(
-              currentStep: cubit.currentStep,
-              onStepContinue: () {
-                cubit.nextStepperStep();
-              },
-              onStepCancel:(){
-                cubit.previousStepperStep();
-                },
-              steps:cubit.steps,
-              controlsBuilder: (context, details) {
-                return Row(
-                  children: [
-                    ElevatedButton(
-                      onPressed: details.onStepContinue,
-                      child: const Text("Next"),
-                    ),
-                    const SizedBox(width: 10),
-                    ElevatedButton(
-                      onPressed: details.onStepCancel,
-                      child: const Text("Back"),
-                    ),
-                  ],
-                );
-              },),
+            body:SafeArea(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Stepper(
+                      currentStep: cubit.currentStep,
+                      onStepContinue: cubit.nextStepperStep,
+                      onStepCancel: cubit.previousStepperStep,
+                      steps: cubit.steps,
+                      controlsBuilder: (context, details) {
+                        return Row(
+                          children: [
+                            ElevatedButton(
+                              onPressed: details.onStepContinue,
+                              child: const Text("Next"),
+                            ),
+                            const SizedBox(width: 10),
+                            ElevatedButton(
+                              onPressed: details.onStepCancel,
+                              child: const Text("Back"),
+                            ),
+                          ],
+                        );
+                      },),
+                  ),
+                ],
+              ),
+            ),
           );
         },
       ),

@@ -12,6 +12,28 @@ class StepperCubit extends Cubit <StepperState>{
 
   int currentStep = 0 ;
 
+  void nextStepperStep (){
+    if(currentStep >= 0){
+      currentStep ++ ;
+      emit(StepperChanged());
+    }
+  }
+
+  void previousStepperStep (){
+    if(currentStep <= 3){
+      currentStep --;
+      emit(StepperChanged());
+    }
+  }
+
+  void goToStep(int index) {
+    if (index >= 0 && index <= 4) {
+      currentStep = index;
+      emit(StepperChanged());
+    }
+  }
+
+
 
   final List<Step> steps = [
     Step(
@@ -35,26 +57,5 @@ class StepperCubit extends Cubit <StepperState>{
       isActive: true,
     ),
   ];
-
-  void nextStepperStep (){
-    if (currentStep < steps.length - 1){
-      currentStep ++ ;
-      emit(StepperNextStep());
-    }
-  }
-
-  void previousStepperStep (){
-    if(currentStep > 0){
-      currentStep --;
-      emit(StepperPreviousStep());
-    }
-  }
-
-  void goToStep(int index) {
-    if (index >= 0 && index <= 4) {
-      currentStep = index;
-      emit(StepperChangeStep());
-    }
-  }
 
 }
