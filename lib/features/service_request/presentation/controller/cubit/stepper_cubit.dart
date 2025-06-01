@@ -6,56 +6,58 @@ import 'package:home_services_app/features/service_request/presentation/screens/
 import 'package:home_services_app/features/service_request/presentation/screens/services_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/user_info_screen.dart';
 
-class StepperCubit extends Cubit <StepperState>{
+class StepperCubit extends Cubit<StepperState> {
   StepperCubit() : super(StepperInitial());
   static StepperCubit get(context) => BlocProvider.of(context);
 
-  int currentStep = 0 ;
+  int currentStep = 0;
 
-  void nextStepperStep (){
-    if(currentStep >= 0){
-      currentStep ++ ;
+  void nextStepperStep() {
+    if (currentStep < steps.length - 1) {
+      currentStep++;
       emit(StepperChanged());
     }
   }
 
-  void previousStepperStep (){
-    if(currentStep <= 3){
-      currentStep --;
+  void previousStepperStep() {
+    if (currentStep > 0) {
+      currentStep--;
       emit(StepperChanged());
     }
   }
 
   void goToStep(int index) {
-    if (index >= 0 && index <= 4) {
+    if (index >= 0 && index < steps.length) {
       currentStep = index;
       emit(StepperChanged());
     }
   }
 
-
-
-  final List<Step> steps = [
+  List<Step> get steps => [
     Step(
-      title: Text('Service'),
-      content: ServicesScreen(),
-      isActive: true,
+      title: const Text('Service'),
+      content: SizedBox(height: 300, child: const ServicesScreen()),
+      isActive: currentStep >= 0,
+      state: currentStep > 0 ? StepState.complete : StepState.indexed,
     ),
     Step(
-      title: Text('Details'),
-      content: UserInfoScreen(),
-      isActive: true,
+      title: const Text('Details'),
+      content: const UserInfoScreen(),
+      isActive: currentStep >= 1,
+      state: currentStep > 1 ? StepState.complete : StepState.indexed,
     ),
     Step(
-      title: Text('Address'),
-      content: LocationScreen(),
-      isActive: true,
+      title: const Text('Address'),
+      content: const LocationScreen(),
+      isActive: currentStep >= 2,
+      state: currentStep > 2 ? StepState.complete : StepState.indexed,
     ),
     Step(
-      title: Text('Payment'),
-      content: PaymentScreen(),
-      isActive: true,
+      title: const Text('Payment'),
+      content: const PaymentScreen(),
+      isActive: currentStep >= 3,
+      state:
+      currentStep == 3 ? StepState.editing : StepState.indexed,
     ),
   ];
-
 }
