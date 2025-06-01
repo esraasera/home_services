@@ -1,11 +1,6 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/stepper_states.dart';
-import 'package:home_services_app/features/service_request/presentation/screens/location_screen.dart';
-import 'package:home_services_app/features/service_request/presentation/screens/payment_screen.dart';
-import 'package:home_services_app/features/service_request/presentation/screens/services_screen.dart';
-import 'package:home_services_app/features/service_request/presentation/screens/user_info_screen.dart';
-
 
 class StepperCubit extends Cubit<StepperState> {
   StepperCubit() : super(StepperInitial());
@@ -14,14 +9,29 @@ class StepperCubit extends Cubit<StepperState> {
 
   int currentStep = 0;
 
-  void nextStep() {
-    if (currentStep < steps.length - 1) {
+  final List<Widget> stepScreens = [
+    // استبدل هنا بشاشاتك الحقيقية
+    Center(child: Text('Step 1')),
+    Center(child: Text('Step 2')),
+    Center(child: Text('Step 3')),
+  ];
+
+  final List<String> stepTitles = [
+    'Step 1',
+    'Step 2',
+    'Step 3',
+  ];
+
+  int get totalSteps => stepScreens.length;
+
+  void nextStepperStep() {
+    if (currentStep < stepScreens.length - 1) {
       currentStep++;
       emit(StepperChanged());
     }
   }
 
-  void previousStep() {
+  void previousStepperStep() {
     if (currentStep > 0) {
       currentStep--;
       emit(StepperChanged());
@@ -29,23 +39,9 @@ class StepperCubit extends Cubit<StepperState> {
   }
 
   void goToStep(int index) {
-    if (index >= 0 && index < steps.length) {
+    if (index >= 0 && index < stepScreens.length) {
       currentStep = index;
       emit(StepperChanged());
     }
   }
-
-  List<Widget> get steps => [
-    const ServicesScreen(),
-    const UserInfoScreen(),
-    const LocationScreen(),
-    const PaymentScreen(),
-  ];
-
-  List<String> get stepTitles => [
-    'Service',
-    'Details',
-    'Address',
-    'Payment',
-  ];
 }

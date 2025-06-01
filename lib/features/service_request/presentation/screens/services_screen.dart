@@ -5,11 +5,8 @@ class ServicesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text ('ServicesScreen'),
-      ),
-    );
+    return const Center(child: Text('Service Screen Content'));
   }
-
 }
+
+// بنفس الطريقة تعمل UserInfoScreen، LocationScreen، PaymentScreen

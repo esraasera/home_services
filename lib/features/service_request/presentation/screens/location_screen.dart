@@ -5,11 +5,8 @@ class LocationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text ('Location'),
-      ),
-    );
+    return const Center(child: Text('Service Screen Content'));
   }
-
 }
+
+// بنفس الطريقة تعمل UserInfoScreen، LocationScreen، PaymentScreen
