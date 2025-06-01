@@ -19,7 +19,6 @@ class StepperScreen extends StatelessWidget {
 
             return Row(
               children: [
-                // العمود اللي فيه دوائر الخطوات
                 Container(
                   width: 80,
                   padding: const EdgeInsets.symmetric(vertical: 20),
@@ -84,7 +83,6 @@ class StepperScreen extends StatelessWidget {
                   ),
                 ),
 
-                // شاشة الخطوة اللي انت فيها
                 Expanded(
                   child: Container(
                     padding: const EdgeInsets.all(20),
@@ -108,7 +106,6 @@ class StepperScreen extends StatelessWidget {
                                 if (cubit.currentStep < cubit.totalSteps - 1) {
                                   cubit.nextStepperStep();
                                 } else {
-                                  // يمكن تضيف هنا اكشن انهى الخطوات
                                   ScaffoldMessenger.of(context).showSnackBar(
                                     const SnackBar(content: Text('All steps completed!')),
                                   );
