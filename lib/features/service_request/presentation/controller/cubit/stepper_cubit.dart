@@ -11,7 +11,7 @@ class StepperCubit extends Cubit<StepperState> {
 
   static StepperCubit get(context) => BlocProvider.of(context);
 
-  int currentStep = 0;
+  int currentStep = 1;
 
   final List<Widget> stepScreens = [
     UserInfoScreen(),
