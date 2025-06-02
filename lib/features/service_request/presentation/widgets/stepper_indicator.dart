@@ -1,40 +1,42 @@
 import 'package:flutter/material.dart';
+import 'package:home_services_app/core/theme/app_colors.dart';
+import 'package:home_services_app/core/theme/styles_manager.dart';
+import 'package:home_services_app/core/values/app_values.dart';
 
 class StepperIndicator extends StatelessWidget {
   final int currentStep;
   final String title;
+  final int listItems;
 
   const StepperIndicator({
     super.key,
     required this.currentStep,
     required this.title,
+    required this.listItems,
   });
 
   @override
   Widget build(BuildContext context) {
-    double progress = currentStep / 4;
+    double progress = currentStep / AppSize.s4;
 
     return Row(
       children: [
         CustomPaint(
           painter: CircleProgressPainter(progress),
           child: Container(
-            width: 50,
-            height: 50,
+            width: AppSize.s120,
+            height:  AppSize.s120,
             alignment: Alignment.center,
             child: Text(
-              '$currentStep',
-              style: const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
+              '$currentStep of $listItems',
+              style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s24)
             ),
           ),
         ),
-        const SizedBox(width: 12),
+        const SizedBox(width:AppSize.s20),
         Text(
           title,
-          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+          style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s24),
         ),
       ],
     );
@@ -49,31 +51,30 @@ class CircleProgressPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint background = Paint()
-      ..color = Colors.grey
-      ..strokeWidth = 4
+      ..color = AppColors.grey
+      ..strokeWidth = AppSize.s8
       ..style = PaintingStyle.stroke;
 
     Paint foreground = Paint()
-      ..color = Colors.blue
-      ..strokeWidth = 4
+      ..color = AppColors.primary
+      ..strokeWidth =AppSize.s8
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
-    Offset center = Offset(size.width / 2, size.height / 2);
-    double radius = size.width / 2 - 4;
+    Offset center = Offset(size.width / AppSize.s2, size.height / AppSize.s2);
+    double radius = size.width / AppSize.s2 - AppSize.s4;
 
     canvas.drawCircle(center, radius, background);
 
-    double angle = 2 * 3.141592 * progress;
+    double angle = AppSize.sAngle * progress;
     canvas.drawArc(
       Rect.fromCircle(center: center, radius: radius),
-      -3.141592 / 2,
+      AppSize.sDrawArc,
       angle,
       false,
       foreground,
     );
   }
-
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }

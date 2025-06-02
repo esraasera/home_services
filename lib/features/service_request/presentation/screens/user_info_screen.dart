@@ -9,4 +9,3 @@ class UserInfoScreen extends StatelessWidget {
   }
 }
 
-// بنفس الطريقة تعمل UserInfoScreen، LocationScreen، PaymentScreen
