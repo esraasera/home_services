@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/stepper_states.dart';
+import 'package:home_services_app/features/service_request/presentation/screens/location_screen.dart';
+import 'package:home_services_app/features/service_request/presentation/screens/payment_screen.dart';
+import 'package:home_services_app/features/service_request/presentation/screens/services_screen.dart';
+import 'package:home_services_app/features/service_request/presentation/screens/user_info_screen.dart';
 
 class StepperCubit extends Cubit<StepperState> {
   StepperCubit() : super(StepperInitial());
@@ -10,16 +14,17 @@ class StepperCubit extends Cubit<StepperState> {
   int currentStep = 0;
 
   final List<Widget> stepScreens = [
-    // استبدل هنا بشاشاتك الحقيقية
-    Center(child: Text('Step 1')),
-    Center(child: Text('Step 2')),
-    Center(child: Text('Step 3')),
+    UserInfoScreen(),
+    ServicesScreen(),
+    LocationScreen(),
+    PaymentScreen(),
   ];
 
   final List<String> stepTitles = [
-    'Step 1',
-    'Step 2',
-    'Step 3',
+    'Customer Information',
+    'Choose Service',
+    'Address Details',
+    'Payment & Confirmation',
   ];
 
   int get totalSteps => stepScreens.length;

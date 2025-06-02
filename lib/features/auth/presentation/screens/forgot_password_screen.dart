@@ -50,7 +50,6 @@ class ForgotPassword extends StatelessWidget{
         builder: (context,state) {
           var cubit = ForgotPasswordCubit.get(context);
           return Scaffold(
-              backgroundColor: AppColors.white,
               body: Center(
                 child: SingleChildScrollView(
                     child: Padding(

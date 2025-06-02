@@ -6,13 +6,13 @@ import 'package:home_services_app/core/values/app_values.dart';
 class StepperIndicator extends StatelessWidget {
   final int currentStep;
   final String title;
-  final int listItems;
+  final int totalSteps;
 
   const StepperIndicator({
     super.key,
     required this.currentStep,
     required this.title,
-    required this.listItems,
+    required this.totalSteps,
   });
 
   @override
@@ -28,7 +28,7 @@ class StepperIndicator extends StatelessWidget {
             height:  AppSize.s120,
             alignment: Alignment.center,
             child: Text(
-              '$currentStep of $listItems',
+              '$currentStep of $totalSteps',
               style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s24)
             ),
           ),

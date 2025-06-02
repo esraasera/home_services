@@ -8,7 +8,7 @@ class StepperScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-          child: StepperIndicator(currentStep: 3,title: "zth",listItems: 6,)
+          child: StepperIndicator(currentStep: 3,title: "zth",totalSteps: 6,)
       )
     );
   }

@@ -6,6 +6,7 @@ import 'package:home_services_app/core/values/app_values.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(
+    scaffoldBackgroundColor: AppColors.white,
     primaryColor: AppColors.primary,
     disabledColor: AppColors.lightGrey,
     splashColor: AppColors.lightPrimary,

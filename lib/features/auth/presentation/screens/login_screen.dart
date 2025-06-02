@@ -41,7 +41,6 @@ class LoginScreen extends StatelessWidget{
     builder:(context, state){
     var cubit = LoginCubit.get(context);
     return  Scaffold(
-          backgroundColor: AppColors.white,
           body: Center(
             child: SingleChildScrollView(
                 child: Padding(

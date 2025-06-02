@@ -46,7 +46,6 @@ class RegisterScreen extends StatelessWidget{
       builder:(BuildContext context , RegisterState state){
         var cubit = RegisterCubit.get(context);
         return Scaffold(
-        backgroundColor: AppColors.white,
         body: Center(
         child: SingleChildScrollView(
         child: Padding(
