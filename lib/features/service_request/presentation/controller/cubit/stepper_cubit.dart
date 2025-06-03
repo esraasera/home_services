@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_services_app/core/utils/app_string.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/stepper_states.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/location_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/payment_screen.dart';
@@ -21,13 +22,16 @@ class StepperCubit extends Cubit<StepperState> {
   ];
 
   final List<String> stepTitles = [
-    'Customer Information',
-    'Choose Service',
-    'Address Details',
-    'Payment & Confirmation',
+    AppStrings.customerInformation,
+    AppStrings.chooseService,
+    AppStrings.addressDetails,
+    AppStrings.paymentAndConfirmation,
   ];
 
   int get totalSteps => stepScreens.length;
+
+  int get displayStep => (currentStep < totalSteps) ? currentStep + 1 : currentStep;
+
 
   void nextStepperStep() {
     if (currentStep < stepScreens.length - 1) {
@@ -39,13 +43,6 @@ class StepperCubit extends Cubit<StepperState> {
   void previousStepperStep() {
     if (currentStep > 0) {
       currentStep--;
-      emit(StepperChanged());
-    }
-  }
-
-  void goToStep(int index) {
-    if (index >= 0 && index < stepScreens.length) {
-      currentStep = index;
       emit(StepperChanged());
     }
   }

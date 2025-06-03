@@ -5,7 +5,7 @@ class UserInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(child: Text('Service Screen Content'));
+    return const Center(child: Text('User Info Content'));
   }
 }
 

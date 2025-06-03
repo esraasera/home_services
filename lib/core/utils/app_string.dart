@@ -12,6 +12,13 @@ class AppStrings {
   static const username = "Username";
   static const password = "Password";
   static const done = "Done";
+  static const next = "Next: ";
+
+  //Stepper stepTitles
+  static const customerInformation =  "Customer Information";
+  static const chooseService =  "Choose Service";
+  static const addressDetails =  "Address Details";
+  static const paymentAndConfirmation =  "Payment & Confirmation";
 
 
   // Validation messages
