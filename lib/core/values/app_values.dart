@@ -40,6 +40,7 @@ class AppSize {
   static const double s35 = 35.0;
   static const double s40 = 40.0;
   static const double s50 = 50.0;
+  static const double s55 = 55.0;
   static const double s100 = 100.0;
   static const double s120 = 120.0;
   static const double sAngle = 2 * 3.141592;

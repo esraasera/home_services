@@ -12,7 +12,9 @@ class AppStrings {
   static const username = "Username";
   static const password = "Password";
   static const done = "Done";
-  static const next = "Next: ";
+  static const nextPage = "Next: ";
+  static const next = "Next";
+  static const back = "Back";
 
   //Stepper stepTitles
   static const customerInformation =  "Customer Information";

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_services_app/core/theme/app_colors.dart';
+import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/stepper_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/stepper_states.dart';
@@ -35,10 +37,23 @@ class StepperScreen extends StatelessWidget {
                     Expanded(child: cubit.stepScreens[cubit.currentStep]),
                       Row(
                         children: [
-                          ElevatedButton(onPressed:cubit.previousStepperStep, child:Text("Back")),
+                          ElevatedButton(
+                            style:ElevatedButton.styleFrom(
+                              backgroundColor: AppColors.lightPrimary,
+                              foregroundColor: AppColors.primary,
+                                minimumSize: Size(AppSize.s120, AppSize.s55),
+                            ) ,
+                              onPressed:cubit.previousStepperStep,
+                              child:Text(AppStrings.back)
+                          ),
                           Spacer(),
 
-                          ElevatedButton(onPressed: cubit.nextStepperStep, child:Text("Next"))
+                          ElevatedButton(
+                              style:ElevatedButton.styleFrom(
+                                minimumSize: Size(AppSize.s120, AppSize.s55),
+                              ),
+                              onPressed:cubit.nextStepperStep,
+                              child:Text(AppStrings.next))
                         ],
                       ),
                     ],

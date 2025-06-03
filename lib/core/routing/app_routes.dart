@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:home_services_app/core/utils/app_string.dart';
+import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:home_services_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:home_services_app/features/auth/presentation/screens/register_screen.dart';

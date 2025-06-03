@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
-import 'package:home_services_app/core/utils/app_string.dart';
+import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/auth/data/datasource/auth_remote_datasource.dart';
 import 'package:home_services_app/features/auth/data/repository/auth_repository.dart';
