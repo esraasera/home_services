@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
+import 'package:home_services_app/features/rating/presentation/screens/rating_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/stepper_states.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/location_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/payment_screen.dart';
@@ -33,13 +34,17 @@ class StepperCubit extends Cubit<StepperState> {
   int get displayStep => (currentStep < totalSteps) ? currentStep + 1 : currentStep;
 
 
-  void nextStepperStep() {
+  void nextStepperStep(BuildContext context) {
     if (currentStep < stepScreens.length - 1) {
       currentStep++;
       emit(StepperChanged());
+    } else {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (_) => RatingScreen()),
+      );
     }
   }
-
   void previousStepperStep() {
     if (currentStep > 0) {
       currentStep--;

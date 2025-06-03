@@ -20,7 +20,7 @@ class AppStrings {
   static const customerInformation =  "Customer Information";
   static const chooseService =  "Choose Service";
   static const addressDetails =  "Address Details";
-  static const paymentAndConfirmation =  "Payment & Confirmation";
+  static const paymentAndConfirmation =  "Payment & Review";
 
 
   // Validation messages
