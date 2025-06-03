@@ -32,14 +32,13 @@ class StepperScreen extends StatelessWidget {
                       SizedBox(
                         height: AppSize.s30,
                       ),
-                    cubit.stepScreens[cubit.currentStep],
-
+                    Expanded(child: cubit.stepScreens[cubit.currentStep]),
                       Row(
                         children: [
                           ElevatedButton(onPressed:cubit.previousStepperStep, child:Text("Back")),
-                         Spacer(),
+                          Spacer(),
 
-                          ElevatedButton(onPressed: cubit.nextStepperStep, child:Text("Back"))
+                          ElevatedButton(onPressed: cubit.nextStepperStep, child:Text("Next"))
                         ],
                       ),
                     ],
