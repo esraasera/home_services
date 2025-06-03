@@ -7,7 +7,7 @@ class RatingScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text("Rating Screen"),
+      body: Center(child: Text("Rating Screen")),
     );
   }
 

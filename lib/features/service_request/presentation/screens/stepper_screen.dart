@@ -29,7 +29,7 @@ class StepperScreen extends StatelessWidget {
                         currentStep:cubit.displayStep,
                         title: cubit.stepTitles[cubit.currentStep],
                         totalSteps: cubit.totalSteps,
-                        nextTitle: (cubit.currentStep < cubit.totalSteps - 1)
+                        nextTitle: (cubit.currentStep < cubit.totalSteps - AppSize.s1)
                       ? cubit.stepTitles[cubit.displayStep]
                       : '',
                       ),
