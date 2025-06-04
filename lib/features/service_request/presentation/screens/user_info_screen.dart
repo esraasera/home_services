@@ -9,46 +9,94 @@ class UserInfoScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: AppPadding.p50),
-      child: Column(
-        children: [
-          TextFormField(),
-          SizedBox(
-            height: AppSize.s30,
-          ),
-          TextFormField(),
-          SizedBox(
-            height: AppSize.s30,
-          ),
-          Row(
-            children: [
-             Container(
-               decoration: BoxDecoration(
-
-               ),
-               child: Column(
-                 children: [
-                   Image.asset(
-                     "assets/images/morning_icon.png",
-                     height: AppSize.s120,
-                     width: AppSize.s120,
+      padding: const EdgeInsets.only(top: AppPadding.p20),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Add Your Name'),
+            SizedBox(
+              height: AppSize.s5,
+            ),
+            TextFormField(),
+            SizedBox(
+              height: AppSize.s30,
+            ),
+            Text('Add Your Number'),
+            SizedBox(
+              height: AppSize.s5,
+            ),
+            TextFormField(),
+            SizedBox(
+              height: AppSize.s30,
+            ),
+            SizedBox(
+              height: AppSize.s5,
+            ),
+            Row(
+              children: [
+               Material(
+                elevation: AppSize.s10,
+                color: AppColors.white,
+                borderRadius: BorderRadius.circular(12),
+                 child: Container(
+                   padding: const EdgeInsets.all(10),
+                   decoration: BoxDecoration(
+                     color: Colors.transparent,
+                     // border: Border.all(
+                     //   color:AppColors.white,
+                     //   width: 2,
+                     // ),
+                     borderRadius: BorderRadius.circular(12),
                    ),
-                   Text(
-                     'rgrgg'
+                   child: Column(
+                     children: [
+                       Image.asset(
+                         "assets/images/morning_icon.png",
+                         height: AppSize.s100,
+                         width: AppSize.s100,
+                       ),
+                       Text(
+                         AppStrings.morning
+                       ),
+                     ],
                    ),
-                 ],
+                 ),
                ),
-             ),
-              Spacer(),
-
-              Image.asset(
-                "assets/images/evening_icon.png",
-                height: AppSize.s120,
-                width: AppSize.s120,
-              ),
-            ],
-          ),
-        ],
+                Spacer(),
+        
+                Material(
+                  elevation: AppSize.s10,
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(12),
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      // border: Border.all(
+                      //   color:AppColors.white,
+                      //   width: 2,
+                      // ),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Column(
+                      children: [
+                        Image.asset(
+                          "assets/images/evening_icon.png",
+                          height: AppSize.s100,
+                          width: AppSize.s100,
+                        ),
+                        Text(
+                            AppStrings.evening
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -15,6 +15,8 @@ class AppStrings {
   static const nextPage = "Next: ";
   static const next = "Next";
   static const back = "Back";
+  static const morning = "Morning";
+  static const evening = "Evening";
 
   //Stepper stepTitles
   static const customerInformation =  "Customer Information";
