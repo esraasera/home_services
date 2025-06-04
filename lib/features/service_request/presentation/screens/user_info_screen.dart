@@ -8,39 +8,41 @@ class UserInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        TextFormField(),
-        SizedBox(
-          height: AppSize.s30,
-        ),
-        TextFormField(),
-        SizedBox(
-          height: AppSize.s30,
-        ),
-        Row(
-          children: [
-            ElevatedButton(
-                style:ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.lightPrimary,
-                  foregroundColor: AppColors.primary,
-                  minimumSize: Size(AppSize.s120, AppSize.s55),
-                ) ,
-                onPressed:(){},
-                child:Text(AppStrings.back)
-            ),
-            Spacer(),
+    return Padding(
+      padding: const EdgeInsets.only(top: AppPadding.p50),
+      child: Column(
+        children: [
+          TextFormField(),
+          SizedBox(
+            height: AppSize.s30,
+          ),
+          TextFormField(),
+          SizedBox(
+            height: AppSize.s30,
+          ),
+          Row(
+            children: [
+              ElevatedButton(
+                  style:ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.lightPrimary,
+                    foregroundColor: AppColors.primary,
+                    minimumSize: Size(AppSize.s120, AppSize.s55),
+                  ) ,
+                  onPressed:(){},
+                  child:Text(AppStrings.back)
+              ),
+              Spacer(),
 
-            ElevatedButton(
-                style:ElevatedButton.styleFrom(
-                  minimumSize: Size(AppSize.s120, AppSize.s55),
-                ),
-                onPressed:(){},
-                child:Text(AppStrings.next))
-          ],
-        ),
-      ],
+              ElevatedButton(
+                  style:ElevatedButton.styleFrom(
+                    minimumSize: Size(AppSize.s120, AppSize.s55),
+                  ),
+                  onPressed:(){},
+                  child:Text(AppStrings.next))
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
