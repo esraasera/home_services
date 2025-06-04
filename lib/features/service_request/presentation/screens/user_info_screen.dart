@@ -22,23 +22,30 @@ class UserInfoScreen extends StatelessWidget {
           ),
           Row(
             children: [
-              ElevatedButton(
-                  style:ElevatedButton.styleFrom(
-                    backgroundColor: AppColors.lightPrimary,
-                    foregroundColor: AppColors.primary,
-                    minimumSize: Size(AppSize.s120, AppSize.s55),
-                  ) ,
-                  onPressed:(){},
-                  child:Text(AppStrings.back)
-              ),
+             Container(
+               decoration: BoxDecoration(
+
+               ),
+               child: Column(
+                 children: [
+                   Image.asset(
+                     "assets/images/morning_icon.png",
+                     height: AppSize.s120,
+                     width: AppSize.s120,
+                   ),
+                   Text(
+                     'rgrgg'
+                   ),
+                 ],
+               ),
+             ),
               Spacer(),
 
-              ElevatedButton(
-                  style:ElevatedButton.styleFrom(
-                    minimumSize: Size(AppSize.s120, AppSize.s55),
-                  ),
-                  onPressed:(){},
-                  child:Text(AppStrings.next))
+              Image.asset(
+                "assets/images/evening_icon.png",
+                height: AppSize.s120,
+                width: AppSize.s120,
+              ),
             ],
           ),
         ],
