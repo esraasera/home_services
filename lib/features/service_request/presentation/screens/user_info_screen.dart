@@ -68,6 +68,7 @@ class UserInfoScreen extends StatelessWidget {
                       "assets/images/morning_icon.png",
                       height:screenHeight * AppSize.s0_15,
                       width: screenWidth * AppSize. s0_3,
+                      fit: BoxFit.cover,
                     ),
                     Material(
                       elevation: AppSize.s10,
@@ -101,6 +102,7 @@ class UserInfoScreen extends StatelessWidget {
                       "assets/images/evening_icon.png",
                       height:screenHeight * AppSize.s0_15,
                       width: screenWidth * AppSize. s0_3,
+                      fit: BoxFit.cover,
                     ),
                     Material(
                       elevation: AppSize.s10,
