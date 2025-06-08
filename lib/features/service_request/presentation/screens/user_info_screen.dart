@@ -79,6 +79,8 @@ class UserInfoScreen extends StatelessWidget {
 
                         } ,
                         child: Container(
+                          width: screenWidth * AppSize.s0_23,
+                          height: screenHeight * AppSize.s0_06,
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             color: Colors.transparent,
@@ -88,8 +90,10 @@ class UserInfoScreen extends StatelessWidget {
                             ),
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          child: Text(
-                              AppStrings.morning
+                          child: Center(
+                            child: Text(
+                                AppStrings.morning
+                            ),
                           ),
                         ),
                       ),
@@ -113,6 +117,8 @@ class UserInfoScreen extends StatelessWidget {
 
                         } ,
                         child: Container(
+                          width: screenWidth * AppSize.s0_23,
+                          height: screenHeight * AppSize.s0_06,
                           padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
                             color: Colors.transparent,
@@ -122,8 +128,10 @@ class UserInfoScreen extends StatelessWidget {
                             ),
                             borderRadius: BorderRadius.circular(12),
                           ),
-                          child: Text(
-                              AppStrings.evening
+                          child: Center(
+                            child: Text(
+                                AppStrings.evening
+                            ),
                           ),
                         ),
                       ),
