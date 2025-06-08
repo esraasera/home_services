@@ -60,7 +60,7 @@ class UserInfoScreen extends StatelessWidget {
               height:screenHeight * AppSize.s0_005 ,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Column(
                   children: [
@@ -95,7 +95,6 @@ class UserInfoScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(width: screenWidth * AppSize. s0_28),
                 Column(
                   children: [
                     Image.asset(

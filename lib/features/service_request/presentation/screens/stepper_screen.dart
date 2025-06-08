@@ -40,6 +40,7 @@ class StepperScreen extends StatelessWidget {
                       ),
                     Expanded(child: cubit.stepScreens[cubit.currentStep]),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           ElevatedButton(
                             style:ElevatedButton.styleFrom(
@@ -47,12 +48,8 @@ class StepperScreen extends StatelessWidget {
                               foregroundColor: AppColors.primary,
                                 minimumSize: Size( screenWidth * AppSize.s0_35 , screenHeight * AppSize.s0_075),
                             ) ,
-                             onPressed: cubit.currentStep > 0 ? cubit.previousStepperStep : null, 
+                             onPressed: cubit.currentStep > 0 ? cubit.previousStepperStep : null,
                               child:Text(AppStrings.back)
-                          ),
-
-                          SizedBox(
-                            width: screenWidth * AppSize.s0_18,
                           ),
                           ElevatedButton(
                               style:ElevatedButton.styleFrom(
