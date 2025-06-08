@@ -9,100 +9,125 @@ class UserInfoScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController numberController = TextEditingController();
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Padding(
-      padding: const EdgeInsets.only(top: AppPadding.p20),
+      padding: EdgeInsets.only(top: screenHeight * AppPadding.p0_005),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Add Your Name..',style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
+            Text(AppStrings.addYourName,style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
             SizedBox(
-              height: AppSize.s5,
+              height:screenHeight * AppSize.s0_005 ,
             ),
-            TextFormField(),
-            SizedBox(
-              height: AppSize.s30,
+            TextFormField(
+                keyboardType: TextInputType.name,
+            controller: nameController,
+              decoration: InputDecoration(
             ),
-            Text('Add Your Number..',style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return AppStrings.nameError;
+              }
+              return null;
+            }),
             SizedBox(
-              height: AppSize.s5,
+              height:screenHeight * AppSize.s0_04,
             ),
-            TextFormField(),
+            Text(AppStrings.addYourNumber,style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
             SizedBox(
-              height: AppSize.s35,
+              height:screenHeight * AppSize.s0_005 ,
+            ),
+            TextFormField(
+                keyboardType: TextInputType.number,
+                controller: numberController,
+                decoration: InputDecoration(
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return AppStrings.numError;
+                  }
+                  return null;
+                }),
+            SizedBox(
+              height:screenHeight * AppSize.s0_04,
+            ),
+            Text(AppStrings.whichTime,style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
+            SizedBox(
+              height:screenHeight * AppSize.s0_005 ,
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Material(
-                  elevation: AppSize.s10,
-                  color: AppColors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  child: GestureDetector(
-                    onTap:(){
+                Column(
+                  children: [
+                    Image.asset(
+                      "assets/images/morning_icon.png",
+                      height:screenHeight * AppSize.s0_15,
+                      width: screenWidth * AppSize. s0_3,
+                    ),
+                    Material(
+                      elevation: AppSize.s10,
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      child: GestureDetector(
+                        onTap:(){
 
-                    } ,
-                    child: Container(
-                      height: AppSize.s150,
-                      width: AppSize.s120,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        border: Border.all(
-                          color:AppColors.grey,
-                          width: 0.5,
-                        ),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            "assets/images/morning_icon.png",
-                            height: AppSize.s100,
-                            width: AppSize.s100,
+                        } ,
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            border: Border.all(
+                              color:AppColors.grey,
+                              width: 0.5,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                          Text(
+                          child: Text(
                               AppStrings.morning
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
-                Spacer(),
-                Material(
-                  elevation: AppSize.s10,
-                  color: AppColors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  child: GestureDetector(
-                    onTap:(){
+                SizedBox(width: screenWidth * AppSize. s0_28),
+                Column(
+                  children: [
+                    Image.asset(
+                      "assets/images/evening_icon.png",
+                      height:screenHeight * AppSize.s0_15,
+                      width: screenWidth * AppSize. s0_3,
+                    ),
+                    Material(
+                      elevation: AppSize.s10,
+                      color: AppColors.white,
+                      borderRadius: BorderRadius.circular(12),
+                      child: GestureDetector(
+                        onTap:(){
 
-                    } ,
-                    child: Container(
-                      height: AppSize.s150,
-                      width: AppSize.s120,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                        border: Border.all(
-                          color:AppColors.grey,
-                          width: 0.5,
-                        ),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            "assets/images/evening_icon.png",
-                            height: AppSize.s100,
-                            width: AppSize.s100,
+                        } ,
+                        child: Container(
+                          padding: const EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            border: Border.all(
+                              color:AppColors.grey,
+                              width: 0.5,
+                            ),
+                            borderRadius: BorderRadius.circular(12),
                           ),
-                          Text(
+                          child: Text(
                               AppStrings.evening
                           ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),

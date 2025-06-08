@@ -20,34 +20,36 @@ class StepperIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double progress = currentStep / AppSize.s4;
+    double progress = currentStep / totalSteps;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
 
     return Row(
       children: [
         CustomPaint(
           painter: CircleProgressPainter(progress),
           child: Container(
-            width: AppSize.s100,
-            height:  AppSize.s100,
+            width:screenHeight* AppSize.s0_148,
+            height: screenHeight* AppSize.s0_148,
             alignment: Alignment.center,
             child: Text(
               '$currentStep of $totalSteps',
-              style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s18)
+              style: getBoldStyle(color: AppColors.black,fontSize: screenWidth * AppSize. s0_06)
             ),
           ),
         ),
-        const SizedBox(width:AppSize.s10),
+        SizedBox(width: screenWidth* AppSize. s0_03,),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
               title,
-              style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s18),
+              style: getBoldStyle(color: AppColors.black,fontSize: screenWidth * AppSize.s0_049),
             ),
             const SizedBox(height:AppSize.s10),
             Text(
               AppStrings.nextPage + nextTitle,
-              style: getBoldStyle(color: AppColors.grey,fontSize: AppSize.s12),
+              style: getBoldStyle(color: AppColors.grey,fontSize:screenWidth * AppSize.s0_035),
             ),
           ],
         ),
@@ -74,8 +76,9 @@ class CircleProgressPainter extends CustomPainter {
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
-    Offset center = Offset(size.width / AppSize.s2, size.height / AppSize.s2);
-    double radius = size.width / AppSize.s2 - AppSize.s4;
+    double radius = (size.width / 2) - AppSize.s4;
+    Offset center = Offset(size.width / 2, size.height / 2);
+
 
     canvas.drawCircle(center, radius, background);
 

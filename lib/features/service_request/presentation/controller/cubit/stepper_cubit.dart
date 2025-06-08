@@ -31,7 +31,7 @@ class StepperCubit extends Cubit<StepperState> {
 
   int get totalSteps => stepScreens.length;
 
-  int get displayStep => (currentStep < totalSteps) ? currentStep + 1 : currentStep;
+  int get displayStep => (currentStep < totalSteps) ? currentStep + 1 : totalSteps;
 
 
   void nextStepperStep(BuildContext context) {

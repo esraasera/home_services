@@ -17,6 +17,9 @@ class AppStrings {
   static const back = "Back";
   static const morning = "Morning";
   static const evening = "Evening";
+  static const addYourName = "Add Your Name..";
+  static const addYourNumber ="Add Your Number..";
+  static const whichTime ="Which time of day suits you?";
 
   //Stepper stepTitles
   static const customerInformation =  "Customer Information";
@@ -29,6 +32,8 @@ class AppStrings {
   static const usernameError = "Please enter your username";
   static const emailError = "Please enter your email";
   static const passwordError = "Please enter your password";
+  static const nameError = "Please enter your Name";
+  static const numError = "Please enter your Number";
 
 
 }

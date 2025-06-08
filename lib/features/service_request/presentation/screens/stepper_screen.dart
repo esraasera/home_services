@@ -12,6 +12,8 @@ class StepperScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return BlocProvider(
       create: (context)=>StepperCubit(),
       child: BlocConsumer<StepperCubit,StepperState>(
@@ -34,7 +36,7 @@ class StepperScreen extends StatelessWidget {
                       : '',
                       ),
                       SizedBox(
-                        height: AppSize.s30,
+                        height: screenHeight * AppSize.s0_03,
                       ),
                     Expanded(child: cubit.stepScreens[cubit.currentStep]),
                       Row(
@@ -43,16 +45,18 @@ class StepperScreen extends StatelessWidget {
                             style:ElevatedButton.styleFrom(
                               backgroundColor: AppColors.lightPrimary,
                               foregroundColor: AppColors.primary,
-                                minimumSize: Size(AppSize.s120, AppSize.s55),
+                                minimumSize: Size( screenWidth * AppSize.s0_35 , screenHeight * AppSize.s0_075),
                             ) ,
-                              onPressed:cubit.previousStepperStep,
+                             onPressed: cubit.currentStep > 0 ? cubit.previousStepperStep : null, 
                               child:Text(AppStrings.back)
                           ),
-                          Spacer(),
 
+                          SizedBox(
+                            width: screenWidth * AppSize.s0_18,
+                          ),
                           ElevatedButton(
                               style:ElevatedButton.styleFrom(
-                                minimumSize: Size(AppSize.s120, AppSize.s55),
+                                minimumSize: Size( screenWidth * AppSize.s0_35 , screenHeight * AppSize.s0_075),
                               ),
                               onPressed:() => cubit.nextStepperStep(context),
                               child:Text(AppStrings.next))
