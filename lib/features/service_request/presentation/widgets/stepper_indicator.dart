@@ -34,7 +34,7 @@ class StepperIndicator extends StatelessWidget {
             alignment: Alignment.center,
             child: Text(
               '$currentStep of $totalSteps',
-              style: getBoldStyle(color: AppColors.black,fontSize: screenWidth * AppSize. s0_06)
+              style: getBoldStyle(color: AppColors.black,fontSize: screenWidth * AppSize.s0_06)
             ),
           ),
         ),
