@@ -85,7 +85,7 @@ class UserInfoScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: Colors.transparent,
                             border: Border.all(
-                              color:AppColors.grey,
+                              color:AppColors.darkGrey,
                               width: 0.5,
                             ),
                             borderRadius: BorderRadius.circular(12),
@@ -123,7 +123,7 @@ class UserInfoScreen extends StatelessWidget {
                           decoration: BoxDecoration(
                             color: Colors.transparent,
                             border: Border.all(
-                              color:AppColors.grey,
+                              color:AppColors.darkGrey,
                               width: 0.5,
                             ),
                             borderRadius: BorderRadius.circular(12),

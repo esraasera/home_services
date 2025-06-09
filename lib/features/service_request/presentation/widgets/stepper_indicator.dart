@@ -49,7 +49,7 @@ class StepperIndicator extends StatelessWidget {
             const SizedBox(height:AppSize.s10),
             Text(
               AppStrings.nextPage + nextTitle,
-              style: getBoldStyle(color: AppColors.grey,fontSize:screenWidth * AppSize.s0_035),
+              style: getBoldStyle(color: AppColors.darkGrey,fontSize:screenWidth * AppSize.s0_035),
             ),
           ],
         ),
@@ -66,7 +66,7 @@ class CircleProgressPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint background = Paint()
-      ..color = AppColors.grey
+      ..color = AppColors.darkGrey
       ..strokeWidth = AppSize.s8
       ..style = PaintingStyle.stroke;
 
