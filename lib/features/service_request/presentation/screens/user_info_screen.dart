@@ -13,7 +13,7 @@ class UserInfoScreen extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return Padding(
-      padding: EdgeInsets.only(top: screenHeight * AppPadding.p0_005),
+      padding: EdgeInsets.only(top: screenHeight * AppPadding.p0_02),
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -34,7 +34,7 @@ class UserInfoScreen extends StatelessWidget {
               return null;
             }),
             SizedBox(
-              height:screenHeight * AppSize.s0_04,
+              height:screenHeight * AppSize.s0_05,
             ),
             Text(AppStrings.addYourNumber,style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
             SizedBox(
@@ -52,90 +52,94 @@ class UserInfoScreen extends StatelessWidget {
                   return null;
                 }),
             SizedBox(
-              height:screenHeight * AppSize.s0_04,
+              height:screenHeight * AppSize.s0_05,
             ),
             Text(AppStrings.whichTime,style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
             SizedBox(
-              height:screenHeight * AppSize.s0_005 ,
+              height:screenHeight * AppSize.s0_02 ,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  children: [
-                    Image.asset(
-                      "assets/images/morning_icon.png",
-                      height:screenHeight * AppSize.s0_15,
-                      width: screenWidth * AppSize. s0_3,
-                      fit: BoxFit.cover,
-                    ),
-                    Material(
-                      elevation: AppSize.s10,
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      child: GestureDetector(
-                        onTap:(){
+                GestureDetector(
+                  onTap:(){
 
-                        } ,
-                        child: Container(
-                          width: screenWidth * AppSize.s0_23,
-                          height: screenHeight * AppSize.s0_06,
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            border: Border.all(
-                              color:AppColors.darkGrey,
-                              width: 0.5,
-                            ),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Center(
-                            child: Text(
-                                AppStrings.morning
-                            ),
-                          ),
-                        ),
+                  } ,
+                  child: Material(
+                    elevation: AppSize.s10,
+                    color: AppColors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                        color: AppColors.darkGrey,
+                        width:AppSize.s0_5,
                       ),
                     ),
-                  ],
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color:AppColors.white,
+                        border: Border.all(
+                          color:AppColors.darkGrey,
+                          width: 0.5,
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            "assets/images/morning_icon.png",
+                            height:screenHeight * AppSize.s0_12,
+                            width: screenWidth * AppSize. s0_3,
+                            fit: BoxFit.cover,
+                          ),
+                          Text(
+                              AppStrings.morning
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
-                Column(
-                  children: [
-                    Image.asset(
-                      "assets/images/evening_icon.png",
-                      height:screenHeight * AppSize.s0_15,
-                      width: screenWidth * AppSize. s0_3,
-                      fit: BoxFit.cover,
-                    ),
-                    Material(
-                      elevation: AppSize.s10,
-                      color: AppColors.white,
-                      borderRadius: BorderRadius.circular(12),
-                      child: GestureDetector(
-                        onTap:(){
+                GestureDetector(
+                  onTap:(){
 
-                        } ,
-                        child: Container(
-                          width: screenWidth * AppSize.s0_23,
-                          height: screenHeight * AppSize.s0_06,
-                          padding: const EdgeInsets.all(10),
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            border: Border.all(
-                              color:AppColors.darkGrey,
-                              width: 0.5,
-                            ),
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Center(
-                            child: Text(
-                                AppStrings.evening
-                            ),
-                          ),
-                        ),
+                  } ,
+                  child: Material(
+                    elevation: AppSize.s10,
+                    color: AppColors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      side: BorderSide(
+                        color: AppColors.darkGrey,
+                        width:AppSize.s0_5,
                       ),
                     ),
-                  ],
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color:AppColors.white,
+                        border: Border.all(
+                          color:AppColors.darkGrey,
+                          width: 0.5,
+                        ),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            "assets/images/evening_icon.png",
+                            height:screenHeight * AppSize.s0_12,
+                            width: screenWidth * AppSize. s0_3,
+                            fit: BoxFit.cover,
+                          ),
+                          Text(
+                              AppStrings.evening
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
