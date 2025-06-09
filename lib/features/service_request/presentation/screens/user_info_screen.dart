@@ -6,7 +6,6 @@ import 'package:home_services_app/core/values/app_values.dart';
 
 class UserInfoScreen extends StatelessWidget {
   const UserInfoScreen({super.key});
-
   @override
   Widget build(BuildContext context) {
     final TextEditingController nameController = TextEditingController();

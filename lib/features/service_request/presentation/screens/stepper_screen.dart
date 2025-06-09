@@ -23,7 +23,7 @@ class StepperScreen extends StatelessWidget {
           return Scaffold(
               body: SafeArea(
                 child: Padding(
-                  padding: const EdgeInsets.all(AppPadding.p20),
+                  padding: EdgeInsets.all(screenHeight * AppPadding.p0_02),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
