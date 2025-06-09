@@ -1,7 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:home_services_app/core/utils/app_constants.dart';
-import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/features/auth/presentation/screens/login_screen.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -10,7 +9,6 @@ class SplashScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.white,
         body: AnimatedSplashScreen(
           splashIconSize: AppConstants.splashIconSize,
           splashTransition: SplashTransition.fadeTransition,

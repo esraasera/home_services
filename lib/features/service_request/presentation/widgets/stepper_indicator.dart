@@ -66,7 +66,7 @@ class CircleProgressPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     Paint background = Paint()
-      ..color = AppColors.darkGrey
+      ..color = AppColors.grey
       ..strokeWidth = AppSize.s8
       ..style = PaintingStyle.stroke;
 
