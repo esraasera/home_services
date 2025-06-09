@@ -6,7 +6,7 @@ import 'package:home_services_app/core/values/app_values.dart';
 
 ThemeData getApplicationTheme() {
   return ThemeData(
-    scaffoldBackgroundColor: AppColors.white,
+    scaffoldBackgroundColor: AppColors.lightGrey,
     primaryColor: AppColors.primary,
     disabledColor: AppColors.lightGrey,
     splashColor: AppColors.lightPrimary,
@@ -66,7 +66,7 @@ ThemeData getApplicationTheme() {
     inputDecorationTheme: InputDecorationTheme(
         contentPadding: const EdgeInsets.symmetric(horizontal: AppPadding.p8, vertical: AppPadding.p16),
         filled: true,
-        fillColor: AppColors.lightGrey,
+        fillColor: AppColors.white,
         hintStyle:
         getRegularStyle(color: AppColors.darkGrey, fontSize: FontSize.s14),
         labelStyle:
