@@ -76,6 +76,8 @@ class UserInfoScreen extends StatelessWidget {
                       ),
                     ),
                     child: Container(
+                      height:screenHeight * AppSize.s0_2,
+                      width: screenWidth * AppSize. s0_33,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color:AppColors.white,
@@ -90,11 +92,15 @@ class UserInfoScreen extends StatelessWidget {
                           Image.asset(
                             "assets/images/morning_icon.png",
                             height:screenHeight * AppSize.s0_12,
-                            width: screenWidth * AppSize. s0_3,
+                            width: screenWidth * AppSize. s0_33,
                             fit: BoxFit.cover,
                           ),
+                          SizedBox(
+                            height:screenHeight * AppSize.s0_02,
+                          ),
                           Text(
-                              AppStrings.morning
+                              AppStrings.morning,
+                            style: getSemiBoldStyle(color: AppColors.black,fontSize: AppSize.s14),
                           ),
                         ],
                       ),
@@ -116,6 +122,8 @@ class UserInfoScreen extends StatelessWidget {
                       ),
                     ),
                     child: Container(
+                      height:screenHeight * AppSize.s0_2,
+                      width: screenWidth * AppSize. s0_33,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color:AppColors.white,
@@ -130,11 +138,15 @@ class UserInfoScreen extends StatelessWidget {
                           Image.asset(
                             "assets/images/evening_icon.png",
                             height:screenHeight * AppSize.s0_12,
-                            width: screenWidth * AppSize. s0_3,
+                            width: screenWidth * AppSize. s0_33,
                             fit: BoxFit.cover,
                           ),
+                          SizedBox(
+                            height:screenHeight * AppSize.s0_02,
+                          ),
                           Text(
-                              AppStrings.evening
+                              AppStrings.evening,
+                            style: getSemiBoldStyle(color: AppColors.black,fontSize: AppSize.s14),
                           ),
                         ],
                       ),
