@@ -20,6 +20,7 @@ class ForgotPassword extends StatelessWidget{
   Widget build(context) {
     final TextEditingController emailController = TextEditingController();
     final formKey = GlobalKey<FormState>();
+    final screenHeight = MediaQuery.of(context).size.height;
     return BlocProvider(
       create: (context) => ForgotPasswordCubit(ForgotPasswordUseCase(
           AuthRepositoryImpl
@@ -53,9 +54,9 @@ class ForgotPassword extends StatelessWidget{
               body: Center(
                 child: SingleChildScrollView(
                     child: Padding(
-                      padding: const EdgeInsets.all(AppPadding.p20),
+                      padding: EdgeInsets.all(screenHeight *AppPadding.p0_02),
                       child: Container(
-                        margin: EdgeInsets.symmetric(vertical: AppMargin.m40),
+                        margin: EdgeInsets.symmetric(vertical:screenHeight * AppMargin.m0_04),
                         child: Form(
                           key:formKey,
                           child: Column(
@@ -65,7 +66,7 @@ class ForgotPassword extends StatelessWidget{
                                   style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s35),
                                 ),
                                 SizedBox(
-                                  height: AppSize.s30,
+                                  height: screenHeight * AppSize.s0_35,
                                 ),
                                 TextFormField(
                                   keyboardType: TextInputType.emailAddress,
@@ -81,7 +82,7 @@ class ForgotPassword extends StatelessWidget{
                                     return null;
                                   },),
                                 SizedBox(
-                                  height: AppSize.s40,
+                                  height:screenHeight * AppSize.s0_04,
                                 ),
                                 state is ForgotPasswordLoading
                                     ? CircularProgressIndicator()
@@ -96,7 +97,7 @@ class ForgotPassword extends StatelessWidget{
                                   ),
                                 ),
                                 SizedBox(
-                                  height: AppSize.s28,
+                                  height:screenHeight * AppSize.s0_028,
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -104,9 +105,6 @@ class ForgotPassword extends StatelessWidget{
                                     Text(
                                       AppStrings.isUser,
                                       style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s16),
-                                    ),
-                                    SizedBox(
-                                      width: AppSize.s1_5,
                                     ),
                                     GestureDetector(
                                       child: Text(
