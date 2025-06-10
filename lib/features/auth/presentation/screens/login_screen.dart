@@ -20,6 +20,8 @@ class LoginScreen extends StatelessWidget{
   Widget build(context) {
     final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     final formKey = GlobalKey<FormState>();
     return BlocProvider(
         create: (context) => LoginCubit(LoginUseCase(
@@ -43,107 +45,108 @@ class LoginScreen extends StatelessWidget{
     return  Scaffold(
           body: Center(
             child: SingleChildScrollView(
-                child: Padding(
-                  padding: const EdgeInsets.all(AppPadding.p20),
-                  child: Container(
-                    margin: EdgeInsets.symmetric(vertical: AppMargin.m40),
-                    child: Form(
-                      key:formKey,
-                      child: Column(
-                        children: [
-                          Text(
-                              AppStrings.login,
-                            style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s35),
+              child: Padding(
+                padding: EdgeInsets.all(screenHeight *AppPadding.p0_02),
+                child: Container(
+                  margin: EdgeInsets.symmetric(vertical:screenHeight * AppMargin.m0_04),
+                  child: Form(
+                    key:formKey,
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          width:screenWidth * AppSize.s0_8,
+                          height: screenHeight * AppSize.s0_35,
+                          child: Image.asset(
+                              "assets/images/auth_image.png",
+                              fit: BoxFit.contain,
                           ),
-                          SizedBox(
-                            height: AppSize.s30,
-                          ),
-                        TextFormField(
-                          keyboardType: TextInputType.emailAddress,
-                          controller: emailController,
-                          decoration: InputDecoration(
-                              hintText: AppStrings.email,
-                              labelText: AppStrings.email,
                         ),
-                         validator: (value) {
-                        if (value == null || value.isEmpty) {
-                        return AppStrings.emailError;
-                        }
-                       return null;
-                        },),
-                          SizedBox(
-                            height: AppSize.s20,
-                          ),
-                          TextFormField(
-                              keyboardType: TextInputType.visiblePassword,
-                              controller: passwordController,
-                              obscureText: true,
-                              decoration: InputDecoration(
-                                  hintText: AppStrings.password,
-                                  labelText: AppStrings.password,
-                              ),
-                              validator: (value) {
-                             if (value == null || value.isEmpty) {
-                             return AppStrings.passwordError;
-                             }
-                            return null;
-                        },),
-                          SizedBox(
-                            height: AppSize.s40,
-                          ),
-                          state is LoginLoading
-                              ? CircularProgressIndicator()
-                              :  ElevatedButton(
-                            onPressed: () {
-                              if (formKey.currentState!.validate()) {
-                                cubit.loginUser(emailController.text,passwordController.text);
-      }
-                              },
-                            child: Text(
-                              AppStrings.login,
+                        SizedBox(
+                          height:screenHeight * AppSize.s0_005,
+                        ),
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        controller: emailController,
+                        decoration: InputDecoration(
+                            hintText: AppStrings.email,
+                            labelText: AppStrings.email,
+                      ),
+                       validator: (value) {
+                      if (value == null || value.isEmpty) {
+                      return AppStrings.emailError;
+                      }
+                     return null;
+                      },),
+                        SizedBox(
+                          height: screenHeight * AppSize.s0_02,
+                        ),
+                        TextFormField(
+                            keyboardType: TextInputType.visiblePassword,
+                            controller: passwordController,
+                            obscureText: true,
+                            decoration: InputDecoration(
+                                hintText: AppStrings.password,
+                                labelText: AppStrings.password,
                             ),
+                            validator: (value) {
+                           if (value == null || value.isEmpty) {
+                           return AppStrings.passwordError;
+                           }
+                          return null;
+                      },),
+                        SizedBox(
+                          height:screenHeight * AppSize.s0_04,
+                        ),
+                        state is LoginLoading
+                            ? CircularProgressIndicator()
+                            :  ElevatedButton(
+                          onPressed: () {
+                            if (formKey.currentState!.validate()) {
+                              cubit.loginUser(emailController.text,passwordController.text);
+                    }
+                            },
+                          child: Text(
+                            AppStrings.login,
                           ),
-                          SizedBox(
-                            height: AppSize.s28,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                AppStrings.isUser,
-                               style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s16),
-                              ),
-                              SizedBox(
-                                width: AppSize.s1_5,
-                              ),
-                              GestureDetector(
-                                child: Text(
-                                  AppStrings.registerNow,
-                                  style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s16),
-                                ),
-                                onTap:(){
-                                  Navigator.of(context).pushReplacementNamed(Routes.registerRoute);
-                                } ,
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: AppSize.s14,
-                          ),
-                          GestureDetector(
-                            child: Text(
-                              AppStrings.forgotPassword,
-                              style: getBoldStyle(color: AppColors.primary,fontSize:AppSize.s16),
+                        ),
+                        SizedBox(
+                          height:screenHeight * AppSize.s0_028,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              AppStrings.isUser,
+                             style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s16),
                             ),
-                            onTap:(){
-                              Navigator.of(context).pushReplacementNamed(Routes.forgotPasswordRoute);
-                            } ,
+                            GestureDetector(
+                              child: Text(
+                                AppStrings.registerNow,
+                                style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s16),
+                              ),
+                              onTap:(){
+                                Navigator.of(context).pushReplacementNamed(Routes.registerRoute);
+                              } ,
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: screenHeight * AppSize.s0_02,
+                        ),
+                        GestureDetector(
+                          child: Text(
+                            AppStrings.forgotPassword,
+                            style: getBoldStyle(color: AppColors.primary,fontSize:AppSize.s16),
                           ),
-                        ]),
-                    ),
+                          onTap:(){
+                            Navigator.of(context).pushReplacementNamed(Routes.forgotPasswordRoute);
+                          } ,
+                        ),
+                      ]),
                   ),
-                )
                 ),
+              ),
+            ),
       ),
     );
   }

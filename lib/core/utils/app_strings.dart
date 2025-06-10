@@ -1,6 +1,6 @@
 class AppStrings {
   static const noRouteFound = "noRouteFound";
-  static const login = "Login";
+  static const login = "Log In";
   static const register = "Register";
   static const registerNow = "Register Now";
   static const isUser = "Don't have an account?";

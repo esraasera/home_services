@@ -14,13 +14,15 @@ import 'package:home_services_app/features/auth/presentation/controller/cubit/re
 import 'package:home_services_app/features/auth/presentation/controller/states/register_states.dart';
 
 class RegisterScreen extends StatelessWidget{
-  RegisterScreen({super.key});
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
-  final TextEditingController passwordController = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+  const RegisterScreen({super.key});
   @override
   Widget build(context) {
+    final TextEditingController nameController = TextEditingController();
+    final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final formKey = GlobalKey<FormState>();
     return BlocProvider(
       create: (context) =>RegisterCubit(
           RegisterUseCase(
@@ -49,20 +51,24 @@ class RegisterScreen extends StatelessWidget{
         body: Center(
         child: SingleChildScrollView(
         child: Padding(
-        padding: const EdgeInsets.all(AppPadding.p20),
+          padding: EdgeInsets.all(screenHeight *AppPadding.p0_02),
         child: Container(
-        margin: EdgeInsets.symmetric(vertical: AppMargin.m40),
+          margin: EdgeInsets.symmetric(vertical:screenHeight * AppMargin.m0_04),
         child: Form(
         key:formKey,
         child: Column(
         children: [
-        Text(
-        AppStrings.register,
-        style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s35),
-        ),
-        SizedBox(
-        height: AppSize.s30,
-        ),
+          SizedBox(
+            width:screenWidth * AppSize.s0_8,
+            height: screenHeight * AppSize.s0_35,
+            child: Image.asset(
+              "assets/images/auth_image.png",
+              fit: BoxFit.contain,
+            ),
+          ),
+          SizedBox(
+            height:screenHeight * AppSize.s0_005,
+          ),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
             controller: nameController,
@@ -77,7 +83,7 @@ class RegisterScreen extends StatelessWidget{
               return null;
             },),
           SizedBox(
-            height: AppSize.s20,
+            height:screenHeight * AppSize.s0_02,
           ),
       TextFormField(
       keyboardType: TextInputType.emailAddress,
@@ -93,7 +99,7 @@ class RegisterScreen extends StatelessWidget{
       return null;
       },),
       SizedBox(
-      height: AppSize.s20,
+        height: screenHeight * AppSize.s0_02,
       ),
       TextFormField(
       keyboardType: TextInputType.visiblePassword,
@@ -110,7 +116,7 @@ class RegisterScreen extends StatelessWidget{
       return null;
       },),
       SizedBox(
-      height: AppSize.s40,
+        height:screenHeight * AppSize.s0_04,
       ),
        state is RegisterLoading
        ? CircularProgressIndicator()
@@ -125,7 +131,7 @@ class RegisterScreen extends StatelessWidget{
       ),
       ),
       SizedBox(
-      height: AppSize.s28,
+        height:screenHeight * AppSize.s0_028,
       ),
       Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -133,9 +139,6 @@ class RegisterScreen extends StatelessWidget{
       Text(
       AppStrings.alreadyUser,
       style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s16),
-      ),
-      SizedBox(
-      width: AppSize.s1_5,
       ),
       GestureDetector(
       child: Text(
