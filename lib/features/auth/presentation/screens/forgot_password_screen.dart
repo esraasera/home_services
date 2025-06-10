@@ -14,12 +14,11 @@ import 'package:home_services_app/features/auth/presentation/controller/cubit/fo
 import 'package:home_services_app/features/auth/presentation/controller/states/forgot_password_states.dart';
 
 class ForgotPassword extends StatelessWidget{
-  const ForgotPassword({super.key});
-
+   ForgotPassword({super.key});
+  final TextEditingController emailController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(context) {
-    final TextEditingController emailController = TextEditingController();
-    final formKey = GlobalKey<FormState>();
     final screenHeight = MediaQuery.of(context).size.height;
     return BlocProvider(
       create: (context) => ForgotPasswordCubit(ForgotPasswordUseCase(
@@ -66,7 +65,7 @@ class ForgotPassword extends StatelessWidget{
                                   style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s35),
                                 ),
                                 SizedBox(
-                                  height: screenHeight * AppSize.s0_35,
+                                  height:screenHeight * AppSize.s0_02,
                                 ),
                                 TextFormField(
                                   keyboardType: TextInputType.emailAddress,

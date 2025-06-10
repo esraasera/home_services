@@ -14,15 +14,14 @@ import 'package:home_services_app/features/auth/presentation/controller/cubit/lo
 import 'package:home_services_app/features/auth/presentation/controller/states/login_states.dart';
 
 class LoginScreen extends StatelessWidget{
-  const LoginScreen({super.key});
-
+  LoginScreen({super.key});
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
   @override
   Widget build(context) {
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-    final formKey = GlobalKey<FormState>();
     return BlocProvider(
         create: (context) => LoginCubit(LoginUseCase(
           AuthRepositoryImpl(AuthRemoteDataSourceImpl(

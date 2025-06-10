@@ -14,15 +14,15 @@ import 'package:home_services_app/features/auth/presentation/controller/cubit/re
 import 'package:home_services_app/features/auth/presentation/controller/states/register_states.dart';
 
 class RegisterScreen extends StatelessWidget{
-  const RegisterScreen({super.key});
+   RegisterScreen({super.key});
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+   final formKey = GlobalKey<FormState>();
   @override
   Widget build(context) {
-    final TextEditingController nameController = TextEditingController();
-    final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
-    final formKey = GlobalKey<FormState>();
     return BlocProvider(
       create: (context) =>RegisterCubit(
           RegisterUseCase(
