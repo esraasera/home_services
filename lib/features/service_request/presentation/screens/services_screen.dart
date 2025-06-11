@@ -11,173 +11,181 @@ class ServicesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    return Padding(
-      padding: EdgeInsets.only(top: screenHeight * AppPadding.p0_02),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height:screenHeight * AppSize.s0_16,
-                width: screenWidth * AppSize. s0_3,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color:AppColors.grey,
-                  borderRadius: BorderRadius.circular(12),
+    return SingleChildScrollView(
+      child: Padding(
+        padding: EdgeInsets.only(top: screenHeight * AppPadding.p0_02),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height:screenHeight * AppSize.s0_18,
+                  width: screenWidth * AppSize. s0_35,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color:AppColors.iconsBG,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                          "assets/images/plumbing_icon.png",
+                        width:AppSize.s60,
+                        fit:BoxFit.cover,
+                      ),
+                      SizedBox(
+                        height:screenHeight * AppSize.s0_01 ,
+                      ),
+                      Text(AppStrings.plumbing,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
+                    ],
+                  ),
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                        "assets/images/plumbing_icon.png",
-                      fit:BoxFit.cover,
-                    ),
-                    SizedBox(
-                      height:screenHeight * AppSize.s0_01 ,
-                    ),
-                    Text(AppStrings.plumbing,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
-                  ],
+                SizedBox(
+                  width:screenWidth * AppSize.s0_08 ,
                 ),
-              ),
-              SizedBox(
-                width:screenWidth * AppSize.s0_05 ,
-              ),
-              Container(
-                height:screenHeight * AppSize.s0_16,
-                width: screenWidth * AppSize. s0_3,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color:AppColors.grey,
-                  borderRadius: BorderRadius.circular(12),
+                Container(
+                  height:screenHeight * AppSize.s0_18,
+                  width: screenWidth * AppSize. s0_35,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color:AppColors.iconsBG,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/carpentry.png",
+                        width:AppSize.s60,
+                        fit:BoxFit.cover,
+                      ),
+                      SizedBox(
+                        height:screenHeight * AppSize.s0_01 ,
+                      ),
+                      Text(AppStrings.carpentry,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
+                    ],
+                  ),
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/electrical_icon.png",
-                      fit:BoxFit.cover,
-                    ),
-                    SizedBox(
-                      height:screenHeight * AppSize.s0_01 ,
-                    ),
-                    Text(AppStrings.electrical,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
-                  ],
+              ],
+            ),
+            SizedBox(
+              height: screenHeight*AppSize.s0_03,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height:screenHeight * AppSize.s0_18,
+                  width: screenWidth * AppSize. s0_35,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color:AppColors.iconsBG,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/electrical_icon.png",
+                        width:AppSize.s60,
+                        fit:BoxFit.cover,
+                      ),
+                      SizedBox(
+                        height:screenHeight * AppSize.s0_01 ,
+                      ),
+                      Text(AppStrings.electrical,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: screenHeight*AppSize.s0_02,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height:screenHeight * AppSize.s0_16,
-                width: screenWidth * AppSize. s0_3,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color:AppColors.grey,
-                  borderRadius: BorderRadius.circular(12),
+                SizedBox(
+                  width:screenWidth * AppSize.s0_08 ,
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/painting_icon.png",
-                      fit:BoxFit.cover,
-                    ),
-                    SizedBox(
-                      height:screenHeight * AppSize.s0_01 ,
-                    ),
-                    Text(AppStrings.painting,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
-                  ],
+                Container(
+                  height:screenHeight * AppSize.s0_18,
+                  width: screenWidth * AppSize. s0_35,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color:AppColors.iconsBG,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/painting_icon.png",
+                        width:AppSize.s60,
+                        fit:BoxFit.cover,
+                      ),
+                      SizedBox(
+                        height:screenHeight * AppSize.s0_01 ,
+                      ),
+                      Text(AppStrings.painting,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
+                    ],
+                  ),
                 ),
-              ),
-              SizedBox(
-                width:screenWidth * AppSize.s0_05 ,
-              ),
-              Container(
-                height:screenHeight * AppSize.s0_16,
-                width: screenWidth * AppSize. s0_3,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color:AppColors.grey,
-                  borderRadius: BorderRadius.circular(12),
+              ],
+            ),
+            SizedBox(
+              height: screenHeight*AppSize.s0_03,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  height:screenHeight * AppSize.s0_18,
+                  width: screenWidth * AppSize. s0_35,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color:AppColors.iconsBG,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/Pest_control_icon.png",
+                        width:AppSize.s60,
+                        fit:BoxFit.cover,
+                      ),
+                      SizedBox(
+                        height:screenHeight * AppSize.s0_01 ,
+                      ),
+                      Text(AppStrings.pestControl,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
+                    ],
+                  ),
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/cleaning_icon.png",
-                      fit:BoxFit.cover,
-                    ),
-                    SizedBox(
-                      height:screenHeight * AppSize.s0_01 ,
-                    ),
-                    Text(AppStrings.cleaning,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
-                  ],
+                SizedBox(
+                  width:screenWidth * AppSize.s0_08 ,
                 ),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: screenHeight*AppSize.s0_02,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                height:screenHeight * AppSize.s0_16,
-                width: screenWidth * AppSize. s0_3,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color:AppColors.grey,
-                  borderRadius: BorderRadius.circular(12),
+                Container(
+                  height:screenHeight * AppSize.s0_18,
+                  width: screenWidth * AppSize. s0_35,
+                  padding: const EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color:AppColors.iconsBG,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/cleaning_icon.png",
+                        width:AppSize.s60,
+                        fit:BoxFit.cover,
+                      ),
+                      SizedBox(
+                        height:screenHeight * AppSize.s0_01 ,
+                      ),
+                      Text(AppStrings.cleaning,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
+                    ],
+                  ),
                 ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/Pest_control.png",
-                      fit:BoxFit.cover,
-                    ),
-                    SizedBox(
-                      height:screenHeight * AppSize.s0_01 ,
-                    ),
-                    Text(AppStrings.pestControl,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
-                  ],
-                ),
-              ),
-              SizedBox(
-                width:screenWidth * AppSize.s0_05 ,
-              ),
-              Container(
-                height:screenHeight * AppSize.s0_16,
-                width: screenWidth * AppSize. s0_3,
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color:AppColors.grey,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/cleaning_icon.png",
-                      fit:BoxFit.cover,
-                    ),
-                    SizedBox(
-                      height:screenHeight * AppSize.s0_01 ,
-                    ),
-                    Text(AppStrings.cleaning,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
