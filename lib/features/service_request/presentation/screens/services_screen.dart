@@ -3,6 +3,7 @@ import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
+import 'package:home_services_app/features/service_request/presentation/widgets/service_item.dart';
 
 class ServicesScreen extends StatelessWidget {
   const ServicesScreen({super.key});
@@ -19,55 +20,11 @@ class ServicesScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  height:screenHeight * AppSize.s0_18,
-                  width: screenWidth * AppSize. s0_4,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color:AppColors.iconsBG,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                          "assets/images/plumbing_icon.png",
-                        width:AppSize.s60,
-                        fit:BoxFit.cover,
-                      ),
-                      SizedBox(
-                        height:screenHeight * AppSize.s0_01 ,
-                      ),
-                      Text(AppStrings.plumbing,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
-                    ],
-                  ),
-                ),
+                ServiceItem(title:AppStrings.plumbing, imagePath:"assets/images/plumbing_icon.png", onTap: (){}),
                 SizedBox(
                   width:screenWidth * AppSize.s0_08 ,
                 ),
-                Container(
-                  height:screenHeight * AppSize.s0_18,
-                  width: screenWidth * AppSize. s0_4,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color:AppColors.iconsBG,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/carpentry.png",
-                        width:AppSize.s60,
-                        fit:BoxFit.cover,
-                      ),
-                      SizedBox(
-                        height:screenHeight * AppSize.s0_01 ,
-                      ),
-                      Text(AppStrings.carpentry,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
-                    ],
-                  ),
-                ),
+                ServiceItem(title:AppStrings.carpentry, imagePath:  "assets/images/carpentry.png", onTap: (){}),
               ],
             ),
             SizedBox(
@@ -76,55 +33,11 @@ class ServicesScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  height:screenHeight * AppSize.s0_18,
-                  width: screenWidth * AppSize. s0_4,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color:AppColors.iconsBG,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/electrical_icon.png",
-                        width:AppSize.s60,
-                        fit:BoxFit.cover,
-                      ),
-                      SizedBox(
-                        height:screenHeight * AppSize.s0_01 ,
-                      ),
-                      Text(AppStrings.electrical,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
-                    ],
-                  ),
-                ),
+                ServiceItem(title:AppStrings.electrical, imagePath:  "assets/images/electrical_icon.png", onTap: (){}),
                 SizedBox(
                   width:screenWidth * AppSize.s0_08 ,
                 ),
-                Container(
-                  height:screenHeight * AppSize.s0_18,
-                  width: screenWidth * AppSize. s0_4,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color:AppColors.iconsBG,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/painting_icon.png",
-                        width:AppSize.s60,
-                        fit:BoxFit.cover,
-                      ),
-                      SizedBox(
-                        height:screenHeight * AppSize.s0_01 ,
-                      ),
-                      Text(AppStrings.painting,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
-                    ],
-                  ),
-                ),
+                ServiceItem(title:AppStrings.painting, imagePath:  "assets/images/painting_icon.png", onTap: (){}),
               ],
             ),
             SizedBox(
@@ -133,55 +46,11 @@ class ServicesScreen extends StatelessWidget {
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  height:screenHeight * AppSize.s0_18,
-                  width: screenWidth * AppSize. s0_4,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color:AppColors.iconsBG,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/Pest_control_icon.png",
-                        width:AppSize.s60,
-                        fit:BoxFit.cover,
-                      ),
-                      SizedBox(
-                        height:screenHeight * AppSize.s0_01 ,
-                      ),
-                      Text(AppStrings.pestControl,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
-                    ],
-                  ),
-                ),
+                ServiceItem(title: AppStrings.pestControl, imagePath: "assets/images/Pest_control_icon.png", onTap: (){}),
                 SizedBox(
                   width:screenWidth * AppSize.s0_08 ,
                 ),
-                Container(
-                  height:screenHeight * AppSize.s0_18,
-                  width: screenWidth * AppSize. s0_4,
-                  padding: const EdgeInsets.all(10),
-                  decoration: BoxDecoration(
-                    color:AppColors.iconsBG,
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/cleaning_icon.png",
-                        width:AppSize.s60,
-                        fit:BoxFit.cover,
-                      ),
-                      SizedBox(
-                        height:screenHeight * AppSize.s0_01 ,
-                      ),
-                      Text(AppStrings.cleaning,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
-                    ],
-                  ),
-                ),
+                ServiceItem(title: AppStrings.cleaning, imagePath: "assets/images/cleaning_icon.png", onTap: (){}),
               ],
             ),
           ],

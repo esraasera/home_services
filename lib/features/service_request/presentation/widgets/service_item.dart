@@ -20,43 +20,29 @@ class ServiceItem extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
 
-    return GestureDetector(
+    return  GestureDetector(
       onTap: onTap,
-      child: Material(
-        elevation: AppSize.s4,
-        color: AppColors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSize.s12),
-          side: BorderSide(
-            color: AppColors.grey,
-            width: AppSize.s0_5,
-          ),
+      child: Container(
+        height:screenHeight * AppSize.s0_18,
+        width: screenWidth * AppSize. s0_4,
+        padding: const EdgeInsets.all(10),
+        decoration: BoxDecoration(
+          color:AppColors.iconsBG,
+          borderRadius: BorderRadius.circular(12),
         ),
-        child: Container(
-          width: screenWidth * AppSize.s0_4,
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(AppSize.s12),
-            color: AppColors.white,
-          ),
-          child: Column(
-            children: [
-              Image.asset(
-                imagePath,
-                height: screenHeight * AppSize.s0_11,
-                width: screenWidth * AppSize.s0_28,
-                fit: BoxFit.cover,
-              ),
-              const SizedBox(height: 8),
-              Text(
-                title,
-                style: getMediumStyle(
-                  fontSize: AppSize.s14,
-                  color: AppColors.primary,
-                ),
-              ),
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              imagePath,
+              width:AppSize.s60,
+              fit:BoxFit.cover,
+            ),
+            SizedBox(
+              height:screenHeight * AppSize.s0_01 ,
+            ),
+            Text(title,style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14),),
+          ],
         ),
       ),
     );
