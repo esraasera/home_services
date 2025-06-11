@@ -36,7 +36,7 @@ class StepperScreen extends StatelessWidget {
                       : '',
                       ),
                       SizedBox(
-                        height: screenHeight * AppSize.s0_03,
+                        height: screenHeight * AppSize.s0_04,
                       ),
                     Expanded(child: cubit.stepScreens[cubit.currentStep]),
                       Row(

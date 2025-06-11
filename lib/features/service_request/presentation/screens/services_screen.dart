@@ -17,7 +17,7 @@ class ServicesScreen extends StatelessWidget {
         child: Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   height:screenHeight * AppSize.s0_18,
@@ -74,7 +74,7 @@ class ServicesScreen extends StatelessWidget {
               height: screenHeight*AppSize.s0_03,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   height:screenHeight * AppSize.s0_18,
@@ -131,7 +131,7 @@ class ServicesScreen extends StatelessWidget {
               height: screenHeight*AppSize.s0_03,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
                   height:screenHeight * AppSize.s0_18,

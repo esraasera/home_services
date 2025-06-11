@@ -76,14 +76,12 @@ class UserInfoScreen extends StatelessWidget {
                       ),
                     ),
                     child: Container(
-                      height:screenHeight * AppSize.s0_2,
-                      width: screenWidth * AppSize. s0_33,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color:AppColors.white,
                         border: Border.all(
                           color:AppColors.darkGrey,
-                          width: 0.5,
+                          width: AppSize.s1_5,
                         ),
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -91,12 +89,12 @@ class UserInfoScreen extends StatelessWidget {
                         children: [
                           Image.asset(
                             "assets/images/morning_icon.png",
-                            height:screenHeight * AppSize.s0_12,
-                            width: screenWidth * AppSize. s0_33,
+                            height:screenHeight * AppSize.s0_11,
+                            width: screenWidth * AppSize. s0_28,
                             fit: BoxFit.cover,
                           ),
                           SizedBox(
-                            height:screenHeight * AppSize.s0_02,
+                            height:screenHeight * AppSize.s0_002,
                           ),
                           Text(
                               AppStrings.morning,
@@ -122,14 +120,12 @@ class UserInfoScreen extends StatelessWidget {
                       ),
                     ),
                     child: Container(
-                      height:screenHeight * AppSize.s0_2,
-                      width: screenWidth * AppSize. s0_33,
                       padding: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
                         color:AppColors.white,
                         border: Border.all(
                           color:AppColors.darkGrey,
-                          width: 0.5,
+                          width:  AppSize.s1_5,
                         ),
                         borderRadius: BorderRadius.circular(12),
                       ),
@@ -137,12 +133,12 @@ class UserInfoScreen extends StatelessWidget {
                         children: [
                           Image.asset(
                             "assets/images/evening_icon.png",
-                            height:screenHeight * AppSize.s0_12,
-                            width: screenWidth * AppSize. s0_33,
+                            height:screenHeight * AppSize.s0_11,
+                            width: screenWidth * AppSize. s0_28,
                             fit: BoxFit.cover,
                           ),
                           SizedBox(
-                            height:screenHeight * AppSize.s0_02,
+                            height:screenHeight * AppSize.s0_002,
                           ),
                           Text(
                               AppStrings.evening,
