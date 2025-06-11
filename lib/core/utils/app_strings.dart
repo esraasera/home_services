@@ -36,4 +36,12 @@ class AppStrings {
   static const numError = "Please enter your Number";
 
 
+// Services
+  static const plumbing = "plumbing";
+  static const carpentry = "Carpentry";
+  static const electrical = "Electricity";
+  static const painting = "Painting";
+  static const pestControl = "Pest Control";
+  static const cleaning = "Cleaning";
+
 }
