@@ -21,7 +21,7 @@ class ServicesScreen extends StatelessWidget {
               children: [
                 Container(
                   height:screenHeight * AppSize.s0_18,
-                  width: screenWidth * AppSize. s0_35,
+                  width: screenWidth * AppSize. s0_4,
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color:AppColors.iconsBG,
@@ -47,7 +47,7 @@ class ServicesScreen extends StatelessWidget {
                 ),
                 Container(
                   height:screenHeight * AppSize.s0_18,
-                  width: screenWidth * AppSize. s0_35,
+                  width: screenWidth * AppSize. s0_4,
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color:AppColors.iconsBG,
@@ -78,7 +78,7 @@ class ServicesScreen extends StatelessWidget {
               children: [
                 Container(
                   height:screenHeight * AppSize.s0_18,
-                  width: screenWidth * AppSize. s0_35,
+                  width: screenWidth * AppSize. s0_4,
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color:AppColors.iconsBG,
@@ -104,7 +104,7 @@ class ServicesScreen extends StatelessWidget {
                 ),
                 Container(
                   height:screenHeight * AppSize.s0_18,
-                  width: screenWidth * AppSize. s0_35,
+                  width: screenWidth * AppSize. s0_4,
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color:AppColors.iconsBG,
@@ -135,7 +135,7 @@ class ServicesScreen extends StatelessWidget {
               children: [
                 Container(
                   height:screenHeight * AppSize.s0_18,
-                  width: screenWidth * AppSize. s0_35,
+                  width: screenWidth * AppSize. s0_4,
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color:AppColors.iconsBG,
@@ -161,7 +161,7 @@ class ServicesScreen extends StatelessWidget {
                 ),
                 Container(
                   height:screenHeight * AppSize.s0_18,
-                  width: screenWidth * AppSize. s0_35,
+                  width: screenWidth * AppSize. s0_4,
                   padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color:AppColors.iconsBG,
