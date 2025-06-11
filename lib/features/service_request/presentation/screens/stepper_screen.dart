@@ -44,7 +44,7 @@ class StepperScreen extends StatelessWidget {
                         children: [
                           ElevatedButton(
                             style:ElevatedButton.styleFrom(
-                              backgroundColor: AppColors.lightPrimary,
+                              backgroundColor: AppColors.white,
                               foregroundColor: AppColors.primary,
                                 minimumSize: Size( screenWidth * AppSize.s0_35 , screenHeight * AppSize.s0_075),
                             ) ,
