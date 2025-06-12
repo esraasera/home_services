@@ -1,84 +1,58 @@
-import 'package:home_services_app/features/service_request/data/models/service_model.dart';
+import 'package:home_services_app/features/service_request/data/models/service_details_model.dart';
 
-class StaticServices {
-  static List<ServiceDetailsModel> services = [
-    ServiceModel(
-      title: "Plumbing",
-      imagePath: "assets/images/plumbing_icon.png",
-      description:
-      "Our expert plumbers provide comprehensive plumbing services including leak repairs, pipe installations, and maintenance.",
-      price: "\$50 - \$200 depending on the service.",
-      services: [
-        "Leak detection and repair",
-        "Pipe and faucet installation",
-        "Bathroom and kitchen plumbing",
-        "Water heater services",
-      ],
-    ),
-    ServiceModel(
-      title: "Carpentry",
-      imagePath: "assets/images/carpentry.png",
-      description:
-      "Our skilled carpenters create and repair wooden structures and furniture with high precision and craftsmanship.",
-      price: "\$70 - \$250 depending on the job.",
-      services: [
-        "Furniture assembly and repair",
-        "Door and window installation",
-        "Shelving and cabinet building",
-        "Custom woodwork",
-      ],
-    ),
-    ServiceModel(
-      title: "Electrical",
-      imagePath: "assets/images/electrical_icon.png",
-      description:
-      "Certified electricians providing safe and efficient electrical installations, repairs, and upgrades for homes and businesses.",
-      price: "\$60 - \$220 depending on the task.",
-      services: [
-        "Wiring and rewiring",
-        "Lighting installation",
-        "Electrical troubleshooting",
-        "Circuit breaker upgrades",
-      ],
-    ),
-    ServiceModel(
-      title: "Painting",
-      imagePath: "assets/images/painting_icon.png",
-      description:
-      "Professional painting services to refresh and beautify your interior and exterior spaces using high-quality materials.",
-      price: "\$80 - \$300 depending on area and work.",
-      services: [
-        "Interior wall painting",
-        "Exterior building painting",
-        "Wallpaper removal",
-        "Custom finishes",
-      ],
-    ),
-    ServiceModel(
-      title: "Pest Control",
-      imagePath: "assets/images/pest_control_icon.png",
-      description:
-      "Effective and eco-friendly pest control services targeting insects, rodents, and other household pests.",
-      price: "\$40 - \$180 depending on the infestation.",
-      services: [
-        "Termite treatment",
-        "Rodent removal",
-        "Insect spraying",
-        "Preventive measures",
-      ],
-    ),
-    ServiceModel(
-      title: "Cleaning",
-      imagePath: "assets/images/cleaning_icon.png",
-      description:
-      "Thorough and reliable cleaning services for homes, offices, and post-renovation areas with trained professionals.",
-      price: "\$30 - \$150 depending on space and requirements.",
-      services: [
-        "Home deep cleaning",
-        "Office cleaning",
-        "Post-construction cleaning",
-        "Window and carpet cleaning",
-      ],
-    ),
-  ];
-}
+final List<ServiceDetailsModel> servicesList = [
+  ServiceDetailsModel(
+    title: 'Plumbing Service',
+    imagePath: 'assets/images/plumbing_icon.png',
+    description: 'We provide high-quality plumbing services for homes and offices.',
+    features: ['Faucet installation', 'Leak repair', 'Pipe cleaning'],
+    startingPrice: 'From 150 EGP',
+    estimatedDuration: '30 minutes - 2 hours',
+    workingHours: '9:00 AM - 9:00 PM',
+  ),
+  ServiceDetailsModel(
+    title: 'Carpentry Service',
+    imagePath: 'assets/images/carpentry.png',
+    description: 'Expert carpentry services for furniture and woodwork.',
+    features: ['Door repair', 'Furniture assembly', 'Wood polishing'],
+    startingPrice: 'From 200 EGP',
+    estimatedDuration: '1 - 3 hours',
+    workingHours: '10:00 AM - 8:00 PM',
+  ),
+  ServiceDetailsModel(
+    title: 'Electrical Service',
+    imagePath: 'assets/images/electrical_icon.png',
+    description: 'Professional electrical solutions for all your needs.',
+    features: ['Socket installation', 'Wiring', 'Appliance repair'],
+    startingPrice: 'From 180 EGP',
+    estimatedDuration: '30 minutes - 2 hours',
+    workingHours: '8:00 AM - 10:00 PM',
+  ),
+  ServiceDetailsModel(
+    title: 'Painting Service',
+    imagePath: 'assets/images/painting_icon.png',
+    description: 'Interior and exterior painting with high-quality materials.',
+    features: ['Wall painting', 'Ceiling painting', 'Decorative finishes'],
+    startingPrice: 'From 250 EGP',
+    estimatedDuration: '2 - 5 hours',
+    workingHours: '9:00 AM - 6:00 PM',
+  ),
+  ServiceDetailsModel(
+    title: 'Pest Control Service',
+    imagePath: 'assets/images/Pest_control_icon.png',
+    description: 'Safe and effective pest control for homes and offices.',
+    features: ['Ant control', 'Cockroach removal', 'Rodent management'],
+    startingPrice: 'From 300 EGP',
+    estimatedDuration: '1 - 2 hours',
+    workingHours: '10:00 AM - 5:00 PM',
+  ),
+  ServiceDetailsModel(
+    title: 'Cleaning Service',
+    imagePath: 'assets/images/cleaning_icon.png',
+    description: 'Comprehensive cleaning services by trained professionals.',
+    features: ['Home cleaning', 'Office cleaning', 'Deep cleaning'],
+    startingPrice: 'From 100 EGP',
+    estimatedDuration: '1 - 3 hours',
+    workingHours: '7:00 AM - 9:00 PM',
+  ),
+];

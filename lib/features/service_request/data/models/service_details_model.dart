@@ -1,4 +1,4 @@
-class ServiceModel {
+class ServiceDetailsModel {
   final String title;
   final String imagePath;
   final String description;
@@ -7,7 +7,7 @@ class ServiceModel {
   final String estimatedDuration;
   final String workingHours;
 
-  ServiceModel({
+  ServiceDetailsModel({
     required this.title,
     required this.imagePath,
     required this.description,

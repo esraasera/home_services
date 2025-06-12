@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:home_services_app/core/utils/app_constants.dart';
+import 'package:home_services_app/core/utils/static_services.dart';
 import 'package:home_services_app/core/values/app_values.dart';
+import 'package:home_services_app/features/service_request/presentation/widgets/service_details.dart';
 import 'package:home_services_app/features/service_request/presentation/widgets/service_item.dart';
 
 class ServicesScreen extends StatelessWidget {
@@ -10,34 +11,34 @@ class ServicesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    final crossAxisSpacing = screenWidth * AppSize.s0_04;
-    final servicesList = AppConstants.servicesList;
-
-    return Center(
-      child: GridView.builder(
-        padding: EdgeInsets.symmetric(
-          vertical: screenHeight * AppPadding.p0_003,
-        ),
+    return GridView.builder(
         shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: servicesList.length,
+        physics: BouncingScrollPhysics(),
+        padding: EdgeInsets.symmetric(
+          vertical: screenWidth * AppPadding.p0_02,
+        ),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          crossAxisSpacing: crossAxisSpacing,
+          mainAxisSpacing: screenHeight * AppPadding.p0_03,
+          crossAxisSpacing: screenHeight * AppPadding.p0_03,
           childAspectRatio: 1,
         ),
+        itemCount: servicesList.length,
         itemBuilder: (context, index) {
           final service = servicesList[index];
-          return Center(
-            child: ServiceItem(
-              title: service.title,
-              imagePath: service.imagePath,
-              onTap: () {},
-            ),
+          return ServiceItem(
+            title: service.title,
+            imagePath: service.imagePath,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => ServiceDetailsScreen(service: service),
+                ),
+              );
+            },
           );
         },
-      ),
-    );
-
+      );
   }
 }
