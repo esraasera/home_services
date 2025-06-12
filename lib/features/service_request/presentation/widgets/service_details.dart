@@ -26,7 +26,10 @@ class ServiceDetails extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            Text(service.description, style: Theme.of(context).textTheme.bodyLarge),
+            Text(
+              service.description,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
             const SizedBox(height: 20),
             Text("Services Offered:", style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 10),
@@ -34,16 +37,14 @@ class ServiceDetails extends StatelessWidget {
             const SizedBox(height: 20),
             Text("Starting Price: ${service.price}", style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 10),
-            Text("Estimated Duration: ${service.duration}", style: Theme.of(context).textTheme.bodyMedium),
+            Text("Estimated Duration: 30 minutes - 2 hours", style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 10),
-            Text("Working Hours: ${service.workingHours}", style: Theme.of(context).textTheme.bodyMedium),
+            Text("Working Hours: 9:00 AM - 9:00 PM", style: Theme.of(context).textTheme.bodyMedium),
             const Spacer(),
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
-                onPressed: () {
-                  // Navigate to booking or request screen
-                },
+                onPressed: () {},
                 child: const Text("Book Now"),
               ),
             )
@@ -61,17 +62,12 @@ class BulletList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: items
-          .map(
-            (item) => Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text("• ", style: TextStyle(fontSize: 18)),
-            Expanded(child: Text(item, style: const TextStyle(fontSize: 16))),
-          ],
-        ),
-      )
-          .toList(),
+      children: items.map((item) => Row(
+        children: [
+          const Text("• ", style: TextStyle(fontSize: 18)),
+          Expanded(child: Text(item, style: const TextStyle(fontSize: 16))),
+        ],
+      )).toList(),
     );
   }
 }

@@ -22,14 +22,14 @@ class ServiceItem extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return  GestureDetector(
-      onTap:() {
-        Navigator.push(
-            context,
-          MaterialPageRoute(
-            builder: (context) => ServiceDetails(),
-          ),
-        );
-      } ,
+      // onTap:() {
+      //   Navigator.push(
+      //       context,
+      //     MaterialPageRoute(
+      //       builder: (context) => ServiceDetails(),
+      //     ),
+      //   );
+      // } ,
       child: Container(
         height:screenHeight * AppSize.s0_18,
         width: screenWidth * AppSize. s0_4,
