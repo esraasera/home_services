@@ -12,8 +12,7 @@ class UserInfoScreen extends StatelessWidget {
     final TextEditingController numberController = TextEditingController();
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    return Padding(
-      padding: EdgeInsets.only(top: screenHeight * AppPadding.p0_02),
+    return Center(
       child: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

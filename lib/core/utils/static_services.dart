@@ -1,7 +1,7 @@
 import 'package:home_services_app/features/service_request/data/models/service_model.dart';
 
 class StaticServices {
-  static List<ServiceModel> services = [
+  static List<ServiceDetailsModel> services = [
     ServiceModel(
       title: "Plumbing",
       imagePath: "assets/images/plumbing_icon.png",
