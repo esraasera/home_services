@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/values/app_values.dart';
+import 'package:home_services_app/features/service_request/presentation/widgets/service_details.dart';
 
 class ServiceItem extends StatelessWidget {
   final String title;
@@ -21,7 +22,14 @@ class ServiceItem extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     return  GestureDetector(
-      onTap: onTap,
+      onTap:() {
+        Navigator.push(
+            context,
+          MaterialPageRoute(
+            builder: (context) => ServiceDetails(),
+          ),
+        );
+      } ,
       child: Container(
         height:screenHeight * AppSize.s0_18,
         width: screenWidth * AppSize. s0_4,
