@@ -1,24 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:home_services_app/features/service_request/data/models/service_model.dart';
 
 class ServiceDetails extends StatelessWidget {
-  final String title;
-  final String imagePath;
-  final String description;
-  final List<String> services;
-  final String price;
-  final String duration;
-  final String workingHours;
+  final ServiceModel service;
 
-  const ServiceDetails({
-    super.key,
-    required this.title,
-    required this.imagePath,
-    required this.description,
-    required this.services,
-    required this.price,
-    this.duration = "30 minutes - 2 hours",
-    this.workingHours = "9:00 AM - 9:00 PM",
-  });
+  const ServiceDetails({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +12,7 @@ class ServiceDetails extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(service.title),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -35,25 +21,22 @@ class ServiceDetails extends StatelessWidget {
           children: [
             Center(
               child: Image.asset(
-                imagePath,
+                service.imagePath,
                 height: screenHeight * 0.25,
               ),
             ),
             const SizedBox(height: 20),
-            Text(
-              description,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
+            Text(service.description, style: Theme.of(context).textTheme.bodyLarge),
             const SizedBox(height: 20),
             Text("Services Offered:", style: Theme.of(context).textTheme.titleMedium),
             const SizedBox(height: 10),
-            BulletList(services),
+            BulletList(service.services),
             const SizedBox(height: 20),
-            Text("Starting Price: $price", style: Theme.of(context).textTheme.bodyMedium),
+            Text("Starting Price: ${service.price}", style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 10),
-            Text("Estimated Duration: $duration", style: Theme.of(context).textTheme.bodyMedium),
+            Text("Estimated Duration: ${service.duration}", style: Theme.of(context).textTheme.bodyMedium),
             const SizedBox(height: 10),
-            Text("Working Hours: $workingHours", style: Theme.of(context).textTheme.bodyMedium),
+            Text("Working Hours: ${service.workingHours}", style: Theme.of(context).textTheme.bodyMedium),
             const Spacer(),
             SizedBox(
               width: double.infinity,
@@ -70,7 +53,6 @@ class ServiceDetails extends StatelessWidget {
     );
   }
 }
-
 class BulletList extends StatelessWidget {
   final List<String> items;
   const BulletList(this.items, {super.key});
