@@ -32,7 +32,7 @@ class ServiceItem extends StatelessWidget {
               fit: BoxFit.cover,
             ),
               SizedBox(
-              height: screenHeight * AppSize.s0_005,
+              height: screenHeight * AppSize.s0_01,
             ),
             Text(title, style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14)),
           ],
