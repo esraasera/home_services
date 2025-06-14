@@ -25,8 +25,6 @@ class UserInfoScreen extends StatelessWidget {
             TextFormField(
                 keyboardType: TextInputType.name,
             controller: nameController,
-              decoration: InputDecoration(
-            ),
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return AppStrings.nameError;
@@ -43,8 +41,6 @@ class UserInfoScreen extends StatelessWidget {
             TextFormField(
                 keyboardType: TextInputType.number,
                 controller: numberController,
-                decoration: InputDecoration(
-                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return AppStrings.numError;
@@ -102,7 +98,7 @@ class UserInfoScreen extends StatelessWidget {
                                SizedBox(width: screenWidth * AppSize.s0_008),
                               Text(
                                  AppStrings.selectLocation,
-                                style: TextStyle(color: Colors.white, fontSize: 12),
+                                style: getMediumStyle(color: AppColors.white,fontSize: AppSize.s12),
                               ),
                             ],
                           ),

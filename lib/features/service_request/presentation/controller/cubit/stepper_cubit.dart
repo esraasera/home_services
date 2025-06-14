@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
-import 'package:home_services_app/features/rating/presentation/screens/rating_screen.dart';
+import 'package:home_services_app/features/confirm/presentation/screens/confirm_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/stepper_states.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/location_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/payment_screen.dart';
@@ -41,7 +41,7 @@ class StepperCubit extends Cubit<StepperState> {
     } else {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (_) => RatingScreen()),
+        MaterialPageRoute(builder: (_) => ConfirmScreen()),
       );
     }
   }
