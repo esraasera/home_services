@@ -26,7 +26,8 @@ class ServiceItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              imagePath,  height:screenHeight * AppSize.s0_12,
+              imagePath,
+              height:screenHeight * AppSize.s0_12,
               width: screenWidth * AppSize. s0_23,
               fit: BoxFit.cover,
             ),
