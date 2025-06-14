@@ -19,7 +19,8 @@ class AppStrings {
   static const evening = "Evening";
   static const addYourName = "Add Your Name..";
   static const addYourNumber ="Add Your Number..";
-  static const whichTime ="Which time of day suits you?";
+  static const addYourAddress ="Add Your Address..";
+  static const selectLocation ="Select Location";
   static const bookNow ="Book Now";
 
   //Stepper stepTitles

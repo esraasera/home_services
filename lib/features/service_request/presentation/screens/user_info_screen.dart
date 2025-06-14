@@ -10,8 +10,9 @@ class UserInfoScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final TextEditingController nameController = TextEditingController();
     final TextEditingController numberController = TextEditingController();
-    final screenWidth = MediaQuery.of(context).size.width;
+    final TextEditingController addressController = TextEditingController();
     final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Center(
       child: SingleChildScrollView(
         child: Column(
@@ -53,103 +54,66 @@ class UserInfoScreen extends StatelessWidget {
             SizedBox(
               height:screenHeight * AppSize.s0_05,
             ),
-            Text(AppStrings.whichTime,style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
+            Text(AppStrings.addYourAddress,style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
             SizedBox(
-              height:screenHeight * AppSize.s0_02 ,
+              height:screenHeight * AppSize.s0_005 ,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                GestureDetector(
-                  onTap:(){
-
-                  } ,
-                  child: Material(
-                    elevation: AppSize.s10,
-                    color: AppColors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      side: BorderSide(
-                        color: AppColors.darkGrey,
-                        width:AppSize.s0_5,
+            TextFormField(
+                keyboardType: TextInputType.text,
+                controller: addressController,
+                decoration: InputDecoration(
+                ),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return AppStrings.numError;
+                  }
+                  return null;
+                }),
+            SizedBox(
+              height:screenHeight * AppSize.s0_002 ,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric( vertical:  AppSize.s12),
+              child: GestureDetector(
+                onTap: () {
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(AppSize.s20),
+                  child: Stack(
+                    children: [
+                      Image.asset(
+                        "assets/images/map_image.png",
+                        height: screenHeight * AppSize.s0_16,
+                        width: double.infinity,
+                        fit: BoxFit.cover,
                       ),
-                    ),
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color:AppColors.white,
-                        border: Border.all(
-                          color:AppColors.darkGrey,
-                          width: AppSize.s1_5,
+                      Positioned(
+                        bottom:AppSize.s8,
+                        right: AppSize.s10,
+                        child: Container(
+                          padding: const EdgeInsets.all(AppSize.s4),
+                          decoration: BoxDecoration(
+                            color: AppColors.black,
+                            borderRadius: BorderRadius.circular(AppSize.s20),
+                          ),
+                          child: Row(
+                            children: [
+                              Icon(Icons.location_on, color:AppColors.white, size:AppSize.s15),
+                               SizedBox(width: screenWidth * AppSize.s0_008),
+                              Text(
+                                 AppStrings.selectLocation,
+                                style: TextStyle(color: Colors.white, fontSize: 12),
+                              ),
+                            ],
+                          ),
                         ),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            "assets/images/morning_icon.png",
-                            height:screenHeight * AppSize.s0_11,
-                            width: screenWidth * AppSize. s0_28,
-                            fit: BoxFit.cover,
-                          ),
-                          SizedBox(
-                            height:screenHeight * AppSize.s0_002,
-                          ),
-                          Text(
-                              AppStrings.morning,
-                            style: getSemiBoldStyle(color: AppColors.black,fontSize: AppSize.s14),
-                          ),
-                        ],
-                      ),
-                    ),
+                      )
+                    ],
                   ),
                 ),
-                GestureDetector(
-                  onTap:(){
-
-                  } ,
-                  child: Material(
-                    elevation: AppSize.s10,
-                    color: AppColors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                      side: BorderSide(
-                        color: AppColors.darkGrey,
-                        width:AppSize.s0_5,
-                      ),
-                    ),
-                    child: Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color:AppColors.white,
-                        border: Border.all(
-                          color:AppColors.darkGrey,
-                          width:  AppSize.s1_5,
-                        ),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Column(
-                        children: [
-                          Image.asset(
-                            "assets/images/evening_icon.png",
-                            height:screenHeight * AppSize.s0_11,
-                            width: screenWidth * AppSize. s0_28,
-                            fit: BoxFit.cover,
-                          ),
-                          SizedBox(
-                            height:screenHeight * AppSize.s0_002,
-                          ),
-                          Text(
-                              AppStrings.evening,
-                            style: getSemiBoldStyle(color: AppColors.black,fontSize: AppSize.s14),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
+
           ],
         ),
       ),
