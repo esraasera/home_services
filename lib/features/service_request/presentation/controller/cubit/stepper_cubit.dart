@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/features/confirm/presentation/screens/confirmation_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/stepper_states.dart';
-import 'package:home_services_app/features/service_request/presentation/screens/location_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/payment_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/services_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/user_info_screen.dart';
@@ -18,14 +17,12 @@ class StepperCubit extends Cubit<StepperState> {
   final List<Widget> stepScreens = [
     UserInfoScreen(),
     ServicesScreen(),
-    LocationScreen(),
     PaymentScreen(),
   ];
 
   final List<String> stepTitles = [
     AppStrings.customerInformation,
     AppStrings.chooseService,
-    AppStrings.addressDetails,
     AppStrings.paymentAndConfirmation,
   ];
 
