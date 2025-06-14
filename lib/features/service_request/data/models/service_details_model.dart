@@ -1,5 +1,6 @@
 class ServiceDetailsModel {
   final String title;
+  final String subTitle;
   final String imagePath;
   final String description;
   final List<String> features;
@@ -9,6 +10,7 @@ class ServiceDetailsModel {
 
   ServiceDetailsModel({
     required this.title,
+    required this. subTitle,
     required this.imagePath,
     required this.description,
     required this.features,

@@ -9,25 +9,23 @@ class ServicesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return GridView.builder(
         shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
-        padding: EdgeInsets.symmetric(
-          vertical: screenWidth * AppPadding.p0_02,
-        ),
+        physics: NeverScrollableScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: screenHeight * AppPadding.p0_03,
-          crossAxisSpacing: screenHeight * AppPadding.p0_03,
-          childAspectRatio: 1,
+          crossAxisSpacing: screenWidth * AppPadding.p0_03,
+          childAspectRatio: AppSize.s1_13 ,
         ),
         itemCount: servicesList.length,
         itemBuilder: (context, index) {
           final service = servicesList[index];
           return ServiceItem(
             title: service.title,
+            subTitle: service.subTitle,
             imagePath: service.imagePath,
             onTap: () {
               Navigator.push(

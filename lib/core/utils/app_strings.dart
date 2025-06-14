@@ -20,6 +20,7 @@ class AppStrings {
   static const addYourName = "Add Your Name..";
   static const addYourNumber ="Add Your Number..";
   static const whichTime ="Which time of day suits you?";
+  static const bookNow ="Book Now";
 
   //Stepper stepTitles
   static const customerInformation =  "Customer Information";

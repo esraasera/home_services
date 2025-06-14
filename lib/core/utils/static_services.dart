@@ -2,7 +2,8 @@ import 'package:home_services_app/features/service_request/data/models/service_d
 
 final List<ServiceDetailsModel> servicesList = [
   ServiceDetailsModel(
-    title: 'Plumbing Service',
+    title: 'Plumbing',
+    subTitle: 'Plumbing Service',
     imagePath: 'assets/images/plumbing_icon.png',
     description: 'We provide high-quality plumbing services for homes and offices.',
     features: ['Faucet installation', 'Leak repair', 'Pipe cleaning'],
@@ -11,7 +12,8 @@ final List<ServiceDetailsModel> servicesList = [
     workingHours: '9:00 AM - 9:00 PM',
   ),
   ServiceDetailsModel(
-    title: 'Carpentry Service',
+    title: 'Carpentry',
+    subTitle: 'Carpentry Service',
     imagePath: 'assets/images/carpentry.png',
     description: 'Expert carpentry services for furniture and woodwork.',
     features: ['Door repair', 'Furniture assembly', 'Wood polishing'],
@@ -20,7 +22,8 @@ final List<ServiceDetailsModel> servicesList = [
     workingHours: '10:00 AM - 8:00 PM',
   ),
   ServiceDetailsModel(
-    title: 'Electrical Service',
+    title: 'Electrical',
+    subTitle: 'Electrical Service',
     imagePath: 'assets/images/electrical_icon.png',
     description: 'Professional electrical solutions for all your needs.',
     features: ['Socket installation', 'Wiring', 'Appliance repair'],
@@ -29,7 +32,8 @@ final List<ServiceDetailsModel> servicesList = [
     workingHours: '8:00 AM - 10:00 PM',
   ),
   ServiceDetailsModel(
-    title: 'Painting Service',
+    title: 'Painting',
+    subTitle: 'Painting Service',
     imagePath: 'assets/images/painting_icon.png',
     description: 'Interior and exterior painting with high-quality materials.',
     features: ['Wall painting', 'Ceiling painting', 'Decorative finishes'],
@@ -38,7 +42,8 @@ final List<ServiceDetailsModel> servicesList = [
     workingHours: '9:00 AM - 6:00 PM',
   ),
   ServiceDetailsModel(
-    title: 'Pest Control Service',
+    title: 'Pest Control',
+    subTitle: 'Pest Control Service',
     imagePath: 'assets/images/Pest_control_icon.png',
     description: 'Safe and effective pest control for homes and offices.',
     features: ['Ant control', 'Cockroach removal', 'Rodent management'],
@@ -47,7 +52,8 @@ final List<ServiceDetailsModel> servicesList = [
     workingHours: '10:00 AM - 5:00 PM',
   ),
   ServiceDetailsModel(
-    title: 'Cleaning Service',
+    title: 'Cleaning',
+    subTitle: 'Cleaning Service',
     imagePath: 'assets/images/cleaning_icon.png',
     description: 'Comprehensive cleaning services by trained professionals.',
     features: ['Home cleaning', 'Office cleaning', 'Deep cleaning'],
