@@ -4,7 +4,7 @@ import 'package:home_services_app/features/auth/presentation/screens/forgot_pass
 import 'package:home_services_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:home_services_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:home_services_app/features/chat/presentation/screens/chat_screen.dart';
-import 'package:home_services_app/features/confirm/presentation/screens/confirmation_screen.dart';
+import 'package:home_services_app/features/confirmation/presentation/screens/confirmation_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/stepper_screen.dart';
 import 'package:home_services_app/features/splash/presentation/screens/splash_screen.dart';
 

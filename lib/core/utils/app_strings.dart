@@ -26,6 +26,8 @@ class AppStrings {
   static const bookNow ="Book Now";
   static const cashOnDelivery ="Cash on delivery";
   static const payByCard ="Pay by\ncard";
+  static const successfulRequest ="Request submitted successfully!";
+  static const waitCall ="Please wait for a call.";
 
   //Stepper stepTitles
   static const customerInformation =  "Customer Information";

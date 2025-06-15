@@ -32,7 +32,7 @@ class UserInfoScreen extends StatelessWidget {
               return null;
             }),
             SizedBox(
-              height:screenHeight * AppSize.s0_05,
+              height:screenHeight * AppSize.s0_03,
             ),
             Text(AppStrings.addYourNumber,style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
             SizedBox(
@@ -48,7 +48,7 @@ class UserInfoScreen extends StatelessWidget {
                   return null;
                 }),
             SizedBox(
-              height:screenHeight * AppSize.s0_05,
+              height:screenHeight * AppSize.s0_03,
             ),
             Text(AppStrings.addYourAddress,style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
             SizedBox(
@@ -66,7 +66,7 @@ class UserInfoScreen extends StatelessWidget {
                   return null;
                 }),
             SizedBox(
-              height:screenHeight * AppSize.s0_002 ,
+              height:screenHeight * AppSize.s0_001 ,
             ),
             Padding(
               padding: const EdgeInsets.symmetric( vertical:  AppSize.s12),
