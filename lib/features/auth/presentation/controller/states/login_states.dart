@@ -10,3 +10,4 @@ class LoginFailure extends LoginState {
   final String message;
   LoginFailure(this.message);
 }
+class ChangePasswordIcon extends LoginState {}

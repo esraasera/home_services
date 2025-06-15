@@ -104,10 +104,19 @@ class RegisterScreen extends StatelessWidget{
       TextFormField(
       keyboardType: TextInputType.visiblePassword,
       controller: passwordController,
-      obscureText: true,
+        obscureText: cubit.showPassword,
       decoration: InputDecoration(
       hintText: AppStrings.password,
       labelText: AppStrings.password,
+        suffixIcon: IconButton(
+          icon:Icon(
+            cubit.showPassword ? Icons.visibility_off : Icons.visibility,
+            color: cubit.showPassword ? AppColors.grey : AppColors.primary,
+          ),
+          onPressed:(){
+            cubit.changeSuffixIcon();
+          } ,
+        ),
       ),
       validator: (value) {
       if (value == null || value.isEmpty) {

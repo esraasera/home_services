@@ -7,3 +7,4 @@ class RegisterFailure extends RegisterState {
   final String message;
   RegisterFailure(this.message);
 }
+class ChangePasswordIcon extends RegisterState {}

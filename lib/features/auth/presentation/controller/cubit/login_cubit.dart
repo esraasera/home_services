@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/errors/app_exception.dart';
 import 'package:home_services_app/features/auth/domain/usecases/login_usecase.dart';
@@ -9,6 +10,7 @@ class LoginCubit extends Cubit <LoginState>{
 
   static LoginCubit get(context) => BlocProvider.of(context);
   final LoginUseCase loginUseCase;
+  bool showPassword = true ;
 
   Future<void> loginUser(String email ,String password) async{
     emit(LoginLoading());
@@ -19,4 +21,10 @@ class LoginCubit extends Cubit <LoginState>{
       emit(LoginFailure(e is AppException ? e.message : e.toString()));
     }
   }
+
+  void changeSuffixIcon() {
+    showPassword = !showPassword;
+    emit(ChangePasswordIcon());
+  }
+
 }

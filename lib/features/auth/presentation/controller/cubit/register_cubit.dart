@@ -10,6 +10,7 @@ class RegisterCubit extends Cubit <RegisterState>{
 
   static RegisterCubit get(context) => BlocProvider.of(context);
   final RegisterUseCase registerUseCase;
+  bool showPassword = true ;
 
   Future<void> registerUser(String email , String name ,String password) async{
     emit(RegisterLoading());
@@ -20,5 +21,9 @@ class RegisterCubit extends Cubit <RegisterState>{
     }catch (e) {
       emit(RegisterFailure(e is AppException ? e.message : e.toString()));
     }
+  }
+  void changeSuffixIcon() {
+    showPassword = !showPassword;
+    emit(ChangePasswordIcon());
   }
 }
