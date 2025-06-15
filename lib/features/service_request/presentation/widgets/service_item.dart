@@ -19,7 +19,7 @@ class ServiceItem extends StatelessWidget {
       onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.grey.shade200,
+          color:AppColors.iconsBG,
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
@@ -28,7 +28,7 @@ class ServiceItem extends StatelessWidget {
             Image.asset(
               imagePath,
               height:screenHeight * AppSize.s0_12,
-              width: screenWidth * AppSize. s0_23,
+              width: screenWidth * AppSize. s0_24,
               fit: BoxFit.cover,
             ),
               SizedBox(
