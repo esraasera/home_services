@@ -21,8 +21,8 @@ class AppStrings {
   static const addYourNumber ="Add Your Number..";
   static const addYourAddress ="Add Your Address..";
   static const selectLocation ="Select Location";
-  static const theService ="The Service: ";
-  static const theCost ="Cost: ";
+  static const theService ="Selected service: ";
+  static const price ="Total price: ";
   static const bookNow ="Book Now";
   static const cashOnDelivery ="Cash on delivery";
   static const payByCard ="Pay by\ncard";

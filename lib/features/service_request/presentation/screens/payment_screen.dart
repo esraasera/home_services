@@ -51,7 +51,7 @@ class PaymentScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(AppStrings.theService,style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
-                              Text("Plumbing",style: getSemiBoldStyle(color: AppColors.black,fontSize: AppSize.s18),),
+                              Text("Plumbing",style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
                             ],
                           ),
                           SizedBox(
@@ -59,8 +59,8 @@ class PaymentScreen extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              Text(AppStrings.theCost,style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
-                              Text("200 EGP",style: getSemiBoldStyle(color: AppColors.black,fontSize: AppSize.s18),),
+                              Text(AppStrings.price,style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
+                              Text("200 EGP",style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
                             ],
                           ),
                         ],
@@ -77,34 +77,52 @@ class PaymentScreen extends StatelessWidget {
                    Material(
                      elevation: AppSize.s10,
                      shape: const CircleBorder(),
-                     child: CircleAvatar(
-                       backgroundColor: AppColors.primary,
-                       radius:screenWidth * AppSize.s0_16 ,
-                       child: Text(
-                       AppStrings.payByCard,
-                       textAlign: TextAlign.center,
-                       style: getBoldStyle(
-                         color: AppColors.white,
-                         fontSize: AppSize.s15,
+                     child: Container(
+                       decoration: BoxDecoration(
+                         shape: BoxShape.circle,
+                         border: Border.all(
+                           color: AppColors.white,
+                           width: AppSize.s2,
+                         ),
                        ),
+                       child: CircleAvatar(
+                         backgroundColor: AppColors.primary,
+                         radius:screenWidth * AppSize.s0_16 ,
+                         child: Text(
+                         AppStrings.payByCard,
+                         textAlign: TextAlign.center,
+                         style: getBoldStyle(
+                           color: AppColors.white,
+                           fontSize: AppSize.s15,
+                         ),
+                       ),
+                                       ),
                      ),
-                ),
                    ),
                     Material(
                       elevation: AppSize.s10,
                       shape: const CircleBorder(),
-                      child: CircleAvatar(
-                          backgroundColor: AppColors.white,
-                          radius:screenWidth * AppSize.s0_16 ,
-                        child: Text(
-                          AppStrings.cashOnDelivery,
-                          textAlign: TextAlign.center,
-                          style: getBoldStyle(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          border: Border.all(
                             color: AppColors.primary,
-                            fontSize: AppSize.s15,
+                            width: AppSize.s2,
                           ),
                         ),
+                        child: CircleAvatar(
+                            backgroundColor: AppColors.white,
+                            radius:screenWidth * AppSize.s0_16 ,
+                          child: Text(
+                            AppStrings.cashOnDelivery,
+                            textAlign: TextAlign.center,
+                            style: getBoldStyle(
+                              color: AppColors.primary,
+                              fontSize: AppSize.s15,
+                            ),
+                          ),
 
+                        ),
                       ),
                     ),
                   ],
