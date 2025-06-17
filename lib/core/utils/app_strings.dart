@@ -20,7 +20,6 @@ class AppStrings {
   static const addYourName = "Add Your Name..";
   static const addYourNumber ="Add Your Number..";
   static const addYourAddress ="Add Your Address..";
-  static const selectLocation ="Select Location";
   static const theService ="Selected service: ";
   static const price ="Total price: ";
   static const bookNow ="Book Now";
@@ -28,6 +27,8 @@ class AppStrings {
   static const payByCard ="Pay by\ncard";
   static const successfulRequest ="Request submitted successfully!";
   static const waitCall ="Please wait for a call.";
+  static const selectLocation ="Select Your Location";
+  static const confirmLocation ="Confirm Location";
 
   //Stepper stepTitles
   static const customerInformation =  "Customer Information";
@@ -51,5 +52,8 @@ class AppStrings {
   static const painting = "Painting";
   static const pestControl = "Pest Control";
   static const cleaning = "Cleaning";
+
+  //map snack bar
+  static const failedAddress = "Failed to retrieve address.";
 
 }

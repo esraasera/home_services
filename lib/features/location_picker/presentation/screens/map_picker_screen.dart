@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:home_services_app/core/theme/styles_manager.dart';
+import 'package:home_services_app/core/utils/app_strings.dart';
+import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/location_picker/data/datasource/map_remote_data_source.dart';
 import 'package:home_services_app/features/location_picker/data/repository/map_repository.dart';
 import 'package:home_services_app/features/location_picker/domain/usecases/map_use_case.dart';
@@ -34,13 +37,23 @@ class MapPickerView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios_new, color: AppColors.white),
+          icon: Icon(
+            Icons.arrow_back_ios_new,
+            color: AppColors.white,
+            size: screenWidth * AppSize.s0_06,
+          ),
           onPressed: () => Navigator.pop(context),
         ),
-        title: const Text("Select Your Location"),
+        title: Text(
+          AppStrings.selectLocation,
+          style:getBoldStyle(color: AppColors.white,fontSize: screenWidth * 0.045)
+        ),
       ),
       body: Stack(
         children: [
@@ -58,31 +71,51 @@ class MapPickerView extends StatelessWidget {
               );
             },
           ),
-          const Center(
-            child: Icon(Icons.location_on, size: 40, color: Colors.red),
+          Center(
+            child: Icon(
+              Icons.location_on,
+              size: screenWidth * 0.1,
+              color: Colors.red,
+            ),
           ),
           Positioned(
-            bottom: 20,
-            left: 20,
-            right: 20,
-            child: ElevatedButton(
-              onPressed: () async {
-                final navigator = Navigator.of(context);
-                final messenger = ScaffoldMessenger.of(context);
-                final cubit = MapPickerCubit.get(context);
+            bottom: screenHeight * AppSize.s0_03,
+            left: screenWidth * AppSize.s0_05,
+            right:  screenWidth * AppSize.s0_05,
+            child: SizedBox(
+              height: screenHeight * AppSize.s0_065,
+              child: ElevatedButton(
+                onPressed: () async {
+                  final navigator = Navigator.of(context);
+                  final messenger = ScaffoldMessenger.of(context);
+                  final cubit = MapPickerCubit.get(context);
 
-                await cubit.confirmPickedLocation();
+                  await cubit.confirmPickedLocation();
 
-                if (cubit.state is MapLocationAddressPicked) {
-                  final address = (cubit.state as MapLocationAddressPicked).address;
-                  navigator.pop(address);
-                } else {
-                  messenger.showSnackBar(
-                    const SnackBar(content: Text("Failed to retrieve address.")),
-                  );
-                }
-              },
-              child: const Text("Confirm Location"),
+                  if (cubit.state is MapLocationAddressPicked) {
+                    final address =
+                        (cubit.state as MapLocationAddressPicked).address;
+                    navigator.pop(address);
+                  } else {
+                    messenger.showSnackBar(
+                      const SnackBar(
+                        content: Text(AppStrings.failedAddress),
+                      ),
+                    );
+                  }
+                },
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: AppColors.primary,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(screenWidth * AppSize.s0_03),
+                  ),
+                ),
+                child: Text(
+                  AppStrings.confirmLocation,
+                  style:getBoldStyle(color: AppColors.white,fontSize: screenWidth * AppSize.s0_045
+                  )
+                ),
+              ),
             ),
           ),
         ],
