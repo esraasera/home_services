@@ -77,52 +77,34 @@ class PaymentScreen extends StatelessWidget {
                    Material(
                      elevation: AppSize.s10,
                      shape: const CircleBorder(),
-                     child: Container(
-                       decoration: BoxDecoration(
-                         shape: BoxShape.circle,
-                         border: Border.all(
-                           color: AppColors.white,
-                           width: AppSize.s2,
-                         ),
+                     child: CircleAvatar(
+                       backgroundColor: AppColors.primary,
+                       radius:screenWidth * AppSize.s0_16 ,
+                       child: Text(
+                       AppStrings.payByCard,
+                       textAlign: TextAlign.center,
+                       style: getBoldStyle(
+                         color: AppColors.white,
+                         fontSize: AppSize.s15,
                        ),
-                       child: CircleAvatar(
-                         backgroundColor: AppColors.primary,
-                         radius:screenWidth * AppSize.s0_16 ,
-                         child: Text(
-                         AppStrings.payByCard,
-                         textAlign: TextAlign.center,
-                         style: getBoldStyle(
-                           color: AppColors.white,
-                           fontSize: AppSize.s15,
-                         ),
-                       ),
-                                       ),
                      ),
+                                     ),
                    ),
                     Material(
                       elevation: AppSize.s10,
                       shape: const CircleBorder(),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
+                      child: CircleAvatar(
+                          backgroundColor: AppColors.white,
+                          radius:screenWidth * AppSize.s0_16 ,
+                        child: Text(
+                          AppStrings.cashOnDelivery,
+                          textAlign: TextAlign.center,
+                          style: getBoldStyle(
                             color: AppColors.primary,
-                            width: AppSize.s2,
+                            fontSize: AppSize.s15,
                           ),
                         ),
-                        child: CircleAvatar(
-                            backgroundColor: AppColors.white,
-                            radius:screenWidth * AppSize.s0_16 ,
-                          child: Text(
-                            AppStrings.cashOnDelivery,
-                            textAlign: TextAlign.center,
-                            style: getBoldStyle(
-                              color: AppColors.primary,
-                              fontSize: AppSize.s15,
-                            ),
-                          ),
 
-                        ),
                       ),
                     ),
                   ],
