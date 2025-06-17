@@ -6,9 +6,9 @@ class MapPickerInitial extends MapPickerState {}
 
 class MapPickerLoading extends MapPickerState {}
 
-class MapPickerError extends MapPickerState {
-  final String message;
-  MapPickerError(this.message);
+class MapLocationPicked extends MapPickerState {
+  final LatLng location;
+  MapLocationPicked(this.location);
 }
 
 class MapLocationAddressPicked extends MapPickerState {
@@ -17,7 +17,7 @@ class MapLocationAddressPicked extends MapPickerState {
   MapLocationAddressPicked(this.location, this.address);
 }
 
-class MapLocationPicked extends MapPickerState {
-  final LatLng location;
-  MapLocationPicked(this.location);
+class MapPickerError extends MapPickerState {
+  final String message;
+  MapPickerError(this.message);
 }
