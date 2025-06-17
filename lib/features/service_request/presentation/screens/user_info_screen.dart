@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
@@ -73,38 +74,43 @@ class UserInfoScreen extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                 },
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(AppSize.s20),
-                  child: Stack(
-                    children: [
-                      Image.asset(
-                        "assets/images/map_image.png",
-                        height: screenHeight * AppSize.s0_16,
-                        width: double.infinity,
-                        fit: BoxFit.cover,
-                      ),
-                      Positioned(
-                        bottom:AppSize.s8,
-                        right: AppSize.s10,
-                        child: Container(
-                          padding: const EdgeInsets.all(AppSize.s4),
-                          decoration: BoxDecoration(
-                            color: AppColors.black,
-                            borderRadius: BorderRadius.circular(AppSize.s20),
-                          ),
-                          child: Row(
-                            children: [
-                              Icon(Icons.location_on, color:AppColors.white, size:AppSize.s15),
-                               SizedBox(width: screenWidth * AppSize.s0_008),
-                              Text(
-                                 AppStrings.selectLocation,
-                                style: getMediumStyle(color: AppColors.white,fontSize: AppSize.s12),
-                              ),
-                            ],
-                          ),
+                child:GestureDetector(
+                  onTap:(){
+                    Navigator.of(context).pushNamed(Routes.mapRoute);
+                  },
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(AppSize.s20),
+                    child: Stack(
+                      children: [
+                        Image.asset(
+                          "assets/images/map_image.png",
+                          height: screenHeight * AppSize.s0_16,
+                          width: double.infinity,
+                          fit: BoxFit.cover,
                         ),
-                      )
-                    ],
+                        Positioned(
+                          bottom:AppSize.s8,
+                          right: AppSize.s10,
+                          child: Container(
+                            padding: const EdgeInsets.all(AppSize.s4),
+                            decoration: BoxDecoration(
+                              color: AppColors.black,
+                              borderRadius: BorderRadius.circular(AppSize.s20),
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(Icons.location_on, color:AppColors.white, size:AppSize.s15),
+                                 SizedBox(width: screenWidth * AppSize.s0_008),
+                                Text(
+                                   AppStrings.selectLocation,
+                                  style: getMediumStyle(color: AppColors.white,fontSize: AppSize.s12),
+                                ),
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
