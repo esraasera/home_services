@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:home_services_app/core/theme/app_colors.dart';
+import 'package:home_services_app/features/location_picker/data/datasource/map_remote_data_source.dart';
+import 'package:home_services_app/features/location_picker/data/repository/map_repository.dart';
+import 'package:home_services_app/features/location_picker/domain/usecases/map_use_case.dart';
 import 'package:home_services_app/features/location_picker/presentation/controller/cubit/map_picker_cubit.dart';
 import 'package:home_services_app/features/location_picker/presentation/controller/states/map_picker_states.dart';
+import 'package:home_services_app/core/theme/app_colors.dart';
 
 class MapPickerScreen extends StatelessWidget {
   const MapPickerScreen({super.key});
@@ -16,7 +19,11 @@ class MapPickerScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => MapPickerCubit(),
+      create: (_) => MapPickerCubit(
+        GetAddressFromLatLngUseCase(
+          MapRepositoryImpl(MapRemoteDataSourceImpl()),
+        ),
+      ),
       child: const MapPickerView(),
     );
   }
@@ -40,8 +47,7 @@ class MapPickerView extends StatelessWidget {
           BlocBuilder<MapPickerCubit, MapPickerState>(
             builder: (context, state) {
               return GoogleMap(
-                initialCameraPosition:
-                MapPickerScreen._initialCameraPosition,
+                initialCameraPosition: MapPickerScreen._initialCameraPosition,
                 myLocationEnabled: true,
                 myLocationButtonEnabled: true,
                 zoomControlsEnabled: true,
@@ -59,23 +65,23 @@ class MapPickerView extends StatelessWidget {
             bottom: 20,
             left: 20,
             right: 20,
-            child:ElevatedButton(
-                onPressed: () async {
-                  final navigator = Navigator.of(context);
-                  final messenger = ScaffoldMessenger.of(context);
-                  final cubit = MapPickerCubit.get(context);
+            child: ElevatedButton(
+              onPressed: () async {
+                final navigator = Navigator.of(context);
+                final messenger = ScaffoldMessenger.of(context);
+                final cubit = MapPickerCubit.get(context);
 
-                  await cubit.confirmPickedLocation();
+                await cubit.confirmPickedLocation();
 
-                  if (cubit.state is MapLocationAddressPicked) {
-                    final address = (cubit.state as MapLocationAddressPicked).address;
-                    navigator.pop(address);
-                  } else {
-                    messenger.showSnackBar(
-                      const SnackBar(content: Text("Failed to retrieve the address. Please try again.")),
-                    );
-                  }
-                },
+                if (cubit.state is MapLocationAddressPicked) {
+                  final address = (cubit.state as MapLocationAddressPicked).address;
+                  navigator.pop(address);
+                } else {
+                  messenger.showSnackBar(
+                    const SnackBar(content: Text("Failed to retrieve address.")),
+                  );
+                }
+              },
               child: const Text("Confirm Location"),
             ),
           ),
