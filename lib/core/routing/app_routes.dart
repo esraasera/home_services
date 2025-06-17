@@ -5,6 +5,7 @@ import 'package:home_services_app/features/auth/presentation/screens/login_scree
 import 'package:home_services_app/features/auth/presentation/screens/register_screen.dart';
 import 'package:home_services_app/features/chat/presentation/screens/chat_screen.dart';
 import 'package:home_services_app/features/confirmation/presentation/screens/confirmation_screen.dart';
+import 'package:home_services_app/features/location_picker/presentation/screens/map_picker_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/stepper_screen.dart';
 import 'package:home_services_app/features/splash/presentation/screens/splash_screen.dart';
 
@@ -14,6 +15,7 @@ class Routes{
   static const String registerRoute = "/register";
   static const String forgotPasswordRoute = "/forgotPassword";
   static const String stepperRoute = "/stepper";
+  static const String mapRoute = "/mapPicker";
   static const String ratingRoute = "/confirmation";
   static const String chatRoute = "/chat";
 }
@@ -32,6 +34,8 @@ static Route <dynamic> getRoute(RouteSettings settings){
       return MaterialPageRoute(builder: (_) => ForgotPassword());
     case Routes.stepperRoute:
       return MaterialPageRoute(builder: (_) => StepperScreen());
+    case Routes.mapRoute:
+      return MaterialPageRoute(builder: (_) => MapPickerScreen());
     case Routes.chatRoute:
       return MaterialPageRoute(builder: (_) => ChatScreen());
     case Routes.ratingRoute:
