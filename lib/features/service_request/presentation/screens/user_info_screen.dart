@@ -6,12 +6,12 @@ import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 
 class UserInfoScreen extends StatelessWidget {
-  const UserInfoScreen({super.key});
+   UserInfoScreen({super.key});
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController numberController = TextEditingController();
+  final TextEditingController addressController = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    final TextEditingController nameController = TextEditingController();
-    final TextEditingController numberController = TextEditingController();
-    final TextEditingController addressController = TextEditingController();
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     return Center(
@@ -75,8 +75,13 @@ class UserInfoScreen extends StatelessWidget {
                 onTap: () {
                 },
                 child:GestureDetector(
-                  onTap:(){
-                    Navigator.of(context).pushNamed(Routes.mapRoute);
+                  onTap: () async {
+                    final selectedAddress = await Navigator.of(context).pushNamed(Routes.mapRoute);
+
+                    if (selectedAddress != null && selectedAddress is String) {
+                      addressController.text = selectedAddress;
+                    }
+
                   },
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(AppSize.s20),
