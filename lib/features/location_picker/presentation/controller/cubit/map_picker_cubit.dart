@@ -1,10 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:geocoding/geocoding.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:home_services_app/features/location_picker/presentation/controller/states/map_picker_states.dart';
+import 'package:home_services_app/features/location_picker/domain/usecases/map_use_case.dart';
+import '../states/map_picker_states.dart';
 
 class MapPickerCubit extends Cubit<MapPickerState> {
-  MapPickerCubit() : super(MapPickerInitial());
+  final GetAddressFromLatLngUseCase getAddressFromLatLngUseCase;
+
+  MapPickerCubit(this.getAddressFromLatLngUseCase) : super(MapPickerInitial());
 
   static MapPickerCubit get(context) => BlocProvider.of(context);
 
@@ -19,15 +21,10 @@ class MapPickerCubit extends Cubit<MapPickerState> {
   Future<void> confirmPickedLocation() async {
     emit(MapPickerLoading());
     try {
-      final placeMarks = await placemarkFromCoordinates(
-        _selectedLocation.latitude,
-        _selectedLocation.longitude,
-      );
-      final place = placeMarks.first;
-      final address = "${place.street}, ${place.locality}, ${place.country}";
+      final address = await getAddressFromLatLngUseCase(_selectedLocation);
       emit(MapLocationAddressPicked(_selectedLocation, address));
     } catch (e) {
-      emit(MapPickerError("Geocoding error: ${e.toString()}"));
+      emit(MapPickerError("Error: ${e.toString()}"));
     }
   }
 }
