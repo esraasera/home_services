@@ -1,3 +1,4 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/features/service_request/data/models/service_model.dart';
 
@@ -5,6 +6,9 @@ class AppConstants {
   // Splash screen
   static const double splashIconSize = 300.0;
   static const Duration splashAnimationDuration = Duration(milliseconds: 1000);
+
+  //map
+  static LatLng defaultLocation = LatLng(30.0444, 31.2357);
 
   static const List<ServiceModel> servicesList = [
     ServiceModel(title: AppStrings.plumbing, imagePath: "assets/images/plumbing_icon.png"),

@@ -7,14 +7,11 @@ class MapPickerInitial extends MapPickerState {}
 class MapPickerLoading extends MapPickerState {}
 
 class MapLocationPicked extends MapPickerState {
-  final LatLng location;
-  MapLocationPicked(this.location);
 }
 
 class MapLocationAddressPicked extends MapPickerState {
-  final LatLng location;
   final String address;
-  MapLocationAddressPicked(this.location, this.address);
+  MapLocationAddressPicked(this.address);
 }
 
 class MapPickerError extends MapPickerState {

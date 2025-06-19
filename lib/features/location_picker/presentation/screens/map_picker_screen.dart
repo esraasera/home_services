@@ -11,11 +11,13 @@ import 'package:home_services_app/features/location_picker/presentation/controll
 import 'package:home_services_app/features/location_picker/presentation/controller/states/map_picker_states.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 
+import '../../../../core/utils/app_constants.dart';
+
 class MapPickerScreen extends StatelessWidget {
   const MapPickerScreen({super.key});
 
-  static const CameraPosition _initialCameraPosition = CameraPosition(
-    target: LatLng(30.0444, 31.2357),
+  static CameraPosition initialCameraPosition = CameraPosition(
+    target: AppConstants.defaultLocation,
     zoom: 13,
   );
 
@@ -52,7 +54,7 @@ class MapPickerScreen extends StatelessWidget {
                 BlocBuilder<MapPickerCubit, MapPickerState>(
                   builder: (context, state) {
                     return GoogleMap(
-                      initialCameraPosition: MapPickerScreen._initialCameraPosition,
+                      initialCameraPosition: MapPickerScreen.initialCameraPosition,
                       myLocationEnabled: true,
                       myLocationButtonEnabled: true,
                       zoomControlsEnabled: true,
@@ -66,7 +68,7 @@ class MapPickerScreen extends StatelessWidget {
                 Center(
                   child: Icon(
                     Icons.location_on,
-                    size: screenWidth * 0.1,
+                    size: screenWidth * 0.13,
                     color:AppColors.marker,
                   ),
                 ),
@@ -81,7 +83,6 @@ class MapPickerScreen extends StatelessWidget {
                         final navigator = Navigator.of(context);
                         final messenger = ScaffoldMessenger.of(context);
                         final cubit = MapPickerCubit.get(context);
-
                         await cubit.confirmPickedLocation();
 
                         if (cubit.state is MapLocationAddressPicked) {
