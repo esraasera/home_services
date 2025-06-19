@@ -13,12 +13,16 @@ class StepperCubit extends Cubit<StepperState> {
   static StepperCubit get(context) => BlocProvider.of(context);
 
   int currentStep = 0;
+  final GlobalKey<FormState> userInfoFormKey = GlobalKey<FormState>();
 
-  final List<Widget> stepScreens = [
-    UserInfoScreen(),
+
+
+  List<Widget> get stepScreens => [
+    UserInfoScreen(formKey: userInfoFormKey),
     ServicesScreen(),
     PaymentScreen(),
   ];
+
 
   final List<String> stepTitles = [
     AppStrings.customerInformation,

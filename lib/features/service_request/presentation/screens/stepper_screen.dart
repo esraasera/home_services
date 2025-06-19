@@ -51,14 +51,21 @@ class StepperScreen extends StatelessWidget {
                               foregroundColor: AppColors.primary,
                                 minimumSize: Size( screenWidth * AppSize.s0_35 , screenHeight * AppSize.s0_075),
                             ) ,
-                             onPressed: cubit.currentStep > 0 ? cubit.previousStepperStep : null,
+                             onPressed: cubit.currentStep > AppSize.s0 ? cubit.previousStepperStep : null,
                               child:Text(AppStrings.back)
                           ),
                           ElevatedButton(
                               style:ElevatedButton.styleFrom(
                                 minimumSize: Size( screenWidth * AppSize.s0_35 , screenHeight * AppSize.s0_075),
                               ),
-                              onPressed:() => cubit.nextStepperStep(context),
+                              onPressed: () {
+                                final formKey = cubit.userInfoFormKey;
+
+                                if (cubit.currentStep != 0 || (formKey.currentState?.validate() ?? false)) {
+                                  cubit.nextStepperStep(context);
+                                }
+                              },
+
                               child:Text(AppStrings.next))
                         ],
                       ),

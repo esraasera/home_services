@@ -43,6 +43,7 @@ class AppStrings {
   static const passwordError = "Please enter your password";
   static const nameError = "Please enter your Name";
   static const numError = "Please enter your Number";
+  static const addressError = "Please enter your Address";
 
 
 // Services
