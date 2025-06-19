@@ -10,7 +10,6 @@ import 'package:home_services_app/features/location_picker/domain/usecases/map_u
 import 'package:home_services_app/features/location_picker/presentation/controller/cubit/map_picker_cubit.dart';
 import 'package:home_services_app/features/location_picker/presentation/controller/states/map_picker_states.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
-
 import '../../../../core/utils/app_constants.dart';
 
 class MapPickerScreen extends StatelessWidget {
@@ -18,7 +17,7 @@ class MapPickerScreen extends StatelessWidget {
 
   static CameraPosition initialCameraPosition = CameraPosition(
     target: AppConstants.defaultLocation,
-    zoom: 13,
+    zoom: AppSize.s13,
   );
 
   @override
@@ -46,7 +45,7 @@ class MapPickerScreen extends StatelessWidget {
               ),
               title: Text(
                   AppStrings.selectLocation,
-                  style:getBoldStyle(color: AppColors.white,fontSize: screenWidth * 0.045)
+                  style:getBoldStyle(color: AppColors.white,fontSize: screenWidth * AppSize.s0_045)
               ),
             ),
             body: Stack(
@@ -68,7 +67,7 @@ class MapPickerScreen extends StatelessWidget {
                 Center(
                   child: Icon(
                     Icons.location_on,
-                    size: screenWidth * 0.13,
+                    size: screenWidth * AppSize.s0_12,
                     color:AppColors.marker,
                   ),
                 ),
@@ -78,7 +77,7 @@ class MapPickerScreen extends StatelessWidget {
                   right:  screenWidth * AppSize.s0_05,
                   child: SizedBox(
                     height: screenHeight * AppSize.s0_065,
-                    child: ElevatedButton(
+                    child:state is MapPickerLoading  ? const Center(child: CircularProgressIndicator()):ElevatedButton(
                       onPressed: () async {
                         final navigator = Navigator.of(context);
                         final messenger = ScaffoldMessenger.of(context);
