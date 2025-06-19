@@ -21,105 +21,101 @@ class MapPickerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenHeight = MediaQuery.of(context).size.height;
+    final screenWidth = MediaQuery.of(context).size.width;
     return BlocProvider(
       create: (_) => MapPickerCubit(
         GetAddressFromLatLngUseCase(
           MapRepositoryImpl(MapRemoteDataSourceImpl()),
         ),
       ),
-      child: const MapPickerView(),
-    );
-  }
-}
-
-class MapPickerView extends StatelessWidget {
-  const MapPickerView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
-
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back_ios_new,
-            color: AppColors.white,
-            size: screenWidth * AppSize.s0_06,
-          ),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          AppStrings.selectLocation,
-          style:getBoldStyle(color: AppColors.white,fontSize: screenWidth * 0.045)
-        ),
-      ),
-      body: Stack(
-        children: [
-          BlocBuilder<MapPickerCubit, MapPickerState>(
-            builder: (context, state) {
-              return GoogleMap(
-                initialCameraPosition: MapPickerScreen._initialCameraPosition,
-                myLocationEnabled: true,
-                myLocationButtonEnabled: true,
-                zoomControlsEnabled: true,
-                onMapCreated: (_) {},
-                onCameraMove: (position) {
-                  MapPickerCubit.get(context).updateLocation(position.target);
-                },
-              );
-            },
-          ),
-          Center(
-            child: Icon(
-              Icons.location_on,
-              size: screenWidth * 0.1,
-              color: Colors.red,
-            ),
-          ),
-          Positioned(
-            bottom: screenHeight * AppSize.s0_03,
-            left: screenWidth * AppSize.s0_05,
-            right:  screenWidth * AppSize.s0_05,
-            child: SizedBox(
-              height: screenHeight * AppSize.s0_065,
-              child: ElevatedButton(
-                onPressed: () async {
-                  final navigator = Navigator.of(context);
-                  final messenger = ScaffoldMessenger.of(context);
-                  final cubit = MapPickerCubit.get(context);
-
-                  await cubit.confirmPickedLocation();
-
-                  if (cubit.state is MapLocationAddressPicked) {
-                    final address =
-                        (cubit.state as MapLocationAddressPicked).address;
-                    navigator.pop(address);
-                  } else {
-                    messenger.showSnackBar(
-                      const SnackBar(
-                        content: Text(AppStrings.failedAddress),
-                      ),
-                    );
-                  }
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: AppColors.primary,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(screenWidth * AppSize.s0_03),
-                  ),
+      child:BlocConsumer<MapPickerCubit,MapPickerState>(
+        listener: (BuildContext context,state) {  },
+        builder: (BuildContext context,state) {
+          return  Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: Icon(
+                  Icons.arrow_back_ios_new,
+                  color: AppColors.white,
+                  size: screenWidth * AppSize.s0_06,
                 ),
-                child: Text(
-                  AppStrings.confirmLocation,
-                  style:getBoldStyle(color: AppColors.white,fontSize: screenWidth * AppSize.s0_045
-                  )
-                ),
+                onPressed: () => Navigator.pop(context),
+              ),
+              title: Text(
+                  AppStrings.selectLocation,
+                  style:getBoldStyle(color: AppColors.white,fontSize: screenWidth * 0.045)
               ),
             ),
-          ),
-        ],
-      ),
+            body: Stack(
+              children: [
+                BlocBuilder<MapPickerCubit, MapPickerState>(
+                  builder: (context, state) {
+                    return GoogleMap(
+                      initialCameraPosition: MapPickerScreen._initialCameraPosition,
+                      myLocationEnabled: true,
+                      myLocationButtonEnabled: true,
+                      zoomControlsEnabled: true,
+                      onMapCreated: (_) {},
+                      onCameraMove: (position) {
+                        MapPickerCubit.get(context).updateLocation(position.target);
+                      },
+                    );
+                  },
+                ),
+                Center(
+                  child: Icon(
+                    Icons.location_on,
+                    size: screenWidth * 0.1,
+                    color:AppColors.marker,
+                  ),
+                ),
+                Positioned(
+                  bottom: screenHeight * AppSize.s0_03,
+                  left: screenWidth * AppSize.s0_05,
+                  right:  screenWidth * AppSize.s0_05,
+                  child: SizedBox(
+                    height: screenHeight * AppSize.s0_065,
+                    child: ElevatedButton(
+                      onPressed: () async {
+                        final navigator = Navigator.of(context);
+                        final messenger = ScaffoldMessenger.of(context);
+                        final cubit = MapPickerCubit.get(context);
+
+                        await cubit.confirmPickedLocation();
+
+                        if (cubit.state is MapLocationAddressPicked) {
+                          final address =
+                              (cubit.state as MapLocationAddressPicked).address;
+                          navigator.pop(address);
+                        } else {
+                          messenger.showSnackBar(
+                            const SnackBar(
+                              content: Text(AppStrings.failedAddress),
+                            ),
+                          );
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: AppColors.primary,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(screenWidth * AppSize.s0_03),
+                        ),
+                      ),
+                      child: Text(
+                          AppStrings.confirmLocation,
+                          style:getBoldStyle(color: AppColors.white,fontSize: screenWidth * AppSize.s0_045
+                          )
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      )
     );
   }
 }
+

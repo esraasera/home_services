@@ -10,6 +10,7 @@ class AppColors {
   static Color iconsBG = const Color(0xfff3f3f3);
   static Color black = const Color(0xff000000);
   static Color error = const Color(0xffe61f34);
+  static Color marker = const Color(0xffda3434);
   static Color success = const Color(0xff228800);
 }
 
