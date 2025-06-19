@@ -14,11 +14,19 @@ class StepperCubit extends Cubit<StepperState> {
 
   int currentStep = 0;
   final GlobalKey<FormState> userInfoFormKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
+  final numberController = TextEditingController();
+  final addressController = TextEditingController();
 
 
 
   List<Widget> get stepScreens => [
-    UserInfoScreen(formKey: userInfoFormKey),
+    UserInfoScreen(
+      formKey: userInfoFormKey,
+      nameController: nameController,
+      numberController: numberController,
+      addressController: addressController,
+    ),
     ServicesScreen(),
     PaymentScreen(),
   ];

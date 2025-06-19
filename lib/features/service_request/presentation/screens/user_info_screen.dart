@@ -6,11 +6,19 @@ import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 
 class UserInfoScreen extends StatelessWidget {
-   UserInfoScreen({super.key, required this.formKey});
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController numberController = TextEditingController();
-  final TextEditingController addressController = TextEditingController();
   final GlobalKey<FormState> formKey;
+  final TextEditingController nameController;
+  final TextEditingController numberController;
+  final TextEditingController addressController;
+
+  const UserInfoScreen({
+    super.key,
+    required this.formKey,
+    required this.nameController,
+    required this.numberController,
+    required this.addressController,
+  });
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
