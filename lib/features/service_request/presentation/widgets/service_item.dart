@@ -5,16 +5,17 @@ import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/data/models/service_details_model.dart';
 
 class ServiceItem extends StatelessWidget {
-  final ServiceDetailsModel service;
+  final ServiceDetailsModel service ;
+  final VoidCallback onTap;
 
-  const ServiceItem({super.key,required this.service});
+  const ServiceItem({super.key,  required this.service ,required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return GestureDetector(
-      onTap: (){},
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           color:AppColors.iconsBG,
@@ -32,7 +33,7 @@ class ServiceItem extends StatelessWidget {
               SizedBox(
               height: screenHeight * AppSize.s0_01,
             ),
-            Text( service.title, style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14)),
+            Text(service.title, style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14)),
           ],
         ),
       ),

@@ -23,7 +23,8 @@ class ServicesScreen extends StatelessWidget {
         itemCount: servicesList.length,
         itemBuilder: (context, index) {
           final service = servicesList[index];
-          return GestureDetector(
+          return ServiceItem(
+           service: service,
             onTap: () {
               Navigator.push(
                 context,
@@ -32,9 +33,6 @@ class ServicesScreen extends StatelessWidget {
                 ),
               );
             },
-            child: ServiceItem(
-             service: service,
-            ),
           );
         },
       );
