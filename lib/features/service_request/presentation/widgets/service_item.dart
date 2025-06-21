@@ -2,21 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/values/app_values.dart';
+import 'package:home_services_app/features/service_request/data/models/service_details_model.dart';
 
 class ServiceItem extends StatelessWidget {
-  final String title;
-  final String subTitle;
-  final String imagePath;
-  final VoidCallback onTap;
+  final ServiceDetailsModel service;
 
-  const ServiceItem({super.key, required this.title, required this.imagePath, required this.onTap, required this.subTitle});
+  const ServiceItem({super.key,required this.service});
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return GestureDetector(
-      onTap: onTap,
+      onTap: (){},
       child: Container(
         decoration: BoxDecoration(
           color:AppColors.iconsBG,
@@ -26,7 +24,7 @@ class ServiceItem extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              imagePath,
+              service.imagePath,
               height:screenHeight * AppSize.s0_12,
               width: screenWidth * AppSize. s0_24,
               fit: BoxFit.cover,
@@ -34,7 +32,7 @@ class ServiceItem extends StatelessWidget {
               SizedBox(
               height: screenHeight * AppSize.s0_01,
             ),
-            Text(title, style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14)),
+            Text( service.title, style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s14)),
           ],
         ),
       ),

@@ -68,7 +68,9 @@ class ServiceDetailsScreen extends StatelessWidget {
                 style:ElevatedButton.styleFrom(
                   minimumSize: Size( screenWidth * AppSize.s1 , screenHeight * AppSize.s0_073),
                 ),
-                onPressed: () {},
+                onPressed: () {
+
+                },
                 child: Text(
                   AppStrings.bookNow,
                 ),

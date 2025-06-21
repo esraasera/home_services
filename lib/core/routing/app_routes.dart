@@ -3,7 +3,6 @@ import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:home_services_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:home_services_app/features/auth/presentation/screens/register_screen.dart';
-import 'package:home_services_app/features/chat/presentation/screens/chat_screen.dart';
 import 'package:home_services_app/features/confirmation/presentation/screens/confirmation_screen.dart';
 import 'package:home_services_app/features/location_picker/presentation/screens/map_picker_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/stepper_screen.dart';
@@ -17,7 +16,6 @@ class Routes{
   static const String stepperRoute = "/stepper";
   static const String mapRoute = "/mapPicker";
   static const String ratingRoute = "/confirmation";
-  static const String chatRoute = "/chat";
 }
 
 
@@ -36,8 +34,6 @@ static Route <dynamic> getRoute(RouteSettings settings){
       return MaterialPageRoute(builder: (_) => StepperScreen());
     case Routes.mapRoute:
       return MaterialPageRoute(builder: (_) => MapPickerScreen());
-    case Routes.chatRoute:
-      return MaterialPageRoute(builder: (_) => ChatScreen());
     case Routes.ratingRoute:
       return MaterialPageRoute(builder: (_) => ConfirmationScreen());
     default :
