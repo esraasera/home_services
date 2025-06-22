@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
+import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/confirmation/presentation/screens/confirmation_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/stepper_states.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/payment_screen.dart';
@@ -13,6 +14,7 @@ class StepperCubit extends Cubit<StepperState> {
   static StepperCubit get(context) => BlocProvider.of(context);
 
   int currentStep = 0;
+  static bool isLast = false ;
   final GlobalKey<FormState> userInfoFormKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final numberController = TextEditingController();
@@ -35,13 +37,21 @@ class StepperCubit extends Cubit<StepperState> {
   final List<String> stepTitles = [
     AppStrings.customerInformation,
     AppStrings.chooseService,
-    AppStrings.paymentAndConfirmation,
+    AppStrings.payment,
   ];
 
   int get totalSteps => stepScreens.length;
 
   int get displayStep => (currentStep < totalSteps) ? currentStep + 1 : totalSteps;
 
+
+
+  void isLastStep(){
+  if (currentStep < totalSteps - AppSize.s1) {
+    isLast = true;
+    emit(StepperChanged());
+  }
+  }
 
   void nextStepperStep(BuildContext context) {
     if (currentStep < stepScreens.length - 1) {
