@@ -29,6 +29,7 @@ class AppStrings {
   static const waitCall ="Please wait for a call.";
   static const selectLocation ="Select Your Location";
   static const confirmLocation ="Confirm Location";
+  static const settings ="Settings";
 
   //Stepper stepTitles
   static const customerInformation =  "Customer Information";
