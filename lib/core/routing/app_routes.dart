@@ -6,6 +6,7 @@ import 'package:home_services_app/features/auth/presentation/screens/register_sc
 import 'package:home_services_app/features/confirmation/presentation/screens/confirmation_screen.dart';
 import 'package:home_services_app/features/location_picker/presentation/screens/map_picker_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/stepper_screen.dart';
+import 'package:home_services_app/features/settings/presentation/screens/settings_screen.dart';
 import 'package:home_services_app/features/splash/presentation/screens/splash_screen.dart';
 
 class Routes{
