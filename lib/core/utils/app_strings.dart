@@ -34,6 +34,8 @@ class AppStrings {
   static const language =" Language";
   static const arabic =" العربيه";
   static const english ="English";
+  static const ar ="ar";
+  static const en ="en";
   static const logOut ="Logout";
 
   //Stepper stepTitles
