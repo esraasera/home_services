@@ -3,32 +3,39 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
+import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/stepper_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/stepper_states.dart';
-import 'package:home_services_app/features/service_request/presentation/widgets/app_settings_drawer.dart';
+import 'package:home_services_app/features/service_request/presentation/widgets/settings_drawer.dart';
 import 'package:home_services_app/features/service_request/presentation/widgets/stepper_indicator.dart';
 
 class StepperScreen extends StatelessWidget {
-  const StepperScreen({super.key});
+  StepperScreen({super.key});
+  final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    return BlocProvider(
-      create: (context)=>StepperCubit(),
+    return  MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => StepperCubit()),
+        BlocProvider(create: (context) => SettingsCubit()),
+      ],
       child: BlocConsumer<StepperCubit,StepperState>(
         listener: (context,state) {  },
         builder: (context,state) {
           var cubit = StepperCubit.get(context);
-          final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            scaffoldKey.currentState?.openDrawer();
-          });
+          if (!cubit.isDrawerOpened) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              scaffoldKey.currentState?.openDrawer();
+              cubit.isDrawerOpened = true;
+            });
+          }
           return Scaffold(
               key: scaffoldKey,
               drawerEdgeDragWidth:screenWidth * AppSize.s0_2,
-              drawer: const AppSettingsDrawer(),
+              drawer: const SettingsDrawer(),
               body: SafeArea(
                 child: Padding(
                   padding: EdgeInsets.all(screenHeight * AppPadding.p0_02),
@@ -68,8 +75,7 @@ class StepperScreen extends StatelessWidget {
                               ),
                               onPressed: () {
                                 final formKey = cubit.userInfoFormKey;
-
-                                if (cubit.currentStep != 0 || (formKey.currentState?.validate() ?? false)) {
+                                if (formKey.currentState?.validate() ?? false || cubit.currentStep != 0) {
                                   cubit.nextStepperStep(context);
                                 }
                               },

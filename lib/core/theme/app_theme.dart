@@ -36,6 +36,32 @@ ThemeData getApplicationTheme() {
       ),
     ),
 
+    listTileTheme: ListTileThemeData(
+      contentPadding: const EdgeInsets.symmetric(horizontal: AppSize.s16),
+      tileColor: AppColors.bG,
+      textColor: AppColors.black,
+      iconColor: AppColors.black,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppSize.s16),
+      ),
+    ),
+    switchTheme: SwitchThemeData(
+      thumbColor: WidgetStateProperty.all(AppColors.primary),
+      trackColor: WidgetStateProperty.all(AppColors.lightGrey),
+    ),
+    dropdownMenuTheme: DropdownMenuThemeData(
+      menuStyle: MenuStyle(
+        backgroundColor: WidgetStateProperty.all(AppColors.bG),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: AppColors.lightGrey,
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppSize.s10),
+        ),
+      ),
+    ),
+
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: AppColors.primary,
     ),

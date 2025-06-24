@@ -15,6 +15,7 @@ class StepperCubit extends Cubit<StepperState> {
 
   int currentStep = 0;
   static bool isLast = true ;
+  bool isDrawerOpened = false;
   final GlobalKey<FormState> userInfoFormKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final numberController = TextEditingController();
