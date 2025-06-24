@@ -20,7 +20,14 @@ class StepperScreen extends StatelessWidget {
         listener: (context,state) {  },
         builder: (context,state) {
           var cubit = StepperCubit.get(context);
+          final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            scaffoldKey.currentState?.openDrawer();
+          });
           return Scaffold(
+              key: scaffoldKey,
+              drawerEdgeDragWidth: 20,
+              drawer: const AppSettingsDrawer(),
               body: SafeArea(
                 child: Padding(
                   padding: EdgeInsets.all(screenHeight * AppPadding.p0_02),
@@ -65,7 +72,6 @@ class StepperScreen extends StatelessWidget {
                                   cubit.nextStepperStep(context);
                                 }
                               },
-
                               child:Text(AppStrings.next))
                         ],
                       ),

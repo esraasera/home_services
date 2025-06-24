@@ -6,7 +6,6 @@ import 'package:home_services_app/features/auth/presentation/screens/register_sc
 import 'package:home_services_app/features/confirmation/presentation/screens/confirmation_screen.dart';
 import 'package:home_services_app/features/location_picker/presentation/screens/map_picker_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/stepper_screen.dart';
-import 'package:home_services_app/features/settings/presentation/screens/settings_screen.dart';
 import 'package:home_services_app/features/splash/presentation/screens/splash_screen.dart';
 
 class Routes{
@@ -32,8 +31,6 @@ static Route <dynamic> getRoute(RouteSettings settings){
       return MaterialPageRoute(builder: (_) => RegisterScreen());
     case Routes.forgotPasswordRoute:
       return MaterialPageRoute(builder: (_) => ForgotPassword());
-    case Routes.settingsRoute:
-      return MaterialPageRoute(builder: (_) => SettingsScreen());
     case Routes.stepperRoute:
       return MaterialPageRoute(builder: (_) => StepperScreen());
     case Routes.mapRoute:

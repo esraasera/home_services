@@ -36,7 +36,7 @@ class LoginScreen extends StatelessWidget{
         );
       }
       if (state is LoginSuccess) {
-         Navigator.pushReplacementNamed(context, Routes.settingsRoute);
+        Navigator.pushReplacementNamed(context, Routes.stepperRoute);
       }
     },
     builder:(context, state){
