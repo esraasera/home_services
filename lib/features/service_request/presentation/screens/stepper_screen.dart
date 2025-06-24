@@ -5,6 +5,7 @@ import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/stepper_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/stepper_states.dart';
+import 'package:home_services_app/features/service_request/presentation/widgets/app_settings_drawer.dart';
 import 'package:home_services_app/features/service_request/presentation/widgets/stepper_indicator.dart';
 
 class StepperScreen extends StatelessWidget {
@@ -26,7 +27,7 @@ class StepperScreen extends StatelessWidget {
           });
           return Scaffold(
               key: scaffoldKey,
-              drawerEdgeDragWidth: 20,
+              drawerEdgeDragWidth:screenWidth * AppSize.s0_2,
               drawer: const AppSettingsDrawer(),
               body: SafeArea(
                 child: Padding(

@@ -30,6 +30,9 @@ class AppStrings {
   static const selectLocation ="Select Your Location";
   static const confirmLocation ="Confirm Location";
   static const settings ="Settings";
+  static const darkMode ="Dark Mode";
+  static const language ="Change Language";
+  static const logOut ="Logout";
 
   //Stepper stepTitles
   static const customerInformation =  "Customer Information";

@@ -24,6 +24,18 @@ ThemeData getApplicationTheme() {
         titleTextStyle:
         getRegularStyle(fontSize: FontSize.s16, color: AppColors.white)),
 
+
+    drawerTheme: DrawerThemeData(
+      backgroundColor: AppColors.white,
+      elevation: AppSize.s8,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(AppSize.s20),
+          bottomRight: Radius.circular(AppSize.s20),
+        ),
+      ),
+    ),
+
     progressIndicatorTheme: ProgressIndicatorThemeData(
       color: AppColors.primary,
     ),
