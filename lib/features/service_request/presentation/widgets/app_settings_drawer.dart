@@ -4,8 +4,8 @@ import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
-import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
-import 'package:home_services_app/features/service_request/presentation/controller/states/settings_states.dart';
+import 'package:home_services_app/features/service_request/presentation/controller/cubit/stepper_cubit.dart';
+import 'package:home_services_app/features/service_request/presentation/controller/states/stepper_states.dart';
 
 class AppSettingsDrawer extends StatelessWidget {
   const AppSettingsDrawer({super.key});
@@ -15,11 +15,11 @@ class AppSettingsDrawer extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
     return BlocProvider(
-      create: (BuildContext context) => SettingsCubit(),
-        child:BlocConsumer<SettingsCubit,SettingsState>(
+      create: (BuildContext context) => StepperCubit(),
+        child:BlocConsumer<StepperCubit,StepperState>(
         listener: (context,state){},
     builder: (context,state){
-       var cubit = SettingsCubit.get(context);
+       var cubit = StepperCubit.get(context);
           return  Drawer(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: screenHeight * AppPadding.p0_06,horizontal: screenWidth * AppPadding.p0_02 ),

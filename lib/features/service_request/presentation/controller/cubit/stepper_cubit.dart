@@ -71,4 +71,21 @@ class StepperCubit extends Cubit<StepperState> {
     }
   }
 
+  bool isDarkMode = false;
+  String currentLanguage = AppStrings.en;
+
+  void toggleTheme() {
+    isDarkMode = !isDarkMode;
+    emit(SettingsUpdated());
+  }
+
+  void changeLanguage(String lang) {
+    currentLanguage = lang;
+    emit(SettingsUpdated());
+  }
+
+  void logout() {
+    emit(SettingsLoggedOut());
+  }
+
 }
