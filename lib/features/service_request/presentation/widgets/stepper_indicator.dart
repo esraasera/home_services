@@ -47,10 +47,11 @@ class StepperIndicator extends StatelessWidget {
               style: getBoldStyle(color: AppColors.black,fontSize: screenWidth * AppSize.s0_053),
             ),
             const SizedBox(height:AppSize.s4),
-            Text(
-              AppStrings.nextPage + nextTitle,
-              style: getBoldStyle(color: AppColors.darkGrey,fontSize:screenWidth * AppSize.s0_035),
-            ),
+            if (nextTitle.isNotEmpty)
+              Text(
+                AppStrings.nextPage + nextTitle,
+                style: getBoldStyle(color: AppColors.darkGrey, fontSize: screenWidth * AppSize.s0_035),
+              ),
           ],
         ),
       ],

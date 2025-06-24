@@ -109,8 +109,13 @@ class StepperScreen extends StatelessWidget {
                                   stepperCubit.nextStepperStep(context);
                                 }
                               },
-                              child: Text(AppStrings.next),
-                            )
+                            child: Text(
+                              stepperCubit.currentStep == stepperCubit.totalSteps - 1
+                                  ? AppStrings.confirm
+                                  : AppStrings.next,
+                            ),
+
+                          )
                         ],
                       ),
                     ],

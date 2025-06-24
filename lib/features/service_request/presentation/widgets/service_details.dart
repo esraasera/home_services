@@ -19,14 +19,14 @@ class ServiceDetailsScreen extends StatelessWidget {
     var cubit = ServiceRequestCubit.get(context);
     return Scaffold(
       appBar: AppBar(
-        leading: InkWell(
-          onTap: () {Navigator.pop(context);},
-            child: Icon(Icons.arrow_back_ios_new_outlined,color: AppColors.white,)),
+          leading: InkWell(
+              onTap: () {Navigator.pop(context);},
+              child: Icon(Icons.arrow_back_ios_new_outlined,color: AppColors.white,)),
           title: Text(service.subTitle,style: getBoldStyle(color: AppColors.white,fontSize: FontSize.s18),)
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(
-           screenWidth * AppPadding.p0_04,
+          screenWidth * AppPadding.p0_04,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -40,12 +40,12 @@ class ServiceDetailsScreen extends StatelessWidget {
             ),
             Text(
               service.description,
-              style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s16),
+              style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s18),
             ),
             SizedBox(
               height:screenHeight * AppSize.s0_028,
             ),
-            Text("Services Offered:", style: getSemiBoldStyle(color: AppColors.primary,fontSize: AppSize.s18)),
+            Text(AppStrings.serviceOffered, style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18)),
             SizedBox(
               height:screenHeight * AppSize.s0_028,
             ),
@@ -53,15 +53,30 @@ class ServiceDetailsScreen extends StatelessWidget {
             SizedBox(
               height:screenHeight * AppSize.s0_028,
             ),
-            Text("Starting Price: ${service.startingPrice}",style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s16),),
+            Row(
+              children: [
+                Text(" ${AppStrings.price} ",style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s16),),
+                Text(" ${service.price}",style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s16),),
+              ],
+            ),
             SizedBox(
               height:screenHeight * AppSize.s0_02,
             ),
-            Text("Estimated Duration: ${service.estimatedDuration}",style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s16),),
+            Row(
+              children: [
+                Text(" ${AppStrings.duration}",style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s16),),
+                Text(" ${service.estimatedDuration}",style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s16),),
+              ],
+            ),
             SizedBox(
               height:screenHeight * AppSize.s0_02,
             ),
-            Text("Working Hours: ${service.workingHours}",style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s16),),
+            Row(
+              children: [
+                Text("${AppStrings.workingHours} ",style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s16),),
+                Text(" ${service.workingHours}",style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s16),),
+              ],
+            ),
             SizedBox(
               height:screenHeight * AppSize.s0_06,
             ),
@@ -71,7 +86,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                   minimumSize: Size( screenWidth * AppSize.s1 , screenHeight * AppSize.s0_073),
                 ),
                 onPressed: () {
-                  cubit.setServiceData(name: service.title, price:service.startingPrice);
+                  cubit.setServiceData(name: service.title, price:service.price);
                   cubit.isSelectedService(name:service.title);
                   Navigator.pop(context);
                 },

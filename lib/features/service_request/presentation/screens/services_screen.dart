@@ -14,33 +14,33 @@ class ServicesScreen extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
     return GridView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: screenHeight * AppPadding.p0_03,
-          crossAxisSpacing: screenWidth * AppPadding.p0_03,
-          childAspectRatio: AppSize.s1_13 ,
-        ),
-        itemCount: servicesList.length,
-        itemBuilder: (context, index) {
-          final service = servicesList[index];
-          return ServiceItem(
-           service: service,
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => BlocProvider.value(
-                    value: ServiceRequestCubit.get(context),
-                    child: ServiceDetailsScreen(service: service),
-                  ),
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        mainAxisSpacing: screenHeight * AppPadding.p0_03,
+        crossAxisSpacing: screenWidth * AppPadding.p0_03,
+        childAspectRatio: AppSize.s1_13 ,
+      ),
+      itemCount: servicesList.length,
+      itemBuilder: (context, index) {
+        final service = servicesList[index];
+        return ServiceItem(
+          service: service,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (_) => BlocProvider.value(
+                  value: ServiceRequestCubit.get(context),
+                  child: ServiceDetailsScreen(service: service),
                 ),
-              );
-            },
+              ),
+            );
+          },
 
-          );
-        },
-      );
+        );
+      },
+    );
   }
 }

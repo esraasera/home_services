@@ -4,7 +4,7 @@ class ServiceDetailsModel {
   final String imagePath;
   final String description;
   final List<String> features;
-  final String startingPrice;
+  final String price;
   final String estimatedDuration;
   final String workingHours;
 
@@ -14,7 +14,7 @@ class ServiceDetailsModel {
     required this.imagePath,
     required this.description,
     required this.features,
-    required this.startingPrice,
+    required this.price,
     required this.estimatedDuration,
     required this.workingHours,
   });

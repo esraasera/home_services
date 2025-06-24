@@ -61,7 +61,7 @@ class PaymentScreen extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              Text(AppStrings.price,style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
+                              Text(AppStrings.totalPrice,style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
                               Text(serviceCubit.servicePrice ?? AppStrings.notAvailable,style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
                             ],
                           ),
@@ -92,21 +92,26 @@ class PaymentScreen extends StatelessWidget {
                      ),
                                      ),
                    ),
-                    Material(
-                      elevation: AppSize.s10,
-                      shape: const CircleBorder(),
-                      child: CircleAvatar(
-                          backgroundColor: AppColors.white,
-                          radius:screenWidth * AppSize.s0_16 ,
-                        child: Text(
-                          AppStrings.cashOnDelivery,
-                          textAlign: TextAlign.center,
-                          style: getBoldStyle(
-                            color: AppColors.primary,
-                            fontSize: AppSize.s15,
-                          ),
-                        ),
+                    GestureDetector(
+                      onTap:(){
 
+                      } ,
+                      child: Material(
+                        elevation: AppSize.s10,
+                        shape: const CircleBorder(),
+                        child: CircleAvatar(
+                            backgroundColor: AppColors.white,
+                            radius:screenWidth * AppSize.s0_16 ,
+                          child: Text(
+                            AppStrings.cashOnDelivery,
+                            textAlign: TextAlign.center,
+                            style: getBoldStyle(
+                              color: AppColors.primary,
+                              fontSize: AppSize.s15,
+                            ),
+                          ),
+
+                        ),
                       ),
                     ),
                   ],

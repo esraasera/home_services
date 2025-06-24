@@ -14,7 +14,6 @@ class StepperCubit extends Cubit<StepperState> {
   static StepperCubit get(context) => BlocProvider.of(context);
 
   int currentStep = 0;
-  static bool isLast = true ;
   bool isDrawerOpened = false;
   final nameController = TextEditingController();
   final numberController = TextEditingController();
@@ -46,14 +45,6 @@ class StepperCubit extends Cubit<StepperState> {
 
   int get displayStep => (currentStep < totalSteps) ? currentStep + 1 : totalSteps;
 
-
-
-  void isLastStep(){
-  if (currentStep < totalSteps - AppSize.s1) {
-    isLast = true;
-    emit(StepperChanged());
-  }
-  }
 
   void nextStepperStep(BuildContext context) {
     if (currentStep < stepScreens.length - 1) {

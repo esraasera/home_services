@@ -19,36 +19,36 @@ class ServiceItem extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     return BlocConsumer<ServiceRequestCubit,ServiceRequestState>(
         listener:(context,state){},
-    builder: (context,state) {
-      var cubit = ServiceRequestCubit.get(context);
-      return GestureDetector(
-        onTap: onTap,
-        child: Container(
-          decoration: BoxDecoration(
-            color: cubit.selectedServiceTitle == service.title
-                ? AppColors.lightPrimary
-                : AppColors.bG,
+        builder: (context,state) {
+          var cubit = ServiceRequestCubit.get(context);
+          return GestureDetector(
+            onTap: onTap,
+            child: Container(
+              decoration: BoxDecoration(
+                color: cubit.selectedServiceTitle == service.title
+                    ? AppColors.lightPrimary
+                    : AppColors.bG,
 
-            borderRadius: BorderRadius.circular(AppSize.s16),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Image.asset(
-                service.imagePath,
-                height: screenHeight * AppSize.s0_12,
-                width: screenWidth * AppSize.s0_24,
-                fit: BoxFit.cover,
+                borderRadius: BorderRadius.circular(AppSize.s16),
               ),
-              SizedBox(
-                height: screenHeight * AppSize.s0_01,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    service.imagePath,
+                    height: screenHeight * AppSize.s0_12,
+                    width: screenWidth * AppSize.s0_24,
+                    fit: BoxFit.cover,
+                  ),
+                  SizedBox(
+                    height: screenHeight * AppSize.s0_01,
+                  ),
+                  Text(service.title, style: getBoldStyle(
+                      color: AppColors.black, fontSize: AppSize.s14)),
+                ],
               ),
-              Text(service.title, style: getBoldStyle(
-                  color: AppColors.black, fontSize: AppSize.s14)),
-            ],
-          ),
-        ),
-      );
-    });
+            ),
+          );
+        });
   }
 }
