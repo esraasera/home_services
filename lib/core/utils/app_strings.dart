@@ -24,6 +24,7 @@ class AppStrings {
   static const totalPrice ="Total price: ";
   static const bookNow ="Book Now";
   static const cashOnDelivery ="Cash on delivery";
+  static const cash ="cash";
   static const payByCard ="Pay by\ncard";
   static const successfulRequest ="Request submitted successfully!";
   static const serviceOffered ="Services Offered:";
