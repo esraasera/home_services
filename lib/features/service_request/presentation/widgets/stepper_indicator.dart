@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
-import 'package:home_services_app/features/service_request/presentation/controller/cubit/stepper_cubit.dart';
 
 class StepperIndicator extends StatelessWidget {
   final int currentStep;
@@ -46,26 +44,12 @@ class StepperIndicator extends StatelessWidget {
           children: [
             Text(
               title,
-              style: getBoldStyle(color: AppColors.black,fontSize: screenWidth * AppSize.s0_049),
+              style: getBoldStyle(color: AppColors.black,fontSize: screenWidth * AppSize.s0_053),
             ),
-            const SizedBox(height:AppSize.s1),
-            if (!StepperCubit.isLast)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                  Text(
-                  AppStrings.nextPage + nextTitle,
-                  style: getBoldStyle(color: AppColors.darkGrey,fontSize:screenWidth * AppSize.s0_04),
-                ),
-                IconButton(
-                    onPressed: (){
-                  Navigator.pushReplacementNamed(context, Routes.settingsRoute);
-                }, icon:Icon(
-                  Icons.settings_outlined,
-                  color: AppColors.darkGrey,
-                  size:screenWidth * AppSize.s0_075,
-                ))
-              ],
+            const SizedBox(height:AppSize.s4),
+            Text(
+              AppStrings.nextPage + nextTitle,
+              style: getBoldStyle(color: AppColors.darkGrey,fontSize:screenWidth * AppSize.s0_035),
             ),
           ],
         ),

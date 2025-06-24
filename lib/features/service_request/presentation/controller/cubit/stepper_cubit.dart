@@ -14,7 +14,7 @@ class StepperCubit extends Cubit<StepperState> {
   static StepperCubit get(context) => BlocProvider.of(context);
 
   int currentStep = 0;
-  static bool isLast = false ;
+  static bool isLast = true ;
   final GlobalKey<FormState> userInfoFormKey = GlobalKey<FormState>();
   final nameController = TextEditingController();
   final numberController = TextEditingController();
