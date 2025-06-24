@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/utils/static_services.dart';
 import 'package:home_services_app/core/values/app_values.dart';
+import 'package:home_services_app/features/service_request/presentation/controller/cubit/service_request_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/widgets/service_details.dart';
 import 'package:home_services_app/features/service_request/presentation/widgets/service_item.dart';
 
@@ -29,10 +31,14 @@ class ServicesScreen extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (_) => ServiceDetailsScreen(service: service),
+                  builder: (_) => BlocProvider.value(
+                    value: ServiceRequestCubit.get(context),
+                    child: ServiceDetailsScreen(service: service),
+                  ),
                 ),
               );
             },
+
           );
         },
       );

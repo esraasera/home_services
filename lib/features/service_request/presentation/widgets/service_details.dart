@@ -5,6 +5,7 @@ import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/data/models/service_details_model.dart';
+import 'package:home_services_app/features/service_request/presentation/controller/cubit/service_request_cubit.dart';
 
 class ServiceDetailsScreen extends StatelessWidget {
   final ServiceDetailsModel service;
@@ -15,6 +16,7 @@ class ServiceDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
+    var cubit = ServiceRequestCubit.get(context);
     return Scaffold(
       appBar: AppBar(
         leading: InkWell(
@@ -68,7 +70,11 @@ class ServiceDetailsScreen extends StatelessWidget {
                 style:ElevatedButton.styleFrom(
                   minimumSize: Size( screenWidth * AppSize.s1 , screenHeight * AppSize.s0_073),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  cubit.setServiceData(name: service.title, price:service.startingPrice);
+                  cubit.isSelectedService(name:service.title);
+                  Navigator.pop(context);
+                },
                 child: Text(
                   AppStrings.bookNow,
                 ),

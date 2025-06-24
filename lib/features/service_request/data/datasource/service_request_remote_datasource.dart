@@ -5,13 +5,14 @@ abstract class ServiceRequestDataSource {
   Future<void> submitRequest(ServiceRequestModel model);
 }
 
-class FirebaseServiceRequestDataSource implements ServiceRequestDataSource {
+class ServiceRequestDataSourceImpl implements ServiceRequestDataSource {
+
   @override
-  Future<void> submitRequest(ServiceRequestModel model) async {
+  Future<void> submitRequest(ServiceRequestModel model)async {
     await FirebaseFirestore.instance
         .collection('users')
         .doc(model.userId)
         .collection('request')
         .add(model.toMap());
   }
-}
+  }

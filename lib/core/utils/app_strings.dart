@@ -37,6 +37,8 @@ class AppStrings {
   static const ar ="ar";
   static const en ="en";
   static const logOut ="Logout";
+  static const notSelected ="Not Selected";
+  static const notAvailable ="N/A";
 
   //Stepper stepTitles
   static const customerInformation =  "Customer Information";
@@ -52,6 +54,7 @@ class AppStrings {
   static const nameError = "Please enter your Name";
   static const numError = "Please enter your Number";
   static const addressError = "Please enter your Address";
+  static const serviceError = "Please select a service before proceeding";
 
 
 // Services

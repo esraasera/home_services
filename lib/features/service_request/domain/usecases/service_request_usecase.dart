@@ -3,7 +3,7 @@ import 'package:home_services_app/features/service_request/domain/repository/bas
 
 class ServiceRequestUseCase{
   ServiceRequestRepository repository;
-  ServiceRequestUseCase({required this.repository});
+  ServiceRequestUseCase(this.repository);
 
   Future<void> call(ServiceRequestEntity request) {
     return repository.submitRequest(request);

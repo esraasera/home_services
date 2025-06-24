@@ -4,7 +4,7 @@ class ServiceRequestEntity {
   final String phone;
   final String address;
   final String serviceName;
-  final double servicePrice;
+  final String servicePrice;
   final String paymentMethod;
 
   const ServiceRequestEntity({

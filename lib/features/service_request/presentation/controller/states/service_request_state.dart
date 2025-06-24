@@ -6,6 +6,10 @@ class ServiceRequestLoading extends ServiceRequestState {}
 
 class ServiceRequestSuccess extends ServiceRequestState {}
 
+class SelectedService extends ServiceRequestState {}
+
+class ServiceSelected extends ServiceRequestState {}
+
 class ServiceRequestFailure extends ServiceRequestState {
   final String error;
 

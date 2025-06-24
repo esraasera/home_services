@@ -3,6 +3,7 @@ import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
+import 'package:home_services_app/features/service_request/presentation/controller/cubit/service_request_cubit.dart';
 
 class PaymentScreen extends StatelessWidget {
   const PaymentScreen({super.key});
@@ -11,6 +12,7 @@ class PaymentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+    final serviceCubit = ServiceRequestCubit.get(context);
     return Padding(
       padding: EdgeInsets.symmetric(vertical: screenHeight * AppSize.s0_05),
       child: Material(
@@ -51,7 +53,7 @@ class PaymentScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(AppStrings.theService,style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
-                              Text("Plumbing",style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
+                              Text(serviceCubit.serviceName ?? AppStrings.notSelected,style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
                             ],
                           ),
                           SizedBox(
@@ -60,7 +62,7 @@ class PaymentScreen extends StatelessWidget {
                           Row(
                             children: [
                               Text(AppStrings.price,style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
-                              Text("200 EGP",style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
+                              Text(serviceCubit.servicePrice ?? AppStrings.notAvailable,style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
                             ],
                           ),
                         ],
