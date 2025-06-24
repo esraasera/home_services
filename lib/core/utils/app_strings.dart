@@ -31,7 +31,9 @@ class AppStrings {
   static const confirmLocation ="Confirm Location";
   static const settings ="Settings";
   static const darkMode ="Dark Mode";
-  static const language ="Change Language";
+  static const language =" Language";
+  static const arabic =" العربيه";
+  static const english ="English";
   static const logOut ="Logout";
 
   //Stepper stepTitles

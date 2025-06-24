@@ -26,7 +26,7 @@ ThemeData getApplicationTheme() {
 
 
     drawerTheme: DrawerThemeData(
-      backgroundColor: AppColors.white,
+      backgroundColor: AppColors.lightGrey,
       elevation: AppSize.s8,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
