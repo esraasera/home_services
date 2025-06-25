@@ -82,18 +82,22 @@ class PaymentScreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Material(
-                          elevation: AppSize.s10,
-                          shape: const CircleBorder(),
-                          child: CircleAvatar(
-                            backgroundColor: AppColors.primary,
-                            radius:screenWidth * AppSize.s0_16 ,
-                            child: Text(
-                              AppStrings.payByCard,
-                              textAlign: TextAlign.center,
-                              style: getBoldStyle(
-                                color: AppColors.white,
-                                fontSize: AppSize.s15,
+                        GestureDetector(
+                          onTap:() async {
+                          },
+                          child: Material(
+                            elevation: AppSize.s10,
+                            shape: const CircleBorder(),
+                            child: CircleAvatar(
+                              backgroundColor: AppColors.primary,
+                              radius:screenWidth * AppSize.s0_16 ,
+                              child: Text(
+                                AppStrings.payByCard,
+                                textAlign: TextAlign.center,
+                                style: getBoldStyle(
+                                  color: AppColors.white,
+                                  fontSize: AppSize.s15,
+                                ),
                               ),
                             ),
                           ),
