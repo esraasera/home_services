@@ -18,7 +18,7 @@ class PaymentScreen extends StatelessWidget {
       listener: (context , state){},
       builder:(context , state){
         final serviceCubit = ServiceRequestCubit.get(context);
-        bool isSelected = serviceCubit.selectedMethod == 'cash';
+        bool isSelected = serviceCubit.selectedMethod == AppStrings.cash;
         return  Padding(
           padding: EdgeInsets.symmetric(vertical: screenHeight * AppSize.s0_05),
           child: Material(
@@ -108,7 +108,7 @@ class PaymentScreen extends StatelessWidget {
                             child: CircleAvatar(
                               backgroundColor: AppColors.white,
                               radius:screenWidth * AppSize.s0_16 ,
-                              child: isSelected ? Center(child: Image.asset("assets/images/check_mark_image.png")) :Text(
+                              child: isSelected ? Center(child: Image.asset("assets/images/check_mark_image.png",height:screenWidth * AppSize.s0_28,)) :Text(
                                 AppStrings.cashOnDelivery,
                                 textAlign: TextAlign.center,
                                 style: getBoldStyle(

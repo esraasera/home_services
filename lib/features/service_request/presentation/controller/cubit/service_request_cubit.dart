@@ -38,6 +38,7 @@ class ServiceRequestCubit extends Cubit<ServiceRequestState> {
 
   void setPaymentMethod(String method) {
     paymentMethod = method;
+    emit(SelectedMethod());
   }
 
   void isSelectedService({required String name}) {
