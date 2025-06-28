@@ -1,13 +1,14 @@
+import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 abstract class PaymentRemoteDataSource {
-  Future<void> makePayment({required int amount, required String currency});
+  Future<String> makePayment({required int amount, required String currency});
 }
 
 class PaymentRemoteDataSourceImpl implements PaymentRemoteDataSource {
   @override
-  Future<void> makePayment({required int amount, required String currency}) async {
+  Future<String> makePayment({required int amount, required String currency}) async {
     final url = Uri.parse('https://api.stripe.com/v1/payment_intents');
 
     final response = await http.post(
@@ -23,8 +24,11 @@ class PaymentRemoteDataSourceImpl implements PaymentRemoteDataSource {
       },
     );
 
-    if (response.statusCode != 200) {
+    if (response.statusCode == 200) {
+      final body = jsonDecode(response.body);
+      return body['client_secret'];
+    } else {
       throw Exception('Stripe Payment Failed: ${response.body}');
     }
   }
-}
+  }

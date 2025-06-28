@@ -7,7 +7,7 @@ class PaymentRepositoryImpl implements PaymentRepository {
   PaymentRepositoryImpl(this.dataSource);
 
   @override
-  Future<void> makePayment({required int amount, required String currency}) {
+  Future<String> makePayment({required int amount, required String currency}) {
     return dataSource.makePayment(amount: amount, currency: currency);
   }
 }

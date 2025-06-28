@@ -45,6 +45,9 @@ class AppStrings {
   static const logOut ="Logout";
   static const notSelected ="Not Selected";
   static const notAvailable ="N/A";
+  static const currency = 'egp';
+  static const egp = ' EGP';
+  static const card = "card";
 
   //Stepper stepTitles
   static const customerInformation =  "Customer Information";
@@ -73,5 +76,9 @@ class AppStrings {
 
   //map snack bar
   static const failedAddress = "Failed to retrieve address.";
+
+  //payment snack bar
+  static const methodSelected = "You have already selected a payment method";
+  static const paymentCompleted = "Payment has already been completed";
 
 }

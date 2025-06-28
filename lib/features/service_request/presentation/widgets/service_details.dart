@@ -57,6 +57,7 @@ class ServiceDetailsScreen extends StatelessWidget {
               children: [
                 Text(" ${AppStrings.price} ",style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s16),),
                 Text(" ${service.price}",style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s16),),
+                Text(AppStrings.egp,style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s16),),
               ],
             ),
             SizedBox(
