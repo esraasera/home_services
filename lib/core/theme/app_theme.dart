@@ -172,7 +172,7 @@ ThemeData getDarkTheme() {
 
     listTileTheme: ListTileThemeData(
       contentPadding: const EdgeInsets.symmetric(horizontal: AppSize.s16),
-      tileColor: Colors.grey.shade900,
+      tileColor: AppColors.lightGrey,
       textColor: Colors.white,
       iconColor: Colors.white,
       shape: RoundedRectangleBorder(
@@ -181,17 +181,17 @@ ThemeData getDarkTheme() {
     ),
 
     switchTheme: SwitchThemeData(
-      thumbColor: WidgetStateProperty.all(AppColors.primary),
-      trackColor: WidgetStateProperty.all(Colors.grey.shade700),
+      thumbColor: WidgetStateProperty.all(AppColors.grey),
+      trackColor: WidgetStateProperty.all(AppColors.grey),
     ),
 
     dropdownMenuTheme: DropdownMenuThemeData(
       menuStyle: MenuStyle(
-        backgroundColor: WidgetStateProperty.all(Colors.grey.shade900),
+        backgroundColor: WidgetStateProperty.all(AppColors.lightGrey),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: Colors.grey.shade800,
+        fillColor: AppColors.lightGrey,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppSize.s10),
         ),
@@ -243,7 +243,7 @@ ThemeData getDarkTheme() {
       contentPadding: const EdgeInsets.symmetric(
           horizontal: AppPadding.p8, vertical: AppPadding.p16),
       filled: true,
-      fillColor: AppColors.white,
+      fillColor: AppColors.lightGrey,
       hintStyle:
       getRegularStyle(color: AppColors.black, fontSize: FontSize.s14),
       labelStyle:

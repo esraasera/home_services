@@ -44,7 +44,6 @@ class SettingsDrawer extends StatelessWidget {
                 ),
                 SizedBox(height: screenHeight * AppSize.s0_03),
                 SwitchListTile(
-                  tileColor: AppColors.bG,
                   title: Text(
                     AppStrings.darkMode,
                     style: getBoldStyle(
@@ -59,7 +58,6 @@ class SettingsDrawer extends StatelessWidget {
                 ),
                 SizedBox(height: screenHeight * AppSize.s0_03),
                 ListTile(
-                  tileColor: AppColors.bG,
                   title: Text(
                     AppStrings.language,
                     style: getBoldStyle(
@@ -94,7 +92,6 @@ class SettingsDrawer extends StatelessWidget {
                 ),
                 SizedBox(height: screenHeight * AppSize.s0_03),
                 ListTile(
-                  tileColor: AppColors.bG,
                   leading: Icon(Icons.logout, color: AppColors.black),
                   title: Text(
                     AppStrings.logOut,

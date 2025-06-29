@@ -63,7 +63,7 @@ class StepperIndicator extends StatelessWidget {
                     style: cubit.isDark
                         ? Theme.of(context).textTheme.displayLarge!.copyWith(
                       fontSize: screenWidth * AppSize.s0_035,
-                      color: Colors.white,
+                      color : AppColors.lightPrimary,
                     )
                         : Theme.of(context).textTheme.displayLarge!.copyWith(
                       fontSize: screenWidth * AppSize.s0_035,

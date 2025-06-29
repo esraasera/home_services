@@ -1,14 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_services_app/core/helpers/cache_helper.dart';
+import 'package:home_services_app/core/helpers/shared_prefs_helper.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/settings_states.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit() : super(SettingsInitial());
+  SettingsCubit() : super(SettingsInitial()) {
+    isDark = CacheHelper.getBoolData(key: "isDark") ?? false;
+  }
 
   static SettingsCubit get(context) => BlocProvider.of(context);
 
-  bool isDark = false;
+  late bool isDark;
   String currentLanguage = AppStrings.en;
 
   void toggleTheme() {
@@ -16,7 +18,6 @@ class SettingsCubit extends Cubit<SettingsState> {
     CacheHelper.putBoolData(key: "isDark", value: isDark);
     emit(SettingsUpdated());
   }
-
 
   void changeLanguage(String lang) {
     currentLanguage = lang;

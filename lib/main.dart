@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:home_services_app/app/app.dart';
 import 'package:home_services_app/core/bloc_observer.dart';
+import 'package:home_services_app/core/helpers/shared_prefs_helper.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
 
 void main() async {
@@ -13,6 +14,7 @@ void main() async {
   Bloc.observer = MyBlocObserver();
   await dotenv.load(fileName: ".env");
   Stripe.publishableKey = dotenv.env['STRIPE_PUBLISHABLE_KEY']!;
+  await CacheHelper.init();
   await Stripe.instance.applySettings();
 
   runApp(

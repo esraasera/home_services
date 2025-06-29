@@ -11,6 +11,7 @@ import 'package:home_services_app/features/payment/domain/usecases/show_stripe_s
 import 'package:home_services_app/features/payment/presentation/controller/cubit/stripe_cubit.dart';
 import 'package:home_services_app/features/payment/presentation/controller/states/stripe_states.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/service_request_cubit.dart';
+import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/service_request_state.dart';
 
 class PaymentScreen extends StatelessWidget {
@@ -22,6 +23,7 @@ class PaymentScreen extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     return MultiBlocProvider(
       providers: [
+        BlocProvider.value(value: BlocProvider.of<SettingsCubit>(context)),
         BlocProvider.value(value: BlocProvider.of<ServiceRequestCubit>(context)),
         BlocProvider(
           create: (_) =>  StripeCubit(
@@ -37,6 +39,7 @@ class PaymentScreen extends StatelessWidget {
         builder:(context , state){
           final serviceCubit = ServiceRequestCubit.get(context);
           final stripeCubit = BlocProvider.of<StripeCubit>(context);
+          final settingsCubit = BlocProvider.of<SettingsCubit>(context);
           final price = ((double.tryParse(serviceCubit.servicePrice ?? '${AppSize.s0}') ?? AppSize.s0) * AppSize.s100).toInt();
           return  Padding(
             padding: EdgeInsets.symmetric(vertical: screenHeight * AppSize.s0_05),
@@ -46,7 +49,7 @@ class PaymentScreen extends StatelessWidget {
               color:AppColors.lightGrey,
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppColors.lightGrey,
+                  color: settingsCubit.isDark? AppColors.darkShade: AppColors.lightGrey,
                   borderRadius: BorderRadius.circular(AppSize.s16),
                   border: Border.all(
                     color:AppColors.white,
