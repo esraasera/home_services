@@ -14,50 +14,59 @@ class SettingsDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
-    return BlocConsumer<SettingsCubit,SettingsState>(
-    listener: (context,state){},
-        builder: (context,state){
-           var cubit = SettingsCubit.get(context);
-      return  SafeArea(
-        child: Drawer(
-          child: Padding(
-            padding: EdgeInsets.symmetric(vertical: screenHeight * AppPadding.p0_03,horizontal: screenWidth * AppPadding.p0_02 ),
+
+    return BlocConsumer<SettingsCubit, SettingsState>(
+      listener: (context, state) {},
+      builder: (context, state) {
+        var cubit = SettingsCubit.get(context);
+        return SafeArea(
+          child: Drawer(
             child: Column(
               children: [
-                Text(
-                  AppStrings.settings,
-                  style: getBoldStyle(color: AppColors.primary,fontSize:screenWidth * AppSize.s0_11),
-                ),
-                SizedBox(
-                  height: screenHeight * AppSize.s0_04,
-                ),
                 Container(
-                  height: screenHeight* AppSize.s0_005,
+                  height: screenHeight * AppSize.s0_25,
+                  width: double.infinity,
                   color: AppColors.primary,
+                  padding: EdgeInsets.symmetric(
+                    vertical: screenHeight * AppPadding.p0_03,
+                    horizontal: screenWidth * AppPadding.p0_03,
+                  ),
+                  child: Align(
+                    alignment: AlignmentDirectional.bottomCenter,
+                    child: Text(
+                      AppStrings.settings,
+                      style: getBoldStyle(
+                        color: AppColors.white,
+                        fontSize: screenWidth * AppSize.s0_11,
+                      ),
+                    ),
+                  ),
                 ),
-                SizedBox(
-                  height: screenHeight * AppSize.s0_03,
-                ),
+                SizedBox(height: screenHeight * AppSize.s0_03),
                 SwitchListTile(
                   tileColor: AppColors.bG,
                   title: Text(
                     AppStrings.darkMode,
-                    style: getBoldStyle(color: AppColors.black,fontSize:screenWidth * AppSize.s0_05),
+                    style: getBoldStyle(
+                      color: AppColors.black,
+                      fontSize: screenWidth * AppSize.s0_05,
+                    ),
                   ),
-                  value: cubit.isDarkMode,
+                  value: cubit.isDark,
                   activeColor: AppColors.primary,
                   inactiveTrackColor: AppColors.bG,
                   onChanged: (_) => cubit.toggleTheme(),
                 ),
-                SizedBox(
-                  height: screenHeight * AppSize.s0_03,
-                ),
+                SizedBox(height: screenHeight * AppSize.s0_03),
                 ListTile(
                   tileColor: AppColors.bG,
                   title: Text(
                     AppStrings.language,
-                    style: getBoldStyle(color: AppColors.black,fontSize:screenWidth * AppSize.s0_05
-                    ),),
+                    style: getBoldStyle(
+                      color: AppColors.black,
+                      fontSize: screenWidth * AppSize.s0_05,
+                    ),
+                  ),
                   trailing: DecoratedBox(
                     decoration: BoxDecoration(
                       color: AppColors.lightGrey,
@@ -67,39 +76,40 @@ class SettingsDrawer extends StatelessWidget {
                       child: DropdownButton<String>(
                         value: cubit.currentLanguage,
                         dropdownColor: AppColors.bG,
-                        underline: SizedBox(),
-                        items: const [
-                          DropdownMenuItem(value: AppStrings.ar, child: Text(AppStrings.arabic)),
-                          DropdownMenuItem(value: AppStrings.en, child: Text(AppStrings.english)),
-                        ],
+                        underline: const SizedBox(),
+                        items: [
+                          DropdownMenuItem(value: AppStrings.ar, child: Text(AppStrings.arabic,style:TextStyle(
+                            color: AppColors.black
+                          ))),
+                          DropdownMenuItem(value: AppStrings.en, child: Text(AppStrings.english,style:TextStyle(
+                              color: AppColors.black
+                          )),
+                          )],
                         onChanged: (value) {
                           if (value != null) cubit.changeLanguage(value);
                         },
                       ),
                     ),
                   ),
-        
                 ),
-                SizedBox(
-                  height: screenHeight * AppSize.s0_03,
-                ),
+                SizedBox(height: screenHeight * AppSize.s0_03),
                 ListTile(
                   tileColor: AppColors.bG,
-                  leading: Icon(Icons.logout,color: AppColors.black,),
+                  leading: Icon(Icons.logout, color: AppColors.black),
                   title: Text(
                     AppStrings.logOut,
-                    style: getBoldStyle(color: AppColors.black,fontSize:screenWidth * AppSize.s0_05),
+                    style: getBoldStyle(
+                      color: AppColors.black,
+                      fontSize: screenWidth * AppSize.s0_05,
+                    ),
                   ),
-                  onTap: () {
-                       cubit.logout();
-                  },
+                  onTap: () => cubit.logout(),
                 ),
               ],
             ),
           ),
-        ),
-      );
-        },
+        );
+      },
     );
   }
 }

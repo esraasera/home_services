@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
-import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
+import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
+import 'package:home_services_app/features/service_request/presentation/controller/states/settings_states.dart';
 
 class StepperIndicator extends StatelessWidget {
   final int currentStep;
@@ -24,62 +26,80 @@ class StepperIndicator extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     final screenHeight = MediaQuery.of(context).size.height;
 
-    return Row(
-      children: [
-        CustomPaint(
-          painter: CircleProgressPainter(progress),
-          child: Container(
-            width:screenHeight* AppSize.s0_148,
-            height: screenHeight* AppSize.s0_148,
-            alignment: Alignment.center,
-            child: Text(
-              '$currentStep of $totalSteps',
-              style: getBoldStyle(color: AppColors.black,fontSize: screenWidth * AppSize.s0_06)
-            ),
-          ),
-        ),
-        SizedBox(width: screenWidth* AppSize. s0_03,),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+    return BlocConsumer<SettingsCubit,SettingsState>(
+      listener: (BuildContext context, state) {  },
+      builder: (BuildContext context, state) {
+        var cubit = SettingsCubit.get(context);
+        return  Row(
           children: [
-            Text(
-              title,
-              style: getBoldStyle(color: AppColors.black,fontSize: screenWidth * AppSize.s0_053),
-            ),
-            const SizedBox(height:AppSize.s4),
-            if (nextTitle.isNotEmpty)
-              Text(
-                AppStrings.nextPage + nextTitle,
-                style: getBoldStyle(color: AppColors.darkGrey, fontSize: screenWidth * AppSize.s0_035),
+            CustomPaint(
+              painter: CircleProgressPainter(progress, cubit.isDark),
+              child: Container(
+                width:screenHeight* AppSize.s0_148,
+                height: screenHeight* AppSize.s0_148,
+                alignment: Alignment.center,
+                child: Text(
+                  '$currentStep of $totalSteps',
+                  style:  Theme.of(context).textTheme.displayLarge!.copyWith(
+                      fontSize: screenWidth * AppSize.s0_06
+                  ),
+                ),
               ),
+            ),
+            SizedBox(width: screenWidth* AppSize. s0_03,),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  title,
+                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                    fontSize: screenWidth * AppSize.s0_053,
+                  ),
+                ),
+                const SizedBox(height:AppSize.s4),
+                if (nextTitle.isNotEmpty)
+                  Text(
+                    AppStrings.nextPage + nextTitle,
+                    style: cubit.isDark
+                        ? Theme.of(context).textTheme.displayLarge!.copyWith(
+                      fontSize: screenWidth * AppSize.s0_035,
+                      color: Colors.white,
+                    )
+                        : Theme.of(context).textTheme.displayLarge!.copyWith(
+                      fontSize: screenWidth * AppSize.s0_035,
+                      color: AppColors.primary,
+                    ),
+                  ),
+              ],
+            ),
           ],
-        ),
-      ],
+        );
+      },
     );
   }
 }
 
 class CircleProgressPainter extends CustomPainter {
   final double progress;
+  final bool isDark;
 
-  CircleProgressPainter(this.progress);
+  CircleProgressPainter(this.progress, this.isDark);
 
   @override
   void paint(Canvas canvas, Size size) {
     Paint background = Paint()
-      ..color = AppColors.grey
+      ..color = isDark ? Colors.white : AppColors.grey
       ..strokeWidth = AppSize.s8
       ..style = PaintingStyle.stroke;
 
     Paint foreground = Paint()
       ..color = AppColors.primary
-      ..strokeWidth =AppSize.s8
+      ..strokeWidth = AppSize.s8
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
     double radius = (size.width / 2) - AppSize.s4;
     Offset center = Offset(size.width / 2, size.height / 2);
-
 
     canvas.drawCircle(center, radius, background);
 
@@ -92,6 +112,8 @@ class CircleProgressPainter extends CustomPainter {
       foreground,
     );
   }
+
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
+

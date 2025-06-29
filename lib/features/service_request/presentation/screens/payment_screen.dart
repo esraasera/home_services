@@ -113,10 +113,18 @@ class PaymentScreen extends StatelessWidget {
                                       currency: AppStrings.currency,
                                       context: context,
                                     );
-                                    serviceCubit.selectedMethod == AppStrings.card;
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                       SnackBar(
+                                        content: Text(
+                                          AppStrings.methodSelected,
+                                          style: TextStyle(color: AppColors.white),
+                                        ),
+                                        backgroundColor:AppColors.error,
+                                      ),
+                                    );
                                   }
                                 },
-
                                 child: Material(
                                   elevation: AppSize.s10,
                                   shape: const CircleBorder(),
@@ -126,7 +134,8 @@ class PaymentScreen extends StatelessWidget {
                                     child:serviceCubit.selectedMethod == AppStrings.card
                                         ? Center(
                                       child: Image.asset(
-                                        "assets/images/white_check_mark.png",
+                                        "assets/images/check_mark_image.png",
+                                        color: AppColors.white,
                                         height: screenWidth * AppSize.s0_28,
                                       ),
                                     )
@@ -144,17 +153,29 @@ class PaymentScreen extends StatelessWidget {
                               GestureDetector(
                                 onTap: () {
                                   if (state is StripeSuccess) {
-                                    SnackBar(
-                                      content: Text(
-                                        AppStrings.paymentCompleted,
-                                        style: TextStyle(color: Colors.white),
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                       SnackBar(
+                                        content: Text(
+                                          AppStrings.paymentCompleted,
+                                          style: TextStyle(color: AppColors.white),
+                                        ),
+                                        backgroundColor: AppColors.error,
                                       ),
-                                      backgroundColor: Colors.red);
-                                  } else if(serviceCubit.selectedMethod == null){
-                                    serviceCubit.selectedMethod == AppStrings.cash;
+                                    );
+                                  } else if (serviceCubit.selectedMethod == null) {
+                                    serviceCubit.selectMethod(AppStrings.cash);
+                                  } else {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                       SnackBar(
+                                        content: Text(
+                                          AppStrings.methodSelected,
+                                          style: TextStyle(color: AppColors.white),
+                                        ),
+                                        backgroundColor: AppColors.error,
+                                      ),
+                                    );
                                   }
                                 },
-
                                 child: Material(
                                   elevation: AppSize.s10,
                                   shape: const CircleBorder(),

@@ -5,14 +5,19 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:home_services_app/app/app.dart';
 import 'package:home_services_app/core/bloc_observer.dart';
+import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
 
-void main()async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   Bloc.observer = MyBlocObserver();
   await dotenv.load(fileName: ".env");
-  Stripe.publishableKey =dotenv.env['STRIPE_PUBLISHABLE_KEY']!;
+  Stripe.publishableKey = dotenv.env['STRIPE_PUBLISHABLE_KEY']!;
   await Stripe.instance.applySettings();
-  runApp(MyApp());
-}
 
+  runApp(
+    BlocProvider(
+        create: (_) => SettingsCubit(),
+        child: MyApp()),
+  );
+}

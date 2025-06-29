@@ -30,13 +30,16 @@ class UserInfoScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(AppStrings.addYourName,style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
+                  Text(AppStrings.addYourName,style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      fontSize: AppSize.s14
+                  ),),
                   SizedBox(
                     height:screenHeight * AppSize.s0_005 ,
                   ),
                   TextFormField(
                       keyboardType: TextInputType.name,
                       controller: nameController,
+                      style: TextStyle(color: AppColors.primary),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return AppStrings.nameError;
@@ -46,13 +49,16 @@ class UserInfoScreen extends StatelessWidget {
                   SizedBox(
                     height:screenHeight * AppSize.s0_03,
                   ),
-                  Text(AppStrings.addYourNumber,style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
+                  Text(AppStrings.addYourNumber,style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      fontSize: AppSize.s14
+                  ),),
                   SizedBox(
                     height:screenHeight * AppSize.s0_005 ,
                   ),
                   TextFormField(
                       keyboardType: TextInputType.number,
                       controller: numberController,
+                      style: TextStyle(color: AppColors.primary),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return AppStrings.numError;
@@ -62,13 +68,16 @@ class UserInfoScreen extends StatelessWidget {
                   SizedBox(
                     height:screenHeight * AppSize.s0_03,
                   ),
-                  Text(AppStrings.addYourAddress,style: getMediumStyle(fontSize: AppSize.s14,color: AppColors.primary),),
+                  Text(AppStrings.addYourAddress,style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      fontSize: AppSize.s14
+                  ),),
                   SizedBox(
                     height:screenHeight * AppSize.s0_005 ,
                   ),
                   TextFormField(
                       keyboardType: TextInputType.text,
                       controller: addressController,
+                      style: TextStyle(color: AppColors.primary),
                       decoration: InputDecoration(
                       ),
                       validator: (value) {

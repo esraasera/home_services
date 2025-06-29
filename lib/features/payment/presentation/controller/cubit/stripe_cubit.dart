@@ -20,15 +20,9 @@ class StripeCubit extends Cubit<StripeState> {
   }) async {
     final serviceCubit = ServiceRequestCubit.get(context);
 
-    if (serviceCubit.selectedMethod != null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text(AppStrings.methodSelected), backgroundColor: Colors.red,),
-      );
-      return;
-    }
-
     if (isClosed) return;
     emit(StripeLoading());
+
     try {
       final clientSecret = await makePaymentUseCase.call(
         amount: amount,
@@ -45,5 +39,6 @@ class StripeCubit extends Cubit<StripeState> {
       emit(StripeFailure(error: e.toString()));
     }
   }
+
 
 }

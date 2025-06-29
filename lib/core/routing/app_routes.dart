@@ -16,7 +16,7 @@ class Routes{
   static const String settingsRoute = "/settings";
   static const String stepperRoute = "/stepper";
   static const String mapRoute = "/mapPicker";
-  static const String ratingRoute = "/confirmation";
+  static const String confirmationRoute = "/confirmation";
 }
 
 
@@ -35,7 +35,7 @@ static Route <dynamic> getRoute(RouteSettings settings){
       return MaterialPageRoute(builder: (_) => StepperScreen());
     case Routes.mapRoute:
       return MaterialPageRoute(builder: (_) => MapPickerScreen());
-    case Routes.ratingRoute:
+    case Routes.confirmationRoute:
       return MaterialPageRoute(builder: (_) => ConfirmationScreen());
     default :
       return unDefinedRoute();

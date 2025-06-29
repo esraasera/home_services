@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
-import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/auth/data/datasource/auth_remote_datasource.dart';
@@ -38,7 +37,7 @@ class RegisterScreen extends StatelessWidget{
       listener:(context,state ){
         if(state is RegisterFailure){
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(state.message)),
+            SnackBar(content: Text(state.message),duration: Duration(seconds: 3),),
           );
         }
         if (state is RegisterSuccess) {
@@ -72,9 +71,9 @@ class RegisterScreen extends StatelessWidget{
           TextFormField(
             keyboardType: TextInputType.emailAddress,
             controller: nameController,
+            style: TextStyle(color: AppColors.primary),
             decoration: InputDecoration(
               hintText: AppStrings.username,
-              labelText: AppStrings.username,
             ),
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -88,9 +87,9 @@ class RegisterScreen extends StatelessWidget{
       TextFormField(
       keyboardType: TextInputType.emailAddress,
       controller: emailController,
-      decoration: InputDecoration(
+        style: TextStyle(color: AppColors.primary),
+        decoration: InputDecoration(
       hintText: AppStrings.email,
-      labelText: AppStrings.email,
       ),
       validator: (value) {
       if (value == null || value.isEmpty) {
@@ -104,10 +103,10 @@ class RegisterScreen extends StatelessWidget{
       TextFormField(
       keyboardType: TextInputType.visiblePassword,
       controller: passwordController,
+        style: TextStyle(color: AppColors.primary),
         obscureText: cubit.showPassword,
       decoration: InputDecoration(
       hintText: AppStrings.password,
-      labelText: AppStrings.password,
         suffixIcon: IconButton(
           icon:Icon(
             cubit.showPassword ? Icons.visibility_off : Icons.visibility,
@@ -147,12 +146,14 @@ class RegisterScreen extends StatelessWidget{
       children: [
       Text(
       AppStrings.alreadyUser,
-      style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s16),
+        style: Theme.of(context).textTheme.displayLarge,
       ),
       GestureDetector(
       child: Text(
       AppStrings.login,
-      style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s16),
+        style: Theme.of(context).textTheme.displayLarge!.copyWith(
+            color: AppColors.lightPrimary
+        ),
       ),
       onTap:(){
       Navigator.of(context).pushReplacementNamed(Routes.loginRoute);

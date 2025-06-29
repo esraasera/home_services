@@ -36,11 +36,6 @@ class ServiceRequestCubit extends Cubit<ServiceRequestState> {
   }
 
 
-  void setPaymentMethod(String method) {
-    paymentMethod = method;
-    emit(SelectedMethod());
-  }
-
   void isSelectedService({required String name}) {
     selectedServiceTitle = name;
     emit(SelectedService());
@@ -58,7 +53,7 @@ class ServiceRequestCubit extends Cubit<ServiceRequestState> {
         address: address!,
         serviceName: serviceName!,
         servicePrice: servicePrice!,
-        paymentMethod: paymentMethod!,
+        paymentMethod: selectedMethod!,
       );
 
       await serviceRequestUseCase(request);

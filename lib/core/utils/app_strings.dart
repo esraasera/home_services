@@ -1,10 +1,10 @@
 class AppStrings {
   static const noRouteFound = "noRouteFound";
-  static const login = "Log In";
+  static const login = " Log In";
   static const register = "Register";
-  static const registerNow = "Register Now";
+  static const registerNow = " Register Now";
   static const isUser = "Don't have an account?";
-  static const create = "Create";
+  static const create = " Create";
   static const alreadyUser = "Already have an account?";
   static const submit = "Submit";
   static const forgotPassword = "Forgot Password?";
@@ -53,7 +53,7 @@ class AppStrings {
   static const customerInformation =  "Customer Information";
   static const chooseService =  "Choose Service";
   static const addressDetails =  "Address Details";
-  static const payment =  "Payment Method";
+  static const payment =  "Service Payment";
 
 
   // Validation messages
@@ -64,6 +64,7 @@ class AppStrings {
   static const numError = "Please enter your Number";
   static const addressError = "Please enter your Address";
   static const serviceError = "Please select a service before proceeding";
+  static const selectedMethodError = "Please select a payment method before proceeding";
 
 
 // Services
@@ -80,5 +81,6 @@ class AppStrings {
   //payment snack bar
   static const methodSelected = "You have already selected a payment method";
   static const paymentCompleted = "Payment has already been completed";
+  static const errorOccurred = "An error occurred: ";
 
 }

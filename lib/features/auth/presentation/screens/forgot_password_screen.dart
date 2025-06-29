@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
-import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/auth/data/datasource/auth_remote_datasource.dart';
@@ -32,7 +31,7 @@ class ForgotPassword extends StatelessWidget{
         listener: (context,state) {
           if (state is ForgotPasswordFailure){
             ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text(state.message)),
+              SnackBar(content: Text(state.message),duration: Duration(seconds: 3),),
             );
           }
           if (state is ForgotPasswordSuccess){
@@ -62,7 +61,9 @@ class ForgotPassword extends StatelessWidget{
                               children: [
                                 Text(
                                   AppStrings.forgotPassword,
-                                  style: getBoldStyle(color: AppColors.black,fontSize: AppSize.s35),
+                                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                                      fontSize: AppSize.s35
+                                  ),
                                 ),
                                 SizedBox(
                                   height:screenHeight * AppSize.s0_02,
@@ -70,9 +71,9 @@ class ForgotPassword extends StatelessWidget{
                                 TextFormField(
                                   keyboardType: TextInputType.emailAddress,
                                   controller: emailController,
+                                  style: TextStyle(color: AppColors.primary),
                                   decoration: InputDecoration(
                                     hintText: AppStrings.email,
-                                    labelText: AppStrings.email,
                                   ),
                                   validator: (value) {
                                     if (value == null || value.isEmpty) {
@@ -103,12 +104,14 @@ class ForgotPassword extends StatelessWidget{
                                   children: [
                                     Text(
                                       AppStrings.isUser,
-                                      style: getBoldStyle(color: AppColors.black,fontSize:AppSize.s16),
+                                      style: Theme.of(context).textTheme.displayLarge,
                                     ),
                                     GestureDetector(
                                       child: Text(
                                         AppStrings.create,
-                                        style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s16),
+                                        style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                                            color: AppColors.lightPrimary
+                                        ),
                                       ),
                                       onTap:(){
                                         Navigator.of(context).pushReplacementNamed(Routes.registerRoute);

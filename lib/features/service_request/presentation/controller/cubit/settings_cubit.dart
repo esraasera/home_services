@@ -4,15 +4,17 @@ import 'package:home_services_app/features/service_request/presentation/controll
 
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit() : super(SettingsInitial());
+
   static SettingsCubit get(context) => BlocProvider.of(context);
 
-  bool isDarkMode = false;
+  bool isDark = false;
   String currentLanguage = AppStrings.en;
 
   void toggleTheme() {
-    isDarkMode = !isDarkMode;
+    isDark = !isDark;
     emit(SettingsUpdated());
   }
+
 
   void changeLanguage(String lang) {
     currentLanguage = lang;
