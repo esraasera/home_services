@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_services_app/core/helpers/cache_helper.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/settings_states.dart';
 
@@ -12,6 +13,7 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   void toggleTheme() {
     isDark = !isDark;
+    CacheHelper.putBoolData(key: "isDark", value: isDark);
     emit(SettingsUpdated());
   }
 
