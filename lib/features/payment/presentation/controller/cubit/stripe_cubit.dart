@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/features/payment/domain/usecases/make_payment_intent_usecase.dart';
 import 'package:home_services_app/features/payment/domain/usecases/show_stripe_sheet_usecase.dart';
@@ -13,14 +14,17 @@ class StripeCubit extends Cubit<StripeState> {
   StripeCubit(this.makePaymentUseCase, this.showStripeSheetUseCase)
       : super(StripeInitial());
 
+  bool _isProcessing = false;
+
   Future<void> makePaymentAndShowSheet({
     required int amount,
     required String currency,
     required BuildContext context,
   }) async {
-    final serviceCubit = ServiceRequestCubit.get(context);
+    if (_isProcessing || isClosed) return;
+    _isProcessing = true;
 
-    if (isClosed) return;
+    final serviceCubit = ServiceRequestCubit.get(context);
     emit(StripeLoading());
 
     try {
@@ -34,11 +38,22 @@ class StripeCubit extends Cubit<StripeState> {
       if (isClosed) return;
       emit(StripeSuccess());
       serviceCubit.selectMethod(AppStrings.card);
+      _isProcessing = false;
     } catch (e) {
       if (isClosed) return;
-      emit(StripeFailure(error: e.toString()));
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(
+              AppStrings.paymentError,
+              style: const TextStyle(color: Colors.white),
+            ),
+            backgroundColor: AppColors.error,
+          ),
+        );
+        emit(StripeFailure(error: e.toString()));
+        _isProcessing = false;
+      }
     }
   }
-
-
 }
