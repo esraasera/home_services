@@ -24,16 +24,17 @@ class MapPickerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+
     return BlocProvider(
       create: (_) => MapPickerCubit(
         GetAddressFromLatLngUseCase(
           MapRepositoryImpl(MapRemoteDataSourceImpl()),
         ),
       ),
-      child:BlocConsumer<MapPickerCubit,MapPickerState>(
-        listener: (BuildContext context,state) {  },
-        builder: (BuildContext context,state) {
-          return  Scaffold(
+      child: BlocConsumer<MapPickerCubit, MapPickerState>(
+        listener: (BuildContext context, state) {},
+        builder: (BuildContext context, state) {
+          return Scaffold(
             appBar: AppBar(
               leading: IconButton(
                 icon: Icon(
@@ -44,40 +45,39 @@ class MapPickerScreen extends StatelessWidget {
                 onPressed: () => Navigator.pop(context),
               ),
               title: Text(
-                  AppStrings.selectLocation,
-                  style:getBoldStyle(color: AppColors.white,fontSize: screenWidth * AppSize.s0_045)
+                AppStrings.selectLocation,
+                style:
+                getBoldStyle(color: AppColors.white, fontSize: screenWidth * AppSize.s0_045),
               ),
             ),
             body: Stack(
               children: [
-                BlocBuilder<MapPickerCubit, MapPickerState>(
-                  builder: (context, state) {
-                    return GoogleMap(
-                      initialCameraPosition: MapPickerScreen.initialCameraPosition,
-                      myLocationEnabled: true,
-                      myLocationButtonEnabled: true,
-                      zoomControlsEnabled: true,
-                      onMapCreated: (_) {},
-                      onCameraMove: (position) {
-                        MapPickerCubit.get(context).updateLocation(position.target);
-                      },
-                    );
+                GoogleMap(
+                  initialCameraPosition: initialCameraPosition,
+                  myLocationEnabled: true,
+                  myLocationButtonEnabled: true,
+                  zoomControlsEnabled: true,
+                  onMapCreated: (controller) {},
+                  onCameraMove: (position) {
+                    MapPickerCubit.get(context).updateLocation(position.target);
                   },
                 ),
                 Center(
                   child: Icon(
                     Icons.location_on,
                     size: screenWidth * AppSize.s0_12,
-                    color:AppColors.marker,
+                    color: AppColors.marker,
                   ),
                 ),
                 Positioned(
                   bottom: screenHeight * AppSize.s0_03,
                   left: screenWidth * AppSize.s0_05,
-                  right:  screenWidth * AppSize.s0_05,
+                  right: screenWidth * AppSize.s0_05,
                   child: SizedBox(
                     height: screenHeight * AppSize.s0_065,
-                    child:state is MapPickerLoading  ? const Center(child: CircularProgressIndicator()):ElevatedButton(
+                    child: state is MapPickerLoading
+                        ? const Center(child: CircularProgressIndicator())
+                        : ElevatedButton(
                       onPressed: () async {
                         final navigator = Navigator.of(context);
                         final messenger = ScaffoldMessenger.of(context);
@@ -85,8 +85,7 @@ class MapPickerScreen extends StatelessWidget {
                         await cubit.confirmPickedLocation();
 
                         if (cubit.state is MapLocationAddressPicked) {
-                          final address =
-                              (cubit.state as MapLocationAddressPicked).address;
+                          final address = (cubit.state as MapLocationAddressPicked).address;
                           navigator.pop(address);
                         } else {
                           messenger.showSnackBar(
@@ -103,9 +102,9 @@ class MapPickerScreen extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                          AppStrings.confirmLocation,
-                          style:getBoldStyle(color: AppColors.white,fontSize: screenWidth * AppSize.s0_045
-                          )
+                        AppStrings.confirmLocation,
+                        style: getBoldStyle(
+                            color: AppColors.white, fontSize: screenWidth * AppSize.s0_045),
                       ),
                     ),
                   ),
@@ -114,8 +113,7 @@ class MapPickerScreen extends StatelessWidget {
             ),
           );
         },
-      )
+      ),
     );
   }
 }
-

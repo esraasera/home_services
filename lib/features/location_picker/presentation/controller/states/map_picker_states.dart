@@ -16,3 +16,9 @@ class MapPickerError extends MapPickerState {
   final String message;
   MapPickerError(this.message);
 }
+
+
+class MapPickerPermissionGranted extends MapPickerState {}
+
+class MapPickerPermissionDenied extends MapPickerState {}
+
