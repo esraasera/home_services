@@ -76,7 +76,7 @@ class ForgotPassword extends StatelessWidget{
                                   TextFormField(
                                     keyboardType: TextInputType.emailAddress,
                                     controller: emailController,
-                                    style: TextStyle(color: AppColors.primary),
+                                    style: TextStyle(color: settingsCubit.isDark ? AppColors.white : AppColors.black),
                                     decoration: InputDecoration(
                                       hintText: AppStrings.email,
                                     ),

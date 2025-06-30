@@ -81,19 +81,35 @@ class StepperScreen extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            ElevatedButton(
-                              style:ElevatedButton.styleFrom(
-                                backgroundColor: AppColors.white,
-                                foregroundColor: AppColors.primary,
-                                  minimumSize: Size( screenWidth * AppSize.s0_35 , screenHeight * AppSize.s0_075),
-                              ) ,
-                               onPressed: stepperCubit.currentStep > AppSize.s0 ? stepperCubit.previousStepperStep : null,
-                                child:Text(AppStrings.back)
+                            BlocBuilder<ServiceRequestCubit, ServiceRequestState>(
+                              builder: (context, state) {
+                                final stepperCubit = StepperCubit.get(context);
+                                final serviceCubit = ServiceRequestCubit.get(context);
+                                return ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor: AppColors.white,
+                                    foregroundColor: AppColors.primary,
+                                    disabledBackgroundColor: AppColors.disableColor,
+                                    disabledForegroundColor: AppColors.grey,
+                                    minimumSize: Size(
+                                      MediaQuery.of(context).size.width * AppSize.s0_35,
+                                      MediaQuery.of(context).size.height * AppSize.s0_075,
+                                    ),
+                                  ),
+                                  onPressed: (stepperCubit.currentStep == 0 ||  stepperCubit.currentStep == stepperCubit.totalSteps - 1 &&
+                                      serviceCubit.selectedMethod != null)
+                                      ? null
+                                      : stepperCubit.previousStepperStep,
+                                  child: Text(AppStrings.back),
+                                );
+
+                              },
                             ),
+
+
                             ElevatedButton(
                                 style:ElevatedButton.styleFrom(
                                   minimumSize: Size( screenWidth * AppSize.s0_35 , screenHeight * AppSize.s0_075),
-                                  backgroundColor: sett
                                 ),
                                 onPressed: () async {
                                   if (stepperCubit.currentStep == 0) {
@@ -132,7 +148,7 @@ class StepperScreen extends StatelessWidget {
                                     } else {
                                       await serviceCubit.submitRequest();
                                     }
-        
+
                                   }
                                 },
                               child: Text(
@@ -140,7 +156,7 @@ class StepperScreen extends StatelessWidget {
                                     ? AppStrings.confirm
                                     : AppStrings.next,
                               ),
-        
+
                             )
                           ],
                         ),
