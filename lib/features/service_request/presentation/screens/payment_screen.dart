@@ -109,7 +109,9 @@ class PaymentScreen extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               GestureDetector(
-                                onTap: () async {
+                                onTap: stripeCubit.state is StripeLoading
+                              ? null
+                              :() async {
                                   if (serviceCubit.selectedMethod == null) {
                                     await stripeCubit.makePaymentAndShowSheet(
                                       amount: price,

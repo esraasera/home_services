@@ -37,7 +37,6 @@ class StripeCubit extends Cubit<StripeState> {
     } catch (e) {
       if (isClosed) return;
       emit(StripeFailure(error: e.toString()));
-      print(e.toString());
     }
   }
 

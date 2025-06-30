@@ -90,7 +90,7 @@ class StepperScreen extends StatelessWidget {
                                     backgroundColor: AppColors.white,
                                     foregroundColor: AppColors.primary,
                                     disabledBackgroundColor: AppColors.disableColor,
-                                    disabledForegroundColor: AppColors.grey,
+                                    disabledForegroundColor: AppColors.darkGrey,
                                     minimumSize: Size(
                                       MediaQuery.of(context).size.width * AppSize.s0_35,
                                       MediaQuery.of(context).size.height * AppSize.s0_075,
