@@ -243,20 +243,20 @@ ThemeData getDarkTheme() {
       contentPadding: const EdgeInsets.symmetric(
           horizontal: AppPadding.p8, vertical: AppPadding.p16),
       filled: true,
-      fillColor: AppColors.lightGrey,
+      fillColor: AppColors.black,
       hintStyle:
-      getRegularStyle(color: AppColors.black, fontSize: FontSize.s14),
+      getRegularStyle(color: AppColors.white, fontSize: FontSize.s14),
       labelStyle:
-      getMediumStyle(color: AppColors.black, fontSize: FontSize.s14),
+      getMediumStyle(color: AppColors.white, fontSize: FontSize.s14),
       floatingLabelStyle:
-      getMediumStyle(color:  AppColors.black, fontSize: FontSize.s14),
+      getMediumStyle(color:  AppColors.white, fontSize: FontSize.s14),
       errorStyle: getRegularStyle(color: AppColors.error),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color:  AppColors.lightPrimary, width: AppSize.s1_5),
+        borderSide: BorderSide(color:  AppColors.white, width: AppSize.s1_5),
         borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.lightPrimary, width: AppSize.s1_5),
+        borderSide: BorderSide(color: AppColors.white, width: AppSize.s1_5),
         borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
       ),
       errorBorder: OutlineInputBorder(
@@ -264,15 +264,15 @@ ThemeData getDarkTheme() {
         borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.primary, width: AppSize.s1_5),
+        borderSide: BorderSide(color: AppColors.white, width: AppSize.s1_5),
         borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
       ),
     ),
 
     textSelectionTheme: TextSelectionThemeData(
-      cursorColor: AppColors.primary,
-      selectionColor: AppColors.primary,
-      selectionHandleColor: AppColors.primary,
+      cursorColor: AppColors.white,
+      selectionColor: AppColors.white,
+      selectionHandleColor: AppColors.white,
     ),
   );
 }

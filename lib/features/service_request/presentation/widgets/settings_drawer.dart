@@ -73,7 +73,7 @@ class SettingsDrawer extends StatelessWidget {
                       padding: const EdgeInsets.symmetric(horizontal: AppSize.s12),
                       child: DropdownButton<String>(
                         value: cubit.currentLanguage,
-                        dropdownColor: AppColors.bG,
+                        dropdownColor: cubit.isDark ? AppColors.lightGrey :AppColors.bG,
                         underline: const SizedBox(),
                         items: [
                           DropdownMenuItem(value: AppStrings.ar, child: Text(AppStrings.arabic,style:TextStyle(

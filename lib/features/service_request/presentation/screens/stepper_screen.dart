@@ -36,7 +36,7 @@ class StepperScreen extends StatelessWidget {
           } else if (state is ServiceRequestFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text("AppStrings.errorOccurred ${state.error}"),
+                content: Text("${AppStrings.errorOccurred} ${state.error}"),
                 backgroundColor: AppColors.error,
               ),
             );
@@ -93,6 +93,7 @@ class StepperScreen extends StatelessWidget {
                             ElevatedButton(
                                 style:ElevatedButton.styleFrom(
                                   minimumSize: Size( screenWidth * AppSize.s0_35 , screenHeight * AppSize.s0_075),
+                                  backgroundColor: sett
                                 ),
                                 onPressed: () async {
                                   if (stepperCubit.currentStep == 0) {

@@ -76,7 +76,7 @@ class RegisterScreen extends StatelessWidget{
             TextFormField(
               keyboardType: TextInputType.emailAddress,
               controller: nameController,
-              style: TextStyle(color: AppColors.primary),
+              style: TextStyle(color: settingsCubit.isDark ? AppColors.white : AppColors.black),
               decoration: InputDecoration(
                 hintText: AppStrings.username,
               ),
@@ -92,7 +92,7 @@ class RegisterScreen extends StatelessWidget{
         TextFormField(
         keyboardType: TextInputType.emailAddress,
         controller: emailController,
-          style: TextStyle(color: AppColors.primary),
+          style: TextStyle(color: settingsCubit.isDark ? AppColors.white : AppColors.black),
           decoration: InputDecoration(
         hintText: AppStrings.email,
         ),
@@ -108,7 +108,7 @@ class RegisterScreen extends StatelessWidget{
         TextFormField(
         keyboardType: TextInputType.visiblePassword,
         controller: passwordController,
-          style: TextStyle(color: AppColors.primary),
+          style: TextStyle(color: settingsCubit.isDark ? AppColors.white : AppColors.black),
           obscureText: cubit.showPassword,
         decoration: InputDecoration(
         hintText: AppStrings.password,
