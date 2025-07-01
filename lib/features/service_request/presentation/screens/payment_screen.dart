@@ -45,7 +45,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
       child: BlocConsumer<ServiceRequestCubit, ServiceRequestState>(
         listener: (context, state) {},
         builder: (context, state) {
-          final currentLocale = context.locale;
           final serviceCubit = ServiceRequestCubit.get(context);
           final stripeCubit = BlocProvider.of<StripeCubit>(context);
           final settingsCubit = BlocProvider.of<SettingsCubit>(context);

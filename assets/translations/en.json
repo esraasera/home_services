@@ -43,10 +43,12 @@
   "notSelected": "Not Selected",
   "notAvailable": "N/A",
   "currency": "egp",
-  "egp": "EGP",
+  "egp": " EGP",
   "card": "card",
+  "of": "of",
 
-  "customerInformation": "Customer Information",
+
+  "customerInformation": "Customer Info",
   "chooseService": "Choose Service",
   "addressDetails": "Address Details",
   "payment": "Service Payment",

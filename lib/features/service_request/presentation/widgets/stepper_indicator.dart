@@ -6,6 +6,12 @@ import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/settings_states.dart';
 
+String convertToLocalizedNumber(BuildContext context, int number) {
+  String locale = context.locale.languageCode;
+  return NumberFormat.decimalPattern(locale).format(number);
+}
+
+
 class StepperIndicator extends StatelessWidget {
   final int currentStep;
   final String title;
@@ -39,9 +45,9 @@ class StepperIndicator extends StatelessWidget {
                 height: screenHeight* AppSize.s0_148,
                 alignment: Alignment.center,
                 child: Text(
-                  '$currentStep of $totalSteps',
-                  style:  Theme.of(context).textTheme.displayLarge!.copyWith(
-                      fontSize: screenWidth * AppSize.s0_06
+                  '${convertToLocalizedNumber(context, currentStep)} ${"of".tr()} ${convertToLocalizedNumber(context, totalSteps)}',
+                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                    fontSize: screenWidth * AppSize.s0_06,
                   ),
                 ),
               ),
@@ -53,7 +59,7 @@ class StepperIndicator extends StatelessWidget {
                 Text(
                   title,
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                    fontSize: screenWidth * AppSize.s0_053,
+                    fontSize: screenWidth * AppSize.s0_06,
                   ),
                 ),
                 const SizedBox(height:AppSize.s4),
@@ -62,11 +68,11 @@ class StepperIndicator extends StatelessWidget {
                     "nextPage".tr() + nextTitle,
                     style: cubit.isDark
                         ? Theme.of(context).textTheme.displayLarge!.copyWith(
-                      fontSize: screenWidth * AppSize.s0_035,
+                      fontSize: screenWidth * AppSize.s0_045,
                       color : AppColors.lightPrimary,
                     )
                         : Theme.of(context).textTheme.displayLarge!.copyWith(
-                      fontSize: screenWidth * AppSize.s0_035,
+                      fontSize: screenWidth * AppSize.s0_045,
                       color: AppColors.primary,
                     ),
                   ),

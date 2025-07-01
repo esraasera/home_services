@@ -1,21 +1,21 @@
 class ServiceDetailsModel {
-  final String title;
-  final String subTitle;
+  final String titleKey;
+  final String subTitleKey;
   final String imagePath;
-  final String description;
-  final List<String> features;
-  final String price;
-  final String estimatedDuration;
-  final String workingHours;
+  final String descriptionKey;
+  final List<String> featureKeys;
+  final String priceKey;
+  final String estimatedDurationKey;
+  final String workingHoursKey;
 
   ServiceDetailsModel({
-    required this.title,
-    required this. subTitle,
+    required this.titleKey,
+    required this.subTitleKey,
     required this.imagePath,
-    required this.description,
-    required this.features,
-    required this.price,
-    required this.estimatedDuration,
-    required this.workingHours,
+    required this.descriptionKey,
+    required this.featureKeys,
+    required this.priceKey,
+    required this.estimatedDurationKey,
+    required this.workingHoursKey,
   });
 }

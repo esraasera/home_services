@@ -29,7 +29,7 @@ class ServiceDetailsScreen extends StatelessWidget {
               leading: InkWell(
                   onTap: () {Navigator.pop(context);},
                   child: Icon(Icons.arrow_back_ios_new_outlined,color: AppColors.white,)),
-              title: Text(service.subTitle,style: getBoldStyle(color: AppColors.white,fontSize: FontSize.s18),)
+              title: Text(service.subTitleKey.tr(),style: getBoldStyle(color: AppColors.white,fontSize: FontSize.s18),)
           ),
           body: SingleChildScrollView(
             padding: EdgeInsets.all(
@@ -46,7 +46,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                   height:screenHeight * AppSize.s0_02,
                 ),
                 Text(
-                  service.description,
+                  service.descriptionKey.tr(),
                  style: Theme.of(context).textTheme.displayLarge!.copyWith(
                 fontSize: AppSize.s18
                  )
@@ -58,7 +58,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                 SizedBox(
                   height:screenHeight * AppSize.s0_028,
                 ),
-                ...service.features.map((f) => Text("• $f" ,style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                ...service.featureKeys.map((key) => Text("• ${key.tr()}" ,style: Theme.of(context).textTheme.titleMedium!.copyWith(
                 fontSize: AppSize.s16
                 ))),
                 SizedBox(
@@ -67,7 +67,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text(" ${"price".tr()} ",style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s16),),
-                    Text(" ${service.price}",style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    Text(" ${service.priceKey.tr()}",style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: AppSize.s16
                     )),
                     Text("egp".tr(),style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -81,7 +81,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text(" ${"duration".tr()}",style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s16),),
-                    Text(" ${service.estimatedDuration}",style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    Text(" ${service.estimatedDurationKey.tr()}",style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: AppSize.s16
                     )),
                   ],
@@ -92,7 +92,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                 Row(
                   children: [
                     Text("${"workingHours".tr()} ",style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s16),),
-                    Text(" ${service.workingHours}",style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    Text(" ${service.workingHoursKey.tr()}",style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: AppSize.s16
                     )),
                   ],
@@ -106,7 +106,11 @@ class ServiceDetailsScreen extends StatelessWidget {
                       minimumSize: Size( screenWidth * AppSize.s1 , screenHeight * AppSize.s0_073),
                     ),
                     onPressed: () {
-                      cubit.setServiceData(titleKey: service.titleKey, priceKey: service.priceKey);
+                      cubit.setServiceData(
+                        titleKey: service.titleKey,
+                        priceKey: service.priceKey,
+                      );
+                      cubit.isSelectedService(name: service.titleKey);
                       Navigator.pop(context);
                     },
                     child: Text(
