@@ -14,50 +14,59 @@ import 'package:home_services_app/features/service_request/presentation/controll
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/service_request_state.dart';
 
-class PaymentScreen extends StatelessWidget {
+class PaymentScreen extends StatefulWidget {
   const PaymentScreen({super.key});
 
   @override
+  State<PaymentScreen> createState() => _PaymentScreenState();
+}
+
+class _PaymentScreenState extends State<PaymentScreen> {
+  @override
   Widget build(BuildContext context) {
+    context.locale;
+
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+
     return MultiBlocProvider(
       providers: [
         BlocProvider.value(value: BlocProvider.of<SettingsCubit>(context)),
         BlocProvider.value(value: BlocProvider.of<ServiceRequestCubit>(context)),
         BlocProvider(
-          create: (_) =>  StripeCubit(
+          create: (_) => StripeCubit(
             MakePaymentUseCase(
-    PaymentRepositoryImpl(PaymentRemoteDataSourceImpl()),
-    ),
+              PaymentRepositoryImpl(PaymentRemoteDataSourceImpl()),
+            ),
             ShowStripeSheetUseCase(),
           ),
         ),
       ],
-      child: BlocConsumer<ServiceRequestCubit,ServiceRequestState>(
-        listener: (context , state){},
-        builder:(context , state){
+      child: BlocConsumer<ServiceRequestCubit, ServiceRequestState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          final currentLocale = context.locale;
           final serviceCubit = ServiceRequestCubit.get(context);
           final stripeCubit = BlocProvider.of<StripeCubit>(context);
           final settingsCubit = BlocProvider.of<SettingsCubit>(context);
           final price = ((double.tryParse(serviceCubit.servicePrice ?? '${AppSize.s0}') ?? AppSize.s0) * AppSize.s100).toInt();
-          return  Padding(
+
+          return Padding(
             padding: EdgeInsets.symmetric(vertical: screenHeight * AppSize.s0_05),
             child: Material(
               elevation: AppSize.s10,
-              shadowColor: settingsCubit.isDark? AppColors.lightGrey : AppColors.black,
+              shadowColor: settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
               borderRadius: BorderRadius.circular(AppSize.s16),
-              color:AppColors.lightGrey,
+              color: AppColors.lightGrey,
               child: Container(
                 decoration: BoxDecoration(
-                  color: settingsCubit.isDark? AppColors.darkShade: AppColors.lightGrey,
+                  color: settingsCubit.isDark ? AppColors.darkShade : AppColors.lightGrey,
                   borderRadius: BorderRadius.circular(AppSize.s16),
                   border: Border.all(
-                    color:AppColors.white,
+                    color: AppColors.white,
                     width: AppSize.s4,
                   ),
                 ),
-
                 child: Padding(
                   padding: const EdgeInsets.all(AppSize.s8),
                   child: Center(
@@ -67,13 +76,13 @@ class PaymentScreen extends StatelessWidget {
                         children: [
                           Material(
                             elevation: AppSize.s10,
-                            shadowColor: settingsCubit.isDark? AppColors.lightGrey : AppColors.black,
+                            shadowColor: settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
                             borderRadius: BorderRadius.circular(AppSize.s16),
                             child: Container(
-                              height:screenHeight * AppSize.s0_2,
-                              width:double.infinity,
+                              height: screenHeight * AppSize.s0_2,
+                              width: double.infinity,
                               decoration: BoxDecoration(
-                                color:AppColors.white,
+                                color: AppColors.white,
                                 borderRadius: BorderRadius.circular(AppSize.s16),
                               ),
                               child: Padding(
@@ -84,19 +93,16 @@ class PaymentScreen extends StatelessWidget {
                                   children: [
                                     Row(
                                       children: [
-                                        Text("theService".tr(),style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
-                                        Text(serviceCubit.serviceName ?? "notSelected".tr(),style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
+                                        Text("theService".tr(), style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s18)),
+                                        Text(serviceCubit.translatedServiceName, style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18)),
                                       ],
                                     ),
-                                    SizedBox(
-                                      height:screenHeight * AppSize.s0_03 ,
-                                    ),
+                                    SizedBox(height: screenHeight * AppSize.s0_03),
                                     Row(
                                       children: [
-                                        Text("totalPrice".tr(),style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
-                                        Text(serviceCubit.servicePrice ?? "notAvailable".tr(),style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
-                                        Text( "egp".tr(),style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
-
+                                        Text("totalPrice".tr(), style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s18)),
+                                        Text(serviceCubit.translatedServicePrice, style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18)),
+                                        Text("egp".tr(), style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18)),
                                       ],
                                     ),
                                   ],
@@ -104,16 +110,14 @@ class PaymentScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height:screenHeight * AppSize.s0_09 ,
-                          ),
+                          SizedBox(height: screenHeight * AppSize.s0_09),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               GestureDetector(
                                 onTap: stripeCubit.state is StripeLoading
-                              ? null
-                              :() async {
+                                    ? null
+                                    : () async {
                                   if (serviceCubit.selectedMethod == null) {
                                     await stripeCubit.makePaymentAndShowSheet(
                                       amount: price,
@@ -122,39 +126,23 @@ class PaymentScreen extends StatelessWidget {
                                     );
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                       SnackBar(
-                                        content: Text(
-                                         "methodSelected".tr(),
-                                          style: TextStyle(color: AppColors.white),
-                                        ),
-                                        backgroundColor:AppColors.error,
+                                      SnackBar(
+                                        content: Text("methodSelected".tr(), style: TextStyle(color: AppColors.white)),
+                                        backgroundColor: AppColors.error,
                                       ),
                                     );
                                   }
                                 },
                                 child: Material(
                                   elevation: AppSize.s10,
-                                  shadowColor: settingsCubit.isDark? AppColors.lightGrey : AppColors.black,
+                                  shadowColor: settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
                                   shape: const CircleBorder(),
                                   child: CircleAvatar(
                                     backgroundColor: AppColors.primary,
-                                    radius:screenWidth * AppSize.s0_16 ,
-                                    child:serviceCubit.selectedMethod =="card".tr()
-                                        ? Center(
-                                      child: Image.asset(
-                                        "assets/images/check_mark_image.png",
-                                        color: AppColors.white,
-                                        height: screenWidth * AppSize.s0_28,
-                                      ),
-                                    )
-                                        :  Text(
-                                      "payByCard".tr(),
-                                      textAlign: TextAlign.center,
-                                      style: getBoldStyle(
-                                        color: AppColors.white,
-                                        fontSize: AppSize.s15,
-                                      ),
-                                    ),
+                                    radius: screenWidth * AppSize.s0_16,
+                                    child: serviceCubit.selectedMethod == "card".tr()
+                                        ? Center(child: Image.asset("assets/images/check_mark_image.png", color: AppColors.white, height: screenWidth * AppSize.s0_28))
+                                        : Text("payByCard".tr(), textAlign: TextAlign.center, style: getBoldStyle(color: AppColors.white, fontSize: AppSize.s15)),
                                   ),
                                 ),
                               ),
@@ -162,11 +150,8 @@ class PaymentScreen extends StatelessWidget {
                                 onTap: () {
                                   if (state is StripeSuccess) {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                       SnackBar(
-                                        content: Text(
-                                          "paymentCompleted".tr(),
-                                          style: TextStyle(color: AppColors.white),
-                                        ),
+                                      SnackBar(
+                                        content: Text("paymentCompleted".tr(), style: TextStyle(color: AppColors.white)),
                                         backgroundColor: AppColors.error,
                                       ),
                                     );
@@ -174,11 +159,8 @@ class PaymentScreen extends StatelessWidget {
                                     serviceCubit.selectMethod("cash".tr());
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                       SnackBar(
-                                        content: Text(
-                                          "methodSelected".tr(),
-                                          style: TextStyle(color: AppColors.white),
-                                        ),
+                                      SnackBar(
+                                        content: Text("methodSelected".tr(), style: TextStyle(color: AppColors.white)),
                                         backgroundColor: AppColors.error,
                                       ),
                                     );
@@ -186,22 +168,14 @@ class PaymentScreen extends StatelessWidget {
                                 },
                                 child: Material(
                                   elevation: AppSize.s10,
-                                  shadowColor: settingsCubit.isDark? AppColors.lightGrey : AppColors.black,
+                                  shadowColor: settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
                                   shape: const CircleBorder(),
                                   child: CircleAvatar(
                                     backgroundColor: AppColors.white,
-                                    radius:screenWidth * AppSize.s0_16 ,
-                                    child: serviceCubit.selectedMethod == "cash".tr() ?
-                                    Center(child: Image.asset("assets/images/check_mark_image.png"
-                                      ,height:screenWidth * AppSize.s0_28,))
-                                      :Text("cashOnDelivery".tr(),
-                                      textAlign: TextAlign.center,
-                                      style: getBoldStyle(
-                                        color: AppColors.primary,
-                                        fontSize: AppSize.s15,
-                                      ),
-                                    ),
-
+                                    radius: screenWidth * AppSize.s0_16,
+                                    child: serviceCubit.selectedMethod == "cash".tr()
+                                        ? Center(child: Image.asset("assets/images/check_mark_image.png", height: screenWidth * AppSize.s0_28))
+                                        : Text("cashOnDelivery".tr(), textAlign: TextAlign.center, style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s15)),
                                   ),
                                 ),
                               ),
@@ -216,9 +190,9 @@ class PaymentScreen extends StatelessWidget {
             ),
           );
         },
-
       ),
     );
   }
 }
+
 

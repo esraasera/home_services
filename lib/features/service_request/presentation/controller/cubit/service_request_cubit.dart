@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/features/service_request/domain/entities/service_request_entity.dart';
@@ -16,6 +17,10 @@ class ServiceRequestCubit extends Cubit<ServiceRequestState> {
   String? selectedMethod;
   final ServiceRequestUseCase serviceRequestUseCase;
 
+  String get translatedServiceName => serviceName?.tr() ?? '';
+  String get translatedServicePrice => servicePrice?.tr() ?? '';
+
+
 
   void setUserData(
       {required String name, required String phone, required String address}) {
@@ -24,11 +29,12 @@ class ServiceRequestCubit extends Cubit<ServiceRequestState> {
     this.address = address;
   }
 
-  void setServiceData({required String name, required String price}) {
-    serviceName = name;
-    servicePrice = price;
+  void setServiceData({required String titleKey, required String priceKey}) {
+    serviceName = titleKey;
+    servicePrice = priceKey;
     emit(SelectedService());
   }
+
 
   void selectMethod(String method) {
     selectedMethod = method;

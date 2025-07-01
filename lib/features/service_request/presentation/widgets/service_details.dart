@@ -106,8 +106,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                       minimumSize: Size( screenWidth * AppSize.s1 , screenHeight * AppSize.s0_073),
                     ),
                     onPressed: () {
-                      cubit.setServiceData(name: service.title, price:service.price);
-                      cubit.isSelectedService(name:service.title);
+                      cubit.setServiceData(titleKey: service.titleKey, priceKey: service.priceKey);
                       Navigator.pop(context);
                     },
                     child: Text(
