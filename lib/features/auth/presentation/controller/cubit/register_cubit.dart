@@ -21,7 +21,7 @@ class RegisterCubit extends Cubit <RegisterState>{
       if (registeredUser.uid != null) {
         await CacheHelper.putData(key: 'userId', value: registeredUser.uid);
       } else {
-        throw Exception("UID is null after registration");
+        throw Exception();
       }
       emit(RegisterSuccess());
     }catch (e) {
