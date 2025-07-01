@@ -47,7 +47,7 @@ class ServiceItem extends StatelessWidget {
                   service.titleKey.tr(),
                   style: getBoldStyle(
                     color: AppColors.black,
-                    fontSize: AppSize.s14,
+                    fontSize: AppSize.s16,
                   ),
                 ),
               ],

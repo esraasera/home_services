@@ -59,7 +59,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                   height:screenHeight * AppSize.s0_028,
                 ),
                 ...service.featureKeys.map((key) => Text("• ${key.tr()}" ,style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                fontSize: AppSize.s16
+                fontSize: AppSize.s17
                 ))),
                 SizedBox(
                   height:screenHeight * AppSize.s0_028,
@@ -68,10 +68,10 @@ class ServiceDetailsScreen extends StatelessWidget {
                   children: [
                     Text(" ${"price".tr()} ",style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s16),),
                     Text(" ${service.priceKey.tr()}",style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        fontSize: AppSize.s16
+                        fontSize: AppSize.s17
                     )),
                     Text("egp".tr(),style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        fontSize: AppSize.s16
+                        fontSize: AppSize.s17
                     )),
                   ],
                 ),
@@ -82,7 +82,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                   children: [
                     Text(" ${"duration".tr()}",style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s16),),
                     Text(" ${service.estimatedDurationKey.tr()}",style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        fontSize: AppSize.s16
+                        fontSize: AppSize.s17
                     )),
                   ],
                 ),
@@ -93,7 +93,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                   children: [
                     Text("${"workingHours".tr()} ",style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s16),),
                     Text(" ${service.workingHoursKey.tr()}",style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                        fontSize: AppSize.s16
+                        fontSize: AppSize.s17
                     )),
                   ],
                 ),

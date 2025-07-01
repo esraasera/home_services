@@ -10,6 +10,7 @@ import 'package:home_services_app/features/location_picker/domain/usecases/map_u
 import 'package:home_services_app/features/location_picker/presentation/controller/cubit/map_picker_cubit.dart';
 import 'package:home_services_app/features/location_picker/presentation/controller/states/map_picker_states.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
+import 'package:permission_handler/permission_handler.dart';
 import '../../../../core/utils/app_constants.dart';
 
 class MapPickerScreen extends StatelessWidget {
@@ -20,10 +21,23 @@ class MapPickerScreen extends StatelessWidget {
     zoom: AppSize.s13,
   );
 
+  Future<void> _requestLocationPermission(BuildContext context) async {
+    final status = await Permission.location.request();
+    if (status.isDenied || status.isPermanentlyDenied) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text("locationPermissionMessage".tr()),
+        ),
+      );
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.of(context).size.height;
     final screenWidth = MediaQuery.of(context).size.width;
+    Future.microtask(() => _requestLocationPermission(context));
 
     return BlocProvider(
       create: (_) => MapPickerCubit(
@@ -47,7 +61,7 @@ class MapPickerScreen extends StatelessWidget {
               title: Text(
                "selectLocation".tr(),
                 style:
-                getBoldStyle(color: AppColors.white, fontSize: screenWidth * AppSize.s0_045),
+                getBoldStyle(color: AppColors.white, fontSize: screenWidth * AppSize.s0_06),
               ),
             ),
             body: Stack(

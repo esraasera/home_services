@@ -46,6 +46,7 @@
   "egp": "جنيه ",
   "card": "بطاقة",
   "of": "من",
+  "locationPermissionMessage": "يرجى تفعيل صلاحية الموقع من الإعدادات",
 
 
   "customerInformation": "معلومات العميل",
@@ -169,7 +170,13 @@
       "workingHours": "٧:٠٠ ص - ٩:٠٠ م",
       "estimatedDuration": "من ساعة إلى ٣ ساعات"
     }
+  },
+  "numbers": {
+    "1": "١",
+    "2": "٢",
+    "3": "٣"
   }
+
 }
 
 

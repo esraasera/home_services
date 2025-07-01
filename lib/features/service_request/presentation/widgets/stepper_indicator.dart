@@ -6,9 +6,8 @@ import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/settings_states.dart';
 
-String convertToLocalizedNumber(BuildContext context, int number) {
-  String locale = context.locale.languageCode;
-  return NumberFormat.decimalPattern(locale).format(number);
+String getLocalizedNumber(int number) {
+  return 'numbers.${number}'.tr();
 }
 
 
@@ -44,8 +43,8 @@ class StepperIndicator extends StatelessWidget {
                 width:screenHeight* AppSize.s0_148,
                 height: screenHeight* AppSize.s0_148,
                 alignment: Alignment.center,
-                child: Text(
-                  '${convertToLocalizedNumber(context, currentStep)} ${"of".tr()} ${convertToLocalizedNumber(context, totalSteps)}',
+                child:Text(
+                  '${getLocalizedNumber(currentStep)} ${"of".tr()} ${getLocalizedNumber(totalSteps)}',
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(
                     fontSize: screenWidth * AppSize.s0_06,
                   ),

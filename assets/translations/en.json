@@ -46,6 +46,7 @@
   "egp": " EGP",
   "card": "card",
   "of": "of",
+  "locationPermissionMessage": "Please enable location permission from settings",
 
 
   "customerInformation": "Customer Info",
@@ -172,6 +173,11 @@
       "workingHours": "7:00 AM - 9:00 PM",
       "estimatedDuration": "1 - 3 hrs"
     }
+  },
+  "numbers": {
+    "1": "1",
+    "2": "2",
+    "3": "3"
   }
 }
 
