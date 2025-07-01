@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
-import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/settings_states.dart';
@@ -59,7 +59,7 @@ class StepperIndicator extends StatelessWidget {
                 const SizedBox(height:AppSize.s4),
                 if (nextTitle.isNotEmpty)
                   Text(
-                    AppStrings.nextPage + nextTitle,
+                    "nextPage".tr() + nextTitle,
                     style: cubit.isDark
                         ? Theme.of(context).textTheme.displayLarge!.copyWith(
                       fontSize: screenWidth * AppSize.s0_035,

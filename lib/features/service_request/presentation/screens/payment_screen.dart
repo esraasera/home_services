@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
-import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/payment/data/datasource/payment_remote_datasource.dart';
 import 'package:home_services_app/features/payment/data/repository/payment_repository.dart';
@@ -45,6 +45,7 @@ class PaymentScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: screenHeight * AppSize.s0_05),
             child: Material(
               elevation: AppSize.s10,
+              shadowColor: settingsCubit.isDark? AppColors.lightGrey : AppColors.black,
               borderRadius: BorderRadius.circular(AppSize.s16),
               color:AppColors.lightGrey,
               child: Container(
@@ -66,6 +67,7 @@ class PaymentScreen extends StatelessWidget {
                         children: [
                           Material(
                             elevation: AppSize.s10,
+                            shadowColor: settingsCubit.isDark? AppColors.lightGrey : AppColors.black,
                             borderRadius: BorderRadius.circular(AppSize.s16),
                             child: Container(
                               height:screenHeight * AppSize.s0_2,
@@ -82,8 +84,8 @@ class PaymentScreen extends StatelessWidget {
                                   children: [
                                     Row(
                                       children: [
-                                        Text(AppStrings.theService,style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
-                                        Text(serviceCubit.serviceName ?? AppStrings.notSelected,style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
+                                        Text("theService".tr(),style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
+                                        Text(serviceCubit.serviceName ?? "notSelected".tr(),style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
                                       ],
                                     ),
                                     SizedBox(
@@ -91,9 +93,9 @@ class PaymentScreen extends StatelessWidget {
                                     ),
                                     Row(
                                       children: [
-                                        Text(AppStrings.totalPrice,style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
-                                        Text(serviceCubit.servicePrice ?? AppStrings.notAvailable,style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
-                                        Text( AppStrings.egp,style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
+                                        Text("totalPrice".tr(),style: getBoldStyle(color: AppColors.primary,fontSize: AppSize.s18),),
+                                        Text(serviceCubit.servicePrice ?? "notAvailable".tr(),style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
+                                        Text( "egp".tr(),style: getMediumStyle(color: AppColors.black,fontSize: AppSize.s18),),
 
                                       ],
                                     ),
@@ -115,14 +117,14 @@ class PaymentScreen extends StatelessWidget {
                                   if (serviceCubit.selectedMethod == null) {
                                     await stripeCubit.makePaymentAndShowSheet(
                                       amount: price,
-                                      currency: AppStrings.currency,
+                                      currency: "currency".tr(),
                                       context: context,
                                     );
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                        SnackBar(
                                         content: Text(
-                                          AppStrings.methodSelected,
+                                         "methodSelected".tr(),
                                           style: TextStyle(color: AppColors.white),
                                         ),
                                         backgroundColor:AppColors.error,
@@ -132,11 +134,12 @@ class PaymentScreen extends StatelessWidget {
                                 },
                                 child: Material(
                                   elevation: AppSize.s10,
+                                  shadowColor: settingsCubit.isDark? AppColors.lightGrey : AppColors.black,
                                   shape: const CircleBorder(),
                                   child: CircleAvatar(
                                     backgroundColor: AppColors.primary,
                                     radius:screenWidth * AppSize.s0_16 ,
-                                    child:serviceCubit.selectedMethod == AppStrings.card
+                                    child:serviceCubit.selectedMethod =="card".tr()
                                         ? Center(
                                       child: Image.asset(
                                         "assets/images/check_mark_image.png",
@@ -145,7 +148,7 @@ class PaymentScreen extends StatelessWidget {
                                       ),
                                     )
                                         :  Text(
-                                      AppStrings.payByCard,
+                                      "payByCard".tr(),
                                       textAlign: TextAlign.center,
                                       style: getBoldStyle(
                                         color: AppColors.white,
@@ -161,19 +164,19 @@ class PaymentScreen extends StatelessWidget {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                        SnackBar(
                                         content: Text(
-                                          AppStrings.paymentCompleted,
+                                          "paymentCompleted".tr(),
                                           style: TextStyle(color: AppColors.white),
                                         ),
                                         backgroundColor: AppColors.error,
                                       ),
                                     );
                                   } else if (serviceCubit.selectedMethod == null) {
-                                    serviceCubit.selectMethod(AppStrings.cash);
+                                    serviceCubit.selectMethod("cash".tr());
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                        SnackBar(
                                         content: Text(
-                                          AppStrings.methodSelected,
+                                          "methodSelected".tr(),
                                           style: TextStyle(color: AppColors.white),
                                         ),
                                         backgroundColor: AppColors.error,
@@ -183,14 +186,15 @@ class PaymentScreen extends StatelessWidget {
                                 },
                                 child: Material(
                                   elevation: AppSize.s10,
+                                  shadowColor: settingsCubit.isDark? AppColors.lightGrey : AppColors.black,
                                   shape: const CircleBorder(),
                                   child: CircleAvatar(
                                     backgroundColor: AppColors.white,
                                     radius:screenWidth * AppSize.s0_16 ,
-                                    child: serviceCubit.selectedMethod == AppStrings.cash ?
+                                    child: serviceCubit.selectedMethod == "cash".tr() ?
                                     Center(child: Image.asset("assets/images/check_mark_image.png"
                                       ,height:screenWidth * AppSize.s0_28,))
-                                      :Text(AppStrings.cashOnDelivery,
+                                      :Text("cashOnDelivery".tr(),
                                       textAlign: TextAlign.center,
                                       style: getBoldStyle(
                                         color: AppColors.primary,

@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
     if (userId != null && userId is String && userId.isNotEmpty) {
       return Routes.stepperRoute;
     } else {
-      return Routes.loginRoute;
+      return Routes.splashRoute;
     }
   }
 

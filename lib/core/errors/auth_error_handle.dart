@@ -1,4 +1,5 @@
-import 'package:home_services_app/core/errors/firebase_auth_error.dart';
+
+import 'package:easy_localization/easy_localization.dart';
 
 enum AuthErrorType {
   emailAlreadyInUse,
@@ -19,29 +20,29 @@ extension AuthErrorTypeExtension on AuthErrorType {
   String get message {
     switch (this) {
       case AuthErrorType.emailAlreadyInUse:
-        return FirebaseAuthErrors.emailAlreadyInUse;
+        return "firebase.emailAlreadyInUse".tr();
       case AuthErrorType.weakPassword:
-        return FirebaseAuthErrors.weakPassword;
+        return "firebase.weakPassword".tr();
       case AuthErrorType.invalidEmail:
-        return FirebaseAuthErrors.invalidEmail;
+        return "firebase.invalidEmail".tr();
       case AuthErrorType.networkError:
-        return FirebaseAuthErrors.networkError;
+        return "firebase.networkError".tr();
       case AuthErrorType.invalidCredential:
-        return FirebaseAuthErrors.invalidCredential;
+        return "firebase.invalidCredential".tr();
       case AuthErrorType.userDisabled:
-        return FirebaseAuthErrors.userDisabled;
+        return "firebase.userDisabled".tr();
       case AuthErrorType.userNotFound:
-        return FirebaseAuthErrors.userNotFound;
+        return "firebase.userNotFound".tr();
       case AuthErrorType.wrongPassword:
-        return FirebaseAuthErrors.wrongPassword;
+        return "firebase.wrongPassword".tr();
       case AuthErrorType.tooManyRequests:
-        return FirebaseAuthErrors.tooManyRequests;
+        return "firebase.tooManyRequests".tr();
       case AuthErrorType.operationNotAllowed:
-        return FirebaseAuthErrors.operationNotAllowed;
+        return "firebase.operationNotAllowed".tr();
       case AuthErrorType.unknownError:
-        return FirebaseAuthErrors.unknownError;
+        return "firebase.unknownError".tr();
       case AuthErrorType.unexpectedError:
-        return FirebaseAuthErrors.unexpectedError;
+        return "firebase.unexpectedError".tr();
     }
   }
 }

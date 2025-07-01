@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
-import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/location_picker/data/datasource/map_remote_data_source.dart';
 import 'package:home_services_app/features/location_picker/data/repository/map_repository.dart';
@@ -45,7 +45,7 @@ class MapPickerScreen extends StatelessWidget {
                 onPressed: () => Navigator.pop(context),
               ),
               title: Text(
-                AppStrings.selectLocation,
+               "selectLocation".tr(),
                 style:
                 getBoldStyle(color: AppColors.white, fontSize: screenWidth * AppSize.s0_045),
               ),
@@ -89,8 +89,8 @@ class MapPickerScreen extends StatelessWidget {
                           navigator.pop(address);
                         } else {
                           messenger.showSnackBar(
-                            const SnackBar(
-                              content: Text(AppStrings.failedAddress),
+                             SnackBar(
+                              content: Text("failedAddress".tr()),
                             ),
                           );
                         }
@@ -102,7 +102,7 @@ class MapPickerScreen extends StatelessWidget {
                         ),
                       ),
                       child: Text(
-                        AppStrings.confirmLocation,
+                       "confirmLocation".tr(),
                         style: getBoldStyle(
                             color: AppColors.white, fontSize: screenWidth * AppSize.s0_045),
                       ),

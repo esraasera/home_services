@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
-import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/data/datasource/service_request_remote_datasource.dart';
 import 'package:home_services_app/features/service_request/data/repository/service_request_repository.dart';
@@ -36,7 +36,7 @@ class StepperScreen extends StatelessWidget {
           } else if (state is ServiceRequestFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
-                content: Text("${AppStrings.errorOccurred} ${state.error}"),
+                content: Text("${"errorOccurred".tr()} ${state.error}"),
                 backgroundColor: AppColors.error,
               ),
             );
@@ -68,8 +68,8 @@ class StepperScreen extends StatelessWidget {
                           title: stepperCubit.stepTitles[stepperCubit.currentStep],
                           totalSteps: stepperCubit.totalSteps,
                           nextTitle: (stepperCubit.currentStep < stepperCubit.totalSteps - AppSize.s1)
-                        ? stepperCubit.stepTitles[stepperCubit.displayStep]
-                        : '',
+                              ? stepperCubit.stepTitles[stepperCubit.displayStep]
+                              : '',
                         ),
                       SizedBox(
                         height: screenHeight * AppSize.s0_02,
@@ -100,7 +100,7 @@ class StepperScreen extends StatelessWidget {
                                       serviceCubit.selectedMethod != null)
                                       ? null
                                       : stepperCubit.previousStepperStep,
-                                  child: Text(AppStrings.back),
+                                  child: Text( "back".tr()),
                                 );
 
                               },
@@ -127,7 +127,7 @@ class StepperScreen extends StatelessWidget {
                                     if (serviceCubit.serviceName == null) {
                                       ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
-                                          content: Text(AppStrings.serviceError),
+                                          content: Text("serviceError".tr()),
                                           duration: Duration(seconds: 3),
                                           backgroundColor: AppColors.error,
                                         ),
@@ -140,7 +140,7 @@ class StepperScreen extends StatelessWidget {
                                     if (serviceCubit.selectedMethod == null){
                                       ScaffoldMessenger.of(context).showSnackBar(
                                         SnackBar(
-                                          content: Text(AppStrings.selectedMethodError),
+                                          content: Text("selectedMethodError".tr()),
                                           duration: Duration(seconds: 3),
                                           backgroundColor: AppColors.error,
                                         ),
@@ -153,8 +153,8 @@ class StepperScreen extends StatelessWidget {
                                 },
                               child: Text(
                                 stepperCubit.currentStep == stepperCubit.totalSteps - 1
-                                    ? AppStrings.confirm
-                                    : AppStrings.next,
+                                    ? "confirm".tr()
+                                    : "next".tr(),
                               ),
 
                             )

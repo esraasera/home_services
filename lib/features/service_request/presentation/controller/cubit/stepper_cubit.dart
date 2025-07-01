@@ -1,6 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/features/confirmation/presentation/screens/confirmation_screen.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/stepper_states.dart';
 import 'package:home_services_app/features/service_request/presentation/screens/payment_screen.dart';
@@ -34,10 +34,10 @@ class StepperCubit extends Cubit<StepperState> {
   ];
 
 
-  final List<String> stepTitles = [
-    AppStrings.customerInformation,
-    AppStrings.chooseService,
-    AppStrings.payment,
+  List<String> get stepTitles => [
+    "customerInformation".tr(),
+    "chooseService".tr(),
+    "payment".tr(),
   ];
 
   int get totalSteps => stepScreens.length;
@@ -64,7 +64,7 @@ class StepperCubit extends Cubit<StepperState> {
   }
 
   bool isDarkMode = false;
-  String currentLanguage = AppStrings.en;
+  String currentLanguage = "en".tr();
 
   void toggleTheme() {
     isDarkMode = !isDarkMode;

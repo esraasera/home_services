@@ -1,9 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
-import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/settings_states.dart';
@@ -36,7 +36,7 @@ class UserInfoScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(AppStrings.addYourName,style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    Text("addYourName".tr(),style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: AppSize.s14
                     ),),
                     SizedBox(
@@ -48,14 +48,14 @@ class UserInfoScreen extends StatelessWidget {
                         style: TextStyle(color: settingsCubit.isDark ? AppColors.white : AppColors.black),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return AppStrings.nameError;
+                            return "nameError".tr();
                           }
                           return null;
                         }),
                     SizedBox(
                       height:screenHeight * AppSize.s0_03,
                     ),
-                    Text(AppStrings.addYourNumber,style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    Text("addYourNumber".tr(),style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: AppSize.s14
                     ),),
                     SizedBox(
@@ -67,14 +67,14 @@ class UserInfoScreen extends StatelessWidget {
                         style: TextStyle(color: settingsCubit.isDark ? AppColors.white : AppColors.black),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return AppStrings.numError;
+                            return "numError".tr();
                           }
                           return null;
                         }),
                     SizedBox(
                       height:screenHeight * AppSize.s0_03,
                     ),
-                    Text(AppStrings.addYourAddress,style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    Text("addYourAddress".tr(),style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: AppSize.s14
                     ),),
                     SizedBox(
@@ -88,7 +88,7 @@ class UserInfoScreen extends StatelessWidget {
                         ),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
-                            return AppStrings.addressError;
+                            return "addressError".tr();
                           }
                           return null;
                         }),
@@ -133,7 +133,7 @@ class UserInfoScreen extends StatelessWidget {
                                         Icon(Icons.location_on, color:AppColors.white, size:AppSize.s15),
                                         SizedBox(width: screenWidth * AppSize.s0_008),
                                         Text(
-                                          AppStrings.selectLocation,
+                                          "selectLocation".tr(),
                                           style: getMediumStyle(color: AppColors.white,fontSize: AppSize.s12),
                                         ),
                                       ],

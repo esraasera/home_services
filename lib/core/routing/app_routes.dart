@@ -1,5 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/features/auth/presentation/screens/forgot_password_screen.dart';
 import 'package:home_services_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:home_services_app/features/auth/presentation/screens/register_screen.dart';
@@ -44,8 +44,8 @@ static Route <dynamic> getRoute(RouteSettings settings){
 
 static Route<dynamic> unDefinedRoute(){
   return MaterialPageRoute(builder:(_)=>Scaffold(
-    appBar: AppBar(title: const Text(AppStrings.noRouteFound),),
-    body: const Center(child: Text(AppStrings.noRouteFound),),
+    appBar: AppBar(title: Text("noRouteFound".tr())),
+    body: Center(child: Text("noRouteFound".tr())),
   )
   );
 }

@@ -1,7 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
-import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/features/payment/domain/usecases/make_payment_intent_usecase.dart';
 import 'package:home_services_app/features/payment/domain/usecases/show_stripe_sheet_usecase.dart';
 import 'package:home_services_app/features/payment/presentation/controller/states/stripe_states.dart';
@@ -37,7 +37,7 @@ class StripeCubit extends Cubit<StripeState> {
 
       if (isClosed) return;
       emit(StripeSuccess());
-      serviceCubit.selectMethod(AppStrings.card);
+      serviceCubit.selectMethod("card".tr());
       _isProcessing = false;
     } catch (e) {
       if (isClosed) return;
@@ -45,7 +45,7 @@ class StripeCubit extends Cubit<StripeState> {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(
-              AppStrings.paymentError,
+              "paymentError".tr(),
               style: const TextStyle(color: Colors.white),
             ),
             backgroundColor: AppColors.error,

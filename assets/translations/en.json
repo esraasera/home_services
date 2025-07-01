@@ -89,6 +89,87 @@
     "operationNotAllowed": "Operation not allowed.",
     "unknownError": "An unknown error occurred.",
     "unexpectedError": "An unknown error occurred."
-  }
+  },
 
+  "services": {
+    "plumbing": {
+      "title": "Plumbing",
+      "subTitle": "Plumbing Service",
+      "description": "We provide high-quality plumbing services for homes and offices.",
+      "features": {
+        "0": "Faucet installation",
+        "1": "Leak repair",
+        "2": "Pipe cleaning"
+      },
+      "price": "150 EGP",
+      "workingHours": "9:00 AM - 9:00 PM",
+      "estimatedDuration": "30 mins - 2 hrs"
+    },
+    "carpentry": {
+      "title": "Carpentry",
+      "subTitle": "Carpentry Service",
+      "description": "Expert carpentry services for furniture and woodwork.",
+      "features": {
+        "0": "Door repair",
+        "1": "Furniture assembly",
+        "2": "Wood polishing"
+      },
+      "price": "200 EGP",
+      "workingHours": "10:00 AM - 8:00 PM",
+      "estimatedDuration": "1 - 3 hrs"
+    },
+    "electrical": {
+      "title": "Electrical",
+      "subTitle": "Electrical Service",
+      "description": "Professional electrical solutions for all your needs.",
+      "features": {
+        "0": "Socket installation",
+        "1": "Wiring",
+        "2": "Appliance repair"
+      },
+      "price": "180 EGP",
+      "workingHours": "8:00 AM - 10:00 PM",
+      "estimatedDuration": "30 mins - 2 hrs"
+    },
+    "painting": {
+      "title": "Painting",
+      "subTitle": "Painting Service",
+      "description": "Interior and exterior painting with high-quality materials.",
+      "features": {
+        "0": "Wall painting",
+        "1": "Ceiling painting",
+        "2": "Decorative finishes"
+      },
+      "price": "250 EGP",
+      "workingHours": "9:00 AM - 6:00 PM",
+      "estimatedDuration": "2 - 5 hrs"
+    },
+    "pestControl": {
+      "title": "Pest Control",
+      "subTitle": "Pest Control Service",
+      "description": "Safe and effective pest control for homes and offices.",
+      "features": {
+        "0": "Ant control",
+        "1": "Cockroach removal",
+        "2": "Rodent management"
+      },
+      "price": "300 EGP",
+      "workingHours": "10:00 AM - 5:00 PM",
+      "estimatedDuration": "1 - 2 hrs"
+    },
+    "cleaning": {
+      "title": "Cleaning",
+      "subTitle": "Cleaning Service",
+      "description": "Comprehensive cleaning services by trained professionals.",
+      "features": {
+        "0": "Home cleaning",
+        "1": "Office cleaning",
+        "2": "Deep cleaning"
+      },
+      "price": "100 EGP",
+      "workingHours": "7:00 AM - 9:00 PM",
+      "estimatedDuration": "1 - 3 hrs"
+    }
+  }
 }
+

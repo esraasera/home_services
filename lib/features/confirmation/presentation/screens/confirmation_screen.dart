@@ -1,8 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
-import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/settings_states.dart';
@@ -31,9 +31,9 @@ class ConfirmationScreen extends StatelessWidget{
                   fit: BoxFit.contain,
                 ),
                 SizedBox(height: screenHeight * AppSize.s0_02),
-                Text(AppStrings.successfulRequest,style: getSemiBoldStyle(color:cubit.isDark ? AppColors.lightPrimary : AppColors.black,fontSize: AppSize.s18),),
+                Text("successfulRequest".tr(),style: getSemiBoldStyle(color:cubit.isDark ? AppColors.lightPrimary : AppColors.black,fontSize: AppSize.s18),),
                 SizedBox(height: screenHeight * AppSize.s0_008),
-                Text(AppStrings.waitCall,style: getSemiBoldStyle(color: cubit.isDark ? AppColors.lightPrimary : AppColors.black,fontSize: AppSize.s18),),
+                Text("waitCall".tr(),style: getSemiBoldStyle(color: cubit.isDark ? AppColors.lightPrimary : AppColors.black,fontSize: AppSize.s18),),
 
               ],
             ),

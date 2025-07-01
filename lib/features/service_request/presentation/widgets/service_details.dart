@@ -1,9 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/app_text_style.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
-import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/data/models/service_details_model.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/service_request_cubit.dart';
@@ -54,7 +54,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                 SizedBox(
                   height:screenHeight * AppSize.s0_028,
                 ),
-                Text(AppStrings.serviceOffered, style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s18)),
+                Text("serviceOffered".tr(), style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s18)),
                 SizedBox(
                   height:screenHeight * AppSize.s0_028,
                 ),
@@ -66,11 +66,11 @@ class ServiceDetailsScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text(" ${AppStrings.price} ",style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s16),),
+                    Text(" ${"price".tr()} ",style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s16),),
                     Text(" ${service.price}",style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: AppSize.s16
                     )),
-                    Text(AppStrings.egp,style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                    Text("egp".tr(),style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: AppSize.s16
                     )),
                   ],
@@ -80,7 +80,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text(" ${AppStrings.duration}",style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s16),),
+                    Text(" ${"duration".tr()}",style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s16),),
                     Text(" ${service.estimatedDuration}",style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: AppSize.s16
                     )),
@@ -91,7 +91,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                 ),
                 Row(
                   children: [
-                    Text("${AppStrings.workingHours} ",style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s16),),
+                    Text("${"workingHours".tr()} ",style: getBoldStyle(color: settingsCubit.isDark ? AppColors.lightPrimary: AppColors.primary,fontSize: AppSize.s16),),
                     Text(" ${service.workingHours}",style: Theme.of(context).textTheme.titleMedium!.copyWith(
                         fontSize: AppSize.s16
                     )),
@@ -111,7 +111,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      AppStrings.bookNow,
+                      "bookNow".tr(),
                     ),
                   ),
                 ),
