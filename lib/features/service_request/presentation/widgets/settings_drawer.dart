@@ -94,7 +94,9 @@ class SettingsDrawer extends StatelessWidget {
                             )),
                             )],
                           onChanged: (value) {
-                            if (value != null) cubit.changeLanguage(value);
+                            if (value != null) {
+                              cubit.changeLanguage(value, context);
+                            }
                           },
                         ),
                       ),

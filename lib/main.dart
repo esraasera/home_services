@@ -23,9 +23,9 @@ void main() async {
       supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
-      startLocale: const Locale('en'),
+      startLocale: Locale(CacheHelper.getData('lang') ?? 'en'),
       child: BlocProvider(
-        create: (_) => SettingsCubit(),
+        create: (context) => SettingsCubit(context),
         child: const MyApp(),
       ),
     ),

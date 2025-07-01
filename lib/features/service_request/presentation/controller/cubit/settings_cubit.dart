@@ -1,17 +1,22 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/helpers/shared_prefs_helper.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/settings_states.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
-  SettingsCubit() : super(SettingsInitial()) {
+  SettingsCubit(BuildContext context) : super(SettingsInitial()) {
     isDark = CacheHelper.getData("isDark") ?? false;
+    currentLanguage = CacheHelper.getData("lang") ?? AppStrings.en;
+
+    context.setLocale(Locale(currentLanguage));
   }
 
   static SettingsCubit get(context) => BlocProvider.of(context);
 
   late bool isDark;
-  String currentLanguage = AppStrings.en;
+  late String currentLanguage;
 
   void toggleTheme() {
     isDark = !isDark;
@@ -19,12 +24,14 @@ class SettingsCubit extends Cubit<SettingsState> {
     emit(SettingsUpdated());
   }
 
-  void changeLanguage(String lang) {
-    currentLanguage = lang;
+  void changeLanguage(String langCode, BuildContext context) {
+    currentLanguage = langCode;
+    CacheHelper.putData(key: 'lang', value: langCode);
+    context.setLocale(Locale(currentLanguage));
     emit(SettingsUpdated());
   }
 
-  void logout()  async{
+  Future<void> logout() async {
     await CacheHelper.removeData("userId");
     emit(SettingsLoggedOut());
   }
