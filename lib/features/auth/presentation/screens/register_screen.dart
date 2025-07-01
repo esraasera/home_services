@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
-import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/auth/data/datasource/auth_remote_datasource.dart';
 import 'package:home_services_app/features/auth/data/repository/auth_repository.dart';
@@ -78,11 +78,11 @@ class RegisterScreen extends StatelessWidget{
               controller: nameController,
               style: TextStyle(color: settingsCubit.isDark ? AppColors.white : AppColors.black),
               decoration: InputDecoration(
-                hintText: AppStrings.username,
+                hintText: "username".tr(),
               ),
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return AppStrings.usernameError;
+                  return "usernameError".tr();
                 }
                 return null;
               },),
@@ -94,11 +94,11 @@ class RegisterScreen extends StatelessWidget{
         controller: emailController,
           style: TextStyle(color: settingsCubit.isDark ? AppColors.white : AppColors.black),
           decoration: InputDecoration(
-        hintText: AppStrings.email,
+        hintText: "email".tr(),
         ),
         validator: (value) {
         if (value == null || value.isEmpty) {
-        return AppStrings.emailError;
+        return "emailError".tr();
         }
         return null;
         },),
@@ -111,7 +111,7 @@ class RegisterScreen extends StatelessWidget{
           style: TextStyle(color: settingsCubit.isDark ? AppColors.white : AppColors.black),
           obscureText: cubit.showPassword,
         decoration: InputDecoration(
-        hintText: AppStrings.password,
+        hintText: "password".tr(),
           suffixIcon: IconButton(
             icon:Icon(
               cubit.showPassword ? Icons.visibility_off : Icons.visibility,
@@ -124,7 +124,7 @@ class RegisterScreen extends StatelessWidget{
         ),
         validator: (value) {
         if (value == null || value.isEmpty) {
-        return AppStrings.passwordError;
+        return "passwordError".tr();
         }
         return null;
         },),
@@ -140,7 +140,7 @@ class RegisterScreen extends StatelessWidget{
         }
         },
         child: Text(
-        AppStrings.register,
+            "register".tr(),
         ),
         ),
         SizedBox(
@@ -150,12 +150,12 @@ class RegisterScreen extends StatelessWidget{
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
         Text(
-        AppStrings.alreadyUser,
+          "alreadyUser".tr(),
           style: Theme.of(context).textTheme.displayLarge,
         ),
         GestureDetector(
         child: Text(
-        AppStrings.login,
+          "login".tr(),
           style: Theme.of(context).textTheme.displayLarge!.copyWith(
               color: settingsCubit.isDark ? AppColors.lightPrimary : AppColors.primary
           ),
