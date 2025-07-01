@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
-import 'package:home_services_app/core/utils/app_strings.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/auth/data/datasource/auth_remote_datasource.dart';
 import 'package:home_services_app/features/auth/data/repository/auth_repository.dart';
@@ -42,7 +42,7 @@ class ForgotPassword extends StatelessWidget{
               emailController.clear();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text(AppStrings.done),
+                  content: Text( "forgotPassword".tr(),),
                   backgroundColor:AppColors.success,
                   behavior: SnackBarBehavior.fixed,
                 ),
@@ -65,7 +65,7 @@ class ForgotPassword extends StatelessWidget{
                             child: Column(
                                 children: [
                                   Text(
-                                    AppStrings.forgotPassword,
+                                    "forgotPassword".tr(),
                                     style: Theme.of(context).textTheme.displayLarge!.copyWith(
                                         fontSize: AppSize.s35
                                     ),
@@ -78,11 +78,11 @@ class ForgotPassword extends StatelessWidget{
                                     controller: emailController,
                                     style: TextStyle(color: settingsCubit.isDark ? AppColors.white : AppColors.black),
                                     decoration: InputDecoration(
-                                      hintText: AppStrings.email,
+                                      hintText: "email".tr(),
                                     ),
                                     validator: (value) {
                                       if (value == null || value.isEmpty) {
-                                        return AppStrings.emailError;
+                                        return "emailError".tr();
                                       }
                                       return null;
                                     },),
@@ -98,7 +98,7 @@ class ForgotPassword extends StatelessWidget{
                                       }
                                     },
                                     child: Text(
-                                      AppStrings.submit,
+                                        "submit".tr(),
                                     ),
                                   ),
                                   SizedBox(
@@ -108,12 +108,12 @@ class ForgotPassword extends StatelessWidget{
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        AppStrings.isUser,
+                                      "isUser".tr(),
                                         style: Theme.of(context).textTheme.displayLarge,
                                       ),
                                       GestureDetector(
                                         child: Text(
-                                          AppStrings.create,
+                                          "create".tr(),
                                           style: Theme.of(context).textTheme.displayLarge!.copyWith(
                                               color: settingsCubit.isDark ? AppColors.lightPrimary : AppColors.primary
                                           ),
