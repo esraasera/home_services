@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_services_app/core/helpers/shared_prefs_helper.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_theme.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
@@ -7,6 +8,15 @@ import 'package:home_services_app/features/service_request/presentation/controll
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  String getInitialRoute() {
+    final userId = CacheHelper.getData('userId');
+    if (userId != null && userId is String && userId.isNotEmpty) {
+      return Routes.stepperRoute;
+    } else {
+      return Routes.loginRoute;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<SettingsCubit, SettingsState>(
@@ -17,7 +27,7 @@ class MyApp extends StatelessWidget {
          theme: getApplicationTheme(),
          darkTheme: getDarkTheme(),
          themeMode:  SettingsCubit.get(context).isDark ? ThemeMode.dark : ThemeMode.light,
-         initialRoute: Routes.splashRoute,
+         initialRoute: getInitialRoute(),
          onGenerateRoute: RouteGenerator.getRoute,
        );
      },

@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:home_services_app/core/errors/app_exception.dart';
+import 'package:home_services_app/core/helpers/shared_prefs_helper.dart';
 import 'package:home_services_app/features/auth/domain/entities/user_entity.dart';
 import 'package:home_services_app/features/auth/domain/usecases/register_usecase.dart';
 import 'package:home_services_app/features/auth/presentation/controller/states/register_states.dart';
@@ -16,10 +17,16 @@ class RegisterCubit extends Cubit <RegisterState>{
     emit(RegisterLoading());
     try{
       final user = UserEntity(email: email, name: name);
-      await registerUseCase (user , password);
+      final registeredUser = await registerUseCase(user, password);
+      if (registeredUser.uid != null) {
+        await CacheHelper.putData(key: 'userId', value: registeredUser.uid);
+      } else {
+        throw Exception("UID is null after registration");
+      }
       emit(RegisterSuccess());
     }catch (e) {
       emit(RegisterFailure(e is AppException ? e.message : e.toString()));
+      print(e.toString());
     }
   }
   void changeSuffixIcon() {

@@ -82,6 +82,6 @@ class AppStrings {
   static const methodSelected = "You have already selected a payment method";
   static const paymentCompleted = "Payment has already been completed";
   static const errorOccurred = "An error occurred: ";
-  static const paymentError = "Something went wrong. try again later.";
+  static const paymentError = "Something went wrong. Please try again";
 
 }

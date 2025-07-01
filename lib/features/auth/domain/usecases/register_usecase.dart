@@ -5,7 +5,7 @@ class RegisterUseCase{
   AuthRepository authRepository ;
   RegisterUseCase (this.authRepository);
 
-  Future <void> call (UserEntity user, String password)async{
+  Future<UserEntity> call (UserEntity user, String password)async{
     return await authRepository.registerUser(user, password);
   }
 }

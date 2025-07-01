@@ -5,7 +5,7 @@ import 'package:home_services_app/core/errors/auth_error_handle.dart';
 import 'package:home_services_app/features/auth/data/models/user_model.dart';
 
 abstract class AuthRemoteDataSource {
-  Future<void> registerUser(UserModel user , String password);
+  Future<UserModel> registerUser(UserModel user , String password);
   Future<UserModel> loginUser(String email , String password);
   Future<void>resetPassword(String email);
 }
@@ -20,15 +20,21 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   });
 
   @override
-  Future<void> registerUser(UserModel user, String password) async {
+  Future<UserModel> registerUser(UserModel user, String password) async {
     try {
       final newUser = await firebaseAuth.createUserWithEmailAndPassword(
         email: user.email,
         password: password,
       );
       final userMap = user.toMap();
+    final uid = newUser.user!.uid;
       userMap['uid'] = newUser.user!.uid;
       await firestore.collection('users').doc(newUser.user!.uid).set(userMap);
+      return UserModel(
+        uid: uid,
+        name: user.name,
+        email: user.email,
+      );
     } on FirebaseAuthException catch (e) {
       final errorType = firebaseAuthErrorType(e.code);
       throw AppException(errorType.message);

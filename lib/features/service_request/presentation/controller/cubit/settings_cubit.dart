@@ -5,7 +5,7 @@ import 'package:home_services_app/features/service_request/presentation/controll
 
 class SettingsCubit extends Cubit<SettingsState> {
   SettingsCubit() : super(SettingsInitial()) {
-    isDark = CacheHelper.getBoolData(key: "isDark") ?? false;
+    isDark = CacheHelper.getData("isDark") ?? false;
   }
 
   static SettingsCubit get(context) => BlocProvider.of(context);
@@ -15,7 +15,7 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   void toggleTheme() {
     isDark = !isDark;
-    CacheHelper.putBoolData(key: "isDark", value: isDark);
+    CacheHelper.putData(key: "isDark", value: isDark);
     emit(SettingsUpdated());
   }
 
@@ -24,7 +24,8 @@ class SettingsCubit extends Cubit<SettingsState> {
     emit(SettingsUpdated());
   }
 
-  void logout() {
+  void logout()  async{
+    await CacheHelper.removeData("userId");
     emit(SettingsLoggedOut());
   }
 }

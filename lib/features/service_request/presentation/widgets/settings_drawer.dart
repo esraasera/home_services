@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/utils/app_strings.dart';
@@ -16,7 +17,11 @@ class SettingsDrawer extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
 
     return BlocConsumer<SettingsCubit, SettingsState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+      if (state is SettingsLoggedOut) {
+        Navigator.pushReplacementNamed(context, Routes.loginRoute);
+      }
+      },
       builder: (context, state) {
         var cubit = SettingsCubit.get(context);
         return SafeArea(
