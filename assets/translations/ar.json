@@ -72,5 +72,20 @@
   "methodSelected": "لقد قمت باختيار طريقة دفع بالفعل",
   "paymentCompleted": "تم الدفع مسبقًا",
   "errorOccurred": "حدث خطأ: ",
-  "paymentError": "حدث خطأ. حاول مرة أخرى"
+  "paymentError": "حدث خطأ. حاول مرة أخرى",
+
+  "firebase": {
+    "emailAlreadyInUse": "هذا البريد الإلكتروني مستخدم بالفعل.",
+    "weakPassword": "كلمة المرور ضعيفة جدًا.",
+    "invalidEmail": "تنسيق البريد الإلكتروني غير صحيح.",
+    "networkError": "حدث خطأ في الشبكة.",
+    "userDisabled": "تم تعطيل هذا المستخدم.",
+    "userNotFound": "لم يتم العثور على مستخدم لهذا البريد.",
+    "wrongPassword": "كلمة المرور غير صحيحة.",
+    "tooManyRequests": "عدد كبير من المحاولات. حاول لاحقًا.",
+    "invalidCredential": "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+    "operationNotAllowed": "العملية غير مسموحة.",
+    "unknownError": "حدث خطأ غير معروف.",
+    "unexpectedError": "حدث خطأ غير متوقع."
+  }
 }

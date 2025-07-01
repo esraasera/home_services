@@ -73,5 +73,22 @@
   "methodSelected": "You have already selected a payment method",
   "paymentCompleted": "Payment has already been completed",
   "errorOccurred": "An error occurred: ",
-  "paymentError": "Something went wrong. Please try again"
+  "paymentError": "Something went wrong. Please try again",
+
+
+  "firebase": {
+    "emailAlreadyInUse": "This email is already in use.",
+    "weakPassword": "Your password is too weak.",
+    "invalidEmail": "This email format is invalid.",
+    "networkError": "A network error has occurred.",
+    "userDisabled": "This user has been disabled.",
+    "userNotFound": "No user found for this email.",
+    "wrongPassword": "Incorrect password.",
+    "tooManyRequests": "Too many requests. Try again later.",
+    "invalidCredential": "Incorrect email or password. Please try again.",
+    "operationNotAllowed": "Operation not allowed.",
+    "unknownError": "An unknown error occurred.",
+    "unexpectedError": "An unknown error occurred."
+  }
+
 }
