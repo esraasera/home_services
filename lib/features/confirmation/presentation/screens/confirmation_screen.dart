@@ -25,24 +25,24 @@ class ConfirmationScreen extends StatelessWidget {
                 Image.asset(
                   "assets/images/check-mark-icon.png",
                   width: AppSize.s216.w,
-                  height: AppSize.s216.w,
+                  height: AppSize.s216.h,
                   color: cubit.isDark ? AppColors.white : AppColors.primary,
                   fit: BoxFit.contain,
                 ),
-                SizedBox(height: AppSize.s14.h),
+                SizedBox(height: AppSize.s6.h),
                 Text(
                   "successfulRequest".tr(),
                   style: getSemiBoldStyle(
                     color: cubit.isDark ? AppColors.lightPrimary : AppColors.black,
-                    fontSize: AppSize.s18.sp,
+                    fontSize: AppSize.s20.sp,
                   ),
                 ),
-                SizedBox(height: AppSize.s20.h),
+                SizedBox(height: AppSize.s10.h),
                 Text(
                   "waitCall".tr(),
                   style: getSemiBoldStyle(
                     color: cubit.isDark ? AppColors.lightPrimary : AppColors.black,
-                    fontSize: AppSize.s18.sp,
+                    fontSize: AppSize.s20.sp,
                   ),
                 ),
               ],

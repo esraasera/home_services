@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
+import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/data/models/service_details_model.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/service_request_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
@@ -43,7 +44,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                     padding: EdgeInsets.all(8.w),
                     child: Image.asset(
                       service.imagePath,
-                      height: 200.h,
+                      height: AppSize.s180.h,
                       color: settingsCubit.isDark ? AppColors.white : AppColors.black,
                     ),
                   ),
@@ -78,7 +79,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                       "${"price".tr()} ",
                       style: getBoldStyle(
                         color: settingsCubit.isDark ? AppColors.lightPrimary : AppColors.primary,
-                        fontSize: 16.sp,
+                        fontSize: AppSize.s16.sp,
                       ),
                     ),
                     Text(
@@ -98,7 +99,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                       "${"duration".tr()} ",
                       style: getBoldStyle(
                         color: settingsCubit.isDark ? AppColors.lightPrimary : AppColors.primary,
-                        fontSize: 16.sp,
+                        fontSize: AppSize.s16.sp,
                       ),
                     ),
                     Text(
@@ -107,7 +108,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 16.h),
+                SizedBox(height: AppSize.s16.h),
                 Row(
                   children: [
                     Text(
@@ -123,11 +124,11 @@ class ServiceDetailsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 40.h),
+                SizedBox(height: AppSize.s24.h),
                 Center(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(200.w, 50.h),
+                      minimumSize: Size(AppSize.s300.w,AppSize.s55.h),
                     ),
                     onPressed: () {
                       cubit.setServiceData(

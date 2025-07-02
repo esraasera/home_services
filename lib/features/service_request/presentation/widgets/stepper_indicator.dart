@@ -38,25 +38,25 @@ class StepperIndicator extends StatelessWidget {
             CustomPaint(
               painter: CircleProgressPainter(progress, cubit.isDark),
               child: Container(
-                width: AppSize.s120.h,
+                width: AppSize.s120.w,
                 height: AppSize.s120.h,
                 alignment: Alignment.center,
                 child: Text(
                   '${getLocalizedNumber(currentStep)} ${"of".tr()} ${getLocalizedNumber(totalSteps)}',
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                    fontSize: AppSize.s18.sp,
+                    fontSize: AppSize.s24.sp,
                   ),
                 ),
               ),
             ),
-            SizedBox(width: AppSize.s24.w),
+            SizedBox(width: AppSize.s10.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                    fontSize: AppSize.s18.sp,
+                    fontSize: AppSize.s25.sp,
                   ),
                 ),
                 SizedBox(height: AppSize.s4.h),
@@ -64,7 +64,7 @@ class StepperIndicator extends StatelessWidget {
                   Text(
                     "nextPage".tr() + nextTitle,
                     style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                      fontSize: AppSize.s14.sp,
+                      fontSize: AppSize.s15.sp,
                       color: cubit.isDark ? AppColors.lightPrimary : AppColors.primary,
                     ),
                   ),
@@ -87,16 +87,16 @@ class CircleProgressPainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     Paint background = Paint()
       ..color = isDark ? Colors.white : AppColors.grey
-      ..strokeWidth = AppSize.s8
+      ..strokeWidth = AppSize.s10
       ..style = PaintingStyle.stroke;
 
     Paint foreground = Paint()
       ..color = AppColors.primary
-      ..strokeWidth = AppSize.s8
+      ..strokeWidth = AppSize.s10
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round;
 
-    double radius = (size.width / 2) - AppSize.s4;
+    double radius = (size.width / 2) - AppSize.s6;
     Offset center = Offset(size.width / 2, size.height / 2);
 
     canvas.drawCircle(center, radius, background);

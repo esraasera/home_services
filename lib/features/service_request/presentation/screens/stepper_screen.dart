@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
+import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/data/datasource/service_request_remote_datasource.dart';
 import 'package:home_services_app/features/service_request/data/repository/service_request_repository.dart';
 import 'package:home_services_app/features/service_request/domain/usecases/service_request_usecase.dart';
@@ -63,7 +64,7 @@ class StepperScreen extends StatelessWidget {
               drawer: const SettingsDrawer(),
               body: SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.all(16.w),
+                  padding: EdgeInsets.all(AppPadding.p14.w),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -75,11 +76,11 @@ class StepperScreen extends StatelessWidget {
                             ? stepperCubit.stepTitles[stepperCubit.displayStep]
                             : '',
                       ),
-                      SizedBox(height: 16.h),
+                      SizedBox(height: AppSize.s8.h),
                       Expanded(
                         child: stepperCubit.stepScreens[stepperCubit.currentStep],
                       ),
-                      SizedBox(height: 16.h),
+                      SizedBox(height: AppSize.s4.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

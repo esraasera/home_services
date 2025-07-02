@@ -48,10 +48,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
           final stripeCubit = BlocProvider.of<StripeCubit>(context);
           final settingsCubit = BlocProvider.of<SettingsCubit>(context);
           final price = ((serviceCubit.servicePriceValue ?? 0) * 100).toInt();
+
           return Padding(
-            padding: EdgeInsets.symmetric(vertical: AppSize.s40.sh),
+            padding: EdgeInsets.symmetric(vertical: (AppSize.s20).h),
             child: Material(
-              elevation: AppSize.s10,
+              elevation: AppSize.s10.toDouble(),
               shadowColor: settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
               borderRadius: BorderRadius.circular(AppSize.s16.r),
               color: AppColors.lightGrey,
@@ -72,11 +73,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Material(
-                            elevation: AppSize.s10,
+                            elevation: AppSize.s10.toDouble(),
                             shadowColor: settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
                             borderRadius: BorderRadius.circular(AppSize.s16.r),
                             child: Container(
-                              height: AppSize.s200.sh,
+                              height: (AppSize.s150).h,
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: AppColors.white,
@@ -90,16 +91,46 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   children: [
                                     Row(
                                       children: [
-                                        Text("theService".tr(), style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s18.sp)),
-                                        Text(serviceCubit.translatedServiceName, style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18.sp)),
+                                        Text(
+                                          "theService".tr(),
+                                          style: getBoldStyle(
+                                            color: AppColors.primary,
+                                            fontSize: AppSize.s18.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          serviceCubit.translatedServiceName,
+                                          style: getMediumStyle(
+                                            color: AppColors.black,
+                                            fontSize: AppSize.s18.sp,
+                                          ),
+                                        ),
                                       ],
                                     ),
-                                    SizedBox(height: AppSize.s30.sh),
+                                    SizedBox(height: (AppSize.s30).h),
                                     Row(
                                       children: [
-                                        Text("totalPrice".tr(), style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s18.sp)),
-                                        Text(serviceCubit.translatedServicePrice, style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18.sp)),
-                                        Text("egp".tr(), style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18.sp)),
+                                        Text(
+                                          "totalPrice".tr(),
+                                          style: getBoldStyle(
+                                            color: AppColors.primary,
+                                            fontSize: AppSize.s18.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          serviceCubit.translatedServicePrice,
+                                          style: getMediumStyle(
+                                            color: AppColors.black,
+                                            fontSize: AppSize.s18.sp,
+                                          ),
+                                        ),
+                                        Text(
+                                          "egp".tr(),
+                                          style: getMediumStyle(
+                                            color: AppColors.black,
+                                            fontSize: AppSize.s18.sp,
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ],
@@ -107,7 +138,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: AppSize.s60.sh),
+                          SizedBox(height: (AppSize.s60).h),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -124,22 +155,37 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        content: Text("methodSelected".tr(), style: TextStyle(color: AppColors.white)),
+                                        content: Text("methodSelected".tr(),
+                                            style: TextStyle(color: AppColors.white)),
                                         backgroundColor: AppColors.error,
                                       ),
                                     );
                                   }
                                 },
                                 child: Material(
-                                  elevation: AppSize.s10,
-                                  shadowColor: settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
+                                  elevation: AppSize.s10.toDouble(),
+                                  shadowColor:
+                                  settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
                                   shape: const CircleBorder(),
                                   child: CircleAvatar(
                                     backgroundColor: AppColors.primary,
-                                    radius: AppSize.s144.sw,
+                                    radius: (AppSize.s60).w,
                                     child: serviceCubit.selectedMethod == "card".tr()
-                                        ? Center(child: Image.asset("assets/images/check_mark_image.png", color: AppColors.white, height: AppSize.s114.sw))
-                                        : Text("payByCard".tr(), textAlign: TextAlign.center, style: getBoldStyle(color: AppColors.white, fontSize: AppSize.s15.sp)),
+                                        ? Center(
+                                      child: Image.asset(
+                                        "assets/images/check_mark_image.png",
+                                        color: AppColors.white,
+                                        height: (AppSize.s100).h,
+                                      ),
+                                    )
+                                        : Text(
+                                      "payByCard".tr(),
+                                      textAlign: TextAlign.center,
+                                      style: getBoldStyle(
+                                        color: AppColors.white,
+                                        fontSize: AppSize.s15.sp,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -148,7 +194,8 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   if (state is StripeSuccess) {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        content: Text("paymentCompleted".tr(), style: TextStyle(color: AppColors.white)),
+                                        content: Text("paymentCompleted".tr(),
+                                            style: TextStyle(color: AppColors.white)),
                                         backgroundColor: AppColors.error,
                                       ),
                                     );
@@ -157,22 +204,36 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   } else {
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       SnackBar(
-                                        content: Text("methodSelected".tr(), style: TextStyle(color: AppColors.white)),
+                                        content: Text("methodSelected".tr(),
+                                            style: TextStyle(color: AppColors.white)),
                                         backgroundColor: AppColors.error,
                                       ),
                                     );
                                   }
                                 },
                                 child: Material(
-                                  elevation: AppSize.s10,
-                                  shadowColor: settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
+                                  elevation: AppSize.s10.toDouble(),
+                                  shadowColor:
+                                  settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
                                   shape: const CircleBorder(),
                                   child: CircleAvatar(
                                     backgroundColor: AppColors.white,
-                                    radius: AppSize.s144.sw,
+                                    radius: (AppSize.s60).w,
                                     child: serviceCubit.selectedMethod == "cash".tr()
-                                        ? Center(child: Image.asset("assets/images/check_mark_image.png", height: AppSize.s114.sw))
-                                        : Text("cashOnDelivery".tr(), textAlign: TextAlign.center, style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s15.sp)),
+                                        ? Center(
+                                      child: Image.asset(
+                                        "assets/images/check_mark_image.png",
+                                        height: (AppSize.s100).h,
+                                      ),
+                                    )
+                                        : Text(
+                                      "cashOnDelivery".tr(),
+                                      textAlign: TextAlign.center,
+                                      style: getBoldStyle(
+                                        color: AppColors.primary,
+                                        fontSize: AppSize.s15.sp,
+                                      ),
+                                    ),
                                   ),
                                 ),
                               ),
