@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/values/app_values.dart';
@@ -26,9 +27,6 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Widget build(BuildContext context) {
     context.locale;
 
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
-
     return MultiBlocProvider(
       providers: [
         BlocProvider.value(value: BlocProvider.of<SettingsCubit>(context)),
@@ -51,23 +49,23 @@ class _PaymentScreenState extends State<PaymentScreen> {
           final price = ((double.tryParse(serviceCubit.servicePrice ?? '${AppSize.s0}') ?? AppSize.s0) * AppSize.s100).toInt();
 
           return Padding(
-            padding: EdgeInsets.symmetric(vertical: screenHeight * AppSize.s0_05),
+            padding: EdgeInsets.symmetric(vertical: AppSize.s0_05.sh),
             child: Material(
               elevation: AppSize.s10,
               shadowColor: settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
-              borderRadius: BorderRadius.circular(AppSize.s16),
+              borderRadius: BorderRadius.circular(AppSize.s16.r),
               color: AppColors.lightGrey,
               child: Container(
                 decoration: BoxDecoration(
                   color: settingsCubit.isDark ? AppColors.darkShade : AppColors.lightGrey,
-                  borderRadius: BorderRadius.circular(AppSize.s16),
+                  borderRadius: BorderRadius.circular(AppSize.s16.r),
                   border: Border.all(
                     color: AppColors.white,
-                    width: AppSize.s4,
+                    width: AppSize.s4.w,
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(AppSize.s8),
+                  padding: EdgeInsets.all(AppSize.s8.w),
                   child: Center(
                     child: SingleChildScrollView(
                       child: Column(
@@ -76,32 +74,32 @@ class _PaymentScreenState extends State<PaymentScreen> {
                           Material(
                             elevation: AppSize.s10,
                             shadowColor: settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
-                            borderRadius: BorderRadius.circular(AppSize.s16),
+                            borderRadius: BorderRadius.circular(AppSize.s16.r),
                             child: Container(
-                              height: screenHeight * AppSize.s0_2,
+                              height: AppSize.s0_2.sh,
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: AppColors.white,
-                                borderRadius: BorderRadius.circular(AppSize.s16),
+                                borderRadius: BorderRadius.circular(AppSize.s16.r),
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(AppSize.s18),
+                                padding: EdgeInsets.all(AppSize.s18.w),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Row(
                                       children: [
-                                        Text("theService".tr(), style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s18)),
-                                        Text(serviceCubit.translatedServiceName, style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18)),
+                                        Text("theService".tr(), style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s18.sp)),
+                                        Text(serviceCubit.translatedServiceName, style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18.sp)),
                                       ],
                                     ),
-                                    SizedBox(height: screenHeight * AppSize.s0_03),
+                                    SizedBox(height: AppSize.s0_03.sh),
                                     Row(
                                       children: [
-                                        Text("totalPrice".tr(), style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s18)),
-                                        Text(serviceCubit.translatedServicePrice, style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18)),
-                                        Text("egp".tr(), style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18)),
+                                        Text("totalPrice".tr(), style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s18.sp)),
+                                        Text(serviceCubit.translatedServicePrice, style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18.sp)),
+                                        Text("egp".tr(), style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18.sp)),
                                       ],
                                     ),
                                   ],
@@ -109,7 +107,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: screenHeight * AppSize.s0_09),
+                          SizedBox(height: AppSize.s0_09.sh),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -138,10 +136,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   shape: const CircleBorder(),
                                   child: CircleAvatar(
                                     backgroundColor: AppColors.primary,
-                                    radius: screenWidth * AppSize.s0_16,
+                                    radius: AppSize.s0_16.sw,
                                     child: serviceCubit.selectedMethod == "card".tr()
-                                        ? Center(child: Image.asset("assets/images/check_mark_image.png", color: AppColors.white, height: screenWidth * AppSize.s0_28))
-                                        : Text("payByCard".tr(), textAlign: TextAlign.center, style: getBoldStyle(color: AppColors.white, fontSize: AppSize.s15)),
+                                        ? Center(child: Image.asset("assets/images/check_mark_image.png", color: AppColors.white, height: AppSize.s0_28.sw))
+                                        : Text("payByCard".tr(), textAlign: TextAlign.center, style: getBoldStyle(color: AppColors.white, fontSize: AppSize.s15.sp)),
                                   ),
                                 ),
                               ),
@@ -171,10 +169,10 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   shape: const CircleBorder(),
                                   child: CircleAvatar(
                                     backgroundColor: AppColors.white,
-                                    radius: screenWidth * AppSize.s0_16,
+                                    radius: AppSize.s0_16.sw,
                                     child: serviceCubit.selectedMethod == "cash".tr()
-                                        ? Center(child: Image.asset("assets/images/check_mark_image.png", height: screenWidth * AppSize.s0_28))
-                                        : Text("cashOnDelivery".tr(), textAlign: TextAlign.center, style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s15)),
+                                        ? Center(child: Image.asset("assets/images/check_mark_image.png", height: AppSize.s0_28.sw))
+                                        : Text("cashOnDelivery".tr(), textAlign: TextAlign.center, style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s15.sp)),
                                   ),
                                 ),
                               ),
@@ -193,5 +191,3 @@ class _PaymentScreenState extends State<PaymentScreen> {
     );
   }
 }
-
-
