@@ -6,6 +6,7 @@ class AppMargin {
   static const double m16 = 16.0;
   static const double m18 = 18.0;
   static const double m20 = 20.0;
+  static const double m28 = 28.0;
   static const double m30 = 30.0;
   static const double m40 = 40.0;
 }
@@ -101,6 +102,10 @@ class AppSize {
   static const double s120 = 120.0;
   static const double s150 = 150.0;
   static const double s200 = 200.0;
+  static const double s249 = 249.0;
+  static const double s285 = 285.0;
+  static const double s360 = 360.0;
+  static const double s712 = 712.0;
 
   static const double sAngle = 2 * 3.141592;
   static const double sDrawArc = -3.141592 / 2;
