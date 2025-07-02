@@ -23,6 +23,7 @@ class ServiceRequestCubit extends Cubit<ServiceRequestState> {
 
 
 
+
   void setUserData(
       {required String name, required String phone, required String address}) {
     this.name = name;
@@ -30,13 +31,17 @@ class ServiceRequestCubit extends Cubit<ServiceRequestState> {
     this.address = address;
   }
 
-
-  void setServiceData({required String titleKey, required String priceKey, required double priceValue}) {
+  void setServiceData({
+    required String titleKey,
+    required String priceKey,
+    required double priceValue,
+  }) {
     serviceName = titleKey;
     servicePrice = priceKey;
     servicePriceValue = priceValue;
     emit(SelectedService());
   }
+
 
 
   void selectMethod(String method) {
@@ -60,8 +65,8 @@ class ServiceRequestCubit extends Cubit<ServiceRequestState> {
         name: name!,
         phone: phone!,
         address: address!,
-        serviceName: serviceName!,
-        servicePrice: servicePrice!,
+        serviceName: translatedServiceName,
+        servicePrice: translatedServicePrice,
         paymentMethod: selectedMethod!,
       );
 
