@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/utils/static_services.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/service_request_cubit.dart';
@@ -11,17 +12,16 @@ class ServicesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     final servicesList = getLocalizedServicesList();
+
     return GridView.builder(
       shrinkWrap: true,
-      physics: NeverScrollableScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: screenHeight * AppPadding.p0_03,
-        crossAxisSpacing: screenWidth * AppPadding.p0_03,
-        childAspectRatio: AppSize.s1_13 ,
+        mainAxisSpacing: AppPadding.p0_03.sh,
+        crossAxisSpacing: AppPadding.p0_03.sw,
+        childAspectRatio: AppSize.s1_13,
       ),
       itemCount: servicesList.length,
       itemBuilder: (context, index) {
@@ -39,7 +39,6 @@ class ServicesScreen extends StatelessWidget {
               ),
             );
           },
-
         );
       },
     );

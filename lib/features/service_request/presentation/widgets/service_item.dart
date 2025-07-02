@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/values/app_values.dart';
@@ -16,9 +17,6 @@ class ServiceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return BlocConsumer<ServiceRequestCubit, ServiceRequestState>(
       listener: (context, state) {},
       builder: (context, state) {
@@ -31,23 +29,23 @@ class ServiceItem extends StatelessWidget {
               color: cubit.selectedServiceTitle == service.titleKey
                   ? AppColors.lightPrimary
                   : AppColors.bG,
-              borderRadius: BorderRadius.circular(AppSize.s16),
+              borderRadius: BorderRadius.circular(AppSize.s16.r),
             ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
                   service.imagePath,
-                  height: screenHeight * AppSize.s0_12,
-                  width: screenWidth * AppSize.s0_24,
+                  height: AppSize.s0_12.sh,
+                  width: AppSize.s0_24.sw,
                   fit: BoxFit.cover,
                 ),
-                SizedBox(height: screenHeight * AppSize.s0_01),
+                SizedBox(height: AppSize.s0_01.sh),
                 Text(
                   service.titleKey.tr(),
                   style: getBoldStyle(
                     color: AppColors.black,
-                    fontSize: AppSize.s16,
+                    fontSize: AppSize.s16.sp,
                   ),
                 ),
               ],
