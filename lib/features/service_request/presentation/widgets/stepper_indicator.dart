@@ -38,25 +38,25 @@ class StepperIndicator extends StatelessWidget {
             CustomPaint(
               painter: CircleProgressPainter(progress, cubit.isDark),
               child: Container(
-                width: AppSize.s0_148.sh,
-                height: AppSize.s0_148.sh,
+                width: AppSize.s120.h,
+                height: AppSize.s120.h,
                 alignment: Alignment.center,
                 child: Text(
                   '${getLocalizedNumber(currentStep)} ${"of".tr()} ${getLocalizedNumber(totalSteps)}',
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                    fontSize: AppSize.s0_06.sw,
+                    fontSize: AppSize.s18.sp,
                   ),
                 ),
               ),
             ),
-            SizedBox(width: AppSize.s0_03.sw),
+            SizedBox(width: AppSize.s24.w),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                    fontSize: AppSize.s0_06.sw,
+                    fontSize: AppSize.s18.sp,
                   ),
                 ),
                 SizedBox(height: AppSize.s4.h),
@@ -64,7 +64,7 @@ class StepperIndicator extends StatelessWidget {
                   Text(
                     "nextPage".tr() + nextTitle,
                     style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                      fontSize: AppSize.s0_045.sw,
+                      fontSize: AppSize.s14.sp,
                       color: cubit.isDark ? AppColors.lightPrimary : AppColors.primary,
                     ),
                   ),

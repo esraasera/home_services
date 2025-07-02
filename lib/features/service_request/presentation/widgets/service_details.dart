@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
-import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/data/models/service_details_model.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/service_request_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
@@ -35,26 +34,26 @@ class ServiceDetailsScreen extends StatelessWidget {
             ),
           ),
           body: SingleChildScrollView(
-            padding: EdgeInsets.all(AppPadding.p0_04.sw),
+            padding: EdgeInsets.all(12.w),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Center(
                   child: Padding(
-                    padding: EdgeInsets.all(AppPadding.p0_022.sw),
+                    padding: EdgeInsets.all(8.w),
                     child: Image.asset(
                       service.imagePath,
-                      height: AppSize.s0_25.sh,
+                      height: 200.h,
                       color: settingsCubit.isDark ? AppColors.white : AppColors.black,
                     ),
                   ),
                 ),
-                SizedBox(height: AppSize.s0_02.sh),
+                SizedBox(height: 16.h),
                 Text(
                   service.descriptionKey.tr(),
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 18.sp),
                 ),
-                SizedBox(height: AppSize.s0_028.sh),
+                SizedBox(height: 20.h),
                 Text(
                   "serviceOffered".tr(),
                   style: getBoldStyle(
@@ -62,14 +61,17 @@ class ServiceDetailsScreen extends StatelessWidget {
                     fontSize: 18.sp,
                   ),
                 ),
-                SizedBox(height: AppSize.s0_028.sh),
+                SizedBox(height: 12.h),
                 ...service.featureKeys.map(
-                      (key) => Text(
-                    "• ${key.tr()}",
-                    style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.sp),
+                      (key) => Padding(
+                    padding: EdgeInsets.only(bottom: 4.h),
+                    child: Text(
+                      "• ${key.tr()}",
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.sp),
+                    ),
                   ),
                 ),
-                SizedBox(height: AppSize.s0_028.sh),
+                SizedBox(height: 20.h),
                 Row(
                   children: [
                     Text(
@@ -89,7 +91,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: AppSize.s0_02.sh),
+                SizedBox(height: 16.h),
                 Row(
                   children: [
                     Text(
@@ -105,7 +107,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: AppSize.s0_02.sh),
+                SizedBox(height: 16.h),
                 Row(
                   children: [
                     Text(
@@ -121,17 +123,17 @@ class ServiceDetailsScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: AppSize.s0_05.sh),
+                SizedBox(height: 40.h),
                 Center(
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: Size(AppSize.s1.sw, AppSize.s0_073.sh),
+                      minimumSize: Size(200.w, 50.h),
                     ),
                     onPressed: () {
                       cubit.setServiceData(
                         titleKey: service.titleKey,
                         priceKey: service.priceKey,
-                        priceValue: service.priceValue, // Pass actual value
+                        priceValue: service.priceValue,
                       );
                       cubit.isSelectedService(name: service.titleKey);
                       Navigator.pop(context);

@@ -5,7 +5,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
-import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/settings_states.dart';
 
@@ -27,12 +26,12 @@ class SettingsDrawer extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  height: AppSize.s0_25.sh,
+                  height: 200.h,
                   width: double.infinity,
                   color: AppColors.primary,
                   padding: EdgeInsets.symmetric(
-                    vertical: AppPadding.p0_03.sh,
-                    horizontal: AppPadding.p0_03.sw,
+                    vertical: 24.h,
+                    horizontal: 24.w,
                   ),
                   child: Align(
                     alignment: AlignmentDirectional.bottomCenter,
@@ -40,20 +39,20 @@ class SettingsDrawer extends StatelessWidget {
                       "settings".tr(),
                       style: getBoldStyle(
                         color: AppColors.white,
-                        fontSize: AppSize.s0_11.sw,
+                        fontSize: 20.sp,
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: AppSize.s0_03.sh),
+                SizedBox(height: 24.h),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: AppPadding.p8.w),
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
                   child: SwitchListTile(
                     title: Text(
                       "darkMode".tr(),
                       style: getBoldStyle(
                         color: AppColors.black,
-                        fontSize: AppSize.s0_05.sw,
+                        fontSize: 18.sp,
                       ),
                     ),
                     value: cubit.isDark,
@@ -62,15 +61,15 @@ class SettingsDrawer extends StatelessWidget {
                     onChanged: (_) => cubit.toggleTheme(),
                   ),
                 ),
-                SizedBox(height: AppSize.s0_03.sh),
+                SizedBox(height: 24.h),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: AppPadding.p8.w),
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
                   child: ListTile(
                     title: Text(
                       "language".tr(),
                       style: getBoldStyle(
                         color: AppColors.black,
-                        fontSize: AppSize.s0_05.sw,
+                        fontSize: 18.sp,
                       ),
                     ),
                     trailing: DecoratedBox(
@@ -78,7 +77,7 @@ class SettingsDrawer extends StatelessWidget {
                         color: AppColors.lightGrey,
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: AppSize.s12.w),
+                        padding: EdgeInsets.symmetric(horizontal: 12.w),
                         child: DropdownButton<String>(
                           value: cubit.currentLanguage,
                           dropdownColor: cubit.isDark ? AppColors.lightGrey : AppColors.bG,
@@ -109,16 +108,16 @@ class SettingsDrawer extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: AppSize.s0_03.sh),
+                SizedBox(height: 24.h),
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: AppPadding.p8.w),
+                  padding: EdgeInsets.symmetric(horizontal: 8.w),
                   child: ListTile(
                     leading: Icon(Icons.logout, color: AppColors.black),
                     title: Text(
                       "logOut".tr(),
                       style: getBoldStyle(
                         color: AppColors.black,
-                        fontSize: AppSize.s0_05.sw,
+                        fontSize: 18.sp,
                       ),
                     ),
                     onTap: () => cubit.logout(),

@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
-import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/data/datasource/service_request_remote_datasource.dart';
 import 'package:home_services_app/features/service_request/data/repository/service_request_repository.dart';
 import 'package:home_services_app/features/service_request/domain/usecases/service_request_usecase.dart';
@@ -60,11 +59,11 @@ class StepperScreen extends StatelessWidget {
 
             return Scaffold(
               key: scaffoldKey,
-              drawerEdgeDragWidth: AppSize.s0_2.sw,
+              drawerEdgeDragWidth: 0.2.sw,
               drawer: const SettingsDrawer(),
               body: SafeArea(
                 child: Padding(
-                  padding: EdgeInsets.all(AppPadding.p0_02.sh),
+                  padding: EdgeInsets.all(16.w),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
@@ -72,15 +71,15 @@ class StepperScreen extends StatelessWidget {
                         currentStep: stepperCubit.displayStep,
                         title: stepperCubit.stepTitles[stepperCubit.currentStep],
                         totalSteps: stepperCubit.totalSteps,
-                        nextTitle: (stepperCubit.currentStep < stepperCubit.totalSteps - AppSize.s1)
+                        nextTitle: (stepperCubit.currentStep < stepperCubit.totalSteps - 1)
                             ? stepperCubit.stepTitles[stepperCubit.displayStep]
                             : '',
                       ),
-                      SizedBox(height: AppSize.s0_02.sh),
+                      SizedBox(height: 16.h),
                       Expanded(
                         child: stepperCubit.stepScreens[stepperCubit.currentStep],
                       ),
-                      SizedBox(height: AppSize.s0_02.sh),
+                      SizedBox(height: 16.h),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -92,10 +91,7 @@ class StepperScreen extends StatelessWidget {
                                   foregroundColor: AppColors.primary,
                                   disabledBackgroundColor: AppColors.disableColor,
                                   disabledForegroundColor: AppColors.darkGrey,
-                                  minimumSize: Size(
-                                    AppSize.s0_35.sw,
-                                    AppSize.s0_075.sh,
-                                  ),
+                                  minimumSize: Size(140.w, 60.h),
                                 ),
                                 onPressed: (stepperCubit.currentStep == 0 ||
                                     stepperCubit.currentStep == stepperCubit.totalSteps - 1 &&
@@ -108,7 +104,7 @@ class StepperScreen extends StatelessWidget {
                           ),
                           ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              minimumSize: Size(AppSize.s0_35.sw, AppSize.s0_075.sh),
+                              minimumSize: Size(140.w, 60.h),
                             ),
                             onPressed: () async {
                               if (stepperCubit.currentStep == 0) {

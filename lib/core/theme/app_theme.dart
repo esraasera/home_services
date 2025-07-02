@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/app_text_style.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
@@ -12,52 +13,57 @@ ThemeData getApplicationTheme() {
     splashColor: AppColors.lightPrimary,
 
     cardTheme: CardTheme(
-        color: AppColors.white,
-        shadowColor: AppColors.darkGrey,
-        elevation: AppSize.s4),
+      color: AppColors.white,
+      shadowColor: AppColors.darkGrey,
+      elevation: 4.h,
+    ),
 
     appBarTheme: AppBarTheme(
-        centerTitle: true,
-        color: AppColors.primary,
-        elevation: AppSize.s4,
-        shadowColor: AppColors.darkGrey,
-        titleTextStyle:
-        getRegularStyle(fontSize: FontSize.s16, color: AppColors.white)),
-
+      centerTitle: true,
+      color: AppColors.primary,
+      elevation: 4.h,
+      shadowColor: AppColors.darkGrey,
+      titleTextStyle: getRegularStyle(
+        fontSize: 16.sp,
+        color: AppColors.white,
+      ),
+    ),
 
     drawerTheme: DrawerThemeData(
       backgroundColor: AppColors.lightGrey,
-      elevation: AppSize.s8,
-      shape: const RoundedRectangleBorder(
+      elevation: 8.h,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(AppSize.s20),
-          bottomRight: Radius.circular(AppSize.s20),
+          topRight: Radius.circular(20.r),
+          bottomRight: Radius.circular(20.r),
         ),
       ),
     ),
 
     listTileTheme: ListTileThemeData(
-      contentPadding: const EdgeInsets.symmetric(horizontal: AppSize.s16),
+      contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
       tileColor: AppColors.bG,
       textColor: AppColors.black,
       iconColor: AppColors.black,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSize.s16),
+        borderRadius: BorderRadius.circular(16.r),
       ),
     ),
+
     switchTheme: SwitchThemeData(
-      thumbColor: WidgetStateProperty.all(AppColors.primary),
-      trackColor: WidgetStateProperty.all(AppColors.lightGrey),
+      thumbColor: MaterialStateProperty.all(AppColors.primary),
+      trackColor: MaterialStateProperty.all(AppColors.lightGrey),
     ),
+
     dropdownMenuTheme: DropdownMenuThemeData(
       menuStyle: MenuStyle(
-        backgroundColor: WidgetStateProperty.all(AppColors.bG),
+        backgroundColor: MaterialStateProperty.all(AppColors.bG),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.lightGrey,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSize.s10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
       ),
     ),
@@ -70,12 +76,12 @@ ThemeData getApplicationTheme() {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.white,
-        textStyle: getMediumStyle(color: AppColors.white, fontSize: FontSize.s16),
-        minimumSize: Size(double.infinity, AppSize.s50),
+        textStyle: getMediumStyle(color: AppColors.white, fontSize: 16.sp),
+        minimumSize: Size(double.infinity, 50.h),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSize.s10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
-        elevation: AppSize.s4,
+        elevation: 4.h,
       ),
     ),
 
@@ -83,64 +89,75 @@ ThemeData getApplicationTheme() {
       backgroundColor: AppColors.error,
       contentTextStyle: TextStyle(
         color: Colors.white,
-        fontSize: 16,
+        fontSize: 16.sp,
       ),
       behavior: SnackBarBehavior.fixed,
     ),
 
-
     textTheme: TextTheme(
-        displayLarge: getBoldStyle(
-            color: AppColors.black, fontSize: FontSize.s16),
-        headlineLarge: getSemiBoldStyle(
-            color: AppColors.black, fontSize: FontSize.s16),
-        headlineMedium: getRegularStyle(
-            color: AppColors.black, fontSize: FontSize.s14),
-        titleMedium: getMediumStyle(
-            color: AppColors.black, fontSize: FontSize.s16),
-        bodyLarge: getRegularStyle(color: AppColors.black,fontSize: FontSize.s16),
-        bodySmall: getRegularStyle(color: AppColors.black)),
+      displayLarge: getBoldStyle(
+        color: AppColors.black,
+        fontSize: 16.sp,
+      ),
+      headlineLarge: getSemiBoldStyle(
+        color: AppColors.black,
+        fontSize: 16.sp,
+      ),
+      headlineMedium: getRegularStyle(
+        color: AppColors.black,
+        fontSize: 14.sp,
+      ),
+      titleMedium: getMediumStyle(
+        color: AppColors.black,
+        fontSize: 16.sp,
+      ),
+      bodyLarge: getRegularStyle(
+        color: AppColors.black,
+        fontSize: 16.sp,
+      ),
+      bodySmall: getRegularStyle(
+        color: AppColors.black,
+        fontSize: 14.sp,
+      ),
+    ),
 
     inputDecorationTheme: InputDecorationTheme(
-        contentPadding: const EdgeInsets.symmetric(horizontal: AppPadding.p8, vertical: AppPadding.p16),
-        filled: true,
-        fillColor: AppColors.white,
-        hintStyle:
-        getRegularStyle(color: AppColors.darkGrey, fontSize: FontSize.s14),
-        labelStyle:
-        getMediumStyle(color: AppColors.darkGrey, fontSize: FontSize.s14),
-        floatingLabelStyle: getMediumStyle(color: AppColors.primary, fontSize: FontSize.s14),
-        errorStyle: getRegularStyle(color: AppColors.error),
+      contentPadding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
+      filled: true,
+      fillColor: AppColors.white,
+      hintStyle: getRegularStyle(color: AppColors.darkGrey, fontSize: 14.sp),
+      labelStyle: getMediumStyle(color: AppColors.darkGrey, fontSize: 14.sp),
+      floatingLabelStyle: getMediumStyle(color: AppColors.primary, fontSize: 14.sp),
+      errorStyle: getRegularStyle(color: AppColors.error),
+      enabledBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.darkGrey, width: 1.5.w),
+        borderRadius: BorderRadius.all(Radius.circular(8.r)),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.primary, width: 1.5.w),
+        borderRadius: BorderRadius.all(Radius.circular(8.r)),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.error, width: 1.5.w),
+        borderRadius: BorderRadius.all(Radius.circular(8.r)),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: AppColors.primary, width: 1.5.w),
+        borderRadius: BorderRadius.all(Radius.circular(8.r)),
+      ),
+    ),
 
-        enabledBorder: OutlineInputBorder(
-            borderSide:
-            BorderSide(color: AppColors.darkGrey, width: AppSize.s1_5),
-            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
-
-        focusedBorder: OutlineInputBorder(
-            borderSide:
-            BorderSide(color: AppColors.primary, width: AppSize.s1_5),
-            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
-
-        errorBorder: OutlineInputBorder(
-            borderSide:
-            BorderSide(color: AppColors.error, width: AppSize.s1_5),
-            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8))),
-        focusedErrorBorder: OutlineInputBorder(
-            borderSide:
-            BorderSide(color: AppColors.primary, width: AppSize.s1_5),
-            borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)))),
-
-         textSelectionTheme: TextSelectionThemeData(
-         cursorColor: AppColors.primary,
-         selectionColor: AppColors.primary.withValues(alpha: 0.3),
-         selectionHandleColor: AppColors.primary,
-       ),);
+    textSelectionTheme: TextSelectionThemeData(
+      cursorColor: AppColors.primary,
+      selectionColor: AppColors.primary.withOpacity(0.3),
+      selectionHandleColor: AppColors.primary,
+    ),
+  );
 }
 
 ThemeData getDarkTheme() {
   return ThemeData(
-    scaffoldBackgroundColor:AppColors.darkShade,
+    scaffoldBackgroundColor: AppColors.darkShade,
     primaryColor: AppColors.primary,
     disabledColor: AppColors.lightGrey,
     splashColor: AppColors.lightGrey,
@@ -153,47 +170,46 @@ ThemeData getDarkTheme() {
     appBarTheme: AppBarTheme(
       centerTitle: true,
       color: AppColors.primary,
-      elevation: AppSize.s4,
+      elevation: 4.h,
       shadowColor: Colors.black54,
-      titleTextStyle:
-      getRegularStyle(fontSize: FontSize.s16, color: Colors.white),
+      titleTextStyle: getRegularStyle(fontSize: 16.sp, color: Colors.white),
     ),
 
     drawerTheme: DrawerThemeData(
       backgroundColor: AppColors.darkShade,
-      elevation: AppSize.s8,
-      shape: const RoundedRectangleBorder(
+      elevation: 8.h,
+      shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topRight: Radius.circular(AppSize.s20),
-          bottomRight: Radius.circular(AppSize.s20),
+          topRight: Radius.circular(20.r),
+          bottomRight: Radius.circular(20.r),
         ),
       ),
     ),
 
     listTileTheme: ListTileThemeData(
-      contentPadding: const EdgeInsets.symmetric(horizontal: AppSize.s16),
+      contentPadding: EdgeInsets.symmetric(horizontal: 16.w),
       tileColor: AppColors.lightGrey,
       textColor: Colors.white,
       iconColor: Colors.white,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(AppSize.s16),
+        borderRadius: BorderRadius.circular(16.r),
       ),
     ),
 
     switchTheme: SwitchThemeData(
-      thumbColor: WidgetStateProperty.all(AppColors.grey),
-      trackColor: WidgetStateProperty.all(AppColors.grey),
+      thumbColor: MaterialStateProperty.all(AppColors.grey),
+      trackColor: MaterialStateProperty.all(AppColors.grey),
     ),
 
     dropdownMenuTheme: DropdownMenuThemeData(
       menuStyle: MenuStyle(
-        backgroundColor: WidgetStateProperty.all(AppColors.lightGrey),
+        backgroundColor: MaterialStateProperty.all(AppColors.lightGrey),
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColors.lightGrey,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(AppSize.s10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
       ),
     ),
@@ -206,12 +222,12 @@ ThemeData getDarkTheme() {
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.primary,
         foregroundColor: Colors.white,
-        textStyle: getMediumStyle(color: Colors.white, fontSize: FontSize.s16),
-        minimumSize: Size(double.infinity, AppSize.s50),
+        textStyle: getMediumStyle(color: Colors.white, fontSize: 16.sp),
+        minimumSize: Size(double.infinity, 50.h),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSize.s10),
+          borderRadius: BorderRadius.circular(10.r),
         ),
-        elevation: AppSize.s4,
+        elevation: 4.h,
       ),
     ),
 
@@ -219,53 +235,43 @@ ThemeData getDarkTheme() {
       backgroundColor: AppColors.error,
       contentTextStyle: TextStyle(
         color: Colors.white,
-        fontSize: 16,
+        fontSize: 16.sp,
       ),
       behavior: SnackBarBehavior.fixed,
     ),
 
     textTheme: TextTheme(
-      displayLarge:
-      getSemiBoldStyle(color: AppColors.white, fontSize: FontSize.s16),
-      headlineLarge:
-      getSemiBoldStyle(color: AppColors.white, fontSize: FontSize.s16),
-      headlineMedium:
-      getRegularStyle(color: AppColors.white, fontSize: FontSize.s14),
-      titleMedium:
-      getMediumStyle(color: AppColors.white, fontSize: FontSize.s16),
-      bodyLarge:
-      getRegularStyle(color: AppColors.white, fontSize: FontSize.s16),
-      bodySmall:
-      getRegularStyle(color: AppColors.white, fontSize: FontSize.s14),
+      displayLarge: getSemiBoldStyle(color: AppColors.white, fontSize: 16.sp),
+      headlineLarge: getSemiBoldStyle(color: AppColors.white, fontSize: 16.sp),
+      headlineMedium: getRegularStyle(color: AppColors.white, fontSize: 14.sp),
+      titleMedium: getMediumStyle(color: AppColors.white, fontSize: 16.sp),
+      bodyLarge: getRegularStyle(color: AppColors.white, fontSize: 16.sp),
+      bodySmall: getRegularStyle(color: AppColors.white, fontSize: 14.sp),
     ),
 
     inputDecorationTheme: InputDecorationTheme(
-      contentPadding: const EdgeInsets.symmetric(
-          horizontal: AppPadding.p8, vertical: AppPadding.p16),
+      contentPadding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 16.h),
       filled: true,
       fillColor: AppColors.black,
-      hintStyle:
-      getRegularStyle(color: AppColors.white, fontSize: FontSize.s14),
-      labelStyle:
-      getMediumStyle(color: AppColors.white, fontSize: FontSize.s14),
-      floatingLabelStyle:
-      getMediumStyle(color:  AppColors.white, fontSize: FontSize.s14),
+      hintStyle: getRegularStyle(color: AppColors.white, fontSize: 14.sp),
+      labelStyle: getMediumStyle(color: AppColors.white, fontSize: 14.sp),
+      floatingLabelStyle: getMediumStyle(color: AppColors.white, fontSize: 14.sp),
       errorStyle: getRegularStyle(color: AppColors.error),
       enabledBorder: OutlineInputBorder(
-        borderSide: BorderSide(color:  AppColors.white, width: AppSize.s1_5),
-        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
+        borderSide: BorderSide(color: AppColors.white, width: 1.5.w),
+        borderRadius: BorderRadius.all(Radius.circular(8.r)),
       ),
       focusedBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.white, width: AppSize.s1_5),
-        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
+        borderSide: BorderSide(color: AppColors.white, width: 1.5.w),
+        borderRadius: BorderRadius.all(Radius.circular(8.r)),
       ),
       errorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.error, width: AppSize.s1_5),
-        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
+        borderSide: BorderSide(color: AppColors.error, width: 1.5.w),
+        borderRadius: BorderRadius.all(Radius.circular(8.r)),
       ),
       focusedErrorBorder: OutlineInputBorder(
-        borderSide: BorderSide(color: AppColors.white, width: AppSize.s1_5),
-        borderRadius: const BorderRadius.all(Radius.circular(AppSize.s8)),
+        borderSide: BorderSide(color: AppColors.white, width: 1.5.w),
+        borderRadius: BorderRadius.all(Radius.circular(8.r)),
       ),
     ),
 

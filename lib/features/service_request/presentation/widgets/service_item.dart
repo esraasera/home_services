@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
-import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/data/models/service_details_model.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/service_request_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/service_request_state.dart';
@@ -29,24 +28,26 @@ class ServiceItem extends StatelessWidget {
               color: cubit.selectedServiceTitle == service.titleKey
                   ? AppColors.lightPrimary
                   : AppColors.bG,
-              borderRadius: BorderRadius.circular(AppSize.s16.r),
+              borderRadius: BorderRadius.circular(16.r),
             ),
+            padding: EdgeInsets.symmetric(vertical: 12.h, horizontal: 8.w),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
                   service.imagePath,
-                  height: AppSize.s0_12.sh,
-                  width: AppSize.s0_24.sw,
+                  height: 90.h,
+                  width: 100.w,
                   fit: BoxFit.cover,
                 ),
-                SizedBox(height: AppSize.s0_01.sh),
+                SizedBox(height: 10.h),
                 Text(
                   service.titleKey.tr(),
                   style: getBoldStyle(
                     color: AppColors.black,
-                    fontSize: AppSize.s16.sp,
+                    fontSize: 16.sp,
                   ),
+                  textAlign: TextAlign.center,
                 ),
               ],
             ),

@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
-import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/location_picker/data/datasource/map_remote_data_source.dart';
 import 'package:home_services_app/features/location_picker/data/repository/map_repository.dart';
 import 'package:home_services_app/features/location_picker/domain/usecases/map_use_case.dart';
 import 'package:home_services_app/features/location_picker/presentation/controller/cubit/map_picker_cubit.dart';
 import 'package:home_services_app/features/location_picker/presentation/controller/states/map_picker_states.dart';
-import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:permission_handler/permission_handler.dart';
 import '../../../../core/utils/app_constants.dart';
 
@@ -19,7 +18,7 @@ class MapPickerScreen extends StatelessWidget {
 
   static CameraPosition initialCameraPosition = CameraPosition(
     target: AppConstants.defaultLocation,
-    zoom: AppSize.s13,
+    zoom: 13.0,
   );
 
   Future<void> _requestLocationPermission(BuildContext context) async {
@@ -52,7 +51,7 @@ class MapPickerScreen extends StatelessWidget {
                 icon: Icon(
                   Icons.arrow_back_ios_new,
                   color: AppColors.white,
-                  size: AppSize.s0_06.sw,
+                  size: 20.sp,
                 ),
                 onPressed: () => Navigator.pop(context),
               ),
@@ -60,7 +59,7 @@ class MapPickerScreen extends StatelessWidget {
                 "selectLocation".tr(),
                 style: getBoldStyle(
                   color: AppColors.white,
-                  fontSize: AppSize.s0_06.sw,
+                  fontSize: 18.sp,
                 ),
               ),
             ),
@@ -79,16 +78,16 @@ class MapPickerScreen extends StatelessWidget {
                 Center(
                   child: Icon(
                     Icons.location_on,
-                    size: AppSize.s0_12.sw,
+                    size: 50.sp,
                     color: AppColors.marker,
                   ),
                 ),
                 Positioned(
-                  bottom: AppSize.s0_03.sh,
-                  left: AppSize.s0_05.sw,
-                  right: AppSize.s0_05.sw,
+                  bottom: 24.h,
+                  left: 20.w,
+                  right: 20.w,
                   child: SizedBox(
-                    height: AppSize.s0_065.sh,
+                    height: 48.h,
                     child: state is MapPickerLoading
                         ? const Center(child: CircularProgressIndicator())
                         : ElevatedButton(
@@ -99,8 +98,7 @@ class MapPickerScreen extends StatelessWidget {
                         await cubit.confirmPickedLocation();
 
                         if (cubit.state is MapLocationAddressPicked) {
-                          final address =
-                              (cubit.state as MapLocationAddressPicked).address;
+                          final address = (cubit.state as MapLocationAddressPicked).address;
                           navigator.pop(address);
                         } else {
                           messenger.showSnackBar(
@@ -113,14 +111,14 @@ class MapPickerScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(AppSize.s0_03.sw),
+                          borderRadius: BorderRadius.circular(16.r),
                         ),
                       ),
                       child: Text(
                         "confirmLocation".tr(),
                         style: getBoldStyle(
                           color: AppColors.white,
-                          fontSize: AppSize.s0_045.sw,
+                          fontSize: 16.sp,
                         ),
                       ),
                     ),

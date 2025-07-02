@@ -49,7 +49,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           final settingsCubit = BlocProvider.of<SettingsCubit>(context);
           final price = ((serviceCubit.servicePriceValue ?? 0) * 100).toInt();
           return Padding(
-            padding: EdgeInsets.symmetric(vertical: AppSize.s0_05.sh),
+            padding: EdgeInsets.symmetric(vertical: AppSize.s40.sh),
             child: Material(
               elevation: AppSize.s10,
               shadowColor: settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
@@ -76,7 +76,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                             shadowColor: settingsCubit.isDark ? AppColors.lightGrey : AppColors.black,
                             borderRadius: BorderRadius.circular(AppSize.s16.r),
                             child: Container(
-                              height: AppSize.s0_2.sh,
+                              height: AppSize.s200.sh,
                               width: double.infinity,
                               decoration: BoxDecoration(
                                 color: AppColors.white,
@@ -94,7 +94,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                         Text(serviceCubit.translatedServiceName, style: getMediumStyle(color: AppColors.black, fontSize: AppSize.s18.sp)),
                                       ],
                                     ),
-                                    SizedBox(height: AppSize.s0_03.sh),
+                                    SizedBox(height: AppSize.s30.sh),
                                     Row(
                                       children: [
                                         Text("totalPrice".tr(), style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s18.sp)),
@@ -107,7 +107,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                               ),
                             ),
                           ),
-                          SizedBox(height: AppSize.s0_09.sh),
+                          SizedBox(height: AppSize.s60.sh),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -136,9 +136,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   shape: const CircleBorder(),
                                   child: CircleAvatar(
                                     backgroundColor: AppColors.primary,
-                                    radius: AppSize.s0_16.sw,
+                                    radius: AppSize.s144.sw,
                                     child: serviceCubit.selectedMethod == "card".tr()
-                                        ? Center(child: Image.asset("assets/images/check_mark_image.png", color: AppColors.white, height: AppSize.s0_28.sw))
+                                        ? Center(child: Image.asset("assets/images/check_mark_image.png", color: AppColors.white, height: AppSize.s114.sw))
                                         : Text("payByCard".tr(), textAlign: TextAlign.center, style: getBoldStyle(color: AppColors.white, fontSize: AppSize.s15.sp)),
                                   ),
                                 ),
@@ -169,9 +169,9 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   shape: const CircleBorder(),
                                   child: CircleAvatar(
                                     backgroundColor: AppColors.white,
-                                    radius: AppSize.s0_16.sw,
+                                    radius: AppSize.s144.sw,
                                     child: serviceCubit.selectedMethod == "cash".tr()
-                                        ? Center(child: Image.asset("assets/images/check_mark_image.png", height: AppSize.s0_28.sw))
+                                        ? Center(child: Image.asset("assets/images/check_mark_image.png", height: AppSize.s114.sw))
                                         : Text("cashOnDelivery".tr(), textAlign: TextAlign.center, style: getBoldStyle(color: AppColors.primary, fontSize: AppSize.s15.sp)),
                                   ),
                                 ),

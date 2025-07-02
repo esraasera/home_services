@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/utils/static_services.dart';
-import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/service_request_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/widgets/service_details.dart';
 import 'package:home_services_app/features/service_request/presentation/widgets/service_item.dart';
@@ -19,9 +18,9 @@ class ServicesScreen extends StatelessWidget {
       physics: const NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        mainAxisSpacing: AppPadding.p0_03.sh,
-        crossAxisSpacing: AppPadding.p0_03.sw,
-        childAspectRatio: AppSize.s1_13,
+        mainAxisSpacing: 30.h,
+        crossAxisSpacing: 30.w,
+        childAspectRatio: 1.13,
       ),
       itemCount: servicesList.length,
       itemBuilder: (context, index) {

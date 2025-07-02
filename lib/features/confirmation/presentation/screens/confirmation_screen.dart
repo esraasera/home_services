@@ -29,7 +29,7 @@ class ConfirmationScreen extends StatelessWidget {
                   color: cubit.isDark ? AppColors.white : AppColors.primary,
                   fit: BoxFit.contain,
                 ),
-                SizedBox(height: AppSize.s13_8.h),
+                SizedBox(height: AppSize.s14.h),
                 Text(
                   "successfulRequest".tr(),
                   style: getSemiBoldStyle(
@@ -37,7 +37,7 @@ class ConfirmationScreen extends StatelessWidget {
                     fontSize: AppSize.s18.sp,
                   ),
                 ),
-                SizedBox(height: AppSize.s5_52.h),
+                SizedBox(height: AppSize.s20.h),
                 Text(
                   "waitCall".tr(),
                   style: getSemiBoldStyle(
