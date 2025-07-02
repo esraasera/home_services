@@ -52,6 +52,7 @@ class StripeCubit extends Cubit<StripeState> {
           ),
         );
         emit(StripeFailure(error: e.toString()));
+        print(e.toString());
         _isProcessing = false;
       }
     }

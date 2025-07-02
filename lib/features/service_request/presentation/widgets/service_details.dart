@@ -131,6 +131,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                       cubit.setServiceData(
                         titleKey: service.titleKey,
                         priceKey: service.priceKey,
+                        priceValue: service.priceValue, // Pass actual value
                       );
                       cubit.isSelectedService(name: service.titleKey);
                       Navigator.pop(context);

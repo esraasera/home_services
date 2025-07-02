@@ -19,8 +19,8 @@ class SplashScreen extends StatelessWidget {
           splash:Center(
           child:Image.asset(
               'assets/images/logo.png',
-            width: AppSize.s360.w,
-            height:  AppSize.s360.h,
+            width: AppSize.s300.w,
+            height:  AppSize.s300.h,
           )
           ),
           nextScreen: LoginScreen(),

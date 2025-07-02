@@ -50,7 +50,7 @@ class ForgotPassword extends StatelessWidget {
               emailController.clear();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
-                  content: Text("forgotPassword".tr()),
+                  content: Text("passwordResetSent".tr()),
                   backgroundColor: AppColors.success,
                   behavior: SnackBarBehavior.fixed,
                 ),

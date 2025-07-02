@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
+import 'package:home_services_app/core/utils/app_constants.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/payment/data/datasource/payment_remote_datasource.dart';
 import 'package:home_services_app/features/payment/data/repository/payment_repository.dart';
@@ -46,8 +47,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           final serviceCubit = ServiceRequestCubit.get(context);
           final stripeCubit = BlocProvider.of<StripeCubit>(context);
           final settingsCubit = BlocProvider.of<SettingsCubit>(context);
-          final price = ((double.tryParse(serviceCubit.servicePrice ?? '${AppSize.s0}') ?? AppSize.s0) * AppSize.s100).toInt();
-
+          final price = ((serviceCubit.servicePriceValue ?? 0) * 100).toInt();
           return Padding(
             padding: EdgeInsets.symmetric(vertical: AppSize.s0_05.sh),
             child: Material(
@@ -118,7 +118,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                                   if (serviceCubit.selectedMethod == null) {
                                     await stripeCubit.makePaymentAndShowSheet(
                                       amount: price,
-                                      currency: "currency".tr(),
+                                      currency: AppConstants.currency,
                                       context: context,
                                     );
                                   } else {

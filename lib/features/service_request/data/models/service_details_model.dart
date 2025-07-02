@@ -5,6 +5,7 @@ class ServiceDetailsModel {
   final String descriptionKey;
   final List<String> featureKeys;
   final String priceKey;
+  final double priceValue;
   final String estimatedDurationKey;
   final String workingHoursKey;
 
@@ -15,6 +16,7 @@ class ServiceDetailsModel {
     required this.descriptionKey,
     required this.featureKeys,
     required this.priceKey,
+    required this.priceValue,
     required this.estimatedDurationKey,
     required this.workingHoursKey,
   });

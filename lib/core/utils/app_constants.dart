@@ -8,4 +8,8 @@ class AppConstants {
   //map
   static LatLng defaultLocation = LatLng(30.0444, 31.2357);
 
+  //stripe
+  static const String currency ="egp";
+
+
 }
