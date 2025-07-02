@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
@@ -9,7 +10,6 @@ import 'package:home_services_app/features/service_request/presentation/controll
 String getLocalizedNumber(int number) {
   return 'numbers.${number}'.tr();
 }
-
 
 class StepperIndicator extends StatelessWidget {
   final int currentStep;
@@ -28,51 +28,44 @@ class StepperIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double progress = currentStep / totalSteps;
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
 
-    return BlocConsumer<SettingsCubit,SettingsState>(
-      listener: (BuildContext context, state) {  },
+    return BlocConsumer<SettingsCubit, SettingsState>(
+      listener: (BuildContext context, state) {},
       builder: (BuildContext context, state) {
         var cubit = SettingsCubit.get(context);
-        return  Row(
+        return Row(
           children: [
             CustomPaint(
               painter: CircleProgressPainter(progress, cubit.isDark),
               child: Container(
-                width:screenHeight* AppSize.s0_148,
-                height: screenHeight* AppSize.s0_148,
+                width: AppSize.s0_148.sh,
+                height: AppSize.s0_148.sh,
                 alignment: Alignment.center,
-                child:Text(
+                child: Text(
                   '${getLocalizedNumber(currentStep)} ${"of".tr()} ${getLocalizedNumber(totalSteps)}',
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                    fontSize: screenWidth * AppSize.s0_06,
+                    fontSize: AppSize.s0_06.sw,
                   ),
                 ),
               ),
             ),
-            SizedBox(width: screenWidth* AppSize. s0_03,),
+            SizedBox(width: AppSize.s0_03.sw),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   title,
                   style: Theme.of(context).textTheme.displayLarge!.copyWith(
-                    fontSize: screenWidth * AppSize.s0_06,
+                    fontSize: AppSize.s0_06.sw,
                   ),
                 ),
-                const SizedBox(height:AppSize.s4),
+                SizedBox(height: AppSize.s4.h),
                 if (nextTitle.isNotEmpty)
                   Text(
                     "nextPage".tr() + nextTitle,
-                    style: cubit.isDark
-                        ? Theme.of(context).textTheme.displayLarge!.copyWith(
-                      fontSize: screenWidth * AppSize.s0_045,
-                      color : AppColors.lightPrimary,
-                    )
-                        : Theme.of(context).textTheme.displayLarge!.copyWith(
-                      fontSize: screenWidth * AppSize.s0_045,
-                      color: AppColors.primary,
+                    style: Theme.of(context).textTheme.displayLarge!.copyWith(
+                      fontSize: AppSize.s0_045.sw,
+                      color: cubit.isDark ? AppColors.lightPrimary : AppColors.primary,
                     ),
                   ),
               ],
@@ -121,4 +114,3 @@ class CircleProgressPainter extends CustomPainter {
   @override
   bool shouldRepaint(CustomPainter oldDelegate) => true;
 }
-

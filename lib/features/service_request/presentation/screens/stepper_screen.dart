@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/values/app_values.dart';
@@ -20,14 +21,16 @@ class StepperScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-    return  MultiBlocProvider(
+    return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => StepperCubit()),
-        BlocProvider(create: (context) => ServiceRequestCubit(
+        BlocProvider(
+          create: (context) => ServiceRequestCubit(
             ServiceRequestUseCase(
-                ServiceRequestRepositoryImpl(ServiceRequestDataSourceImpl())))),
+              ServiceRequestRepositoryImpl(ServiceRequestDataSourceImpl()),
+            ),
+          ),
+        ),
       ],
       child: BlocListener<ServiceRequestCubit, ServiceRequestState>(
         listener: (context, state) {
@@ -42,128 +45,120 @@ class StepperScreen extends StatelessWidget {
             );
           }
         },
-        child: BlocConsumer<StepperCubit,StepperState>(
-          listener: (context,state) {  },
-          builder: (context,state) {
+        child: BlocConsumer<StepperCubit, StepperState>(
+          listener: (context, state) {},
+          builder: (context, state) {
             final stepperCubit = StepperCubit.get(context);
             final serviceCubit = ServiceRequestCubit.get(context);
+
             if (!stepperCubit.isDrawerOpened) {
               WidgetsBinding.instance.addPostFrameCallback((_) {
                 scaffoldKey.currentState?.openDrawer();
                 stepperCubit.isDrawerOpened = true;
               });
             }
+
             return Scaffold(
-                key: scaffoldKey,
-                drawerEdgeDragWidth:screenWidth * AppSize.s0_2,
-                drawer: const SettingsDrawer(),
-                body: SafeArea(
-                  child: Padding(
-                    padding: EdgeInsets.all(screenHeight * AppPadding.p0_02),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        StepperIndicator(
-                          currentStep:stepperCubit.displayStep,
-                          title: stepperCubit.stepTitles[stepperCubit.currentStep],
-                          totalSteps: stepperCubit.totalSteps,
-                          nextTitle: (stepperCubit.currentStep < stepperCubit.totalSteps - AppSize.s1)
-                              ? stepperCubit.stepTitles[stepperCubit.displayStep]
-                              : '',
-                        ),
-                      SizedBox(
-                        height: screenHeight * AppSize.s0_02,
+              key: scaffoldKey,
+              drawerEdgeDragWidth: AppSize.s0_2.sw,
+              drawer: const SettingsDrawer(),
+              body: SafeArea(
+                child: Padding(
+                  padding: EdgeInsets.all(AppPadding.p0_02.sh),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      StepperIndicator(
+                        currentStep: stepperCubit.displayStep,
+                        title: stepperCubit.stepTitles[stepperCubit.currentStep],
+                        totalSteps: stepperCubit.totalSteps,
+                        nextTitle: (stepperCubit.currentStep < stepperCubit.totalSteps - AppSize.s1)
+                            ? stepperCubit.stepTitles[stepperCubit.displayStep]
+                            : '',
                       ),
-                      Expanded(child: stepperCubit.stepScreens[stepperCubit.currentStep]),
-                        SizedBox(
-                          height: screenHeight * AppSize.s0_02,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            BlocBuilder<ServiceRequestCubit, ServiceRequestState>(
-                              builder: (context, state) {
-                                final stepperCubit = StepperCubit.get(context);
-                                final serviceCubit = ServiceRequestCubit.get(context);
-                                return ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                    backgroundColor: AppColors.white,
-                                    foregroundColor: AppColors.primary,
-                                    disabledBackgroundColor: AppColors.disableColor,
-                                    disabledForegroundColor: AppColors.darkGrey,
-                                    minimumSize: Size(
-                                      MediaQuery.of(context).size.width * AppSize.s0_35,
-                                      MediaQuery.of(context).size.height * AppSize.s0_075,
-                                    ),
+                      SizedBox(height: AppSize.s0_02.sh),
+                      Expanded(
+                        child: stepperCubit.stepScreens[stepperCubit.currentStep],
+                      ),
+                      SizedBox(height: AppSize.s0_02.sh),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          BlocBuilder<ServiceRequestCubit, ServiceRequestState>(
+                            builder: (context, state) {
+                              return ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.white,
+                                  foregroundColor: AppColors.primary,
+                                  disabledBackgroundColor: AppColors.disableColor,
+                                  disabledForegroundColor: AppColors.darkGrey,
+                                  minimumSize: Size(
+                                    AppSize.s0_35.sw,
+                                    AppSize.s0_075.sh,
                                   ),
-                                  onPressed: (stepperCubit.currentStep == 0 ||  stepperCubit.currentStep == stepperCubit.totalSteps - 1 &&
-                                      serviceCubit.selectedMethod != null)
-                                      ? null
-                                      : stepperCubit.previousStepperStep,
-                                  child: Text( "back".tr()),
-                                );
-
-                              },
-                            ),
-
-
-                            ElevatedButton(
-                                style:ElevatedButton.styleFrom(
-                                  minimumSize: Size( screenWidth * AppSize.s0_35 , screenHeight * AppSize.s0_075),
                                 ),
-                                onPressed: () async {
-                                  if (stepperCubit.currentStep == 0) {
-                                    final formKey = stepperCubit.userInfoFormKey;
-                                    if (formKey.currentState?.validate() ?? false) {
-                                      serviceCubit.setUserData(
-                                        name: stepperCubit.nameController.text,
-                                        phone: stepperCubit.numberController.text,
-                                        address: stepperCubit.addressController.text,
-                                      );
-                                      stepperCubit.nextStepperStep(context);
-                                    }
-                                  }
-                                  else if (stepperCubit.currentStep == 1) {
-                                    if (serviceCubit.serviceName == null) {
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          content: Text("serviceError".tr()),
-                                          duration: Duration(seconds: 3),
-                                          backgroundColor: AppColors.error,
-                                        ),
-                                      );
-                                    } else {
-                                      stepperCubit.nextStepperStep(context);
-                                    }
-                                  }
-                                  else{
-                                    if (serviceCubit.selectedMethod == null){
-                                      ScaffoldMessenger.of(context).showSnackBar(
-                                        SnackBar(
-                                          content: Text("selectedMethodError".tr()),
-                                          duration: Duration(seconds: 3),
-                                          backgroundColor: AppColors.error,
-                                        ),
-                                      );
-                                    } else {
-                                      await serviceCubit.submitRequest();
-                                    }
-
-                                  }
-                                },
-                              child: Text(
-                                stepperCubit.currentStep == stepperCubit.totalSteps - 1
-                                    ? "confirm".tr()
-                                    : "next".tr(),
-                              ),
-
-                            )
-                          ],
-                        ),
-                      ],
-                    ),
+                                onPressed: (stepperCubit.currentStep == 0 ||
+                                    stepperCubit.currentStep == stepperCubit.totalSteps - 1 &&
+                                        serviceCubit.selectedMethod != null)
+                                    ? null
+                                    : stepperCubit.previousStepperStep,
+                                child: Text("back".tr()),
+                              );
+                            },
+                          ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(AppSize.s0_35.sw, AppSize.s0_075.sh),
+                            ),
+                            onPressed: () async {
+                              if (stepperCubit.currentStep == 0) {
+                                final formKey = stepperCubit.userInfoFormKey;
+                                if (formKey.currentState?.validate() ?? false) {
+                                  serviceCubit.setUserData(
+                                    name: stepperCubit.nameController.text,
+                                    phone: stepperCubit.numberController.text,
+                                    address: stepperCubit.addressController.text,
+                                  );
+                                  stepperCubit.nextStepperStep(context);
+                                }
+                              } else if (stepperCubit.currentStep == 1) {
+                                if (serviceCubit.serviceName == null) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text("serviceError".tr()),
+                                      duration: const Duration(seconds: 3),
+                                      backgroundColor: AppColors.error,
+                                    ),
+                                  );
+                                } else {
+                                  stepperCubit.nextStepperStep(context);
+                                }
+                              } else {
+                                if (serviceCubit.selectedMethod == null) {
+                                  ScaffoldMessenger.of(context).showSnackBar(
+                                    SnackBar(
+                                      content: Text("selectedMethodError".tr()),
+                                      duration: const Duration(seconds: 3),
+                                      backgroundColor: AppColors.error,
+                                    ),
+                                  );
+                                } else {
+                                  await serviceCubit.submitRequest();
+                                }
+                              }
+                            },
+                            child: Text(
+                              stepperCubit.currentStep == stepperCubit.totalSteps - 1
+                                  ? "confirm".tr()
+                                  : "next".tr(),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                )
+                ),
+              ),
             );
           },
         ),

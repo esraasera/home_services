@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
@@ -13,14 +14,11 @@ class SettingsDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final screenHeight = MediaQuery.of(context).size.height;
-
     return BlocConsumer<SettingsCubit, SettingsState>(
       listener: (context, state) {
-      if (state is SettingsLoggedOut) {
-        Navigator.pushReplacementNamed(context, Routes.loginRoute);
-      }
+        if (state is SettingsLoggedOut) {
+          Navigator.pushReplacementNamed(context, Routes.loginRoute);
+        }
       },
       builder: (context, state) {
         var cubit = SettingsCubit.get(context);
@@ -29,12 +27,12 @@ class SettingsDrawer extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  height: screenHeight * AppSize.s0_25,
+                  height: AppSize.s0_25.sh,
                   width: double.infinity,
                   color: AppColors.primary,
                   padding: EdgeInsets.symmetric(
-                    vertical: screenHeight * AppPadding.p0_03,
-                    horizontal: screenWidth * AppPadding.p0_03,
+                    vertical: AppPadding.p0_03.sh,
+                    horizontal: AppPadding.p0_03.sw,
                   ),
                   child: Align(
                     alignment: AlignmentDirectional.bottomCenter,
@@ -42,20 +40,20 @@ class SettingsDrawer extends StatelessWidget {
                       "settings".tr(),
                       style: getBoldStyle(
                         color: AppColors.white,
-                        fontSize: screenWidth * AppSize.s0_11,
+                        fontSize: AppSize.s0_11.sw,
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: screenHeight * AppSize.s0_03),
+                SizedBox(height: AppSize.s0_03.sh),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:AppPadding.p8),
+                  padding: EdgeInsets.symmetric(horizontal: AppPadding.p8.w),
                   child: SwitchListTile(
                     title: Text(
                       "darkMode".tr(),
                       style: getBoldStyle(
                         color: AppColors.black,
-                        fontSize: screenWidth * AppSize.s0_05,
+                        fontSize: AppSize.s0_05.sw,
                       ),
                     ),
                     value: cubit.isDark,
@@ -64,15 +62,15 @@ class SettingsDrawer extends StatelessWidget {
                     onChanged: (_) => cubit.toggleTheme(),
                   ),
                 ),
-                SizedBox(height: screenHeight * AppSize.s0_03),
+                SizedBox(height: AppSize.s0_03.sh),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:AppPadding.p8),
+                  padding: EdgeInsets.symmetric(horizontal: AppPadding.p8.w),
                   child: ListTile(
                     title: Text(
                       "language".tr(),
                       style: getBoldStyle(
                         color: AppColors.black,
-                        fontSize: screenWidth * AppSize.s0_05,
+                        fontSize: AppSize.s0_05.sw,
                       ),
                     ),
                     trailing: DecoratedBox(
@@ -80,19 +78,27 @@ class SettingsDrawer extends StatelessWidget {
                         color: AppColors.lightGrey,
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: AppSize.s12),
+                        padding: EdgeInsets.symmetric(horizontal: AppSize.s12.w),
                         child: DropdownButton<String>(
                           value: cubit.currentLanguage,
-                          dropdownColor: cubit.isDark ? AppColors.lightGrey :AppColors.bG,
+                          dropdownColor: cubit.isDark ? AppColors.lightGrey : AppColors.bG,
                           underline: const SizedBox(),
                           items: [
-                            DropdownMenuItem(value:"ar".tr(), child: Text("arabic".tr(),style:TextStyle(
-                              color: AppColors.black
-                            ))),
-                            DropdownMenuItem(value:"en".tr(), child: Text("english".tr(),style:TextStyle(
-                                color: AppColors.black
-                            )),
-                            )],
+                            DropdownMenuItem(
+                              value: "ar".tr(),
+                              child: Text(
+                                "arabic".tr(),
+                                style: TextStyle(color: AppColors.black),
+                              ),
+                            ),
+                            DropdownMenuItem(
+                              value: "en".tr(),
+                              child: Text(
+                                "english".tr(),
+                                style: TextStyle(color: AppColors.black),
+                              ),
+                            ),
+                          ],
                           onChanged: (value) {
                             if (value != null) {
                               cubit.changeLanguage(value, context);
@@ -103,16 +109,16 @@ class SettingsDrawer extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(height: screenHeight * AppSize.s0_03),
+                SizedBox(height: AppSize.s0_03.sh),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:AppPadding.p8),
+                  padding: EdgeInsets.symmetric(horizontal: AppPadding.p8.w),
                   child: ListTile(
                     leading: Icon(Icons.logout, color: AppColors.black),
                     title: Text(
                       "logOut".tr(),
                       style: getBoldStyle(
                         color: AppColors.black,
-                        fontSize: screenWidth * AppSize.s0_05,
+                        fontSize: AppSize.s0_05.sw,
                       ),
                     ),
                     onTap: () => cubit.logout(),
