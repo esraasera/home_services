@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
 import 'package:home_services_app/core/values/app_values.dart';
@@ -32,11 +33,8 @@ class MapPickerScreen extends StatelessWidget {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
-    final screenHeight = MediaQuery.of(context).size.height;
-    final screenWidth = MediaQuery.of(context).size.width;
     Future.microtask(() => _requestLocationPermission(context));
 
     return BlocProvider(
@@ -46,22 +44,24 @@ class MapPickerScreen extends StatelessWidget {
         ),
       ),
       child: BlocConsumer<MapPickerCubit, MapPickerState>(
-        listener: (BuildContext context, state) {},
-        builder: (BuildContext context, state) {
+        listener: (context, state) {},
+        builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
               leading: IconButton(
                 icon: Icon(
                   Icons.arrow_back_ios_new,
                   color: AppColors.white,
-                  size: screenWidth * AppSize.s0_06,
+                  size: AppSize.s0_06.sw,
                 ),
                 onPressed: () => Navigator.pop(context),
               ),
               title: Text(
-               "selectLocation".tr(),
-                style:
-                getBoldStyle(color: AppColors.white, fontSize: screenWidth * AppSize.s0_06),
+                "selectLocation".tr(),
+                style: getBoldStyle(
+                  color: AppColors.white,
+                  fontSize: AppSize.s0_06.sw,
+                ),
               ),
             ),
             body: Stack(
@@ -79,16 +79,16 @@ class MapPickerScreen extends StatelessWidget {
                 Center(
                   child: Icon(
                     Icons.location_on,
-                    size: screenWidth * AppSize.s0_12,
+                    size: AppSize.s0_12.sw,
                     color: AppColors.marker,
                   ),
                 ),
                 Positioned(
-                  bottom: screenHeight * AppSize.s0_03,
-                  left: screenWidth * AppSize.s0_05,
-                  right: screenWidth * AppSize.s0_05,
+                  bottom: AppSize.s0_03.sh,
+                  left: AppSize.s0_05.sw,
+                  right: AppSize.s0_05.sw,
                   child: SizedBox(
-                    height: screenHeight * AppSize.s0_065,
+                    height: AppSize.s0_065.sh,
                     child: state is MapPickerLoading
                         ? const Center(child: CircularProgressIndicator())
                         : ElevatedButton(
@@ -99,11 +99,12 @@ class MapPickerScreen extends StatelessWidget {
                         await cubit.confirmPickedLocation();
 
                         if (cubit.state is MapLocationAddressPicked) {
-                          final address = (cubit.state as MapLocationAddressPicked).address;
+                          final address =
+                              (cubit.state as MapLocationAddressPicked).address;
                           navigator.pop(address);
                         } else {
                           messenger.showSnackBar(
-                             SnackBar(
+                            SnackBar(
                               content: Text("failedAddress".tr()),
                             ),
                           );
@@ -112,13 +113,15 @@ class MapPickerScreen extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         backgroundColor: AppColors.primary,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(screenWidth * AppSize.s0_03),
+                          borderRadius: BorderRadius.circular(AppSize.s0_03.sw),
                         ),
                       ),
                       child: Text(
-                       "confirmLocation".tr(),
+                        "confirmLocation".tr(),
                         style: getBoldStyle(
-                            color: AppColors.white, fontSize: screenWidth * AppSize.s0_045),
+                          color: AppColors.white,
+                          fontSize: AppSize.s0_045.sw,
+                        ),
                       ),
                     ),
                   ),
