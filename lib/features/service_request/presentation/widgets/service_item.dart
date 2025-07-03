@@ -37,8 +37,8 @@ class ServiceItem extends StatelessWidget {
               children: [
                 Image.asset(
                   service.imagePath,
-                  height: AppSize.s90.h,
-                  width: AppSize.s100.w,
+                  height: AppSize.s80.h,
+                  width: AppSize.s80.w,
                   fit: BoxFit.contain,
                 ),
                 SizedBox(height: AppSize.s10.h),

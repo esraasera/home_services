@@ -34,117 +34,128 @@ class ServiceDetailsScreen extends StatelessWidget {
               style: getBoldStyle(color: AppColors.white, fontSize: 18.sp),
             ),
           ),
-          body: SingleChildScrollView(
-            padding: EdgeInsets.all(12.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Center(
-                  child: Padding(
-                    padding: EdgeInsets.all(8.w),
-                    child: Image.asset(
-                      service.imagePath,
-                      height: AppSize.s180.h,
-                      color: settingsCubit.isDark ? AppColors.white : AppColors.black,
+          body: LayoutBuilder(
+            builder: (context, constraints) {
+              return SingleChildScrollView(
+                padding: EdgeInsets.all(12.w),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(minHeight: constraints.maxHeight),
+                  child: IntrinsicHeight(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Center(
+                          child: Padding(
+                            padding: EdgeInsets.all(8.w),
+                            child: Image.asset(
+                              service.imagePath,
+                              height: AppSize.s165.h,
+                              fit: BoxFit.contain,
+                              color: settingsCubit.isDark ? AppColors.white : AppColors.black,
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 16.h),
+                        Text(
+                          service.descriptionKey.tr(),
+                          style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 18.sp),
+                        ),
+                        SizedBox(height: 20.h),
+                        Text(
+                          "serviceOffered".tr(),
+                          style: getBoldStyle(
+                            color: settingsCubit.isDark ? AppColors.lightPrimary : AppColors.primary,
+                            fontSize: 18.sp,
+                          ),
+                        ),
+                        SizedBox(height: 12.h),
+                        ...service.featureKeys.map(
+                              (key) => Padding(
+                            padding: EdgeInsets.only(bottom: 4.h),
+                            child: Text(
+                              "• ${key.tr()}",
+                              style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.sp),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 20.h),
+                        Row(
+                          children: [
+                            Text(
+                              "${"price".tr()} ",
+                              style: getBoldStyle(
+                                color: settingsCubit.isDark ? AppColors.lightPrimary : AppColors.primary,
+                                fontSize: AppSize.s16.sp,
+                              ),
+                            ),
+                            Text(
+                              " ${service.priceKey.tr()} ",
+                              style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.sp),
+                            ),
+                            Text(
+                              "egp".tr(),
+                              style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.sp),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 16.h),
+                        Row(
+                          children: [
+                            Text(
+                              "${"duration".tr()} ",
+                              style: getBoldStyle(
+                                color: settingsCubit.isDark ? AppColors.lightPrimary : AppColors.primary,
+                                fontSize: AppSize.s16.sp,
+                              ),
+                            ),
+                            Text(
+                              service.estimatedDurationKey.tr(),
+                              style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.sp),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: AppSize.s16.h),
+                        Row(
+                          children: [
+                            Text(
+                              "${"workingHours".tr()} ",
+                              style: getBoldStyle(
+                                color: settingsCubit.isDark ? AppColors.lightPrimary : AppColors.primary,
+                                fontSize: 16.sp,
+                              ),
+                            ),
+                            Text(
+                              service.workingHoursKey.tr(),
+                              style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.sp),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: 24.h),
+                        Center(
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              minimumSize: Size(AppSize.s300.w, AppSize.s55.h),
+                            ),
+                            onPressed: () {
+                              cubit.setServiceData(
+                                titleKey: service.titleKey,
+                                priceKey: service.priceKey,
+                                priceValue: service.priceValue,
+                              );
+                              cubit.isSelectedService(name: service.titleKey);
+                              Navigator.pop(context);
+                            },
+                            child: Text("bookNow".tr()),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-                SizedBox(height: 16.h),
-                Text(
-                  service.descriptionKey.tr(),
-                  style: Theme.of(context).textTheme.displayLarge!.copyWith(fontSize: 18.sp),
-                ),
-                SizedBox(height: 20.h),
-                Text(
-                  "serviceOffered".tr(),
-                  style: getBoldStyle(
-                    color: settingsCubit.isDark ? AppColors.lightPrimary : AppColors.primary,
-                    fontSize: 18.sp,
-                  ),
-                ),
-                SizedBox(height: 12.h),
-                ...service.featureKeys.map(
-                      (key) => Padding(
-                    padding: EdgeInsets.only(bottom: 4.h),
-                    child: Text(
-                      "• ${key.tr()}",
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.sp),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20.h),
-                Row(
-                  children: [
-                    Text(
-                      "${"price".tr()} ",
-                      style: getBoldStyle(
-                        color: settingsCubit.isDark ? AppColors.lightPrimary : AppColors.primary,
-                        fontSize: AppSize.s16.sp,
-                      ),
-                    ),
-                    Text(
-                      " ${service.priceKey.tr()} ",
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.sp),
-                    ),
-                    Text(
-                      "egp".tr(),
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.sp),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 16.h),
-                Row(
-                  children: [
-                    Text(
-                      "${"duration".tr()} ",
-                      style: getBoldStyle(
-                        color: settingsCubit.isDark ? AppColors.lightPrimary : AppColors.primary,
-                        fontSize: AppSize.s16.sp,
-                      ),
-                    ),
-                    Text(
-                      service.estimatedDurationKey.tr(),
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.sp),
-                    ),
-                  ],
-                ),
-                SizedBox(height: AppSize.s16.h),
-                Row(
-                  children: [
-                    Text(
-                      "${"workingHours".tr()} ",
-                      style: getBoldStyle(
-                        color: settingsCubit.isDark ? AppColors.lightPrimary : AppColors.primary,
-                        fontSize: 16.sp,
-                      ),
-                    ),
-                    Text(
-                      service.workingHoursKey.tr(),
-                      style: Theme.of(context).textTheme.titleMedium!.copyWith(fontSize: 17.sp),
-                    ),
-                  ],
-                ),
-                SizedBox(height: AppSize.s24.h),
-                Center(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      minimumSize: Size(AppSize.s300.w,AppSize.s55.h),
-                    ),
-                    onPressed: () {
-                      cubit.setServiceData(
-                        titleKey: service.titleKey,
-                        priceKey: service.priceKey,
-                        priceValue: service.priceValue,
-                      );
-                      cubit.isSelectedService(name: service.titleKey);
-                      Navigator.pop(context);
-                    },
-                    child: Text("bookNow".tr()),
-                  ),
-                ),
-              ],
-            ),
+              );
+            },
           ),
+
         );
       },
     );

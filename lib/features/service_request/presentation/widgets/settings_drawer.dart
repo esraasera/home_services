@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:home_services_app/core/routing/app_routes.dart';
 import 'package:home_services_app/core/theme/app_colors.dart';
 import 'package:home_services_app/core/theme/styles_manager.dart';
+import 'package:home_services_app/core/values/app_values.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/cubit/settings_cubit.dart';
 import 'package:home_services_app/features/service_request/presentation/controller/states/settings_states.dart';
 
@@ -39,7 +40,7 @@ class SettingsDrawer extends StatelessWidget {
                       "settings".tr(),
                       style: getBoldStyle(
                         color: AppColors.white,
-                        fontSize: 20.sp,
+                        fontSize: AppSize.s40.sp,
                       ),
                     ),
                   ),

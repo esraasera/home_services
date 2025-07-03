@@ -76,7 +76,7 @@ class StepperScreen extends StatelessWidget {
                             ? stepperCubit.stepTitles[stepperCubit.displayStep]
                             : '',
                       ),
-                      SizedBox(height: AppSize.s8.h),
+                      SizedBox(height: AppSize.s15.h),
                       Expanded(
                         child: stepperCubit.stepScreens[stepperCubit.currentStep],
                       ),
