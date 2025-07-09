@@ -33,6 +33,7 @@ class UserInfoScreen extends StatelessWidget {
         key: formKey,
         child: Center(
           child: SingleChildScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
