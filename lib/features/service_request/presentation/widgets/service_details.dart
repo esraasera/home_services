@@ -36,7 +36,7 @@ class ServiceDetailsScreen extends StatelessWidget {
           ),
           body: LayoutBuilder(
             builder: (context, constraints) {
-              return SingleChildScrollView(
+              return Padding(
                 padding: EdgeInsets.all(12.w),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(minHeight: constraints.maxHeight),
@@ -130,7 +130,7 @@ class ServiceDetailsScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 24.h),
+                        Spacer(),
                         Center(
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
