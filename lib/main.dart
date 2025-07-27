@@ -13,7 +13,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   Bloc.observer = MyBlocObserver();
-  //await dotenv.load(fileName: ".env");
+  await dotenv.load(fileName: ".env");
   Stripe.publishableKey = dotenv.env['STRIPE_PUBLISHABLE_KEY']!;
   await CacheHelper.init();
   await Stripe.instance.applySettings();
