@@ -13,3 +13,5 @@ key.properties
 **/*.jks
 **/AndroidManifest.xml
 .env
+lib/core/utils/static_services.dart
+
