@@ -20,10 +20,10 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: const [Locale('en'), Locale('ar')],
+    //  supportedLocales: const [Locale('en'), Locale('ar')],
       path: 'assets/translations',
       fallbackLocale: const Locale('en'),
-      startLocale: Locale(CacheHelper.getData('lang') ?? 'en'),
+    //  startLocale: Locale(CacheHelper.getData('lang') ?? 'en'),
       child: BlocProvider(
         create: (context) => SettingsCubit(context),
         child: const MyApp(),
