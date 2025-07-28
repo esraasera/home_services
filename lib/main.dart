@@ -18,16 +18,4 @@ void main() async {
   await CacheHelper.init();
   await Stripe.instance.applySettings();
 
-  runApp(
-    EasyLocalization(
-      supportedLocales: const [Locale('en'), Locale('ar')],
-      path: 'assets/translations',
-      fallbackLocale: const Locale('en'),
-      startLocale: Locale(CacheHelper.getData('lang') ?? 'en'),
-      child: BlocProvider(
-        create: (context) => SettingsCubit(context),
-        child: const MyApp(),
-      ),
-    ),
-  );
 }
